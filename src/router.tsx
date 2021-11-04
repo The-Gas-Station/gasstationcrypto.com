@@ -1,12 +1,8 @@
-import React from "react";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from "react-router-dom";
-import {Home} from './pages/home'
-import {Hub} from './pages/hub'
-import {NFP} from './pages/nfp'
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Home } from './pages/home'
+import { Hub } from './pages/hub'
+import { NFP } from './pages/nfp'
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -20,24 +16,24 @@ import {NFP} from './pages/nfp'
 export default function Router() {
   return (
     <BrowserRouter>
-        {/*
+      {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path
           matches the current URL. Use a <Switch> any time
           you have multiple routes, but you want only one
           of them to render at a time
         */}
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/hub">
-            <Hub />
-          </Route>
-          <Route path="/nfp">
-            <NFP />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/hub">
+          <Hub />
+        </Route>
+        <Route path="/nfp">
+          <NFP />
+        </Route>
+      </Switch>
     </BrowserRouter>
-  );
+  )
 }
