@@ -4,10 +4,11 @@ import ReactDOM from "react-dom"
 import Router from "./router"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
+import {theme} from "./layouts/main-theme"
 
 ReactDOM.render(
   <React.StrictMode>
-    <ColorModeScript />
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <Router />
   </React.StrictMode>,
   document.getElementById("root"),

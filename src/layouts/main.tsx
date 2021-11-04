@@ -42,8 +42,11 @@ export const Main = ({ children }: Props) => {
             as={motion.div}
             animate={sideOpen ? "open" : "closed"}
             variants={{ open: { width: "18rem" }, closed: { width: "3rem" } }}
-            transitionTimingFunction="ease"
             display="flex"
+            position={{base: 'fixed', md: 'relative'}}
+            bgColor={{base: 'black', md: 'inherit'}}
+            top="0"
+            bottom="0"
             flexDir="column"
           >
             <div>
@@ -56,7 +59,7 @@ export const Main = ({ children }: Props) => {
               </IconButton>
             </div>
             {headerLinks.map((link) => (
-              <Box as={ActiveLink} to={link.route}>
+              <Box as={ActiveLink} to={link.route} key={link.route}>
                 <Icon>{link.icon}</Icon>
                 {sideOpen && link.label}
               </Box>
@@ -70,7 +73,7 @@ export const Main = ({ children }: Props) => {
             </Box>
           </Box>
         </Box>
-        <Box w="full">
+        <Box w="full" ml={{base: '3rem', md: '0'}}>
           <Box display="flex" bgColor="gray.600" color="gray.200">
             <Box flex="1 1 0%">info bar</Box>
           </Box>
