@@ -1,8 +1,8 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Home } from './pages/home'
-import { Hub } from './pages/hub'
-import { NFP } from './pages/nfp'
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Home } from './pages/home';
+import { Hub } from './pages/hub';
+import { NFP } from './pages/nfp';
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -35,5 +35,5 @@ export default function Router() {
         </Route>
       </Switch>
     </BrowserRouter>
-  )
+  );
 }

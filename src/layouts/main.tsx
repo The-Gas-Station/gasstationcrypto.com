@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
-import { ChakraProvider, Box, Icon, IconButton } from '@chakra-ui/react'
-import { Link, useRouteMatch } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { theme } from './main-theme'
-import { ColorModeSwitcher } from '../components/ColorModeSwitcher'
-import { ReactComponent as SvgShrinkSidebar } from '../assets/shrink-sidebar.svg'
-import { ReactComponent as SvgLinkHome } from '../assets/link-home.svg'
-import { ReactComponent as SvgLinkHub } from '../assets/link-hub.svg'
-import { ReactComponent as SvgLinkNfp } from '../assets/link-nfp.svg'
+import React, { useState } from 'react';
+import { ChakraProvider, Box, Icon, IconButton } from '@chakra-ui/react';
+import { Link, useRouteMatch } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { theme } from './main-theme';
+import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
+import { ReactComponent as SvgShrinkSidebar } from '../assets/shrink-sidebar.svg';
+import { ReactComponent as SvgLinkHome } from '../assets/link-home.svg';
+import { ReactComponent as SvgLinkHub } from '../assets/link-hub.svg';
+import { ReactComponent as SvgLinkNfp } from '../assets/link-nfp.svg';
 
 type Props = {
-  children: JSX.Element
-}
+  children: JSX.Element;
+};
 
 export const Main = ({ children }: Props) => {
-  const [sideOpen, setSideOpen] = useState(true)
+  const [sideOpen, setSideOpen] = useState(true);
 
   const headerLinks = [
     {
@@ -32,7 +32,7 @@ export const Main = ({ children }: Props) => {
       route: '/nfp',
       icon: <SvgLinkNfp />,
     },
-  ]
+  ];
 
   return (
     <ChakraProvider theme={theme}>
@@ -42,8 +42,11 @@ export const Main = ({ children }: Props) => {
             as={motion.div}
             animate={sideOpen ? 'open' : 'closed'}
             variants={{ open: { width: '18rem' }, closed: { width: '3rem' } }}
-            transitionTimingFunction="ease"
             display="flex"
+            position={{ base: 'fixed', md: 'relative' }}
+            bgColor={{ base: 'black', md: 'inherit' }}
+            top="0"
+            bottom="0"
             flexDir="column"
           >
             <div>
@@ -56,7 +59,7 @@ export const Main = ({ children }: Props) => {
               </IconButton>
             </div>
             {headerLinks.map((link) => (
-              <Box as={ActiveLink} to={link.route}>
+              <Box as={ActiveLink} to={link.route} key={link.route}>
                 <>
                   <Icon>{link.icon}</Icon>
                   {sideOpen && link.label}
@@ -72,7 +75,7 @@ export const Main = ({ children }: Props) => {
             </Box>
           </Box>
         </Box>
-        <Box w="full">
+        <Box w="full" ml={{ base: '3rem', md: '0' }}>
           <Box display="flex" bgColor="gray.600" color="gray.200">
             <Box flex="1 1 0%">info bar</Box>
           </Box>
@@ -81,16 +84,16 @@ export const Main = ({ children }: Props) => {
         </Box>
       </Box>
     </ChakraProvider>
-  )
-}
+  );
+};
 
 type LinkProps = {
-  to: string
-  children: JSX.Element
-}
+  to: string;
+  children: JSX.Element;
+};
 
 const ActiveLink = ({ to, children }: LinkProps) => {
-  const match = useRouteMatch({ path: to, exact: true })
+  const match = useRouteMatch({ path: to, exact: true });
 
   return (
     <Box
@@ -104,5 +107,5 @@ const ActiveLink = ({ to, children }: LinkProps) => {
     >
       {children}
     </Box>
-  )
-}
+  );
+};
