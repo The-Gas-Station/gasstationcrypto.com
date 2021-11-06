@@ -19,6 +19,7 @@ export const ColorModeSwitcher: React.FC<Omit<IconButtonProps, 'aria-label'>> =
         onClick={toggleColorMode}
         icon={<SwitchIcon />}
         aria-label={`Switch to ${text} mode`}
+        title={`Switch to ${text} mode`}
         {...props}
       />
     );

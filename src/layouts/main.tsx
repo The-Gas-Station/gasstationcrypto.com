@@ -1,47 +1,62 @@
-import React, { useState } from 'react';
-import { ChakraProvider, Box, Icon, IconButton } from '@chakra-ui/react';
+import React from 'react';
+import {
+  ChakraProvider,
+  Box,
+  Button,
+  Icon,
+  IconButton,
+} from '@chakra-ui/react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { theme } from './main-theme';
+import theme from '../themes/main';
 import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
-import { ReactComponent as SvgShrinkSidebar } from '../assets/shrink-sidebar.svg';
-import { ReactComponent as SvgLinkHome } from '../assets/link-home.svg';
-import { ReactComponent as SvgLinkHub } from '../assets/link-hub.svg';
-import { ReactComponent as SvgLinkNfp } from '../assets/link-nfp.svg';
+import {
+  FaLessThanEqual,
+  FaGreaterThanEqual,
+  FaHome,
+  FaHubspot,
+  FaPatreon,
+} from 'react-icons/fa';
+import { ReactComponent as SvgLogoIcon } from '../assets/logo-icon.svg';
+import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
+import { useAppSelector, useAppDispatch } from '../store';
+import { toggle } from '../store/sidebar';
 
 type Props = {
   children: JSX.Element;
 };
 
 export const Main = ({ children }: Props) => {
-  const [sideOpen, setSideOpen] = useState(true);
+  const sideOpen = useAppSelector((state) => state.sidebar.open);
+  const dispatch = useAppDispatch();
 
   const headerLinks = [
     {
       label: 'Home',
       route: '/',
-      icon: <SvgLinkHome />,
+      icon: <FaHome />,
     },
     {
       label: 'Hub',
       route: '/hub',
-      icon: <SvgLinkHub />,
+      icon: <FaHubspot />,
     },
     {
       label: 'Non Fungible Patrons',
       route: '/nfp',
-      icon: <SvgLinkNfp />,
+      icon: <FaPatreon />,
     },
   ];
 
   return (
     <ChakraProvider theme={theme}>
-      <Box display="flex">
+      <Box justifyItems="l" display="flex">
         <Box as="header" display="flex" h="100vh">
           <Box
             as={motion.div}
             animate={sideOpen ? 'open' : 'closed'}
-            variants={{ open: { width: '18rem' }, closed: { width: '3rem' } }}
+            variants={{ open: { width: '18rem' }, closed: { width: '4rem' } }}
+            px={sideOpen ? '4' : '2'}
             display="flex"
             position={{ base: 'fixed', md: 'relative' }}
             bgColor={{ base: 'black', md: 'inherit' }}
@@ -49,22 +64,28 @@ export const Main = ({ children }: Props) => {
             bottom="0"
             flexDir="column"
           >
-            <div>
+            <Box display="flex" py="4">
               <IconButton
                 aria-label="Shrink Side"
-                onClick={() => setSideOpen(!sideOpen)}
+                onClick={() => dispatch(toggle())}
+                variant="ghost"
                 m="1"
               >
-                <SvgShrinkSidebar />
+                {sideOpen ? <FaLessThanEqual /> : <FaGreaterThanEqual />}
               </IconButton>
-            </div>
-            {headerLinks.map((link) => (
-              <Box as={ActiveLink} to={link.route} key={link.route}>
+              {sideOpen && (
                 <>
-                  <Icon>{link.icon}</Icon>
-                  {sideOpen && link.label}
+                  <Box as={SvgLogoIcon} px="2" /> <SvgLogoFull />
                 </>
-              </Box>
+              )}
+            </Box>
+            {headerLinks.map((link) => (
+              <ActiveLink to={link.route} sideOpen={sideOpen} key={link.route}>
+                <>
+                  <Icon fontSize="2xl">{link.icon}</Icon>
+                  <Box pl="2">{sideOpen && link.label}</Box>
+                </>
+              </ActiveLink>
             ))}
 
             <Box flex="1 1 0%"></Box>
@@ -89,23 +110,19 @@ export const Main = ({ children }: Props) => {
 
 type LinkProps = {
   to: string;
+  sideOpen: boolean;
   children: JSX.Element;
 };
 
-const ActiveLink = ({ to, children }: LinkProps) => {
+const ActiveLink = ({ to, sideOpen, children }: LinkProps) => {
   const match = useRouteMatch({ path: to, exact: true });
+  let variant = 'ghost';
+  if (match && sideOpen) variant = 'gradient';
+  else if (match) variant = 'solid';
 
   return (
-    <Box
-      as={Link}
-      to={to}
-      bgColor={match ? 'green.400' : 'inherit'}
-      display="flex"
-      justifyItems="center"
-      p="1"
-      fontSize="2xl"
-    >
+    <Button as={Link} to={to} variant={variant} p="1" justifyContent="left">
       {children}
-    </Box>
+    </Button>
   );
 };

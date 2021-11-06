@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Box } from '@chakra-ui/layout';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Main } from '../layouts/main';
+import { Button } from '@chakra-ui/button';
 
 export const Home = () => {
   return (
@@ -36,6 +37,7 @@ export const Home = () => {
           borderRadius="10"
         />
       </Box>
+      <Button variant="gradient">Haay</Button>
     </Main>
   );
 };
