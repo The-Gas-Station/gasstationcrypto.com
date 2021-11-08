@@ -1,15 +1,8 @@
 import { useState, useEffect } from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Button,
-  Icon,
-  IconButton,
-} from '@chakra-ui/react';
+import { Box, Button, Icon, IconButton } from '@chakra-ui/react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import useLocalStorage from '../library/hooks/useLocalStorage';
-import theme from '../themes/main';
 import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
 import {
   FaLessThanEqual,
@@ -56,7 +49,7 @@ export const Main = ({ children }: Props) => {
   ];
 
   return (
-    <ChakraProvider theme={theme}>
+    <>
       <Box justifyItems="l" display="flex">
         <Box as="header" display="flex" h="100vh">
           <Box
@@ -111,7 +104,7 @@ export const Main = ({ children }: Props) => {
           {children}
         </Box>
       </Box>
-    </ChakraProvider>
+    </>
   );
 };
 
