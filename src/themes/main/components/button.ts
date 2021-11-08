@@ -4,7 +4,7 @@ export default {
   baseStyle: {},
   sizes: {},
   variants: {
-    gradient: (props) => ({
+    gradient: (props: any) => ({
       bgGradient: mode(
         'linear(to-r, primary, gray.50)',
         'linear(to-r, primary, gray.800)',

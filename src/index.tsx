@@ -1,19 +1,18 @@
-import { ColorModeScript } from '@chakra-ui/react';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import store from './store';
-import Router from './router';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import theme from './themes/main';
+
+import App from './App';
+
+import DAppProvider from './library/providers/DAppProvider';
+import { AppConfig } from './configs';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-    <Provider store={store}>
-      <Router />
-    </Provider>
+    <DAppProvider config={AppConfig}>
+      <App />
+    </DAppProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

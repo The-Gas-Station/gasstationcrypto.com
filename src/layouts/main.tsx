@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import useLocalStorage from '../library/hooks/useLocalStorage';
 import theme from '../themes/main';
 import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
 import {
@@ -19,16 +20,22 @@ import {
 } from 'react-icons/fa';
 import { ReactComponent as SvgLogoIcon } from '../assets/logo-icon.svg';
 import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
-import { useAppSelector, useAppDispatch } from '../store';
-import { toggle } from '../store/sidebar';
 
 type Props = {
   children: JSX.Element;
 };
 
 export const Main = ({ children }: Props) => {
-  const sideOpen = useAppSelector((state) => state.sidebar.open);
-  const dispatch = useAppDispatch();
+  const [storage, setStorage] = useLocalStorage('sideNav', true);
+  const [sideOpen, setSideOpen] = useState(storage);
+
+  useEffect(() => {
+    setStorage(sideOpen);
+  }, [sideOpen]);
+
+  const toggleSide = () => {
+    setSideOpen(!sideOpen);
+  };
 
   const headerLinks = [
     {
@@ -67,7 +74,7 @@ export const Main = ({ children }: Props) => {
             <Box display="flex" py="4">
               <IconButton
                 aria-label="Shrink Side"
-                onClick={() => dispatch(toggle())}
+                onClick={() => toggleSide()}
                 variant="ghost"
                 m="1"
               >

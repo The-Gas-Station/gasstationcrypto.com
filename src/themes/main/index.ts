@@ -8,7 +8,7 @@ const overrides = {
   components: { Button },
   styles,
   config: {
-    initialColorMode: 'system',
+    initialColorMode: 'dark',
     useSystemColorMode: false,
   },
 };

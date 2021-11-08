@@ -1,8 +1,8 @@
-import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Home } from './pages/home';
 import { Hub } from './pages/hub';
 import { NFP } from './pages/nfp';
+import { Test } from './pages/test';
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -32,6 +32,9 @@ export default function Router() {
         </Route>
         <Route path="/nfp">
           <NFP />
+        </Route>
+        <Route path="/test">
+          <Test />
         </Route>
       </Switch>
     </BrowserRouter>
