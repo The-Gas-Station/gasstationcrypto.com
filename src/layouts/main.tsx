@@ -13,12 +13,15 @@ import {
 } from 'react-icons/fa';
 import { ReactComponent as SvgLogoIcon } from '../assets/logo-icon.svg';
 import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
+import useEthers from '../library/hooks/useEthers';
 
 type Props = {
   children: JSX.Element;
 };
 
 export const Main = ({ children }: Props) => {
+  const { activateBrowserWallet } = useEthers();
+
   const [storage, setStorage] = useLocalStorage('sideNav', true);
   const [sideOpen, setSideOpen] = useState(storage);
 
@@ -47,6 +50,16 @@ export const Main = ({ children }: Props) => {
       icon: <FaPatreon />,
     },
   ];
+
+  const connect = async () => {
+    try {
+      await activateBrowserWallet((e) => {
+        console.log(e);
+      }, true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -91,6 +104,9 @@ export const Main = ({ children }: Props) => {
             <Box flex="1 1 0%"></Box>
 
             <Box>
+              <Button size="sm" variant="outline" onClick={connect}>
+                Connect
+              </Button>
               <hr />
               <ColorModeSwitcher />
             </Box>

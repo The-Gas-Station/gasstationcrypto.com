@@ -3,6 +3,7 @@ import { ChainInfo, PoolType } from './declarations';
 
 export const CHAIN_INFO: ChainInfo = {
   chainId: ChainId.Polygon,
+  etherCoingeckoId: 'wmatic',
   gasTokenAddress: '0x840b5fc8c6dee2b1140174a3abdc215190426ccf',
   liquidityPairs: [
     '0x2637ce16e98fcc66f2ccdd36087defdcf955b68a',

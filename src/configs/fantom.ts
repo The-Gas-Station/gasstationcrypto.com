@@ -3,6 +3,7 @@ import { ChainInfo, PoolType } from './declarations';
 
 export const CHAIN_INFO: ChainInfo = {
   chainId: ChainId.Fantom,
+  etherCoingeckoId: 'fantom',
   gasTokenAddress: '0x6741db012578615Ee07e029C1062B46730093912',
   liquidityPairs: ['0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef'],
   tokens: [],

@@ -7,10 +7,21 @@ import { useWeb3ConnectionsContext } from './Web3ConnectionsProvider';
 import { CHAIN_NAMES } from '../constants/chains';
 
 export function NetworkActivator() {
-  const { activate, active, connector, error } = useEthers();
-  const { readOnlyChainIds } = useConfig();
-  const { currentChainId, chainRpcUrls, getConnectors } =
-    useWeb3ConnectionsContext();
+  const { account, activate, active, chainId, connector, error } = useEthers();
+  const { readOnlyChainIds, defaultChainId } = useConfig();
+  const {
+    currentChainId,
+    chainRpcUrls,
+    getConnectors,
+    setCurrentAccount,
+    setCurrentChainId,
+  } = useWeb3ConnectionsContext();
+
+  useEffect(() => {
+    console.log(account, chainId);
+    setCurrentAccount(account ?? '');
+    setCurrentChainId(chainId ?? defaultChainId);
+  }, [account, chainId, defaultChainId]);
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState<any>();

@@ -2,8 +2,7 @@ import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import { ChainId } from '../constants/chains';
 import { useCallback } from 'react';
-import { useConfig } from '../providers/ConfigProvider';
-import { InjectedConnector } from '@web3-react/injected-connector';
+import { useWeb3ConnectionsContext } from '../providers/Web3ConnectionsProvider';
 
 type ActivateBrowserWallet = (
   onError?: (error: Error) => void,
@@ -18,19 +17,19 @@ export type Web3Ethers = ReturnType<typeof useWeb3React> & {
 
 export function useEthers(key?: string | undefined): Web3Ethers {
   const result = useWeb3React<Web3Provider>(key);
-  const { supportedChainIds } = useConfig();
+  const { currentChainId, getConnectors } = useWeb3ConnectionsContext();
+
   const activateBrowserWallet = useCallback<ActivateBrowserWallet>(
     async (onError, throwErrors) => {
-      const injected = new InjectedConnector({
-        supportedChainIds,
-      });
+      const { Injected } = getConnectors(currentChainId);
+
       if (onError instanceof Function) {
-        await result.activate(injected, onError, throwErrors);
+        await result.activate(Injected, onError, throwErrors);
       } else {
-        await result.activate(injected, undefined, throwErrors);
+        await result.activate(Injected, undefined, throwErrors);
       }
     },
-    [supportedChainIds],
+    [currentChainId, getConnectors],
   );
   return { ...result, activateBrowserWallet };
 }

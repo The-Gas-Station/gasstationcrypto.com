@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { Web3Provider } from '@ethersproject/providers';
 import useDebounce from '../hooks/useDebounce';
 import useEthers from '../hooks/useEthers';
 import { useConfig } from './ConfigProvider';
@@ -45,39 +46,35 @@ export function BlockNumberProvider({ children }: BlockNumberProviderProps) {
     }
   }, [library, chainId]);
 
-  const toUpdate = [];
-
   if (readOnlyChainIds) {
     for (const readOnlyChainId of readOnlyChainIds) {
+      const blockData: {
+        library?: Web3Provider;
+        chainId?: ChainId;
+      } = {};
       try {
         const { library, chainId } = useEthers(CHAIN_NAMES[readOnlyChainId]);
-
-        toUpdate.push(() => {
-          if (library && chainId !== undefined) {
-            const update = (blockNumber: number) =>
-              setState((draft: BlockNumberState) => {
-                return {
-                  ...draft,
-                  [chainId]: blockNumber,
-                };
-              });
-            library.on('block', update);
-            return () => {
-              library.off('block', update);
-            };
-          }
-        });
+        blockData.library = library;
+        blockData.chainId = chainId;
       } catch (_) {}
+
+      useEffect(() => {
+        if (blockData.library && blockData.chainId !== undefined) {
+          const update = (blockNumber: number) =>
+            setState((draft: BlockNumberState) => {
+              return {
+                ...draft,
+                [blockData.chainId ?? 0]: blockNumber,
+              };
+            });
+          blockData.library.on('block', update);
+          return () => {
+            blockData.library && blockData.library.off('block', update);
+          };
+        }
+      }, [blockData.library, blockData.chainId]);
     }
   }
-
-  const debouncedToUpdate = useDebounce(toUpdate, 50);
-
-  useEffect(() => {
-    debouncedToUpdate.forEach((call) => {
-      call();
-    });
-  }, [debouncedToUpdate]);
 
   const debouncedState = useDebounce(state, 100);
   const blockNumber =

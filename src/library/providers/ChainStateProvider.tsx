@@ -65,22 +65,22 @@ function callsReducer(
   state: { [chainId: number]: ChainCall[] } = {},
   action: Action,
 ) {
+  let chainState = state[action.chainId] ?? [];
   if (action.type === 'ADD_CALLS') {
     return {
       ...state,
-      [action.chainId]: [...state[action.chainId], ...action.calls],
+      [action.chainId]: [...chainState, ...action.calls],
     };
   } else {
-    let finalState = state[action.chainId] ?? [];
     for (const call of action.calls) {
-      const index = finalState.findIndex(
+      const index = chainState.findIndex(
         (x) => x.address === call.address && x.data === call.data,
       );
       if (index !== -1) {
-        finalState = finalState.filter((_, i) => i !== index);
+        chainState = chainState.filter((_, i) => i !== index);
       }
     }
-    return { ...state, [action.chainId]: finalState };
+    return { ...state, [action.chainId]: chainState };
   }
 }
 

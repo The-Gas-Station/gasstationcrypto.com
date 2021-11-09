@@ -6,6 +6,7 @@ export enum PoolType {
 
 export type ChainInfo = {
   chainId: number;
+  etherCoingeckoId: string;
   gasTokenAddress: string;
   liquidityPairs: string[];
   tokens: string[];

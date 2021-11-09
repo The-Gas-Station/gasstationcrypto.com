@@ -3,6 +3,7 @@ import { ChainInfo, PoolType } from './declarations';
 
 export const CHAIN_INFO: ChainInfo = {
   chainId: ChainId.BSC,
+  etherCoingeckoId: 'wbnb',
   gasTokenAddress: '0x6fabfe7946b23da23ad51dc45167cc2cfd0ce70e',
   liquidityPairs: [
     '0xfB6f376B990ae3fc3Cfa2Ce1cB1A796c5895AcBa',
