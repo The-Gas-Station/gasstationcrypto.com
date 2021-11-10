@@ -1,5 +1,3 @@
-import { Box } from '@chakra-ui/layout';
-import { useColorModeValue } from '@chakra-ui/color-mode';
 import { ChainId, CHAIN_NAMES } from '../library/constants/chains';
 import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import { getExplorerCountdownLink } from '../library/helpers/chains';
@@ -34,12 +32,7 @@ export const NetworkInfo = ({ chainId }: NetworkInfoProps) => {
     );
 
     return (
-      <Box
-        h="md"
-        bgColor={useColorModeValue('gray.500', 'gray.300')}
-        gridColumn="span 1 / span 1"
-        borderRadius="10"
-      >
+      <div className="p-2 flex-fill">
         Network: {CHAIN_NAMES[chainId]}
         <br />
         BlockNumber:{' '}
@@ -75,7 +68,7 @@ export const NetworkInfo = ({ chainId }: NetworkInfoProps) => {
         {gasBalance
           ? numeral(ethers.utils.formatEther(gasBalance)).format('0,0.00')
           : ''}
-      </Box>
+      </div>
     );
   } catch (e) {}
 

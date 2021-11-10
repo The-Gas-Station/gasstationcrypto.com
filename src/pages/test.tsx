@@ -1,5 +1,3 @@
-import { Box } from '@chakra-ui/layout';
-import { Main } from '../layouts/main';
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 
@@ -11,30 +9,17 @@ export const Test = () => {
   const { currentAccount, currentChainId } = useWeb3ConnectionsContext();
 
   return (
-    <Main>
-      <>
-        <Box display="block">
-          Chain: {CHAIN_NAMES[currentChainId]} Address: {currentAccount}
-        </Box>
-        <Box display="block">
-          <Box></Box>
-          <Box
-            display="grid"
-            gridTemplateColumns={{
-              base: 'repeat(1, minmax(0, 1fr))',
-              md: 'repeat(5, minmax(0, 1fr))',
-            }}
-            gridGap={{ base: 6, lg: 12 }}
-            padding={{ base: 6, lg: 12 }}
-            w="full"
-            h="full"
-          >
-            {readOnlyChainIds?.map((chainId) => (
-              <NetworkInfo chainId={chainId} key={chainId} />
-            ))}
-          </Box>
-        </Box>
-      </>
-    </Main>
+    <div className="d-flex flex-row">
+      <div className="p-2">
+        Chain: {CHAIN_NAMES[currentChainId]} Address: {currentAccount}
+      </div>
+      <div>
+        {readOnlyChainIds?.map((chainId) => (
+          <NetworkInfo chainId={chainId} key={chainId} />
+        ))}
+      </div>
+    </div>
   );
 };
+
+export default Test;

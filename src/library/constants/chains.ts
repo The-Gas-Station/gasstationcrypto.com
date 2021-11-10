@@ -40,6 +40,13 @@ export const CHAIN_NAMES = {
   [ChainId.Fantom]: 'Fantom',
 };
 
+export const CHAIN_ETHER: { [chainId: number]: string } = {
+  [ChainId.Mainnet]: 'ETH',
+  [ChainId.BSC]: 'BNB',
+  [ChainId.Polygon]: 'MATIC',
+  [ChainId.Fantom]: 'FTM',
+};
+
 export const BLOCKS_PER_YEAR = {
   [ChainId.BSC]: (60 / 3) * 60 * 24 * 365,
   [ChainId.Polygon]: (60 / 2) * 60 * 24 * 365,

@@ -1,0 +1,101 @@
+.sidenav,
+.sidenav .scrollbar-container,
+.sidenav ul {
+  min-width: 300px;
+  &.sidenav-slim-collapsed,
+  &.sidenav-slim-collapsed .scrollbar-container,
+  &.sidenav-slim-collapsed ul {
+    min-width: 70px;
+  }
+}
+
+.sidenav,
+.navbar {
+  background-color: $background-main-color;
+}
+
+.sidenav .fixed-bottom {
+  hr {
+    color: $seperator-color;
+    height: 3px;
+    border-color: $seperator-color;
+  }
+}
+
+.text-primary-color {
+  color: $text-primary-color;
+}
+
+.sidenav-item a {
+  svg {
+    & > path,
+    & > g path {
+      fill: $text-secondary-color;
+    }
+
+    & > rect {
+      stroke: $text-secondary-color;
+    }
+  }
+
+  span {
+    color: $text-secondary-color;
+  }
+
+  &:hover,
+  &.active {
+    background-image: linear-gradient(
+      to right,
+      $brand-main-color,
+      $background-main-color
+    );
+
+    border-radius: 10px;
+
+    svg {
+      & > path,
+      & > g path {
+        fill: $text-primary-color;
+      }
+
+      & > rect {
+        stroke: $text-primary-color;
+      }
+    }
+
+    span {
+      color: $text-primary-color;
+    }
+  }
+}
+
+.btn-outline-connect {
+  text-transform: none;
+  color: $text-primary-color;
+
+  border: 0;
+  cursor: default;
+
+  &.not-connected {
+    @include connect-button;
+    cursor: pointer;
+  }
+
+  svg {
+    & > path {
+      stroke: $text-primary-color;
+    }
+  }
+}
+
+a.mode-switcher {
+  color: $text-secondary-color !important;
+
+  i {
+    color: $text-secondary-color;
+
+    &.active {
+      color: $brand-main-color;
+    }
+  }
+}

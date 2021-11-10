@@ -18,9 +18,10 @@ export function NetworkActivator() {
   } = useWeb3ConnectionsContext();
 
   useEffect(() => {
-    console.log(account, chainId);
     setCurrentAccount(account ?? '');
-    setCurrentChainId(chainId ?? defaultChainId);
+    setCurrentChainId(
+      chainId && chainRpcUrls[chainId] ? chainId : defaultChainId,
+    );
   }, [account, chainId, defaultChainId]);
 
   // handle logic to recognize the connector currently being activated

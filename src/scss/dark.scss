@@ -1,0 +1,38 @@
+@import './mdb/mdb.pro.scss';
+
+$my-theme-primary: #00b49c; // theme primary color, change this value to customize theme
+$my-theme-secondary: #00b49c; // theme secondary color, change this value to customize theme
+
+$my-dark-theme: mdb-dark-theme(
+  $my-theme-primary,
+  $my-theme-secondary
+); // create the new dark theme using primary and secondary colors
+
+$brand-main-color: #00b49c;
+
+$background-main-color: #222738;
+
+$text-primary-color: #ffffff;
+$text-secondary-color: #8a92a6;
+
+$seperator-color: #2c4863;
+
+@mixin connect-button {
+  /* GAS / Skew Morph Dark */
+  box-shadow: inset -3px -3px 4px #2b3148, inset 2px 2px 20px #151824;
+  filter: drop-shadow(-5px -5px 8px #353b54) drop-shadow(5px 5px 10px #000000);
+
+  /* background */
+
+  background: $background-main-color;
+  border: 1px solid #2a3147;
+  box-sizing: border-box;
+  border-radius: 84px;
+}
+
+// include theme styles
+:root[data-theme='theme-dark'] {
+  @include mdb-theme($my-dark-theme);
+
+  @import './site.scss';
+}

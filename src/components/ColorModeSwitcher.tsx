@@ -1,44 +1,23 @@
 import { useEffect } from 'react';
-import { IconButton, IconButtonProps } from '@chakra-ui/react';
-import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
-import { FaMoon, FaSun } from 'react-icons/fa';
+
+import { MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
+
 import { useDarkMode } from '../library/hooks/useDarkMode';
-import theme from '../themes/main';
 
-export const ColorModeSwitcher: React.FC<Omit<IconButtonProps, 'aria-label'>> =
-  (props) => {
-    const { isDarkMode, toggle } = useDarkMode(
-      theme.config.initialColorMode == 'dark',
-    );
+export const ColorModeSwitcher = () => {
+  const { isDarkMode, toggle } = useDarkMode(true);
 
-    const { setColorMode } = useColorMode();
-    const text = useColorModeValue('dark', 'light');
-    const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+  useEffect(() => {
+    const html = document.querySelector('html');
+    if (html) {
+      html.dataset.theme = `theme-${isDarkMode ? 'dark' : 'light'}`;
+    }
+  }, [isDarkMode]);
 
-    useEffect(() => {
-      const timeout = setTimeout(() => {
-        if (isDarkMode) {
-          setColorMode('dark');
-        } else {
-          setColorMode('light');
-        }
-      }, 0);
-
-      return () => clearTimeout(timeout);
-    }, [isDarkMode]);
-
-    return (
-      <IconButton
-        size="md"
-        fontSize="lg"
-        variant="ghost"
-        color="green.400"
-        marginLeft="2"
-        onClick={toggle}
-        icon={<SwitchIcon />}
-        aria-label={`Switch to ${text} mode`}
-        title={`Switch to ${text} mode`}
-        {...props}
-      />
-    );
-  };
+  return (
+    <MDBBtn tag="a" onClick={toggle} color="none" className="mode-switcher">
+      <MDBIcon far icon="sun" className={isDarkMode ? '' : 'active'} /> /{' '}
+      <MDBIcon far icon="moon" className={isDarkMode ? 'active' : ''} />
+    </MDBBtn>
+  );
+};

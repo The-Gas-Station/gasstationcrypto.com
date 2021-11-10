@@ -1,0 +1,32 @@
+@import './mdb/mdb.pro.scss';
+
+$my-theme-primary: #9c27b0; // theme primary color, change this value to customize theme
+$my-theme-secondary: #00b49c; // theme secondary color, change this value to customize theme
+
+$my-light-theme: mdb-light-theme(
+  $my-theme-primary,
+  $my-theme-secondary
+); // create the new light theme using primary and secondary colors
+
+$brand-main-color: #00b49c;
+
+$background-main-color: #ffffff;
+
+$text-primary-color: #2d3748;
+$text-secondary-color: #8a92a6;
+
+$seperator-color: #dbe0e4;
+
+@mixin connect-button {
+  background: #f4faf8;
+  border: 1px solid #28ccab;
+  box-sizing: border-box;
+  border-radius: 84px;
+}
+
+// include theme styles
+:root[data-theme='theme-light'] {
+  @include mdb-theme($my-light-theme);
+
+  @import './site.scss';
+}
