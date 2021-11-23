@@ -289,25 +289,24 @@ img {
       }
     }
   }
+  .banner-img {
+    display: none;
+  }
   @media (max-width: 1499px) {
     background-position: 70% center;
   }
-  @media (max-width: 991px) {
-    background-image: none;
-    padding: 0;
-    min-height: auto;
-    background: linear-gradient(
-      89.67deg,
-      #1c3c4a 19.76%,
-      rgba(28, 37, 74, 0) 80.98%
-    );
+  @media (max-width: 1024px) {
     .banner-text {
-      padding: 48px 35px 60px;
+      padding: 138px 40px 0 20px;
     }
   }
-  @media (max-width: 767px) {
+  @media (max-width: 525px) {
     .banner-text {
-      padding: 48px 25px;
+      padding: 178px 40px 0 20px;
+    }
+  }
+  @media (max-width: 425px) {
+    .banner-text {
       h5 {
         font-size: 21px;
         margin-bottom: 30px;

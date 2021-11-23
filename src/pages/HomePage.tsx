@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardFooter,
-  MDBCardTitle,
-  MDBBtn,
-  MDBCardText,
-  MDBCardLink,
-  MDBRipple,
-  MDBCardImage,
-  MDBCarousel,
-  MDBCarouselInner,
-  MDBCarouselItem,
-} from 'mdb-react-ui-kit';
+import useWidth from '../hooks/useWidth';
 
-import BannerMobile from '../assets/banner-mobile.png';
+import BannerSection from './home/BannerSection';
+import BridgeSection from './home/BridgeSection';
+import AllNetworkList from './home/AllNetworkList';
 
 import UsdcToken from '../assets/tokens/usdc.png';
 import AvaxToken from '../assets/tokens/avax.png';
@@ -39,187 +28,8 @@ const settings1 = {
   slidesToScroll: 1,
 };
 
-const BannerSection = () => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
-
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    };
-  }, []);
-
-  const isMobile: boolean = width <= 768;
-  return (
-    <>
-      <div className={`banner-section`}>
-        <div className="col-lg-6">
-          <div className="banner-text">
-            <h5 className="text-white">
-              We're building the multi-chain crypto bridge so you can swap
-              between major crypto networks.
-            </h5>
-            <p className="text-green">
-              <strong>Invest in the project today.</strong>
-            </p>
-            <p>Earn up to 500% APR in our reward hub.</p>
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className={`banner-img ${isMobile ? '' : 'd-none'}`}>
-            <img src={BannerMobile} alt="icon" />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-const BidgeSection = (props: any) => {
-  const { bridgeProps } = props;
-  const { title, text, launchDate, btnText, img } = bridgeProps;
-  // console.log(bridgeProps, 'bidgePreop');
-
-  return (
-    <MDBCard className="flex-fill card-list">
-      <MDBRipple rippleTag="div" className="circle-img">
-        <div className="circle-img-bg">
-          <MDBCardImage src={img} fluid alt="" />
-        </div>
-      </MDBRipple>
-      <MDBCardBody>
-        {/* {bridgeProps.title} */}
-        <MDBCardTitle className="card-list-title text-center">
-          {title}
-        </MDBCardTitle>
-        <MDBCardText>{text}</MDBCardText>
-      </MDBCardBody>
-      <MDBCardFooter>
-        {launchDate && (
-          <MDBCardLink className="text-white">{launchDate}</MDBCardLink>
-        )}
-        {btnText && <MDBBtn className="btn-block">{btnText}</MDBBtn>}
-      </MDBCardFooter>
-    </MDBCard>
-  );
-};
-
-const AllNetworkList = (props: any) => {
-  const { items } = props;
-  const { title, tvl, liquidity, icon, launchDate } = items;
-  return (
-    <>
-      <div className="card">
-        <div className="card-header text-center">
-          <div className="avatar">
-            <img src={icon} alt="icon" />
-          </div>
-          {title}
-        </div>
-        <div className="card-body">
-          <MDBCarousel showControls interval={10000}>
-            <MDBCarouselInner>
-              <MDBCarouselItem className="active">
-                {tvl && (
-                  <p className="card-text">
-                    <small>TVL</small>
-                    {tvl}
-                  </p>
-                )}
-
-                {launchDate && (
-                  <p className="card-text">
-                    <span className="comming-soon">Comming Soon</span>
-                  </p>
-                )}
-
-                <hr />
-                {launchDate && (
-                  <p className="card-text">
-                    <small>LAUNCH DATE</small>
-                    {launchDate}
-                  </p>
-                )}
-                {liquidity && (
-                  <p className="card-text">
-                    <small>LIQUIDITY</small>
-                    {liquidity}
-                  </p>
-                )}
-              </MDBCarouselItem>
-              <MDBCarouselItem>
-                {tvl && (
-                  <p className="card-text">
-                    <small>TVL</small>
-                    {tvl}
-                  </p>
-                )}
-                {launchDate && (
-                  <span className="comming-soon">Comming Soon</span>
-                )}
-                <hr />
-                {launchDate && (
-                  <p className="card-text">
-                    <small>LAUNCH DATE</small>
-                    {launchDate}
-                  </p>
-                )}
-                {liquidity && (
-                  <p className="card-text">
-                    <small>LIQUIDITY</small>
-                    {liquidity}
-                  </p>
-                )}
-              </MDBCarouselItem>
-              <MDBCarouselItem>
-                {tvl && (
-                  <p className="card-text">
-                    <small>TVL</small>
-                    {tvl}
-                  </p>
-                )}
-                {launchDate && (
-                  <span className="comming-soon">Comming Soon</span>
-                )}
-                <hr />
-                {launchDate && (
-                  <p className="card-text">
-                    <small>LAUNCH DATE</small>
-                    {launchDate}
-                  </p>
-                )}
-                {liquidity && (
-                  <p className="card-text">
-                    <small>LIQUIDITY</small>
-                    {liquidity}
-                  </p>
-                )}
-              </MDBCarouselItem>
-            </MDBCarouselInner>
-          </MDBCarousel>
-        </div>
-      </div>
-    </>
-  );
-};
-
 export const HomePage = () => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
-
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    };
-  }, []);
-
-  const isMobile: boolean = width < 768;
+  const { isTablet, isMobile } = useWidth();
 
   const [sectionList] = useState([
     {
@@ -319,7 +129,7 @@ export const HomePage = () => {
                 </div>
               </div>
               <div className="all-network-list">
-                {isMobile ? (
+                {isTablet || isMobile ? (
                   <div className="value-slider">
                     <Slider {...settings1}>
                       {networkList.map((list, i) => {
