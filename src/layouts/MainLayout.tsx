@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useState, useEffect } from 'react';
+import React, { ReactNode, useCallback, useState, useEffect } from 'react';
 import { useLocation, useNavigate, Outlet } from 'react-router-dom';
 
 import {
@@ -29,13 +29,20 @@ import { ReactComponent as SvgRewards } from '../assets/rewards.svg';
 import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
-
+import { ReactComponent as SvgToken } from '../assets/token.svg';
 import { ReactComponent as SvgFuelcan } from '../assets/fuelcan.svg';
 
 import { ReactComponent as SvgTwitter } from '../assets/twitter.svg';
 import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
 import { ReactComponent as SvgReddit } from '../assets/reddit.svg';
+
+import FtmToken from '../assets/tokens/ftm.png';
+import Metamask from '../assets/wallets/metamask.png';
+import Slider from 'react-slick';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export const MainLayout = () => {
   const { activateBrowserWallet, active, account } = useEthers();
@@ -102,48 +109,328 @@ export const MainLayout = () => {
     }
   };
 
+  const settings = {
+    dots: false,
+    arrows: false,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: 'ease-out',
+    infinite: true,
+    variableWidth: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile: boolean = width <= 768;
+
   return (
     <>
-      <MDBNavbar
-        fixed="top"
-        style={{
-          height: 66,
-        }}
-      >
-        <div
-          className="d-flex justify-content-between align-self-stretch mx-3"
-          style={{ height: 50 }}
-        >
-          <MDBBtn
-            onClick={toggleSide}
-            rippleCentered
-            tag="a"
-            color="none"
-            className="p-2 d-flex align-items-center justify-content-center"
-            style={{ minWidth: 42, minHeight: 50 }}
-          >
-            {sideOpen ? <SvgMenuOpen /> : <SvgMenuClose />}
-          </MDBBtn>
-          <div className="d-flex align-items-center" style={{ minWidth: 170 }}>
-            <SvgLogoIcon
-              style={{
-                width: 48,
-                height: 48,
-              }}
-              className="mx-3"
-            />{' '}
-            <SvgLogoFull />
+      <MDBNavbar fixed="top">
+        <div className="menu-amount-sections">
+          <div className="menu-icon">
+            <MDBBtn
+              onClick={toggleSide}
+              rippleCentered
+              tag="a"
+              color="none"
+              className="p-2 ps-0 d-flex align-items-center justify-content-center"
+              style={{ minWidth: 42, minHeight: 50 }}
+            >
+              {sideOpen ? <SvgMenuOpen /> : <SvgMenuClose />}
+            </MDBBtn>
+            <div className="logo-block">
+              <SvgLogoIcon
+                style={{
+                  width: 48,
+                  height: 48,
+                }}
+              />
+              <div className="d-none d-lg-block ms-3">
+                <SvgLogoFull />
+              </div>
+            </div>
+          </div>
+          <div className="right-content">
+            <div className="amount-sections meta-mask-block d-block d-lg-none">
+              <div className="amount-row">
+                <div className="amount-col custom-select-box flex-row py-0">
+                  <div className="text-right">
+                    <span className="text-fantom">XT576...</span>
+                    <select className="custom-select">
+                      <option value="">BSC Mainnet</option>
+                    </select>
+                  </div>
+                  <div className="">
+                    <img src={Metamask} alt="icons" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className={`row inner-content d-none d-lg-flex ${
+                isMobile ? 'd-none d-lg-block' : ''
+              }`}
+            >
+              <div className={isMobile ? 'col-md-9' : 'col-md-10 col-lg-9'}>
+                <div className="amount-sections amount-sections-scroll">
+                  <Slider {...settings}>
+                    <div className="amount-row">
+                      <div className="amount-col p-0 text-white">
+                        <img src={FtmToken} alt="ftm" style={{ width: 24 }} />
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="text-fantom">Fantom</span>
+                        <span className="text-fantom">
+                          <svg
+                            width="11"
+                            height="14"
+                            viewBox="0 0 11 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="mr-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M3 7C3 7.13261 3.05268 7.25979 3.14645 7.35355C3.24021 7.44732 3.36739 7.5 3.5 7.5H9.293L7.146 9.646C7.05211 9.73989 6.99937 9.86722 6.99937 10C6.99937 10.1328 7.05211 10.2601 7.146 10.354C7.23989 10.4479 7.36722 10.5006 7.5 10.5006C7.63278 10.5006 7.76011 10.4479 7.854 10.354L10.854 7.354C10.9006 7.30755 10.9375 7.25238 10.9627 7.19163C10.9879 7.13089 11.0009 7.06577 11.0009 7C11.0009 6.93423 10.9879 6.86911 10.9627 6.80837C10.9375 6.74762 10.9006 6.69245 10.854 6.646L7.854 3.646C7.76011 3.55211 7.63278 3.49937 7.5 3.49937C7.36722 3.49937 7.23989 3.55211 7.146 3.646C7.05211 3.73989 6.99937 3.86722 6.99937 4C6.99937 4.13278 7.05211 4.26011 7.146 4.354L9.293 6.5H3.5C3.36739 6.5 3.24021 6.55268 3.14645 6.64645C3.05268 6.74021 3 6.86739 3 7ZM0.5 14C0.367392 14 0.240215 13.9473 0.146447 13.8536C0.0526785 13.7598 0 13.6326 0 13.5V0.5C0 0.367392 0.0526785 0.240215 0.146447 0.146447C0.240215 0.0526784 0.367392 0 0.5 0C0.632608 0 0.759785 0.0526784 0.853553 0.146447C0.947321 0.240215 1 0.367392 1 0.5V13.5C1 13.6326 0.947321 13.7598 0.853553 13.8536C0.759785 13.9473 0.632608 14 0.5 14Z"
+                              fill="#00B39C"
+                            />
+                          </svg>
+                          GAS
+                        </span>
+                      </div>
+                      <div className="amount-col">
+                        <span className="sub-text">APR</span>
+                        <span className="amount-text">$234%</span>
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="sub-text">STAKED</span>
+                        <span className="amount-text">$128,980,000</span>
+                      </div>
+                    </div>
+                    <div className="amount-row">
+                      <div className="amount-col p-0 text-white">
+                        <img src={FtmToken} alt="ftm" style={{ width: 24 }} />
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="text-fantom">Fantom</span>
+                        <span className="text-fantom">
+                          <svg
+                            width="11"
+                            height="14"
+                            viewBox="0 0 11 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="mr-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M3 7C3 7.13261 3.05268 7.25979 3.14645 7.35355C3.24021 7.44732 3.36739 7.5 3.5 7.5H9.293L7.146 9.646C7.05211 9.73989 6.99937 9.86722 6.99937 10C6.99937 10.1328 7.05211 10.2601 7.146 10.354C7.23989 10.4479 7.36722 10.5006 7.5 10.5006C7.63278 10.5006 7.76011 10.4479 7.854 10.354L10.854 7.354C10.9006 7.30755 10.9375 7.25238 10.9627 7.19163C10.9879 7.13089 11.0009 7.06577 11.0009 7C11.0009 6.93423 10.9879 6.86911 10.9627 6.80837C10.9375 6.74762 10.9006 6.69245 10.854 6.646L7.854 3.646C7.76011 3.55211 7.63278 3.49937 7.5 3.49937C7.36722 3.49937 7.23989 3.55211 7.146 3.646C7.05211 3.73989 6.99937 3.86722 6.99937 4C6.99937 4.13278 7.05211 4.26011 7.146 4.354L9.293 6.5H3.5C3.36739 6.5 3.24021 6.55268 3.14645 6.64645C3.05268 6.74021 3 6.86739 3 7ZM0.5 14C0.367392 14 0.240215 13.9473 0.146447 13.8536C0.0526785 13.7598 0 13.6326 0 13.5V0.5C0 0.367392 0.0526785 0.240215 0.146447 0.146447C0.240215 0.0526784 0.367392 0 0.5 0C0.632608 0 0.759785 0.0526784 0.853553 0.146447C0.947321 0.240215 1 0.367392 1 0.5V13.5C1 13.6326 0.947321 13.7598 0.853553 13.8536C0.759785 13.9473 0.632608 14 0.5 14Z"
+                              fill="#00B39C"
+                            />
+                          </svg>
+                          GAS
+                        </span>
+                      </div>
+                      <div className="amount-col">
+                        <span className="sub-text">APR</span>
+                        <span className="amount-text">$234%</span>
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="sub-text">STAKED</span>
+                        <span className="amount-text">$128,980,000</span>
+                      </div>
+                    </div>
+                    <div className="amount-row">
+                      <div className="amount-col p-0 text-white">
+                        <img src={FtmToken} alt="ftm" style={{ width: 24 }} />
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="text-fantom">Fantom</span>
+                        <span className="text-fantom">
+                          <svg
+                            width="11"
+                            height="14"
+                            viewBox="0 0 11 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="mr-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M3 7C3 7.13261 3.05268 7.25979 3.14645 7.35355C3.24021 7.44732 3.36739 7.5 3.5 7.5H9.293L7.146 9.646C7.05211 9.73989 6.99937 9.86722 6.99937 10C6.99937 10.1328 7.05211 10.2601 7.146 10.354C7.23989 10.4479 7.36722 10.5006 7.5 10.5006C7.63278 10.5006 7.76011 10.4479 7.854 10.354L10.854 7.354C10.9006 7.30755 10.9375 7.25238 10.9627 7.19163C10.9879 7.13089 11.0009 7.06577 11.0009 7C11.0009 6.93423 10.9879 6.86911 10.9627 6.80837C10.9375 6.74762 10.9006 6.69245 10.854 6.646L7.854 3.646C7.76011 3.55211 7.63278 3.49937 7.5 3.49937C7.36722 3.49937 7.23989 3.55211 7.146 3.646C7.05211 3.73989 6.99937 3.86722 6.99937 4C6.99937 4.13278 7.05211 4.26011 7.146 4.354L9.293 6.5H3.5C3.36739 6.5 3.24021 6.55268 3.14645 6.64645C3.05268 6.74021 3 6.86739 3 7ZM0.5 14C0.367392 14 0.240215 13.9473 0.146447 13.8536C0.0526785 13.7598 0 13.6326 0 13.5V0.5C0 0.367392 0.0526785 0.240215 0.146447 0.146447C0.240215 0.0526784 0.367392 0 0.5 0C0.632608 0 0.759785 0.0526784 0.853553 0.146447C0.947321 0.240215 1 0.367392 1 0.5V13.5C1 13.6326 0.947321 13.7598 0.853553 13.8536C0.759785 13.9473 0.632608 14 0.5 14Z"
+                              fill="#00B39C"
+                            />
+                          </svg>
+                          GAS
+                        </span>
+                      </div>
+                      <div className="amount-col">
+                        <span className="sub-text">APR</span>
+                        <span className="amount-text">$234%</span>
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="sub-text">STAKED</span>
+                        <span className="amount-text">$128,980,000</span>
+                      </div>
+                    </div>
+                    <div className="amount-row">
+                      <div className="amount-col p-0 text-white">
+                        <img src={FtmToken} alt="ftm" style={{ width: 24 }} />
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="text-fantom">Fantom</span>
+                        <span className="text-fantom">
+                          <svg
+                            width="11"
+                            height="14"
+                            viewBox="0 0 11 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="mr-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M3 7C3 7.13261 3.05268 7.25979 3.14645 7.35355C3.24021 7.44732 3.36739 7.5 3.5 7.5H9.293L7.146 9.646C7.05211 9.73989 6.99937 9.86722 6.99937 10C6.99937 10.1328 7.05211 10.2601 7.146 10.354C7.23989 10.4479 7.36722 10.5006 7.5 10.5006C7.63278 10.5006 7.76011 10.4479 7.854 10.354L10.854 7.354C10.9006 7.30755 10.9375 7.25238 10.9627 7.19163C10.9879 7.13089 11.0009 7.06577 11.0009 7C11.0009 6.93423 10.9879 6.86911 10.9627 6.80837C10.9375 6.74762 10.9006 6.69245 10.854 6.646L7.854 3.646C7.76011 3.55211 7.63278 3.49937 7.5 3.49937C7.36722 3.49937 7.23989 3.55211 7.146 3.646C7.05211 3.73989 6.99937 3.86722 6.99937 4C6.99937 4.13278 7.05211 4.26011 7.146 4.354L9.293 6.5H3.5C3.36739 6.5 3.24021 6.55268 3.14645 6.64645C3.05268 6.74021 3 6.86739 3 7ZM0.5 14C0.367392 14 0.240215 13.9473 0.146447 13.8536C0.0526785 13.7598 0 13.6326 0 13.5V0.5C0 0.367392 0.0526785 0.240215 0.146447 0.146447C0.240215 0.0526784 0.367392 0 0.5 0C0.632608 0 0.759785 0.0526784 0.853553 0.146447C0.947321 0.240215 1 0.367392 1 0.5V13.5C1 13.6326 0.947321 13.7598 0.853553 13.8536C0.759785 13.9473 0.632608 14 0.5 14Z"
+                              fill="#00B39C"
+                            />
+                          </svg>
+                          GAS
+                        </span>
+                      </div>
+                      <div className="amount-col">
+                        <span className="sub-text">APR</span>
+                        <span className="amount-text">$234%</span>
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="sub-text">STAKED</span>
+                        <span className="amount-text">$128,980,000</span>
+                      </div>
+                    </div>
+                    <div className="amount-row">
+                      <div className="amount-col p-0 text-white">
+                        <img src={FtmToken} alt="ftm" style={{ width: 24 }} />
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="text-fantom">Fantom</span>
+                        <span className="text-fantom">
+                          <svg
+                            width="11"
+                            height="14"
+                            viewBox="0 0 11 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="mr-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M3 7C3 7.13261 3.05268 7.25979 3.14645 7.35355C3.24021 7.44732 3.36739 7.5 3.5 7.5H9.293L7.146 9.646C7.05211 9.73989 6.99937 9.86722 6.99937 10C6.99937 10.1328 7.05211 10.2601 7.146 10.354C7.23989 10.4479 7.36722 10.5006 7.5 10.5006C7.63278 10.5006 7.76011 10.4479 7.854 10.354L10.854 7.354C10.9006 7.30755 10.9375 7.25238 10.9627 7.19163C10.9879 7.13089 11.0009 7.06577 11.0009 7C11.0009 6.93423 10.9879 6.86911 10.9627 6.80837C10.9375 6.74762 10.9006 6.69245 10.854 6.646L7.854 3.646C7.76011 3.55211 7.63278 3.49937 7.5 3.49937C7.36722 3.49937 7.23989 3.55211 7.146 3.646C7.05211 3.73989 6.99937 3.86722 6.99937 4C6.99937 4.13278 7.05211 4.26011 7.146 4.354L9.293 6.5H3.5C3.36739 6.5 3.24021 6.55268 3.14645 6.64645C3.05268 6.74021 3 6.86739 3 7ZM0.5 14C0.367392 14 0.240215 13.9473 0.146447 13.8536C0.0526785 13.7598 0 13.6326 0 13.5V0.5C0 0.367392 0.0526785 0.240215 0.146447 0.146447C0.240215 0.0526784 0.367392 0 0.5 0C0.632608 0 0.759785 0.0526784 0.853553 0.146447C0.947321 0.240215 1 0.367392 1 0.5V13.5C1 13.6326 0.947321 13.7598 0.853553 13.8536C0.759785 13.9473 0.632608 14 0.5 14Z"
+                              fill="#00B39C"
+                            />
+                          </svg>
+                          GAS
+                        </span>
+                      </div>
+                      <div className="amount-col">
+                        <span className="sub-text">APR</span>
+                        <span className="amount-text">$234%</span>
+                      </div>
+                      <div className="amount-col text-white">
+                        <span className="sub-text">STAKED</span>
+                        <span className="amount-text">$128,980,000</span>
+                      </div>
+                    </div>
+                  </Slider>
+                </div>
+              </div>
+              <div className={isMobile ? 'col-md-3' : 'col-md-2 col-lg-3'}>
+                <div className="amount-sections meta-mask-block">
+                  <div className="amount-row">
+                    <div className="amount-col custom-select-box flex-row py-0">
+                      <div className="text-right">
+                        <span className="text-fantom">XT576...</span>
+                        <select className="custom-select">
+                          <option value="">BSC Mainnet</option>
+                        </select>
+                      </div>
+                      <div className="">
+                        <img src={Metamask} alt="icons" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </MDBNavbar>
       <div
-        style={{ marginTop: 66, height: 'calc(100vh - 66px)' }}
+        style={{ marginTop: 75, height: 'calc(100vh - 75px)' }}
         className="d-flex"
       >
         <MDBSideNav
           backdrop={false}
-          mode="side"
-          slim={!sideOpen}
+          slim={isMobile ? false : !sideOpen}
+          hidden={isMobile ? !sideOpen : false}
+          triggerOpening={!sideOpen}
           relative
           className="h-100"
         >
@@ -153,8 +440,8 @@ export const MainLayout = () => {
                 <MDBSideNavItem className="m-2" key={link.route}>
                   <ActiveLink to={link.route}>
                     <link.icon
-                      className="px-1"
-                      style={{ minWidth: 30, minHeight: 30 }}
+                      className=""
+                      style={{ minWidth: 24, minHeight: 24 }}
                     />
                     {sideOpen && (
                       <span style={{ minWidth: 160 }}>{link.label}</span>
@@ -184,6 +471,10 @@ export const MainLayout = () => {
                   </span>
                   <span className=""></span>
                 </MDBBtn>
+                <div className="mx-4 token-btn d-flex align-items-center">
+                  <SvgToken />
+                  <span>Add Token to Wallet</span>
+                </div>
               </>
             ) : (
               <></>
@@ -226,7 +517,7 @@ export const MainLayout = () => {
             </div>
           </div>
         </MDBSideNav>
-        <MDBContainer fluid className="flex-grow">
+        <MDBContainer fluid className="flex-grow scrollView">
           <Outlet />
         </MDBContainer>
       </div>
@@ -257,10 +548,9 @@ const ActiveLink = ({ to, children }: LinkProps) => {
     <MDBBtn
       href={to}
       color="none"
-      className={`py-2 m-1 p-1 w-100 d-flex align-items-center d-block ${
+      className={`w-100 d-flex align-items-center d-block ${
         active ? 'active' : ''
       }`}
-      style={{ height: 40 }}
       onClick={route}
     >
       {children}
