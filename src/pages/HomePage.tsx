@@ -288,7 +288,7 @@ export const HomePage = () => {
     <>
       <BannerSection />
       <div className="services-block">
-        <div className="row gx-xxl-5">
+        <div className="row gx-xxl-5 justify-content-around">
           {sectionList.map((list, i) => {
             return (
               <div className="col-md-6 col-xl-4">
