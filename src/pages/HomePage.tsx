@@ -103,7 +103,7 @@ export const HomePage = () => {
             return (
               <div className="col-md-6 col-xl-4">
                 <div key={i} className="flex-fill services-item">
-                  <BidgeSection bridgeProps={list} />
+                  <BridgeSection bridgeProps={list} />
                 </div>
               </div>
             );
