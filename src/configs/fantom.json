@@ -3,7 +3,10 @@
   "etherCoingeckoId": "fantom",
   "gasTokenAddress": "0x6741db012578615Ee07e029C1062B46730093912",
   "liquidityPairs": [
-    { "name": "", "address": "0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef" }
+    {
+      "name": "",
+      "address": "0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef"
+    }
   ],
   "tokens": [],
   "pools": [
@@ -27,5 +30,7 @@
       "address": "0xcC9808bC4Dc0115fBC8C3B9C99f900aD470e2d0D",
       "type": "SingleV2"
     }
-  ]
+  ],
+  "display": "Fantom Opera Network",
+  "name": "fantom"
 }
