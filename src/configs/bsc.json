@@ -3,8 +3,14 @@
   "etherCoingeckoId": "wbnb",
   "gasTokenAddress": "0x6fabfe7946b23da23ad51dc45167cc2cfd0ce70e",
   "liquidityPairs": [
-    { "name": "", "address": "0xfB6f376B990ae3fc3Cfa2Ce1cB1A796c5895AcBa" },
-    { "name": "", "address": "0x340db2a8E77aD047e5E786c94dB0aE1593082264" }
+    {
+      "name": "",
+      "address": "0xfB6f376B990ae3fc3Cfa2Ce1cB1A796c5895AcBa"
+    },
+    {
+      "name": "",
+      "address": "0x340db2a8E77aD047e5E786c94dB0aE1593082264"
+    }
   ],
   "tokens": [],
   "pools": [
@@ -53,5 +59,7 @@
       "address": "0x7213d547415284b95b0d7b01f11f351546678916",
       "type": "SingleV2"
     }
-  ]
+  ],
+  "name": "bsc",
+  "display": "Binance Smart Chain"
 }
