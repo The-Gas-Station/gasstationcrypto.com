@@ -43,10 +43,14 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "hygen": "^6.1.0",
     "prettier": "^2.3.2"
   },
   "scripts": {
+    "update:configs": "hygen configs networks",
+    "prestart": "yarn update:configs",
     "start": "react-scripts start",
+    "prebuild": "yarn update:configs",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

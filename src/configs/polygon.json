@@ -1,0 +1,57 @@
+{
+  "chainId": 137,
+  "etherCoingeckoId": "wmatic",
+  "gasTokenAddress": "0x840b5fc8c6dee2b1140174a3abdc215190426ccf",
+  "liquidityPairs": [
+    { "name": "", "address": "0x2637ce16e98fcc66f2ccdd36087defdcf955b68a" },
+    { "name": "", "address": "0x993e0342A307D0aC7E16d8b0ae0262F237EC1b4B" }
+  ],
+  "tokens": [],
+  "pools": [
+    {
+      "name": "",
+      "address": "0x2bc0bf8e98c7bbf08dd682b3ed0da50991aa66bd",
+      "type": "SingleV1"
+    },
+    {
+      "name": "",
+      "address": "0x20024f775ab6bc96077c73fb2e45c8862ac35552",
+      "type": "SingleV1"
+    },
+    {
+      "name": "",
+      "address": "0x543b1da3a789bd9e72142ce7b7b320dbd4ddea0a",
+      "type": "SingleV1"
+    },
+    {
+      "name": "",
+      "address": "0x38816Ccf336E53783d2661Ca8F6115b435ae74B3",
+      "type": "DoubleV1"
+    },
+    {
+      "name": "",
+      "address": "0xBE9bEAc00d0a495Cb3482Fb22a9dc874305262E2",
+      "type": "SingleV2"
+    },
+    {
+      "name": "",
+      "address": "0xE454a4262Cd345C4DA97B46AcAC7F8F2e6D3b3dD",
+      "type": "SingleV2"
+    },
+    {
+      "name": "",
+      "address": "0x196986cbD3E4C9Ff4372F419BC94C43B49dB0A0c",
+      "type": "SingleV2"
+    },
+    {
+      "name": "",
+      "address": "0xacc18870ffd0a260a80459deaf47628983ae96af",
+      "type": "SingleV2"
+    },
+    {
+      "name": "",
+      "address": "0xed303497b674bae2173a8d7d881f74ddb1553c17",
+      "type": "SingleV2"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+backend:
+  name: github
+  repo: The-Gas-Station/gasstationcrypto.com
+  branch: master
+  use_graphql: true
+  squash_merges: true
+publish_mode: editorial_workflow
+media_folder: 'public/images/uploads'
+public_folder: '/images/uploads'
+open_authoring: true
+collections:
+  - name: 'configs'
+    label: 'Configs'
+    files:
+      - name: 'networks'
+        label: 'Networks'
+        file: 'src/networks.json'
+        fields:
+          - {
+              label: 'Networks',
+              name: 'networks',
+              widget: 'relation',
+              collection: 'networks',
+              search_fields: ['display'],
+              value_field: 'slug',
+              multiple: true,
+            }
+  - name: 'networks'
+    label: 'Network'
+    identifier_field: 'slug'
+    folder: 'src/configs'
+    create: true
+    extension: 'json'
+    format: 'json'
+    fields:
+      - {
+          label: 'Slug (eth, rinkeby, bsc, polygon, fantom, etc.)',
+          name: 'slug',
+          widget: 'string',
+        }
+      - { label: 'Display Name', name: 'display', widget: 'string' }
+      - {
+          label: 'Chain ID (1, 4, 56, 137, etc)',
+          name: 'chainId',
+          widget: 'number',
+        }
+      - { label: 'CoinGecko', name: 'etherCoingeckoId', widget: 'string' }
+      - {
+          label: 'Gas Token Address',
+          name: 'gasTokenAddress',
+          widget: 'crypto-address',
+        }
+      - {
+          label: 'Liquidity Pairs',
+          name: 'liquidityPairs',
+          widget: 'list',
+          fields:
+            [
+              { label: 'Name', name: 'name', widget: 'string' },
+              { label: 'Address', name: 'address', widget: 'crypto-address' },
+            ],
+        }
+      - {
+          label: 'Tokens',
+          name: 'tokens',
+          widget: 'list',
+          fields:
+            [
+              { label: 'Name', name: 'name', widget: 'string' },
+              { label: 'Address', name: 'address', widget: 'crypto-address' },
+            ],
+        }
+      - {
+          label: 'Pools',
+          name: 'pools',
+          widget: 'list',
+          fields:
+            [
+              { label: 'Name', name: 'name', widget: 'string' },
+              { label: 'Address', name: 'address', widget: 'crypto-address' },
+              {
+                label: 'Type',
+                name: 'type',
+                widget: 'select',
+                options: ['SingleV1', 'SingleV2', 'DoubleV1'],
+              },
+            ],
+        }
