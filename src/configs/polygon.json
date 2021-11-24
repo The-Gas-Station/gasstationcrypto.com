@@ -3,8 +3,14 @@
   "etherCoingeckoId": "wmatic",
   "gasTokenAddress": "0x840b5fc8c6dee2b1140174a3abdc215190426ccf",
   "liquidityPairs": [
-    { "name": "", "address": "0x2637ce16e98fcc66f2ccdd36087defdcf955b68a" },
-    { "name": "", "address": "0x993e0342A307D0aC7E16d8b0ae0262F237EC1b4B" }
+    {
+      "name": "",
+      "address": "0x2637ce16e98fcc66f2ccdd36087defdcf955b68a"
+    },
+    {
+      "name": "",
+      "address": "0x993e0342A307D0aC7E16d8b0ae0262F237EC1b4B"
+    }
   ],
   "tokens": [],
   "pools": [
@@ -53,5 +59,7 @@
       "address": "0xed303497b674bae2173a8d7d881f74ddb1553c17",
       "type": "SingleV2"
     }
-  ]
+  ],
+  "name": "polygon",
+  "display": "Polygon"
 }
