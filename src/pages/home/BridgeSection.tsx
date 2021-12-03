@@ -29,11 +29,11 @@ export const BridgeSection = (props: any) => {
       </MDBCardBody>
       <MDBCardFooter>
         {launchDate && (
-          <MDBCardLink className="text-white">{launchDate}</MDBCardLink>
+          <span className="date-time">{launchDate}</span>
         )}
         {btnText && <MDBBtn className="btn-block">{btnText}</MDBBtn>}
       </MDBCardFooter>
-    </MDBCard>
+    </MDBCard >
   );
 };
 

@@ -14,8 +14,39 @@ $background-main-color: #ffffff;
 
 $text-primary-color: #2d3748;
 $text-secondary-color: #8a92a6;
-
+$text-primary-color1: #2d3748;
+$text-primary-color2: #a0aec0;
 $seperator-color: #dbe0e4;
+$dark-bg: #ffffff;
+
+$card-title-color: #f38cae;
+$dark-color: #f8f9fa;
+$border-color-secondary: #28ccab;
+$text-green: #28ccab;
+$text-light: #a0aec0;
+$dark-color1: #f3f4f5;
+$dark-color2: #e2e8f0;
+$dark-color3: #ffffff;
+$dark-color4: #ffffff;
+$dark-color5: #f8f9fa;
+$dark-bg1: #28ccab;
+$secondary-color: #ffffff;
+$dark-bg2: #ffffff;
+$dark-bg3: #a0aec0;
+$dark-bg4: #a0b4c8;
+$dark-bg5: #ffffff;
+$text-light1: #718096;
+$text-light2: #2d3748;
+$text-light3: #718096;
+$dark-bg6: #eff0f1;
+$text-primary-color3: #2d3748;
+$dark-bg7: #ffffff;
+$border-bg1: #28ccab;
+$border-bg2: #e2e8f0;
+$dark-bg8: #ffffff;
+$text-light4: #32334a;
+$dark-bg9: #f8f9fa;
+$text-light5: #2d3748;
 
 @mixin connect-button {
   background: #f4faf8;
@@ -23,7 +54,50 @@ $seperator-color: #dbe0e4;
   box-sizing: border-box;
   border-radius: 84px;
 }
+@mixin join-button {
+  background: linear-gradient(89.23deg, #28ccab 39.57%, #e186b2 90.44%, #f394af 100%);
+  border: none;
+}
+@mixin box-shadow {
+  box-shadow: 0px 2px 10px rgba(67, 71, 80, 0.1);
+}
+@mixin box-shadow1 {
+  box-shadow: none;
+  border: 1px solid #e2e8f0;
+}
+@mixin text-shadow {
+  text-shadow: none;
+}
+@mixin text-shadow1 {
+  text-shadow: none;
+}
+@mixin box-shadow2 {
+  box-shadow: 0px 2px 10px rgba(67, 71, 80, 0.1);
+}
 
+@mixin box-shadow3 {
+  box-shadow: inset -2px -2px 8px #ffffff, inset 4px 4px 8px rgba(160, 174, 192, 0.1);
+  filter: drop-shadow(4px 4px 12px rgba(166, 180, 200, 0.6)) drop-shadow(-8px -8px 10px #ffffff);
+}
+@mixin box-shadow4 {
+  box-shadow: none;
+  background: #ebebeb;
+}
+@mixin bg-color {
+  background: #ebebeb;
+  border: 1px solid #e2e8f0;
+}
+@mixin bg-color1 {
+  background: linear-gradient(180deg, rgba(218, 220, 221, 0.6) 0%, rgba(233, 234, 236, 0) 5.21%), #f3f4f5;
+  border: 1px solid #e2e8f0;
+}
+@mixin bg-color2 {
+  border: 1px solid #e2e8f0;
+  background-color: #f8f9fa;
+}
+@mixin border1 {
+  border: 1px solid #edf1f5;
+}
 // include theme styles
 :root[data-theme='theme-light'] {
   @include mdb-theme($my-light-theme);
