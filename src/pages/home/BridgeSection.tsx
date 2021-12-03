@@ -5,7 +5,6 @@ import {
   MDBCardTitle,
   MDBBtn,
   MDBCardText,
-  MDBCardLink,
   MDBRipple,
   MDBCardImage,
 } from 'mdb-react-ui-kit';
@@ -28,9 +27,7 @@ export const BridgeSection = (props: any) => {
         <MDBCardText>{text}</MDBCardText>
       </MDBCardBody>
       <MDBCardFooter>
-        {launchDate && (
-          <MDBCardLink className="text-white">{launchDate}</MDBCardLink>
-        )}
+        {launchDate && <span className="date-time">{launchDate}</span>}
         {btnText && <MDBBtn className="btn-block">{btnText}</MDBBtn>}
       </MDBCardFooter>
     </MDBCard>

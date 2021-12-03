@@ -14,8 +14,38 @@ $background-main-color: #222738;
 
 $text-primary-color: #ffffff;
 $text-secondary-color: #8a92a6;
-
+$text-primary-color1: #c3c6d4;
+$text-primary-color2: #f1f3f5;
 $seperator-color: #2c4863;
+$dark-bg: #050a0e;
+$card-title-color: #fdb5ca;
+$dark-color: #151824;
+$border-color-secondary: #28ccab;
+$text-green: #80ffe5;
+$text-light: #f1f3f5;
+$dark-color1: #1d2232;
+$dark-color2: #2a3046;
+$dark-color3: #151824;
+$dark-color4: #2a3046;
+$dark-color5: #222738;
+$dark-bg1: #000000;
+$secondary-color: #28ccab;
+$dark-bg2: #353b54;
+$dark-bg3: #2b3148;
+$dark-bg4: #151824;
+$dark-bg5: #000000;
+$text-light1: #d3d3d3;
+$text-light2: #f1f3f5;
+$text-light3: #a0aab6;
+$dark-bg6: #3b4153;
+$text-primary-color3: #c3c6d4;
+$dark-bg7: #1e2835;
+$border-bg1: #222738;
+$border-bg2: #3e445a;
+$dark-bg8: #1e1e2c;
+$text-light4: #e2e8f0;
+$dark-bg9: #050a0e;
+$text-light5: #ffffff;
 
 @mixin connect-button {
   /* GAS / Skew Morph Dark */
@@ -29,7 +59,55 @@ $seperator-color: #2c4863;
   box-sizing: border-box;
   border-radius: 84px;
 }
-
+@mixin join-button {
+  background: linear-gradient(
+    90.03deg,
+    rgba(0, 180, 156, 0) 0.03%,
+    #00b49c 39.6%,
+    #00b49c 63.54%,
+    rgba(0, 180, 156, 0) 99.98%
+  );
+  border: 1px solid #28ccab;
+}
+@mixin box-shadow {
+  box-shadow: 0px 12px 23px rgba(0, 0, 0, 0.3), inset 0px 4px 4px #4c5059;
+}
+@mixin text-shadow {
+  text-shadow: 0px 2px 5px #ee2f60, 0px -2px 2px rgba(0, 0, 0, 0.95);
+}
+@mixin text-shadow1 {
+  text-shadow: 0px 2px 5px rgba(19, 180, 151, 0.6), 0px -2px 2px rgba(0, 0, 0, 0.95);
+}
+@mixin box-shadow1 {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+}
+@mixin box-shadow2 {
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
+}
+@mixin box-shadow3 {
+  box-shadow: inset -3px -3px 4px #2b3148, inset 2px 2px 20px #151824;
+  filter: drop-shadow(-3px -3px 6px #353b54) drop-shadow(3px 3px 6px #000000);
+}
+@mixin box-shadow4 {
+  box-shadow: -3px -3px 6px #353b54, 3px 3px 6px #000000, inset -3px -3px 4px #2b3148, inset 2px 2px 20px #c5c9d8;
+  background: #32334a;
+}
+@mixin bg-color {
+  background: #32334a;
+  border: 1px solid #43445c;
+}
+@mixin bg-color1 {
+  border: 1px solid #2d3748;
+  background: #050a0e;
+}
+@mixin bg-color2 {
+  background-color: #151824;
+  border: 1px solid #222738;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+}
+@mixin border1 {
+  border: 1px solid transparent;
+}
 // include theme styles
 :root[data-theme='theme-dark'] {
   @include mdb-theme($my-dark-theme);

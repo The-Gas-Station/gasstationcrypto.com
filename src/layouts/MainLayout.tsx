@@ -21,12 +21,13 @@ import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
 import { ReactComponent as SvgMenuOpen } from '../assets/menu-open.svg';
 import { ReactComponent as SvgMenuClose } from '../assets/menu-close.svg';
 
-import { ReactComponent as SvgLogoIcon } from '../assets/logo-icon.svg';
+import { ReactComponent as SvgLogoIcon } from '../assets/gas.svg';
 import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 
 import { ReactComponent as SvgHome } from '../assets/home.svg';
 import { ReactComponent as SvgRewards } from '../assets/rewards.svg';
 import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
+import { ReactComponent as SvgUtility } from '../assets/utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
 import { ReactComponent as SvgToken } from '../assets/token.svg';
@@ -73,6 +74,11 @@ export const MainLayout = () => {
       label: 'Non Fungible Patrons',
       route: '/nfp',
       icon: SvgNFPs,
+    },
+    {
+      label: 'Utility',
+      route: '/',
+      icon: SvgUtility,
     },
   ];
 
@@ -175,7 +181,7 @@ export const MainLayout = () => {
     };
   }, []);
 
-  const isMobile: boolean = width <= 768;
+  const isMobile: boolean = width <= 991;
 
   return (
     <>
@@ -469,7 +475,15 @@ export const MainLayout = () => {
                       ? shortenString(account)
                       : 'Connect Wallet'}
                   </span>
-                  <span className=""></span>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="12" r="4" fill="#FDBF16" />
+                  </svg>
                 </MDBBtn>
                 <div className="mx-4 token-btn d-flex align-items-center">
                   <SvgToken />
