@@ -24,7 +24,7 @@ $border-color-secondary: #28ccab;
 $text-green: #80ffe5;
 $text-light: #f1f3f5;
 $dark-color1: #1d2232;
-$dark-color2: #2a3046;
+$dark-color2: #222738;
 $dark-color3: #151824;
 $dark-color4: #2a3046;
 $dark-color5: #222738;
@@ -45,6 +45,7 @@ $border-bg2: #3e445a;
 $dark-bg8: #1e1e2c;
 $text-light4: #e2e8f0;
 $dark-bg9: #050a0e;
+$dark-bg10: #32334a;
 $text-light5: #ffffff;
 
 @mixin connect-button {
@@ -89,8 +90,12 @@ $text-light5: #ffffff;
   filter: drop-shadow(-3px -3px 6px #353b54) drop-shadow(3px 3px 6px #000000);
 }
 @mixin box-shadow4 {
-  box-shadow: -3px -3px 6px #353b54, 3px 3px 6px #000000, inset -3px -3px 4px #2b3148, inset 2px 2px 20px #c5c9d8;
   background: #32334a;
+  box-shadow: -3px -3px 6px #353b54, 3px 3px 6px #000000, inset -3px -3px 4px #2b3148, inset 2px 2px 20px #151824;
+}
+@mixin box-shadow5 {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+  background: #2c3246;
 }
 @mixin bg-color {
   background: #32334a;
@@ -105,8 +110,19 @@ $text-light5: #ffffff;
   border: 1px solid #222738;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
 }
+@mixin bg-color3 {
+  background-color: #222738;
+  border: 1px solid #28ccab;
+  color: #ffffff;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
+}
 @mixin border1 {
   border: 1px solid transparent;
+}
+@mixin bg-color4 {
+  background: #32334a;
+  border: 1px solid #43445c;
+  color: #f1f3f5;
 }
 // include theme styles
 :root[data-theme='theme-dark'] {

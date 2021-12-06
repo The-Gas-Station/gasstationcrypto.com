@@ -300,13 +300,13 @@ img {
 			padding: 138px 40px 0 20px;
 		}
 	}
-	@media (max-width: 525px) {
+	@media (max-width: 767px) {
+		min-height: auto;
+		padding: 0;
+		background: linear-gradient(86.88deg, #521a4c 71.08%, rgba(82, 26, 76, 0) 94.21%);
 		.banner-text {
-			padding: 178px 40px 0 20px;
-		}
-	}
-	@media (max-width: 425px) {
-		.banner-text {
+			padding: 45px 35px;
+			background: linear-gradient(89.67deg, #1c3c4a 19.76%, rgba(28, 37, 74, 0) 80.98%);
 			h5 {
 				font-size: 21px;
 				margin-bottom: 30px;
@@ -1171,6 +1171,7 @@ select {
 	@media (max-width: 575px) {
 		.table {
 			tr {
+				margin-bottom: 2px;
 				td {
 					min-width: auto;
 					padding: 10px 5px;
@@ -1421,7 +1422,7 @@ select {
 		border-radius: 15px;
 		display: inline-block;
 		span {
-			color: #a0aab6;
+			color: $text-light3;
 			font-weight: normal;
 			font-size: 16px;
 			padding: 3px 25px;
@@ -1437,7 +1438,8 @@ select {
 				font-size: 14px;
 			}
 			&.active {
-				box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+				@include box-shadow1;
+				border: none !important;
 				background: $dark-color4;
 				color: #28ccab;
 			}
@@ -1591,15 +1593,13 @@ select {
 				margin-left: 15px;
 				select {
 					margin-left: 20px;
-					background-color: $dark-color1;
+					@include bg-color3;
 					border-radius: 25px;
-					border: 1px solid #28ccab;
 					padding: 2px 20px;
 					padding: 11px 20px;
 					min-width: 250px;
 					font-size: 16px;
 					font-weight: 400;
-					color: #ffffff;
 				}
 			}
 		}
@@ -1675,6 +1675,7 @@ select {
 				color: #fdb5ca;
 				@include text-shadow;
 				margin: 0;
+				font-size: 36px;
 			}
 			h5 {
 				font-size: 28px;
@@ -1685,13 +1686,16 @@ select {
 			}
 		}
 		.right {
-			.numbers-price h4 {
-				color: #ff6691;
-				font-size: 24px;
-				font-weight: 400;
-				margin: 0;
-				span {
-					color: #fff;
+			.numbers-price {
+				text-align: right;
+				h4 {
+					color: #ff6691;
+					font-size: 24px;
+					font-weight: 400;
+					margin: 0;
+					span {
+						color: $text-primary-color;
+					}
 				}
 			}
 			p {
@@ -1779,6 +1783,28 @@ select {
 			}
 		}
 	}
+	@media (max-width: 1499px) {
+		.card-top-title-price {
+			.left {
+				h3 {
+					font-size: 22px;
+				}
+				h5 {
+					font-size: 18px;
+				}
+			}
+			.right {
+				.numbers-price {
+					h4 {
+						font-size: 16px;
+					}
+				}
+			}
+			p {
+				font-size: 12px;
+			}
+		}
+	}
 	@media (max-width: 991px) {
 		padding: 15px;
 	}
@@ -1811,7 +1837,14 @@ select {
 			.price-block {
 				margin: 0 0 0 15px;
 				img {
-					display: none;
+					display: block;
+					position: relative;
+					top: auto;
+					right: auto;
+				}
+				small {
+					margin-bottom: 10px;
+					display: block;
 				}
 			}
 		}
@@ -1825,6 +1858,7 @@ select {
 				margin-top: 20px;
 				display: flex;
 				align-items: center;
+				justify-content: center;
 			}
 		}
 	}
@@ -1865,12 +1899,13 @@ select {
 			padding: 15px;
 			position: relative;
 			h2 {
-				font-size: 16px;
+				font-size: 21px;
 				color: $text-light2;
 				margin: 0;
 			}
 			small {
 				color: $text-light2;
+				font-size: 21px;
 			}
 			img {
 				position: absolute;
@@ -1878,8 +1913,9 @@ select {
 				top: 15px;
 			}
 			@media (max-width: 1499px) {
+				small,
 				h2 {
-					font-size: 14px;
+					font-size: 16px;
 				}
 			}
 		}
@@ -2169,6 +2205,10 @@ select {
 	.modal-content {
 		background-color: $dark-color5;
 	}
+	.modal-header {
+		@include box-shadow5;
+		border: none;
+	}
 	.btn-close {
 		background: url(../assets/close.svg) center/1em auto no-repeat;
 		background-size: 21px;
@@ -2233,11 +2273,10 @@ select {
 		}
 		.form-control {
 			display: block;
-			@include bg-color;
+			@include bg-color4;
 			border-radius: 15px;
 			min-height: 40px;
 			font-size: 18px;
-			color: $text-light2;
 			text-align: right;
 			&::placeholder {
 				color: $text-light2;
@@ -2255,6 +2294,23 @@ select {
 	.stake-progress-block {
 		.stake-progress {
 			padding-bottom: 14px;
+			.rangebar-line {
+				position: relative;
+				z-index: 1;
+				// &:after {
+				// 	content: '';
+				// 	position: absolute;
+				// 	left: 0;
+				// 	right: 0;
+				// 	top: 0;
+				// 	bottom: 0;
+				// 	margin: auto;
+				// 	height: 4px;
+				// 	background-color: #32334a;
+				// 	z-index: -1;
+				// 	border-radius: 4px;
+				// }
+			}
 		}
 		.range-thumb {
 			margin-top: 12px;

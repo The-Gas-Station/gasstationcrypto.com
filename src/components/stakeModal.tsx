@@ -84,6 +84,7 @@ export const StackModal = ({
                         >
                           <div
                             ref={props.ref}
+                            className="rangebar-line"
                             style={{
                               height: '4px',
                               width: '100%',
@@ -132,7 +133,6 @@ export const StackModal = ({
       </>
     );
   } catch (e) {}
-
   return <></>;
 };
 

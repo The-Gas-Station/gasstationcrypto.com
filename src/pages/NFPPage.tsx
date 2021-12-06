@@ -36,7 +36,7 @@ export const NFPPage = () => {
         </div>
       </section>
       <section className="nfp-card">
-        <div className="row">
+        <div className="row g-xxl-5">
           <div className="col-xs-12 col-sm-6 col-lg-4">
             <div className="card-box">
               <div className="card-top-title-price">
