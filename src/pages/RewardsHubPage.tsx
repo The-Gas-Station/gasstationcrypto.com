@@ -16,7 +16,7 @@ export const RewardsHubPage = () => {
   const [isFilterShow, setIsFilterShow] = useState(false);
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
   const [isCardGride, setIsCardGride] = useState(false);
-
+  const [isLive, setIsLive] = useState(false);
   const toggleFilter = () => {
     setIsFilterShow(!isFilterShow);
   };
@@ -206,8 +206,18 @@ export const RewardsHubPage = () => {
                   <MDBSwitch id="flexSwitchCheckDefault" label="Staked only" />
                 </div>
                 <div className="grid-live-icon d-none d-md-inline-block">
-                  <span className="active">Live</span>
-                  <span>Finished</span>
+                  <span
+                    className={isLive ? '' : 'active'}
+                    onClick={() => setIsLive(false)}
+                  >
+                    Live
+                  </span>
+                  <span
+                    className={isLive ? 'active' : ''}
+                    onClick={() => setIsLive(true)}
+                  >
+                    Finished
+                  </span>
                 </div>
               </div>
             </div>

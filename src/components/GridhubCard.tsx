@@ -45,35 +45,37 @@ export const GridHubCard = ({ toggleStakeModal }: toggleProps) => {
                 <span>124.00 %</span>
               </div>
               <div className="reward-money">
-                <h5>
-                  <span>EARNED</span> REWARDS
-                </h5>
-                <div className="reward-content">
-                  <div className="reward-items">
-                    <div className="reward-item">
-                      <img src={Usdc} alt="" />
-                      <p>
-                        0.00
-                        <br /> <span>$0.00 USD</span>
-                      </p>
+                <div className="reward-list">
+                  <h5>
+                    <span>EARNED</span>REWARDS
+                  </h5>
+                  <div className="reward-content">
+                    <div className="reward-items">
+                      <div className="reward-item">
+                        <img src={Usdc} alt="" />
+                        <p>
+                          0.00
+                          <br /> <span>$0.00 USD</span>
+                        </p>
+                      </div>
+                      <div className="reward-item">
+                        <img src={Usdc} alt="" />
+                        <p>
+                          0.00
+                          <br /> <span>$0.00 USD</span>
+                        </p>
+                      </div>
                     </div>
-                    <div className="reward-item">
-                      <img src={Usdc} alt="" />
-                      <p>
-                        0.00
-                        <br /> <span>$0.00 USD</span>
-                      </p>
-                    </div>
+                    {isHarvest ? (
+                      <button className="join-btn" onClick={toggleHarvest}>
+                        Harvest
+                      </button>
+                    ) : (
+                      <div className="harvest-btn" onClick={toggleHarvest}>
+                        Harvest
+                      </div>
+                    )}
                   </div>
-                  {isHarvest ? (
-                    <button className="join-btn" onClick={toggleHarvest}>
-                      Harvest
-                    </button>
-                  ) : (
-                    <div className="harvest-btn" onClick={toggleHarvest}>
-                      Harvest
-                    </div>
-                  )}
                 </div>
                 <div className="action-item">
                   <span className="pb-0 pb-sm-2">PRESALE MINING</span>
@@ -161,7 +163,6 @@ export const GridHubCard = ({ toggleStakeModal }: toggleProps) => {
       </>
     );
   } catch (e) {}
-
   return <></>;
 };
 

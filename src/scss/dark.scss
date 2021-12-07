@@ -37,6 +37,7 @@ $dark-bg5: #000000;
 $text-light1: #d3d3d3;
 $text-light2: #f1f3f5;
 $text-light3: #a0aab6;
+$text-light6: #c3c6d4;
 $dark-bg6: #3b4153;
 $text-primary-color3: #c3c6d4;
 $dark-bg7: #1e2835;
@@ -70,6 +71,12 @@ $text-light5: #ffffff;
   );
   border: 1px solid #28ccab;
 }
+@mixin border-light {
+  border: 1px solid #222738;
+}
+@mixin border-light1 {
+  border: 1px solid transparent;
+}
 @mixin box-shadow {
   box-shadow: 0px 12px 23px rgba(0, 0, 0, 0.3), inset 0px 4px 4px #4c5059;
 }
@@ -97,6 +104,7 @@ $text-light5: #ffffff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
   background: #2c3246;
 }
+
 @mixin bg-color {
   background: #32334a;
   border: 1px solid #43445c;
@@ -123,6 +131,39 @@ $text-light5: #ffffff;
   background: #32334a;
   border: 1px solid #43445c;
   color: #f1f3f5;
+}
+@mixin bg-color5 {
+  background: #32334a;
+  border: 1px solid #364154;
+}
+@mixin bg-color6 {
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
+  border: 1px solid #718096;
+  background: #1d2232;
+  color: #2d3748;
+}
+@mixin bg-color7 {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+  background: #151824;
+  border: 2px solid #2a3046;
+}
+@mixin bg-color8 {
+  background-color: #222738 !important;
+  border: none;
+  border-bottom: 1px solid #222738 !important;
+}
+@mixin bg-color9 {
+  background: linear-gradient(90deg, #050a0e 0%, rgba(5, 10, 14, 0) 100%);
+}
+@mixin bg-color10 {
+  background: linear-gradient(90deg, rgba(5, 10, 14, 0) 0%, #050a0e 94.27%);
+}
+@mixin border2 {
+  border: 1px solid #000000;
+}
+@mixin bg-color11 {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+  background-color: #222738;
 }
 // include theme styles
 :root[data-theme='theme-dark'] {

@@ -77,7 +77,7 @@ export const MainLayout = () => {
     },
     {
       label: 'Utility',
-      route: '/',
+      route: '/utility',
       icon: SvgUtility,
     },
   ];
@@ -211,18 +211,16 @@ export const MainLayout = () => {
             </div>
           </div>
           <div className="right-content">
-            <div className="amount-sections meta-mask-block d-block d-lg-none">
-              <div className="amount-row">
-                <div className="amount-col custom-select-box flex-row py-0">
-                  <div className="text-right">
-                    <span className="text-fantom">XT576...</span>
-                    <select className="custom-select">
-                      <option value="">BSC Mainnet</option>
-                    </select>
-                  </div>
-                  <div className="">
-                    <img src={Metamask} alt="icons" />
-                  </div>
+            <div className="meta-mask-block d-flex d-lg-none">
+              <div className="custom-select-box flex-row py-0">
+                <div className="text-right">
+                  <span className="text-fantom">XT576...</span>
+                  <select className="custom-select">
+                    <option value="">BSC Mainnet</option>
+                  </select>
+                </div>
+                <div className="metamask-img">
+                  <img src={Metamask} alt="icons" />
                 </div>
               </div>
             </div>
@@ -231,7 +229,7 @@ export const MainLayout = () => {
                 isMobile ? 'd-none d-lg-block' : ''
               }`}
             >
-              <div className={isMobile ? 'col-md-9' : 'col-md-10 col-lg-9'}>
+              <div className={isMobile ? 'col-md-9' : 'col-md-10 col-lg-10'}>
                 <div className="amount-sections amount-sections-scroll">
                   <Slider {...settings}>
                     <div className="amount-row">
@@ -407,19 +405,17 @@ export const MainLayout = () => {
                   </Slider>
                 </div>
               </div>
-              <div className={isMobile ? 'col-md-3' : 'col-md-2 col-lg-3'}>
-                <div className="amount-sections meta-mask-block">
-                  <div className="amount-row">
-                    <div className="amount-col custom-select-box flex-row py-0">
-                      <div className="text-right">
-                        <span className="text-fantom">XT576...</span>
-                        <select className="custom-select">
-                          <option value="">BSC Mainnet</option>
-                        </select>
-                      </div>
-                      <div className="">
-                        <img src={Metamask} alt="icons" />
-                      </div>
+              <div className={isMobile ? 'col-md-3' : 'col-md-2 col-lg-2'}>
+                <div className="meta-mask-block">
+                  <div className="custom-select-box flex-row py-0">
+                    <div className="text-right">
+                      <span className="text-fantom">XT576...</span>
+                      <select className="custom-select">
+                        <option value="">BSC Mainnet</option>
+                      </select>
+                    </div>
+                    <div className="metamask-img">
+                      <img src={Metamask} alt="icons" />
                     </div>
                   </div>
                 </div>
