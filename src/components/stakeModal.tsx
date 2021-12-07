@@ -23,7 +23,7 @@ export const StackModal = ({
   toggleStakeModal,
 }: modalOpen) => {
   try {
-    const { isDarkMode, toggle } = useDarkMode(true);
+    const { isDarkMode } = useDarkMode(true);
     const [values, setValue] = useState([50]);
     console.log('range-values', values);
     const sliderColor = isDarkMode
