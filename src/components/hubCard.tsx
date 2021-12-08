@@ -133,7 +133,7 @@ export const HubCard = () => {
               <div className="col-md-4">
                 <div className="action-item">
                   <span className="pb-0 pb-sm-2">PRESALE MINING</span>
-                  <button className="join-btn">Join</button>
+                  <button className="join-btn">Enable</button>
                 </div>
               </div>
             </div>

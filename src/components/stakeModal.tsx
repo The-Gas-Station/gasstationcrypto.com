@@ -11,6 +11,7 @@ import {
 import UsdcIcon from '../assets/usdc-rewards.svg';
 import DoubleArrow from '../assets/double-arrow.svg';
 import { Range, getTrackBackground } from 'react-range';
+import { useDarkMode } from '../library/hooks/useDarkMode';
 
 type modalOpen = {
   isStakeModalOpen: boolean;
@@ -22,9 +23,12 @@ export const StackModal = ({
   toggleStakeModal,
 }: modalOpen) => {
   try {
+    const { isDarkMode } = useDarkMode(true);
     const [values, setValue] = useState([50]);
-
     console.log('range-values', values);
+    const sliderColor = isDarkMode
+      ? ['#28CCAB', '#32334A']
+      : ['#28CCAB', '#e7e7ed'];
     return (
       <>
         <MDBModal
@@ -91,7 +95,7 @@ export const StackModal = ({
                               borderRadius: '4px',
                               background: getTrackBackground({
                                 values: values,
-                                colors: ['#28CCAB', '#32334A'],
+                                colors: sliderColor,
                                 min: 0,
                                 max: 100,
                               }),
