@@ -18,7 +18,7 @@ export function useGASTokenRewardsInfo(chainId?: ChainId): {
   gasTokenBalance: BigNumber;
   accountRewards: BigNumber;
   totalRewards: BigNumber;
-  accountRewardsUSD: BigNumber;
+  gasTokenBalanceUSD: BigNumber;
 } {
   const { currentChainId, currentAccount } = useWeb3ConnectionsContext();
   const chainData = CHAIN_INFO[chainId ?? currentChainId];
@@ -62,17 +62,27 @@ export function useGASTokenRewardsInfo(chainId?: ChainId): {
 
   const decimals = useTokenDecimals(chainId ?? currentChainId, token1);
 
+  const { ratio } = useLiquidityPairRatio(
+    chainId ?? currentChainId,
+    chainData.liquidityPairs && chainData.liquidityPairs.length > 0
+      ? chainData.liquidityPairs[0].address.substring(4)
+      : undefined,
+    chainData.gasTokenAddress?.substring(4),
+  );
+
   return {
     gasTokenBalance,
     accountRewards,
     totalRewards,
-    accountRewardsUSD: useMemo(() => {
-      return accountRewards && etherRatio && decimals
-        ? accountRewards
+    gasTokenBalanceUSD: useMemo(() => {
+      return gasTokenBalance && etherRatio && decimals && ratio
+        ? gasTokenBalance
+            .mul(ratio)
             .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
             .div(BUFFER)
+            .div(BUFFER)
         : BigNumber.from('0');
-    }, [accountRewards, etherRatio, decimals]),
+    }, [gasTokenBalance, etherRatio, decimals, ratio]),
   };
 }
 

@@ -29,7 +29,7 @@ export const RewardsHubPage = () => {
   const chainData = CHAIN_INFO[currentChainId];
 
   const marketCap = useGASTokenMarketCap();
-  const { gasTokenBalance, accountRewards, totalRewards, accountRewardsUSD } =
+  const { gasTokenBalance, accountRewards, totalRewards, gasTokenBalanceUSD } =
     useGASTokenRewardsInfo();
 
   const [isFilterShow, setIsFilterShow] = useState(false);
@@ -132,7 +132,7 @@ export const RewardsHubPage = () => {
                   <small>My Token Value</small>
                   <p>
                     {numeral(
-                      ethers.utils.formatEther(accountRewardsUSD),
+                      ethers.utils.formatEther(gasTokenBalanceUSD),
                     ).format('$0,0.00')}
                   </p>
                 </div>

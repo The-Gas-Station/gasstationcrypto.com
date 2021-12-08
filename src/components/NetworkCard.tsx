@@ -8,6 +8,9 @@ import numeral from 'numeral';
 
 import useGASTokenTotalLiquidity from '../hooks/useGASTokenTotalLiquidity';
 import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
+import useGASToken30DayVolume from '../hooks/useGASToken30DayVolume';
+
+import { CHAIN_ETHER } from '../library/constants/chains';
 
 import { CHAIN_INFO } from '../configs';
 
@@ -17,6 +20,7 @@ export const NetworkCard = ({ chainId }: { chainId: number }) => {
   const tvl = '50000';
   const liquidity = useGASTokenTotalLiquidity(chainId);
   const marketCap = useGASTokenMarketCap(chainId);
+  const volume30Day = useGASToken30DayVolume(chainId);
 
   return (
     <>
@@ -49,26 +53,32 @@ export const NetworkCard = ({ chainId }: { chainId: number }) => {
                       <small>LIQUIDITY</small>
                       {numeral(ethers.utils.formatEther(liquidity)).format(
                         '$0,0',
-                      )}
+                      )}{' '}
+                      in {CHAIN_ETHER[chainId]}
                     </p>
                   )}
                 </MDBCarouselItem>
                 <MDBCarouselItem>
-                  {tvl && (
-                    <p className="card-text">
-                      <small>TVL</small>
-                      {numeral(tvl).format('$0,0')}
-                    </p>
-                  )}
-
-                  <hr />
-
                   {marketCap && (
                     <p className="card-text">
                       <small>MARKET CAP</small>
                       {numeral(ethers.utils.formatEther(marketCap)).format(
                         '$0,0',
                       )}
+                    </p>
+                  )}
+
+                  <hr />
+
+                  {volume30Day ? (
+                    <p className="card-text">
+                      <small>30 Day Volume</small>
+                      {numeral(volume30Day).format('$0,0')}
+                    </p>
+                  ) : (
+                    <p className="card-text">
+                      <small>&nbsp;</small>
+                      &nbsp;
                     </p>
                   )}
                 </MDBCarouselItem>
