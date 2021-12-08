@@ -11,7 +11,7 @@ import numeral from 'numeral';
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 
-import { ChainId, CHAIN_NAMES, CHAIN_ETHER } from '../library/constants/chains';
+import { CHAIN_NAMES, CHAIN_ETHER } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 
 import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
@@ -19,7 +19,7 @@ import useGASTokenRewardsInfo from '../hooks/useGASTokenRewardsInfo';
 
 import HubCard from '../components/hubCard';
 import GridHubCard from '../components/GridhubCard';
-import StackModal from '../components/stakeModal';
+// import StackModal from '../components/stakeModal';
 import GasIcon from '../assets/gas.svg';
 import DollarIcon from '../assets/dollar.svg';
 

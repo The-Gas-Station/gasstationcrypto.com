@@ -5,7 +5,7 @@ import useLiquidityPairRatio from '../library/hooks/useLiquidityPairRatio';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenCirculatingSupply from '../library/hooks/useTokenCirculatingSupply';
 import { ChainId, WRAPPED_ETHER_ADDRESSES } from '../library/constants/chains';
-import BUFFER, { PERCISION } from '../library/constants/percisionBuffer';
+import BUFFER from '../library/constants/percisionBuffer';
 
 import { CHAIN_INFO } from '../configs';
 

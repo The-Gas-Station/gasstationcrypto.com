@@ -1,7 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { ERC20Interface } from '../constants/abi';
 import { Falsy } from '../models/types';
-import useContractCall from './useContractCall';
 import useTokenTotalSupply from './useTokenTotalSupply';
 import useTokenBalance from './useTokenBalance';
 import { ChainId } from '../constants/chains';

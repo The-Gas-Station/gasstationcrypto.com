@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { ethers } from 'ethers';
 import { BigNumber } from '@ethersproject/bignumber';
 
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
@@ -13,7 +12,7 @@ import useTokenBalance from '../library/hooks/useTokenBalance';
 import useLiquidityPairRatio from '../library/hooks/useLiquidityPairRatio';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 
-import BUFFER, { PERCISION } from '../library/constants/percisionBuffer';
+import BUFFER from '../library/constants/percisionBuffer';
 
 export function useGASTokenRewardsInfo(chainId?: ChainId): {
   gasTokenBalance: BigNumber;

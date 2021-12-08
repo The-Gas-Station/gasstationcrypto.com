@@ -4,7 +4,7 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import useLiquidityPairRatio from '../library/hooks/useLiquidityPairRatio';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import { ChainId, WRAPPED_ETHER_ADDRESSES } from '../library/constants/chains';
-import BUFFER, { PERCISION } from '../library/constants/percisionBuffer';
+import BUFFER from '../library/constants/percisionBuffer';
 
 import { CHAIN_INFO } from '../configs';
 
