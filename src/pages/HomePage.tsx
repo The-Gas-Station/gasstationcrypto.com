@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { ethers } from 'ethers';
+import numeral from 'numeral';
+
 import { useConfig } from '../library/providers/ConfigProvider';
 
 import useWidth from '../hooks/useWidth';
+import useGASTokenCombinedMarketCap from '../hooks/useGASTokenCombinedMarketCap';
 
 import BannerSection from './home/BannerSection';
 import BridgeSection from './home/BridgeSection';
@@ -28,6 +32,8 @@ const settings1 = {
 export const HomePage = () => {
   const { readOnlyChainIds } = useConfig();
   const { isTablet, isMobile } = useWidth();
+
+  const combinedMarketCap = useGASTokenCombinedMarketCap();
 
   const [sectionList] = useState([
     {
@@ -93,7 +99,11 @@ export const HomePage = () => {
                 </div>
                 <div className="amount-market-cap">
                   <small>USD MARKET CAP</small>
-                  <p>$2,467,899</p>
+                  <p>
+                    {numeral(
+                      ethers.utils.formatEther(combinedMarketCap),
+                    ).format('$0,0')}
+                  </p>
                 </div>
               </div>
               <div className="all-network-list">
