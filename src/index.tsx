@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
@@ -17,7 +17,7 @@ import TestPage from './pages/test';
 ReactDOM.render(
   <React.StrictMode>
     <DAppProvider config={AppConfig}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
@@ -26,7 +26,7 @@ ReactDOM.render(
             <Route path="/test" element={<TestPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </DAppProvider>
   </React.StrictMode>,
   document.getElementById('root'),

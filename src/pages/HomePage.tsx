@@ -1,16 +1,13 @@
 import { useState } from 'react';
+import { useConfig } from '../library/providers/ConfigProvider';
 
 import useWidth from '../hooks/useWidth';
 
 import BannerSection from './home/BannerSection';
 import BridgeSection from './home/BridgeSection';
-import AllNetworkList from './home/AllNetworkList';
+import NetworkCard from '../components/NetworkCard';
 
 import UsdcToken from '../assets/tokens/usdc.png';
-import AvaxToken from '../assets/tokens/avax.png';
-import BnbToken from '../assets/tokens/bnb.png';
-import MaticToken from '../assets/tokens/matic.png';
-import FtmToken from '../assets/tokens/ftm.png';
 import NFPToken from '../assets/tokens/nfp.png';
 import Fuelcan from '../assets/fuelcan.svg';
 
@@ -29,6 +26,7 @@ const settings1 = {
 };
 
 export const HomePage = () => {
+  const { readOnlyChainIds } = useConfig();
   const { isTablet, isMobile } = useWidth();
 
   const [sectionList] = useState([
@@ -63,37 +61,7 @@ export const HomePage = () => {
       img: NFPToken,
     },
   ]);
-  const [networkList] = useState([
-    {
-      icon: BnbToken,
-      title: 'bscGAS',
-      tvl: '$50,000',
-      liquidity: '100,000,000',
-    },
-    {
-      icon: MaticToken,
-      title: 'polyGAS',
-      tvl: '$50,000',
-      liquidity: '100,000,000',
-    },
-    {
-      icon: FtmToken,
-      title: 'ftmGAS',
-      tvl: '$50,000',
-      liquidity: '100,000,000',
-    },
-    {
-      icon: AvaxToken,
-      title: 'avaxGAS',
-      launchDate: '31 OCt 2021',
-    },
-    {
-      icon: UsdcToken,
-      title: 'usdcGAS',
-      tvl: '$50,000',
-      liquidity: '100,000,000',
-    },
-  ]);
+
   return (
     <>
       <BannerSection />
@@ -101,8 +69,8 @@ export const HomePage = () => {
         <div className="row gx-xxl-5 justify-content-around">
           {sectionList.map((list, i) => {
             return (
-              <div className="col-md-6 col-xl-4">
-                <div key={i} className="flex-fill services-item">
+              <div className="col-md-6 col-xl-4" key={i}>
+                <div className="flex-fill services-item">
                   <BridgeSection bridgeProps={list} />
                 </div>
               </div>
@@ -132,14 +100,24 @@ export const HomePage = () => {
                 {isTablet || isMobile ? (
                   <div className="value-slider">
                     <Slider {...settings1}>
-                      {networkList.map((list, i) => {
-                        return <AllNetworkList key={i} items={list} />;
+                      {(readOnlyChainIds || []).map((chainId) => {
+                        return (
+                          <NetworkCard
+                            key={`mobile-${chainId}`}
+                            chainId={chainId}
+                          />
+                        );
                       })}
                     </Slider>
                   </div>
                 ) : (
-                  networkList.map((list, i) => {
-                    return <AllNetworkList key={i} items={list} />;
+                  (readOnlyChainIds || []).map((chainId) => {
+                    return (
+                      <NetworkCard
+                        key={`desktop-${chainId}`}
+                        chainId={chainId}
+                      />
+                    );
                   })
                 )}
               </div>

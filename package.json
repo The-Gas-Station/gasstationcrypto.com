@@ -13,7 +13,7 @@
     "framer-motion": "^4.0.0",
     "lodash.merge": "^4.6.2",
     "lodash.sample": "^4.2.1",
-    "mdb-react-ui-kit": "./mdb-react-ui-kit-1.5.0.tgz",
+    "mdb-react-ui-kit": "./mdb-react-ui-kit-2.0.0.tgz",
     "node-sass": "^4",
     "numeral": "^2.0.6",
     "react": "^17.0.2",

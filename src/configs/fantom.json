@@ -1,33 +1,37 @@
 {
   "chainId": 250,
+  "tokenImage": "/public/images/tokens/ftm.png",
+  "launched": true,
   "etherCoingeckoId": "fantom",
-  "gasTokenAddress": "0x6741db012578615Ee07e029C1062B46730093912",
+  "etherLiquidityPair": "evm:0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c",
+  "gasTokenName": "ftmGAS",
+  "gasTokenAddress": "evm:0x6741db012578615Ee07e029C1062B46730093912",
   "liquidityPairs": [
     {
-      "name": "",
-      "address": "0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef"
+      "name": "SpookySwap LP",
+      "address": "evm:0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef"
     }
   ],
   "tokens": [],
   "pools": [
     {
-      "name": "",
-      "address": "0xFb6db9c955a2F1062b5584AbCEE8Cf4c975896F6",
+      "name": "Dual Fuel (SPOOKY-LP)",
+      "address": "evm:0xFb6db9c955a2F1062b5584AbCEE8Cf4c975896F6",
       "type": "DoubleV1"
     },
     {
-      "name": "",
-      "address": "0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
+      "name": "Fuel Up",
+      "address": "evm:0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
       "type": "SingleV2"
     },
     {
-      "name": "",
-      "address": "0xe16D22501049Ebdd9bE44DDE377ffe2E945dF017",
+      "name": "Stable Up",
+      "address": "evm:0xe16D22501049Ebdd9bE44DDE377ffe2E945dF017",
       "type": "SingleV2"
     },
     {
-      "name": "",
-      "address": "0xcC9808bC4Dc0115fBC8C3B9C99f900aD470e2d0D",
+      "name": "ftmGAS Liquidity Mining",
+      "address": "evm:0xcC9808bC4Dc0115fBC8C3B9C99f900aD470e2d0D",
       "type": "SingleV2"
     }
   ],

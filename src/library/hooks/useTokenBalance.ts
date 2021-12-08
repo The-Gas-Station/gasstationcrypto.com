@@ -22,3 +22,5 @@ export function useTokenBalance(
     ) ?? [];
   return tokenBalance;
 }
+
+export default useTokenBalance;

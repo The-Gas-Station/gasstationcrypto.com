@@ -5,10 +5,17 @@ export enum PoolType {
 }
 
 export type ChainInfo = {
+  name: string;
+  display: string;
+  tokenImage: string;
+  launched: boolean;
+  launchDate?: string;
   chainId: number;
-  etherCoingeckoId: string;
-  gasTokenAddress: string;
-  liquidityPairs: { name: string; address: string }[];
-  tokens: { name: string; address: string }[];
-  pools: { name: string; address: string; type: PoolType }[];
+  etherCoingeckoId?: string;
+  etherLiquidityPair?: string;
+  gasTokenName: string;
+  gasTokenAddress?: string;
+  liquidityPairs?: { name: string; address: string }[];
+  tokens?: { name: string; address: string }[];
+  pools?: { name: string; address: string; type: PoolType }[];
 };

@@ -5,14 +5,33 @@ import {
   MDBSwitch,
   MDBCollapse,
 } from 'mdb-react-ui-kit';
+import { ethers } from 'ethers';
+import numeral from 'numeral';
+
+import { useConfig } from '../library/providers/ConfigProvider';
+import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
+
+import { ChainId, CHAIN_NAMES, CHAIN_ETHER } from '../library/constants/chains';
+import { CHAIN_INFO } from '../configs';
+
+import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
+import useGASTokenRewardsInfo from '../hooks/useGASTokenRewardsInfo';
+
 import HubCard from '../components/hubCard';
 import GridHubCard from '../components/GridhubCard';
 import StackModal from '../components/stakeModal';
-import BscIcon from '../assets/bsc.png';
 import GasIcon from '../assets/gas.svg';
 import DollarIcon from '../assets/dollar.svg';
 
 export const RewardsHubPage = () => {
+  const { readOnlyChainIds } = useConfig();
+  const { currentChainId, setCurrentChainId } = useWeb3ConnectionsContext();
+  const chainData = CHAIN_INFO[currentChainId];
+
+  const marketCap = useGASTokenMarketCap();
+  const { gasTokenBalance, accountRewards, totalRewards, accountRewardsUSD } =
+    useGASTokenRewardsInfo();
+
   const [isFilterShow, setIsFilterShow] = useState(false);
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
   const [isCardGride, setIsCardGride] = useState(false);
@@ -25,22 +44,56 @@ export const RewardsHubPage = () => {
     setIsStakeModalOpen(!isStakeModalOpen);
   };
 
+  const switchNetwork = (e: any) => {
+    setCurrentChainId(e.target.value);
+  };
+
   return (
     <>
       <div className="rewards-first-block">
         <div className="rewards-title-block">
           <div className="rewards-title">
             <h2>
-              <img src={BscIcon} alt="" className="me-3" />
-              Binance Smart Chain
+              <img
+                src={chainData.tokenImage.replace('/public/', '/')}
+                alt=""
+                className="me-3"
+              />
+              {CHAIN_NAMES[currentChainId]}
             </h2>
-            <select className="custom-select d-none d-lg-block">
+            <select
+              className="custom-select d-none d-lg-block"
+              onChange={switchNetwork}
+            >
               <option value="">Switch Network</option>
+              {(readOnlyChainIds || []).map((chainId) => {
+                return (
+                  chainId != currentChainId &&
+                  CHAIN_INFO[chainId].launched && (
+                    <option key={`switch-chain-${chainId}`} value={chainId}>
+                      {CHAIN_NAMES[chainId]}
+                    </option>
+                  )
+                );
+              })}
             </select>
           </div>
           <div className="total-rewards-value">
-            <select className="custom-select d-block d-lg-none m-0">
+            <select
+              className="custom-select d-block d-lg-none m-0"
+              onChange={switchNetwork}
+            >
               <option value="">Switch Network</option>
+              {(readOnlyChainIds || []).map((chainId) => {
+                return (
+                  chainId != currentChainId &&
+                  CHAIN_INFO[chainId].launched && (
+                    <option key={`switch-chain-${chainId}`} value={chainId}>
+                      {CHAIN_NAMES[chainId]}
+                    </option>
+                  )
+                );
+              })}
             </select>
             <div className="amount-details">
               <div className="amount-tvl">
@@ -49,7 +102,9 @@ export const RewardsHubPage = () => {
               </div>
               <div className="amount-market-cap">
                 <small>USD MARKET CAP</small>
-                <p>$2,467,899</p>
+                <p>
+                  {numeral(ethers.utils.formatEther(marketCap)).format('$0,0')}
+                </p>
               </div>
             </div>
           </div>
@@ -60,7 +115,11 @@ export const RewardsHubPage = () => {
               <div className="rewards-item">
                 <div className="rewards-content">
                   <small>My Token Balance</small>
-                  <p>100,000,000,000</p>
+                  <p>
+                    {numeral(ethers.utils.formatEther(gasTokenBalance)).format(
+                      '0,0',
+                    )}
+                  </p>
                 </div>
                 <div className="rewards-icon">
                   <img src={GasIcon} alt="" />
@@ -71,7 +130,11 @@ export const RewardsHubPage = () => {
               <div className="rewards-item">
                 <div className="rewards-content">
                   <small>My Token Value</small>
-                  <p>$5000.00</p>
+                  <p>
+                    {numeral(
+                      ethers.utils.formatEther(accountRewardsUSD),
+                    ).format('$0,0.00')}
+                  </p>
                 </div>
                 <div className="rewards-icon">
                   <img src={DollarIcon} alt="" />
@@ -82,7 +145,12 @@ export const RewardsHubPage = () => {
               <div className="rewards-item">
                 <div className="rewards-content">
                   <small>My GAS Rewards</small>
-                  <p>0.543 BNB</p>
+                  <p>
+                    {numeral(ethers.utils.formatEther(accountRewards)).format(
+                      '0,0.0000',
+                    )}{' '}
+                    {CHAIN_ETHER[currentChainId]}
+                  </p>
                 </div>
                 <div className="rewards-icon">
                   <img src={DollarIcon} alt="" />
@@ -93,7 +161,12 @@ export const RewardsHubPage = () => {
               <div className="rewards-item">
                 <div className="rewards-content">
                   <small>Total GAS Rewards</small>
-                  <p>3.923 BNB</p>
+                  <p>
+                    {numeral(ethers.utils.formatEther(totalRewards)).format(
+                      '0,0.0000',
+                    )}{' '}
+                    {CHAIN_ETHER[currentChainId]}
+                  </p>
                 </div>
                 <div className="rewards-icon">
                   <img src={DollarIcon} alt="" />
@@ -284,10 +357,10 @@ export const RewardsHubPage = () => {
           </div>
         )}
       </div>
-      <StackModal
+      {/* <StackModal
         isStakeModalOpen={isStakeModalOpen}
         toggleStakeModal={toggleStakeModal}
-      />
+      /> */}
     </>
   );
 };

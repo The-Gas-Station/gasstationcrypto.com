@@ -152,6 +152,11 @@ export function Web3ConnectionsProvider({
     const providers: any = {};
     if (readOnlyChainIds) {
       for (const readOnlyChainId of readOnlyChainIds) {
+        if (!CHAIN_NAMES[readOnlyChainId]) {
+          console.error(`ChainId not configured: ${readOnlyChainId}`);
+          continue;
+        }
+
         if (!readOnlyProviders[CHAIN_NAMES[readOnlyChainId]]) {
           providers[CHAIN_NAMES[readOnlyChainId]] = createWeb3ReactRoot(
             CHAIN_NAMES[readOnlyChainId],
@@ -167,6 +172,11 @@ export function Web3ConnectionsProvider({
 
   if (readOnlyChainIds) {
     for (const readOnlyChainId of readOnlyChainIds) {
+      if (!CHAIN_NAMES[readOnlyChainId]) {
+        console.error(`ChainId not configured: ${readOnlyChainId}`);
+        continue;
+      }
+
       if (readOnlyProviders[CHAIN_NAMES[readOnlyChainId]]) {
         const Web3ReactProviderReadOnly =
           readOnlyProviders[CHAIN_NAMES[readOnlyChainId]];

@@ -22,7 +22,9 @@ export const NetworkInfo = ({ chainId }: NetworkInfoProps) => {
 
     const blockNumber = useBlockNumber(chainId);
     const gasPrice = useGasPrice(chainId);
-    const etherPrice = useCoingeckoPrice(chainData.etherCoingeckoId);
+    const etherPrice = chainData.etherCoingeckoId
+      ? useCoingeckoPrice(chainData.etherCoingeckoId)
+      : '-';
     const etherBalance = useEtherBalance(chainId, currentAccount);
 
     const gasBalance = useTokenBalance(

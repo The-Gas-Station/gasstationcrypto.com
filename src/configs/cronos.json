@@ -1,0 +1,9 @@
+{
+  "chainId": 25,
+  "tokenImage": "/public/images/tokens/cro-hex.png",
+  "launched": false,
+  "launchDate": "",
+  "gasTokenName": "croGAS",
+  "display": "Cronos",
+  "name": "cronos"
+}

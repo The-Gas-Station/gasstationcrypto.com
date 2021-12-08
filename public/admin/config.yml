@@ -22,23 +22,43 @@ collections:
               widget: 'relation',
               collection: 'networks',
               search_fields: ['display'],
-              value_field: 'slug',
+              value_field: 'name',
               multiple: true,
             }
   - name: 'networks'
-    label: 'Network'
-    identifier_field: 'slug'
+    label: 'Networks'
+    identifier_field: 'name'
     folder: 'src/configs'
     create: true
     extension: 'json'
     format: 'json'
     fields:
       - {
-          label: 'Slug (eth, rinkeby, bsc, polygon, fantom, etc.)',
-          name: 'slug',
+          label: 'Short Name (eth, rinkeby, bsc, polygon, fantom, etc.)',
+          name: 'name',
           widget: 'string',
         }
       - { label: 'Display Name', name: 'display', widget: 'string' }
+      - {
+          label: 'Token Image',
+          name: 'tokenImage',
+          widget: 'image',
+          allow_multiple: false,
+          media_folder: /public/images/tokens,
+        }
+      - {
+          label: 'Launched?',
+          name: 'launched',
+          widget: 'boolean',
+          default: false,
+        }
+      - {
+          label: 'Launch Date',
+          name: 'launchDate',
+          required: false,
+          widget: 'date',
+          format: 'D MMM, YYYY',
+        }
       - {
           label: 'Chain ID (1, 4, 56, 137, etc)',
           name: 'chainId',
@@ -46,13 +66,22 @@ collections:
         }
       - { label: 'CoinGecko', name: 'etherCoingeckoId', widget: 'string' }
       - {
+          label: 'Ether Liquidity Pair',
+          name: 'etherLiquidityPair',
+          required: false,
+          widget: 'crypto-address',
+        }
+      - { label: 'Gas Token Name', name: 'gasTokenName', widget: 'string' }
+      - {
           label: 'Gas Token Address',
           name: 'gasTokenAddress',
+          required: false,
           widget: 'crypto-address',
         }
       - {
           label: 'Liquidity Pairs',
           name: 'liquidityPairs',
+          required: false,
           widget: 'list',
           fields:
             [
@@ -63,6 +92,7 @@ collections:
       - {
           label: 'Tokens',
           name: 'tokens',
+          required: false,
           widget: 'list',
           fields:
             [
@@ -73,6 +103,7 @@ collections:
       - {
           label: 'Pools',
           name: 'pools',
+          required: false,
           widget: 'list',
           fields:
             [

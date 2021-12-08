@@ -16,7 +16,11 @@ export const CHAIN_INFO: { [chainId: number]: ChainInfo } = {
 <% } -%>
 };
 
-const chainIds = Object.keys(CHAIN_INFO).map((v) => parseInt(v));
+const chainIds = [
+<% for (var network of networks) { -%>
+  <%= h.changeCase.upper(network) %>_CHAIN_INFO.chainId,
+<% } -%>
+];
 
 export const AppConfig: Config = {
   defaultChainId: chainIds[0],

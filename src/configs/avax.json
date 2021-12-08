@@ -1,0 +1,9 @@
+{
+  "chainId": 43114,
+  "tokenImage": "/public/images/tokens/avax.png",
+  "launched": false,
+  "launchDate": "",
+  "display": "Avalanche",
+  "name": "avax",
+  "gasTokenName": "avaxGAS"
+}

@@ -17,6 +17,8 @@ export enum ChainId {
   Harmony = 1666600000,
   Palm = 11297108109,
   Fantom = 250,
+  Cronos = 25,
+  Avalanche = 43114,
 }
 
 export const CHAIN_NAMES = {
@@ -38,13 +40,18 @@ export const CHAIN_NAMES = {
   [ChainId.Harmony]: 'Harmony',
   [ChainId.Palm]: 'Palm',
   [ChainId.Fantom]: 'Fantom',
+  [ChainId.Cronos]: 'Cronos',
+  [ChainId.Avalanche]: 'Avalanche',
 };
 
 export const CHAIN_ETHER: { [chainId: number]: string } = {
   [ChainId.Mainnet]: 'ETH',
   [ChainId.BSC]: 'BNB',
   [ChainId.Polygon]: 'MATIC',
+  [ChainId.Moonriver]: 'MOVR',
   [ChainId.Fantom]: 'FTM',
+  [ChainId.Cronos]: 'CRO',
+  [ChainId.Avalanche]: 'AVAX',
 };
 
 export const BLOCKS_PER_YEAR = {
@@ -57,6 +64,23 @@ export const WRAPPED_ETHER_ADDRESSES = {
   [ChainId.BSC]: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
   [ChainId.Polygon]: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
   [ChainId.Fantom]: '0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83',
+  [ChainId.Localhost]: '',
+  [ChainId.Hardhat]: '',
+  [ChainId.Mainnet]: '',
+  [ChainId.Ropsten]: '',
+  [ChainId.Kovan]: '',
+  [ChainId.Rinkeby]: '',
+  [ChainId.Goerli]: '',
+  [ChainId.BSCTestnet]: '',
+  [ChainId.xDai]: '',
+  [ChainId.Mumbai]: '',
+  [ChainId.Theta]: '',
+  [ChainId.ThetaTestnet]: '',
+  [ChainId.Moonriver]: '',
+  [ChainId.Harmony]: '',
+  [ChainId.Palm]: '',
+  [ChainId.Cronos]: '',
+  [ChainId.Avalanche]: '',
 };
 
 export const RPC_URLS = {

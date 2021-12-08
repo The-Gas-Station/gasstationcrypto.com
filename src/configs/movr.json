@@ -1,0 +1,9 @@
+{
+  "chainId": 1285,
+  "tokenImage": "/public/images/tokens/movr.png",
+  "launched": false,
+  "launchDate": "",
+  "gasTokenName": "movrGAS",
+  "display": "Moonriver",
+  "name": "movr"
+}

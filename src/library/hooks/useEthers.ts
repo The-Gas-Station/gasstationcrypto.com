@@ -7,12 +7,17 @@ import { useWeb3ConnectionsContext } from '../providers/Web3ConnectionsProvider'
 type ActivateBrowserWallet = (
   onError?: (error: Error) => void,
   throwErrors?: boolean,
-) => void;
+) => Promise<void>;
+type ActivateWalletConnect = (
+  onError?: (error: Error) => void,
+  throwErrors?: boolean,
+) => Promise<void>;
 
 export type Web3Ethers = ReturnType<typeof useWeb3React> & {
   library?: Web3Provider;
   chainId?: ChainId;
   activateBrowserWallet: ActivateBrowserWallet;
+  activateWalletConnect: ActivateWalletConnect;
 };
 
 export function useEthers(key?: string | undefined): Web3Ethers {
@@ -31,7 +36,21 @@ export function useEthers(key?: string | undefined): Web3Ethers {
     },
     [currentChainId, getConnectors],
   );
-  return { ...result, activateBrowserWallet };
+
+  const activateWalletConnect = useCallback<ActivateWalletConnect>(
+    async (onError, throwErrors) => {
+      const { WalletConnect } = getConnectors(currentChainId);
+
+      if (onError instanceof Function) {
+        await result.activate(WalletConnect, onError, throwErrors);
+      } else {
+        await result.activate(WalletConnect, undefined, throwErrors);
+      }
+    },
+    [currentChainId, getConnectors],
+  );
+
+  return { ...result, activateBrowserWallet, activateWalletConnect };
 }
 
 export default useEthers;
