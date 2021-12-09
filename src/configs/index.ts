@@ -1,5 +1,6 @@
 import { Config } from '../library/models/config/Config';
 import { ChainInfo } from './declarations';
+export { PoolType } from './declarations';
 
 import BSC_CHAIN_INFO from './bsc.json';
 import POLYGON_CHAIN_INFO from './polygon.json';

@@ -37,8 +37,9 @@ export interface ContractCall {
 export function useContractCall(
   chainId: ChainId | undefined,
   call: ContractCall | Falsy,
+  throwWarning = true,
 ): any[] | undefined {
-  return useContractCalls(chainId, [call])[0];
+  return useContractCalls(chainId, [call], throwWarning)[0];
 }
 
 export default useContractCall;
@@ -46,6 +47,7 @@ export default useContractCall;
 export function useContractCalls(
   chainId: ChainId | undefined,
   calls: (ContractCall | Falsy)[],
+  throwWarning = true,
 ): (any[] | undefined)[] {
   const results = useChainCalls(chainId, calls.map(encodeCallData));
 
@@ -54,7 +56,9 @@ export function useContractCalls(
       results.map((result, idx) => {
         const call = calls[idx];
         if (result === '0x') {
-          warnOnInvalidContractCall(call);
+          if (throwWarning) {
+            warnOnInvalidContractCall(call);
+          }
           return undefined;
         }
         return call && result

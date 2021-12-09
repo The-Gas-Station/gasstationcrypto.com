@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { BigNumber } from '@ethersproject/bignumber';
 
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
@@ -74,15 +73,14 @@ export function useGASTokenRewardsInfo(chainId?: ChainId): {
     gasTokenBalance,
     accountRewards,
     totalRewards,
-    gasTokenBalanceUSD: useMemo(() => {
-      return gasTokenBalance && etherRatio && decimals && ratio
+    gasTokenBalanceUSD:
+      gasTokenBalance && etherRatio && decimals && ratio
         ? gasTokenBalance
             .mul(ratio)
             .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
             .div(BUFFER)
             .div(BUFFER)
-        : BigNumber.from('0');
-    }, [gasTokenBalance, etherRatio, decimals, ratio]),
+        : BigNumber.from('0'),
   };
 }
 

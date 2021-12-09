@@ -1,4 +1,4 @@
-import {
+import React, {
   ReactNode,
   createContext,
   useCallback,
@@ -24,6 +24,8 @@ import sample from 'lodash.sample';
 
 import { ChainId, CHAIN_NAMES } from '../constants/chains';
 import { useConfig } from './ConfigProvider';
+
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export enum ConnectorNames {
   Injected = 'Injected',
@@ -70,11 +72,25 @@ export function Web3ConnectionsProvider({
     pollingInterval,
   } = useConfig();
 
-  const [currentChainId, setCurrentChainId] = useState(defaultChainId);
+  const [_defaultChainId, setDefaultChainId] = useLocalStorage(
+    'CHAIN_ID',
+    defaultChainId,
+  );
+
+  const [currentChainId, setCurrentChainId] = useState(_defaultChainId);
   const [currentAccount, setCurrentAccount] = useState('');
 
+  const getReadOnlyLibrary = useCallback(
+    (provider: any): providers.Provider => {
+      const library = new providers.StaticJsonRpcProvider(provider);
+      library.pollingInterval = pollingInterval || 15000;
+      return library;
+    },
+    [pollingInterval],
+  );
+
   const getLibrary = useCallback(
-    (provider: any): providers.Web3Provider => {
+    (provider: any): providers.Provider => {
       const library = new providers.Web3Provider(provider);
       library.pollingInterval = pollingInterval || 15000;
       return library;
@@ -148,6 +164,7 @@ export function Web3ConnectionsProvider({
   );
 
   const [readOnlyProviders, setReadOnlyProviders] = useState<any>({});
+
   useEffect(() => {
     const providers: any = {};
     if (readOnlyChainIds) {
@@ -158,6 +175,7 @@ export function Web3ConnectionsProvider({
         }
 
         if (!readOnlyProviders[CHAIN_NAMES[readOnlyChainId]]) {
+          console.log(CHAIN_NAMES[readOnlyChainId]);
           providers[CHAIN_NAMES[readOnlyChainId]] = createWeb3ReactRoot(
             CHAIN_NAMES[readOnlyChainId],
           );
@@ -182,7 +200,10 @@ export function Web3ConnectionsProvider({
           readOnlyProviders[CHAIN_NAMES[readOnlyChainId]];
 
         readOnlyProvider = (
-          <Web3ReactProviderReadOnly getLibrary={getLibrary}>
+          <Web3ReactProviderReadOnly
+            key={CHAIN_NAMES[readOnlyChainId]}
+            getLibrary={getReadOnlyLibrary}
+          >
             {readOnlyProvider}
           </Web3ReactProviderReadOnly>
         );
@@ -194,7 +215,10 @@ export function Web3ConnectionsProvider({
     <context.Provider
       value={{
         currentChainId,
-        setCurrentChainId,
+        setCurrentChainId: (chainId: ChainId) => {
+          setDefaultChainId(chainId);
+          setCurrentChainId(chainId);
+        },
         currentAccount,
         setCurrentAccount,
         chainRpcUrls,

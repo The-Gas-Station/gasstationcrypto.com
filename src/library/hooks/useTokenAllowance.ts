@@ -24,3 +24,5 @@ export function useTokenAllowance(
     ) ?? [];
   return allowance;
 }
+
+export default useTokenAllowance;

@@ -1,11 +1,46 @@
 import React, { useState } from 'react';
+import { BigNumber } from '@ethersproject/bignumber';
 import { MDBCollapse } from 'mdb-react-ui-kit';
+import { PoolType } from '../configs';
+import numeral from 'numeral';
+
 import GasIcon from '../assets/gas.svg';
 import QuestionIcon from '../assets/icons-question.svg';
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
 import Metamask from '../assets/wallets/metamask.png';
 
-export const HubCard = () => {
+export const HubCard = ({
+  pool,
+}: {
+  pool: {
+    name: string;
+    type: PoolType;
+    rewardTokens: {
+      address: string;
+      symbol: string;
+      rewardsPerBlock: BigNumber;
+      pendingRewards: BigNumber;
+      pendingRewardsUSD: BigNumber;
+    }[];
+    stakeToken: {
+      address: string;
+      symbol: string;
+      staked: BigNumber;
+      stakedUSD: BigNumber;
+      balance: BigNumber;
+      balanceUSD: BigNumber;
+      approved: BigNumber;
+      totalStaked: BigNumber;
+      totalStakedUSD: BigNumber;
+    };
+    apr: number;
+    depositFee: number;
+    depositBurnFee: number;
+    withdrawFee: number;
+    startBlock: BigNumber;
+    endBlock: BigNumber;
+  };
+}) => {
   try {
     // const [isOpen, setIsOpen] = useState(false)
 
@@ -27,10 +62,15 @@ export const HubCard = () => {
                 <img src={GasIcon} alt="" />
               </div>
               <div className="title">
-                <h3>Gas Maximizer</h3>
+                <h3>{pool.name}</h3>
                 <p className="d-none d-sm-block">
-                  Stake bscGAS
-                  <br /> Earn bscGAS
+                  Stake {pool.stakeToken.symbol}
+                  <br /> Earn {pool.rewardTokens[0].symbol}
+                  {pool.rewardTokens[1] ? (
+                    <> + {pool.rewardTokens[1].symbol}</>
+                  ) : (
+                    <></>
+                  )}
                 </p>
               </div>
             </div>
@@ -47,7 +87,7 @@ export const HubCard = () => {
           <td>
             <div className="apy-content">
               <span>APY</span>
-              <p>135.00%</p>
+              <p>{numeral(pool.apr).format('0.00%')}</p>
             </div>
           </td>
           <td className="d-none d-sm-block">

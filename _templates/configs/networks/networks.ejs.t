@@ -5,6 +5,7 @@ force: true
 
 import { Config } from '../library/models/config/Config';
 import { ChainInfo } from './declarations';
+export { PoolType } from './declarations';
 
 <% for (var network of networks) { -%>
 import <%= h.changeCase.upper(network) %>_CHAIN_INFO from './<%= network %>.json';

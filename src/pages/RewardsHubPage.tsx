@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
   MDBTable,
   MDBTableBody,
@@ -11,11 +12,12 @@ import numeral from 'numeral';
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 
-import { CHAIN_NAMES, CHAIN_ETHER } from '../library/constants/chains';
+import { CHAIN_NAMES, CHAIN_ETHER, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 
 import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
 import useGASTokenRewardsInfo from '../hooks/useGASTokenRewardsInfo';
+import usePools from '../hooks/usePools';
 
 import HubCard from '../components/hubCard';
 import GridHubCard from '../components/GridhubCard';
@@ -24,13 +26,37 @@ import GasIcon from '../assets/gas.svg';
 import DollarIcon from '../assets/dollar.svg';
 
 export const RewardsHubPage = () => {
+  const navigate = useNavigate();
+  const { chain }: { chain: string | undefined } = useParams();
+
+  const search = Object.entries(CHAIN_NAMES).find(
+    (data) => data[1].toLowerCase() == chain?.toLowerCase(),
+  );
+  const chainId: ChainId | undefined =
+    search && search[0] ? parseInt(search[0]) : undefined;
+
   const { readOnlyChainIds } = useConfig();
   const { currentChainId, setCurrentChainId } = useWeb3ConnectionsContext();
-  const chainData = CHAIN_INFO[currentChainId];
+
+  if (!chainId) {
+    navigate(`/hub/${CHAIN_NAMES[currentChainId]}`, {
+      replace: false,
+    });
+    window.location.reload();
+    return <></>;
+  }
+
+  if (chainId && currentChainId != chainId) {
+    setCurrentChainId(chainId);
+  }
+
+  const chainData = CHAIN_INFO[chainId];
 
   const marketCap = useGASTokenMarketCap();
   const { gasTokenBalance, accountRewards, totalRewards, gasTokenBalanceUSD } =
     useGASTokenRewardsInfo();
+
+  const pools = usePools(chainId);
 
   const [isFilterShow, setIsFilterShow] = useState(false);
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
@@ -45,7 +71,11 @@ export const RewardsHubPage = () => {
   };
 
   const switchNetwork = (e: any) => {
-    setCurrentChainId(e.target.value);
+    const newChainId: ChainId = parseInt(e.target.value);
+    navigate(`/hub/${CHAIN_NAMES[newChainId]}`, {
+      replace: false,
+    });
+    window.location.reload();
   };
 
   return (
@@ -334,24 +364,22 @@ export const RewardsHubPage = () => {
         {isCardGride ? (
           <div className="rewards-grid-block">
             <div className="row">
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
-              <GridHubCard toggleStakeModal={toggleStakeModal} />
+              {(pools ?? []).map((pool) => (
+                <GridHubCard
+                  key={`grid-${pool.address}`}
+                  toggleStakeModal={toggleStakeModal}
+                  pool={pool}
+                />
+              ))}
             </div>
           </div>
         ) : (
           <div className="rewards-table">
             <MDBTable responsive="xl">
               <MDBTableBody>
-                <HubCard />
-                <HubCard />
-                <HubCard />
-                <HubCard />
+                {(pools ?? []).map((pool) => (
+                  <HubCard key={`table-${pool.address}`} pool={pool} />
+                ))}
               </MDBTableBody>
             </MDBTable>
           </div>

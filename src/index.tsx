@@ -1,32 +1,19 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-
-import App from './App';
 
 import DAppProvider from './library/providers/DAppProvider';
 import { AppConfig } from './configs';
 
-import HomePage from './pages/HomePage';
-import RewardsHubPage from './pages/RewardsHubPage';
-import NFPPage from './pages/NFPPage';
-import TestPage from './pages/test';
+const App = React.lazy(() => import('./App'));
 
 ReactDOM.render(
   <React.StrictMode>
     <DAppProvider config={AppConfig}>
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route path="/hub" element={<RewardsHubPage />} />
-            <Route path="/nfp" element={<NFPPage />} />
-            <Route path="/test" element={<TestPage />} />
-          </Route>
-        </Routes>
-      </HashRouter>
+      <React.Suspense fallback={<>...</>}>
+        <App />
+      </React.Suspense>
     </DAppProvider>
   </React.StrictMode>,
   document.getElementById('root'),

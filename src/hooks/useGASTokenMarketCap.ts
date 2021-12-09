@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { BigNumber } from '@ethersproject/bignumber';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 import useLiquidityPairRatio from '../library/hooks/useLiquidityPairRatio';
@@ -35,15 +34,13 @@ export function useGASTokenMarketCap(chainId?: ChainId): BigNumber {
     chainData.gasTokenAddress?.substring(4),
   );
 
-  return useMemo(() => {
-    return circulatingSupply && etherRatio && decimals && ratio
-      ? circulatingSupply
-          .mul(ratio)
-          .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
-          .div(BUFFER)
-          .div(BUFFER)
-      : BigNumber.from(0);
-  }, [circulatingSupply, etherRatio, decimals, ratio]);
+  return circulatingSupply && etherRatio && decimals && ratio
+    ? circulatingSupply
+        .mul(ratio)
+        .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
+        .div(BUFFER)
+        .div(BUFFER)
+    : BigNumber.from(0);
 }
 
 export default useGASTokenMarketCap;

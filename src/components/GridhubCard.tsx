@@ -1,14 +1,46 @@
 import React, { useState } from 'react';
+import { BigNumber } from '@ethersproject/bignumber';
 import { MDBCollapse } from 'mdb-react-ui-kit';
+import { PoolType } from '../configs';
+import numeral from 'numeral';
+
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
 import DollarGas from '../assets/dollar-gas.svg';
 import Usdc from '../assets/usdc.png';
 
 type toggleProps = {
   toggleStakeModal: any;
+  pool: {
+    name: string;
+    type: PoolType;
+    rewardTokens: {
+      address: string;
+      symbol: string;
+      rewardsPerBlock: BigNumber;
+      pendingRewards: BigNumber;
+      pendingRewardsUSD: BigNumber;
+    }[];
+    stakeToken: {
+      address: string;
+      symbol: string;
+      staked: BigNumber;
+      stakedUSD: BigNumber;
+      balance: BigNumber;
+      balanceUSD: BigNumber;
+      approved: BigNumber;
+      totalStaked: BigNumber;
+      totalStakedUSD: BigNumber;
+    };
+    apr: number;
+    depositFee: number;
+    depositBurnFee: number;
+    withdrawFee: number;
+    startBlock: BigNumber;
+    endBlock: BigNumber;
+  };
 };
 
-export const GridHubCard = ({ toggleStakeModal }: toggleProps) => {
+export const GridHubCard = ({ toggleStakeModal, pool }: toggleProps) => {
   try {
     const [showShow, setShowShow] = useState(false);
     const [isHarvest, setIsHarvest] = useState(false);
@@ -27,12 +59,19 @@ export const GridHubCard = ({ toggleStakeModal }: toggleProps) => {
           <div className="rewards-grid-item">
             <div className="card-sub-header">
               <div className="card-left-text">
-                <h2>Dual Fuel (APE-LP)</h2>
+                <h2>{pool.name}</h2>
                 <p>
-                  <span style={{ color: `#28CCAB` }}>EARN</span> USDC + bscGAS
+                  <span style={{ color: `#28CCAB` }}>EARN</span>{' '}
+                  {pool.rewardTokens[0].symbol}
+                  {pool.rewardTokens[1] ? (
+                    <> + {pool.rewardTokens[1].symbol}</>
+                  ) : (
+                    <></>
+                  )}
                 </p>
                 <p>
-                  <span className="text-white1">STAKE</span> BNB-bscGAS ApeLP
+                  <span className="text-white1">STAKE</span>{' '}
+                  {pool.stakeToken.symbol}
                 </p>
               </div>
               <div className="card-right-img">
@@ -42,7 +81,7 @@ export const GridHubCard = ({ toggleStakeModal }: toggleProps) => {
             <div className="card-body-content">
               <div className="title">
                 <span>APY</span>
-                <span>124.00 %</span>
+                <span>{numeral(pool.apr).format('0.00%')}</span>
               </div>
               <div className="reward-money">
                 <div className="reward-list">
