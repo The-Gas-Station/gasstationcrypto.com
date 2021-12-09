@@ -31,8 +31,8 @@ import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 
 import { ReactComponent as SvgHome } from '../assets/home.svg';
 import { ReactComponent as SvgRewards } from '../assets/rewards.svg';
-import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
-import { ReactComponent as SvgUtility } from '../assets/utility.svg';
+// import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
+// import { ReactComponent as SvgUtility } from '../assets/utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
 import { ReactComponent as SvgToken } from '../assets/token.svg';
@@ -43,9 +43,9 @@ import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
 import { ReactComponent as SvgReddit } from '../assets/reddit.svg';
 
-import FtmToken from '../assets/tokens/ftm.png';
+// import FtmToken from '../assets/tokens/ftm.png';
 import Metamask from '../assets/wallets/metamask.png';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -137,59 +137,59 @@ export const MainLayout = () => {
     }
   };
 
-  const settings = {
-    dots: false,
-    arrows: false,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
-    cssEase: 'ease-out',
-    infinite: true,
-    variableWidth: true,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 1440,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  //   const settings = {
+  //     dots: false,
+  //     arrows: false,
+  //     autoplay: true,
+  //     speed: 2000,
+  //     autoplaySpeed: 2000,
+  //     cssEase: 'ease-out',
+  //     infinite: true,
+  //     variableWidth: true,
+  //     slidesToShow: 4,
+  //     slidesToScroll: 1,
+  //     responsive: [
+  //       {
+  //         breakpoint: 1600,
+  //         settings: {
+  //           slidesToShow: 3,
+  //           slidesToScroll: 1,
+  //           infinite: true,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 1440,
+  //         settings: {
+  //           slidesToShow: 3,
+  //           slidesToScroll: 1,
+  //           infinite: true,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 1200,
+  //         settings: {
+  //           slidesToShow: 1,
+  //           slidesToScroll: 1,
+  //           infinite: true,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 600,
+  //         settings: {
+  //           slidesToShow: 2,
+  //           slidesToScroll: 1,
+  //           initialSlide: 1,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 480,
+  //         settings: {
+  //           slidesToShow: 1,
+  //           slidesToScroll: 1,
+  //         },
+  //       },
+  //     ],
+  //   };
 
   const [width, setWidth] = useState<number>(window.innerWidth);
 
