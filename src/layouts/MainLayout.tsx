@@ -11,10 +11,15 @@ import {
   MDBContainer,
 } from 'mdb-react-ui-kit';
 
+import { useConfig } from '../library/providers/ConfigProvider';
+import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 import useLocalStorage from '../library/hooks/useLocalStorage';
 import useEthers from '../library/hooks/useEthers';
 import shortenString from '../library/helpers/shortenString';
 import numeral from 'numeral';
+
+import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
+import { CHAIN_INFO } from '../configs';
 
 import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
 
@@ -49,9 +54,21 @@ import useGASTokenPrice from '../hooks/useGASTokenPrice';
 import { ethers } from 'ethers';
 
 export const MainLayout = () => {
+  const navigate = useNavigate();
+
+  const { readOnlyChainIds } = useConfig();
+  const { currentChainId, setCurrentChainId } = useWeb3ConnectionsContext();
   const { activateBrowserWallet, active, account } = useEthers();
 
   const gasTokenPrice = useGASTokenPrice();
+
+  const switchNetwork = (e: any) => {
+    const newChainId: ChainId = parseInt(e.target.value);
+    setCurrentChainId(newChainId);
+    if (window.location.hash.includes('/hub')) {
+      navigate(`/${CHAIN_NAMES[newChainId]}/hub`);
+    }
+  };
 
   const [storage, setStorage] = useLocalStorage('sideNav', true);
   const [sideOpen, setSideOpen] = useState(storage);
@@ -75,16 +92,16 @@ export const MainLayout = () => {
       route: '/hub',
       icon: SvgRewards,
     },
-    {
-      label: 'Non Fungible Patrons',
-      route: '/nfp',
-      icon: SvgNFPs,
-    },
-    {
-      label: 'Utility',
-      route: '/utility',
-      icon: SvgUtility,
-    },
+    // {
+    //   label: 'Non Fungible Patrons',
+    //   route: '/nfp',
+    //   icon: SvgNFPs,
+    // },
+    // {
+    //   label: 'Utility',
+    //   route: '/utility',
+    //   icon: SvgUtility,
+    // },
   ];
 
   const socialLinks = [
@@ -235,7 +252,7 @@ export const MainLayout = () => {
               }`}
             >
               <div className={isMobile ? 'col-md-9' : 'col-md-10 col-lg-10'}>
-                <div className="amount-sections amount-sections-scroll">
+                {/* <div className="amount-sections amount-sections-scroll">
                   <Slider {...settings}>
                     <div className="amount-row">
                       <div className="amount-col p-0 text-white">
@@ -408,15 +425,47 @@ export const MainLayout = () => {
                       </div>
                     </div>
                   </Slider>
-                </div>
+                </div> */}
               </div>
               <div className={isMobile ? 'col-md-3' : 'col-md-2 col-lg-2'}>
                 <div className="meta-mask-block">
                   <div className="custom-select-box flex-row py-0">
                     <div className="text-right">
-                      <span className="text-fantom">XT576...</span>
-                      <select className="custom-select">
-                        <option value="">BSC Mainnet</option>
+                      <span className="text-fantom">
+                        {active && account
+                          ? shortenString(account)
+                          : 'Connect Wallet'}
+                      </span>
+                      <select
+                        className="custom-select"
+                        onChange={switchNetwork}
+                      >
+                        {(readOnlyChainIds || []).map((_chainId) => {
+                          return (
+                            _chainId == currentChainId &&
+                            CHAIN_INFO[_chainId].launched && (
+                              <option
+                                key={`switch-chain-${_chainId}`}
+                                value={_chainId}
+                              >
+                                {CHAIN_NAMES[_chainId]}
+                              </option>
+                            )
+                          );
+                        })}
+                        {(readOnlyChainIds || []).map((_chainId) => {
+                          return (
+                            _chainId != currentChainId &&
+                            CHAIN_INFO[_chainId].launched && (
+                              <option
+                                key={`switch-chain-${_chainId}`}
+                                value={_chainId}
+                              >
+                                {CHAIN_NAMES[_chainId]}
+                              </option>
+                            )
+                          );
+                        })}
                       </select>
                     </div>
                     <div className="metamask-img">
