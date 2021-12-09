@@ -213,7 +213,7 @@ export const GridHubCard = ({
                     <span>
                       {pool.endBlock > currentBlock
                         ? currentBlock < pool.startBlock
-                          ? 'Stats in'
+                          ? 'Starts in'
                           : 'Ends in'
                         : ''}{' '}
                       <img src={StopwatchIcon} alt="" className="ms-1" />
