@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   MDBTable,
   MDBTableBody,
@@ -11,6 +11,7 @@ import numeral from 'numeral';
 
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
+import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 
 import { CHAIN_NAMES, CHAIN_ETHER, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
@@ -27,6 +28,7 @@ import DollarIcon from '../assets/dollar.svg';
 
 export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
+  const currentBlock = useBlockNumber(chainId) ?? 0;
 
   const chainData = CHAIN_INFO[chainId];
 
@@ -42,7 +44,8 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const [isFilterShow, setIsFilterShow] = useState(false);
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
   const [isCardGride, setIsCardGride] = useState(false);
-  const [isLive, setIsLive] = useState(false);
+  const [showOnlyStaked, setShowOnlyStaked] = useState(false);
+  const [showFinished, setShowFinished] = useState(false);
   const toggleFilter = () => {
     setIsFilterShow(!isFilterShow);
   };
@@ -56,6 +59,14 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
     setCurrentChainId(newChainId);
     navigate(`/${CHAIN_NAMES[newChainId]}/hub`);
   };
+
+  const filteredPools = pools.filter((pool) => {
+    let show = true;
+    show = show && showFinished == pool.endBlock < currentBlock;
+    show = show && (!showOnlyStaked || pool.stakeToken.staked.gt(0));
+
+    return show;
+  });
 
   return (
     <>
@@ -285,18 +296,23 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                   </span>
                 </div>
                 <div className="grid-switch-icon d-none d-md-block">
-                  <MDBSwitch id="flexSwitchCheckDefault" label="Staked only" />
+                  <MDBSwitch
+                    id="flexSwitchCheckDefault"
+                    label="Staked only"
+                    value={showOnlyStaked}
+                    onClick={() => setShowOnlyStaked(!showOnlyStaked)}
+                  />
                 </div>
                 <div className="grid-live-icon d-none d-md-inline-block">
                   <span
-                    className={isLive ? '' : 'active'}
-                    onClick={() => setIsLive(false)}
+                    className={showFinished ? '' : 'active'}
+                    onClick={() => setShowFinished(false)}
                   >
                     Live
                   </span>
                   <span
-                    className={isLive ? 'active' : ''}
-                    onClick={() => setIsLive(true)}
+                    className={showFinished ? 'active' : ''}
+                    onClick={() => setShowFinished(true)}
                   >
                     Finished
                   </span>
@@ -318,23 +334,20 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                       <span>Finished</span>
                     </div>
                   </div>
-                  <div className="sort-item">
+                  {/* <div className="sort-item">
                     <span>SORT BY</span>
                     <select className="custom-select">
                       <option value="APR">APR</option>
                       <option value="APR1">APR1</option>
                     </select>
-                  </div>
-                  <div className="search-item">
+                  </div> */}
+                  {/* <div className="search-item">
                     <span>SEARCH</span>
                     <select className="custom-select">
                       <option value="Search Gas Tanks">Search Gas Tanks</option>
                       <option value="APR1">APR1</option>
                     </select>
-                  </div>
-                  <div className="d-block d-md-none">
-                    <button className="filter-btn">Apply Filters</button>
-                  </div>
+                  </div> */}
                 </div>
               </MDBCollapse>
             </div>
@@ -343,9 +356,10 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
         {isCardGride ? (
           <div className="rewards-grid-block">
             <div className="row">
-              {(pools ?? []).map((pool) => (
+              {(filteredPools ?? []).map((pool) => (
                 <GridHubCard
                   key={`grid-${pool.address}`}
+                  chainId={chainId}
                   toggleStakeModal={toggleStakeModal}
                   pool={pool}
                 />
@@ -356,8 +370,12 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
           <div className="rewards-table">
             <MDBTable responsive="xl">
               <MDBTableBody>
-                {(pools ?? []).map((pool) => (
-                  <HubCard key={`table-${pool.address}`} pool={pool} />
+                {(filteredPools ?? []).map((pool) => (
+                  <HubCard
+                    key={`table-${pool.address}`}
+                    chainId={chainId}
+                    pool={pool}
+                  />
                 ))}
               </MDBTableBody>
             </MDBTable>

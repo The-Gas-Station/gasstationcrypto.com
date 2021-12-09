@@ -46,7 +46,9 @@ export function useTokenPrice(
   }
 
   if (tokenAddress?.toLowerCase() == token1?.toLowerCase()) {
-    return amount ?? BigNumber.from(0);
+    return amount && decimals
+      ? amount.mul(BigNumber.from(10).pow(18 - decimals))
+      : BigNumber.from(0);
   }
 
   if (

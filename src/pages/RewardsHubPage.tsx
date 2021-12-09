@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
@@ -18,7 +16,6 @@ export const RewardsHubPage = () => {
   const chainId: ChainId | undefined =
     search && search[0] ? parseInt(search[0]) : undefined;
 
-  const { readOnlyChainIds } = useConfig();
   const { currentChainId } = useWeb3ConnectionsContext();
 
   if (!chainId) {

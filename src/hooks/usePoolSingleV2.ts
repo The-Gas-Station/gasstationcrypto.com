@@ -36,8 +36,8 @@ export function usePool(
   depositFee: number;
   depositBurnFee: number;
   withdrawFee: number;
-  startBlock: BigNumber;
-  endBlock: BigNumber;
+  startBlock: number;
+  endBlock: number;
 } {
   const [
     _rewardToken,
@@ -123,8 +123,8 @@ export function usePool(
     [_rewardToken ? _rewardToken[0] : undefined],
     [_rewardsPerBlock ? _rewardsPerBlock[0] : undefined],
     _stakeToken ? _stakeToken[0] : undefined,
-    _depositFee ? _depositFee[0] : undefined,
-    _depositBurnFee ? _depositBurnFee[0] : undefined,
+    _depositFee ? parseInt(_depositFee[0]) : 0,
+    _depositBurnFee ? parseInt(_depositBurnFee[0]) : 0,
     _startBlock ? _startBlock[0] : undefined,
     _endBlock ? _endBlock[0] : undefined,
     _userInfo ? _userInfo[0] : undefined,
@@ -174,7 +174,7 @@ export function usePool(
     stakeToken: {
       address: stakeTokenAddress,
       symbol: useTokenSymbol(chainId, stakeTokenAddress) ?? '',
-      staked: stakedAmount,
+      staked: stakedAmount ?? BigNumber.from(0),
       stakedUSD: useTokenPrice(chainId, stakeTokenAddress, stakedAmount),
       balance,
       balanceUSD: useTokenPrice(chainId, stakeTokenAddress, balance),
@@ -189,8 +189,8 @@ export function usePool(
     depositFee,
     depositBurnFee,
     withdrawFee: 0,
-    startBlock,
-    endBlock,
+    startBlock: startBlock ? startBlock.toNumber() : 0,
+    endBlock: endBlock ? endBlock.toNumber() : 0,
   };
 }
 

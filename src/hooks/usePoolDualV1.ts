@@ -36,8 +36,8 @@ export function usePoolDualV1(
   depositFee: number;
   depositBurnFee: number;
   withdrawFee: number;
-  startBlock: BigNumber;
-  endBlock: BigNumber;
+  startBlock: number;
+  endBlock: number;
 } {
   const [
     _rewardToken0,
@@ -197,7 +197,7 @@ export function usePoolDualV1(
     stakeToken: {
       address: stakeTokenAddress,
       symbol: useTokenSymbol(chainId, stakeTokenAddress) ?? '',
-      staked: stakedAmount,
+      staked: stakedAmount ?? BigNumber.from(0),
       stakedUSD: useTokenPrice(chainId, stakeTokenAddress, stakedAmount),
       balance,
       balanceUSD: useTokenPrice(chainId, stakeTokenAddress, balance),
@@ -212,8 +212,8 @@ export function usePoolDualV1(
     depositFee,
     depositBurnFee,
     withdrawFee: 0,
-    startBlock,
-    endBlock,
+    startBlock: startBlock ? startBlock.toNumber() : 0,
+    endBlock: endBlock ? endBlock.toNumber() : 0,
   };
 }
 
