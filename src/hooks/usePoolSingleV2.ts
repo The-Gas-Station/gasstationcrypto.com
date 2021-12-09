@@ -6,6 +6,7 @@ import { useContractCalls } from '../library/hooks/useContractCall';
 import useTokenAllowance from '../library/hooks/useTokenAllowance';
 import useTokenBalance from '../library/hooks/useTokenBalance';
 import useTokenSymbol from '../library/hooks/useTokenSymbol';
+import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
 import { ChainId, BLOCKS_PER_YEAR } from '../library/constants/chains';
 
@@ -131,8 +132,26 @@ export function usePool(
     [_pendingRewards ? _pendingRewards[0] : undefined],
   ];
 
+  const rewardDecimals: number[] = [18];
+
   const rewardsPerYearUSD = rewardTokenAddresses.reduce(
     (prev, address: string, i) => {
+      const decimals = useTokenDecimals(chainId, address);
+
+      rewardDecimals[i] = decimals ?? 18;
+
+      if (rewardsPerBlock[i] && decimals) {
+        rewardsPerBlock[i] = rewardsPerBlock[i].mul(
+          BigNumber.from(10).pow(18 - decimals),
+        );
+      }
+
+      if (pendingRewards[i] && decimals) {
+        pendingRewards[i] = pendingRewards[i].mul(
+          BigNumber.from(10).pow(18 - decimals),
+        );
+      }
+
       const rewardsPerYear = BigNumber.from(
         rewardsPerBlock[i] ? rewardsPerBlock[i] : BigNumber.from(0),
       ).mul(chainId ? BLOCKS_PER_YEAR[chainId] : 0);
@@ -142,14 +161,21 @@ export function usePool(
     BigNumber.from(0),
   );
 
-  const totalStaked =
+  const stakedDecimals = useTokenDecimals(chainId, stakeTokenAddress);
+
+  let totalStaked =
     useTokenBalance(chainId, stakeTokenAddress, poolAddress) ??
     BigNumber.from(0);
-  const totalStakedUSD = useTokenPrice(
-    chainId,
-    stakeTokenAddress,
-    totalStaked,
-  ).add(BigNumber.from(10).pow(18));
+
+  if (totalStaked && stakedDecimals) {
+    totalStaked = totalStaked.mul(BigNumber.from(10).pow(18 - stakedDecimals));
+  }
+
+  let totalStakedUSD = useTokenPrice(chainId, stakeTokenAddress, totalStaked);
+
+  if (totalStakedUSD && totalStakedUSD.eq(0)) {
+    totalStakedUSD = BigNumber.from(10).pow(18);
+  }
 
   const balance =
     useTokenBalance(chainId, stakeTokenAddress, address) ?? BigNumber.from(0);
@@ -183,7 +209,7 @@ export function usePool(
       totalStakedUSD,
     },
     apr:
-      rewardsPerYearUSD && totalStakedUSD
+      rewardsPerYearUSD && totalStakedUSD && totalStakedUSD.gt(0)
         ? rewardsPerYearUSD.mul(10000).div(totalStakedUSD).toNumber() / 10000
         : 0,
     depositFee,

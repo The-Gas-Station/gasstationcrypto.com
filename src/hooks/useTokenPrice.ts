@@ -4,7 +4,7 @@ import useLiquidityPairRatio from '../library/hooks/useLiquidityPairRatio';
 import useGASTokenPrice from './useGASTokenPrice';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import { ChainId, WRAPPED_ETHER_ADDRESSES } from '../library/constants/chains';
-import BUFFER, { PERCISION } from '../library/constants/percisionBuffer';
+import BUFFER from '../library/constants/percisionBuffer';
 
 import { CHAIN_INFO } from '../configs';
 
@@ -37,31 +37,31 @@ export function useTokenPrice(
     tokenAddress?.toLowerCase() ==
     WRAPPED_ETHER_ADDRESSES[chainId ?? currentChainId].toLowerCase()
   ) {
-    return amount && etherRatio && decimals && ratio
+    return amount && etherRatio && decimals
       ? amount
           .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
           .div(BUFFER)
-          .div(BigNumber.from(10).pow(PERCISION - 18))
       : BigNumber.from(0);
   }
 
   if (tokenAddress?.toLowerCase() == token1?.toLowerCase()) {
-    return amount && decimals
-      ? amount.mul(BigNumber.from(10).pow(18 - decimals))
-      : BigNumber.from(0);
+    return amount ? amount : BigNumber.from(0);
   }
 
   if (
     tokenAddress?.toLowerCase() ==
     chainData.gasTokenAddress?.substring(4).toLowerCase()
   ) {
-    return gasTokenPrice;
+    return amount
+      ? amount.mul(gasTokenPrice).div(BigNumber.from(10).pow(18))
+      : BigNumber.from(0);
   }
 
   return amount && etherRatio && decimals && ratio && percent1
     ? amount
         .mul(percent1)
         .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
+        .mul(2)
         .div(BUFFER)
         .div(BUFFER)
     : BigNumber.from('0');

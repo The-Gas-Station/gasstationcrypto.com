@@ -6,6 +6,7 @@ import { useContractCalls } from '../library/hooks/useContractCall';
 import useTokenAllowance from '../library/hooks/useTokenAllowance';
 import useTokenBalance from '../library/hooks/useTokenBalance';
 import useTokenSymbol from '../library/hooks/useTokenSymbol';
+import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
 import { ChainId, BLOCKS_PER_YEAR } from '../library/constants/chains';
 
@@ -143,8 +144,8 @@ export function usePoolDualV1(
       _rewards1PerBlock ? _rewards1PerBlock[0] : undefined,
     ],
     _stakeToken ? _stakeToken[0] : undefined,
-    _depositFee ? _depositFee[0] : undefined,
-    _depositBurnFee ? _depositBurnFee[0] : undefined,
+    _depositFee ? parseInt(_depositFee[0]) : 0,
+    _depositBurnFee ? parseInt(_depositBurnFee[0]) : 0,
     _startBlock ? _startBlock[0] : undefined,
     _endBlock ? _endBlock[0] : undefined,
     _userInfo ? _userInfo[0] : undefined,
@@ -154,8 +155,26 @@ export function usePoolDualV1(
     ],
   ];
 
+  const rewardDecimals: number[] = [18, 18];
+
   const rewardsPerYearUSD = rewardTokenAddresses.reduce(
     (prev, address: string, i) => {
+      const decimals = useTokenDecimals(chainId, address);
+
+      rewardDecimals[i] = decimals ?? 18;
+
+      if (rewardsPerBlock[i] && decimals) {
+        rewardsPerBlock[i] = rewardsPerBlock[i].mul(
+          BigNumber.from(10).pow(18 - decimals),
+        );
+      }
+
+      if (pendingRewards[i] && decimals) {
+        pendingRewards[i] = pendingRewards[i].mul(
+          BigNumber.from(10).pow(18 - decimals),
+        );
+      }
+
       const rewardsPerYear = BigNumber.from(
         rewardsPerBlock[i] ? rewardsPerBlock[i] : BigNumber.from(0),
       ).mul(chainId ? BLOCKS_PER_YEAR[chainId] : 0);
@@ -165,14 +184,21 @@ export function usePoolDualV1(
     BigNumber.from(0),
   );
 
-  const totalStaked =
+  const stakedDecimals = useTokenDecimals(chainId, stakeTokenAddress);
+
+  let totalStaked =
     useTokenBalance(chainId, stakeTokenAddress, poolAddress) ??
     BigNumber.from(0);
-  const totalStakedUSD = useTokenPrice(
-    chainId,
-    stakeTokenAddress,
-    totalStaked,
-  ).add(BigNumber.from(10).pow(18));
+
+  if (totalStaked && stakedDecimals) {
+    totalStaked = totalStaked.mul(BigNumber.from(10).pow(18 - stakedDecimals));
+  }
+
+  let totalStakedUSD = useTokenPrice(chainId, stakeTokenAddress, totalStaked);
+
+  if (totalStakedUSD && totalStakedUSD.eq(0)) {
+    totalStakedUSD = BigNumber.from(10).pow(18);
+  }
 
   const balance =
     useTokenBalance(chainId, stakeTokenAddress, address) ?? BigNumber.from(0);
@@ -206,7 +232,7 @@ export function usePoolDualV1(
       totalStakedUSD,
     },
     apr:
-      rewardsPerYearUSD && totalStakedUSD
+      rewardsPerYearUSD && totalStakedUSD && totalStakedUSD.gt(0)
         ? rewardsPerYearUSD.mul(10000).div(totalStakedUSD).toNumber() / 10000
         : 0,
     depositFee,

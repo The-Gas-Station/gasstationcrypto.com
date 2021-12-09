@@ -327,11 +327,23 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                       <MDBSwitch
                         id="flexSwitchCheckDefault"
                         label="Staked only"
+                        value={showOnlyStaked}
+                        onClick={() => setShowOnlyStaked(!showOnlyStaked)}
                       />
                     </div>
                     <div className="grid-live-icon">
-                      <span className="active">Live</span>
-                      <span>Finished</span>
+                      <span
+                        className={showFinished ? '' : 'active'}
+                        onClick={() => setShowFinished(false)}
+                      >
+                        Live
+                      </span>
+                      <span
+                        className={showFinished ? 'active' : ''}
+                        onClick={() => setShowFinished(true)}
+                      >
+                        Finished
+                      </span>
                     </div>
                   </div>
                   {/* <div className="sort-item">

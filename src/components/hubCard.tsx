@@ -12,7 +12,7 @@ import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import GasIcon from '../assets/gas.svg';
 import QuestionIcon from '../assets/icons-question.svg';
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
-import Metamask from '../assets/wallets/metamask.png';
+// import Metamask from '../assets/wallets/metamask.png';
 
 export const HubCard = ({
   chainId,
@@ -92,15 +92,16 @@ export const HubCard = ({
             <p className="text-green">
               {numeral(
                 ethers.utils.formatEther(pool.rewardTokens[0].pendingRewards),
-              ).format('0,0.00')}
+              ).format('0,0.00')}{' '}
+              {pool.rewardTokens[0].symbol}
             </p>
             <span>
+              ~
               {numeral(
                 ethers.utils.formatEther(
                   pool.rewardTokens[0].pendingRewardsUSD,
                 ),
-              ).format('$0,0.00')}{' '}
-              {pool.rewardTokens[0].symbol}
+              ).format('$0,0.00')}
             </span>
           </div>
         </td>
@@ -114,11 +115,16 @@ export const HubCard = ({
           <div className="apy-content">
             <span>Total Staked</span>
             <p>
-              {numeral(ethers.utils.formatEther(pool.stakeToken.staked)).format(
-                '0,0.00',
-              )}{' '}
+              {numeral(
+                ethers.utils.formatEther(pool.stakeToken.totalStaked),
+              ).format('0,0.00')}{' '}
               {pool.stakeToken.symbol}
             </p>
+            <span>
+              {numeral(
+                ethers.utils.formatEther(pool.stakeToken.totalStakedUSD),
+              ).format('$0,0.00')}
+            </span>
           </div>
         </td>
         <td className="d-none d-sm-block">
@@ -177,7 +183,7 @@ export const HubCard = ({
           <p className="d-block d-sm-none mb-2" style={{ color: `#8A92A6` }}>
             Stake BNB-bscGAS ApeLP Earn USDC +bscGAS
           </p>
-          <p className="action-title">
+          {/* <p className="action-title">
             Add Token to BCS Mainnet wallet
             <img
               src={Metamask}
@@ -185,17 +191,59 @@ export const HubCard = ({
               className="ms-2"
               style={{ maxWidth: `16px` }}
             />
-          </p>
+          </p> */}
           <div className="row">
             <div className="col-md-4">
               <div className="action-item recent-item">
                 <div className="action-content">
-                  <span className="text-pink">RECENT BNB EARNED</span>
-                  <p>0.000 BNB</p>
-                  <span>~$0.00 USD</span>
+                  <span className="text-pink">
+                    RECENT {pool.rewardTokens[0].symbol} EARNED
+                  </span>
+                  <p>
+                    {numeral(
+                      ethers.utils.formatEther(
+                        pool.rewardTokens[0].pendingRewards,
+                      ),
+                    ).format('0,0.00')}{' '}
+                    {pool.rewardTokens[0].symbol}
+                  </p>
+                  <span>
+                    ~
+                    {numeral(
+                      ethers.utils.formatEther(
+                        pool.rewardTokens[0].pendingRewardsUSD,
+                      ),
+                    ).format('$0,0.00')}
+                  </span>
                 </div>
                 <div className="action-content">
-                  <span>
+                  {pool.rewardTokens[1] ? (
+                    <>
+                      <span className="text-pink">
+                        RECENT {pool.rewardTokens[1].symbol} EARNED
+                      </span>
+                      <p>
+                        {' '}
+                        {numeral(
+                          ethers.utils.formatEther(
+                            pool.rewardTokens[1].pendingRewards,
+                          ),
+                        ).format('0,0.00')}{' '}
+                        {pool.rewardTokens[1].symbol}
+                      </p>
+                      <span>
+                        ~
+                        {numeral(
+                          ethers.utils.formatEther(
+                            pool.rewardTokens[1].pendingRewardsUSD,
+                          ),
+                        ).format('$0,0.00')}
+                      </span>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                  {/* <span>
                     0.1%{' '}
                     <div className="text-decoration-underline">
                       unstaking fee
@@ -208,7 +256,7 @@ export const HubCard = ({
                       Performance Fee
                     </div>{' '}
                     5%
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>
@@ -228,17 +276,46 @@ export const HubCard = ({
           <div className="d-block d-sm-none mobile-apy-content">
             <div className="apy-content">
               <span>Total Staked</span>
-              <p>100,000 bscGAS</p>
+              <p>
+                {numeral(
+                  ethers.utils.formatEther(pool.stakeToken.totalStaked),
+                ).format('0,0.00')}{' '}
+                {pool.stakeToken.symbol}
+              </p>
             </div>
             <div className="apy-content">
               <span>
-                Ends in <img src={StopwatchIcon} alt="" className="ms-1" />
+                {pool.endBlock > currentBlock
+                  ? currentBlock < pool.startBlock
+                    ? 'Starts in'
+                    : 'Ends in'
+                  : ''}{' '}
+                <img src={StopwatchIcon} alt="" className="ms-1" />
               </span>
-              <p>2,645,689 blocks</p>
+              <p>
+                {pool.endBlock > currentBlock
+                  ? numeral(
+                      currentBlock < pool.startBlock
+                        ? pool.startBlock - currentBlock
+                        : pool.endBlock - currentBlock,
+                    ).format('0,0') + ' blocks'
+                  : 'FINISHED'}
+              </p>
             </div>
             <div className="apy-content">
-              <span>Burn/Deposit Fee</span>
-              <p>1%</p>
+              <span>
+                {pool.depositBurnFee > 0 && pool.depositFee > 0
+                  ? 'Burn/Deposit'
+                  : pool.depositBurnFee > 0
+                  ? 'Burn'
+                  : 'Deposit'}{' '}
+                Fee
+              </span>
+              <p>
+                {numeral(
+                  (pool.depositBurnFee + pool.depositFee) / 10000.0,
+                ).format('0.00%')}
+              </p>
             </div>
           </div>
         </div>

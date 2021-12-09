@@ -54,15 +54,16 @@ export const GridHubCard = ({
   const currentBlock = useBlockNumber(chainId) ?? 0;
 
   const [showShow, setShowShow] = useState(false);
-  const [isHarvest, setIsHarvest] = useState(false);
 
-  const toggleHarvest = () => {
-    setIsHarvest(!isHarvest);
+  const harvest = () => {
+    console.log('harvest');
   };
 
   const toggleShow = () => {
     setShowShow(!showShow);
   };
+
+  const hasHarvest = pool.rewardTokens[0].pendingRewards.gt(0);
 
   return (
     <>
@@ -104,24 +105,54 @@ export const GridHubCard = ({
                     <div className="reward-item">
                       <img src={Usdc} alt="" />
                       <p>
-                        0.00
-                        <br /> <span>$0.00 USD</span>
+                        {numeral(
+                          ethers.utils.formatEther(
+                            pool.rewardTokens[0].pendingRewards,
+                          ),
+                        ).format('0,0.00')}{' '}
+                        {pool.rewardTokens[0].symbol}
+                        <br />
+                        <span>
+                          ~
+                          {numeral(
+                            ethers.utils.formatEther(
+                              pool.rewardTokens[0].pendingRewardsUSD,
+                            ),
+                          ).format('$0,0.00')}
+                        </span>
                       </p>
                     </div>
-                    <div className="reward-item">
-                      <img src={Usdc} alt="" />
-                      <p>
-                        0.00
-                        <br /> <span>$0.00 USD</span>
-                      </p>
-                    </div>
+                    {pool.rewardTokens[1] ? (
+                      <div className="reward-item">
+                        <img src={Usdc} alt="" />
+                        <p>
+                          {numeral(
+                            ethers.utils.formatEther(
+                              pool.rewardTokens[1].pendingRewards,
+                            ),
+                          ).format('0,0.00')}{' '}
+                          {pool.rewardTokens[1].symbol}
+                          <br />{' '}
+                          <span>
+                            ~
+                            {numeral(
+                              ethers.utils.formatEther(
+                                pool.rewardTokens[0].pendingRewardsUSD,
+                              ),
+                            ).format('$0,0.00')}
+                          </span>
+                        </p>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                   </div>
-                  {isHarvest ? (
-                    <button className="join-btn" onClick={toggleHarvest}>
+                  {hasHarvest ? (
+                    <button className="join-btn" onClick={harvest}>
                       Harvest
                     </button>
                   ) : (
-                    <div className="harvest-btn" onClick={toggleHarvest}>
+                    <div className="harvest-btn" onClick={harvest}>
                       Harvest
                     </div>
                   )}
@@ -133,7 +164,7 @@ export const GridHubCard = ({
                   Stake
                 </button>
               </div>
-              {isHarvest && (
+              {hasHarvest && (
                 <div className="reward-stake-block">
                   <h5>STAKED</h5>
                   <div className="reward-stake-item">
