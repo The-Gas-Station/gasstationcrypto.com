@@ -10,36 +10,13 @@ import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
 import { ChainId, BLOCKS_PER_YEAR } from '../library/constants/chains';
 
+import { PoolChainData } from './Pools';
+
 export function usePool(
   chainId: ChainId | undefined,
   poolAddress: string | Falsy,
   address: string | Falsy,
-): {
-  rewardTokens: {
-    address: string;
-    symbol: string;
-    rewardsPerBlock: BigNumber;
-    pendingRewards: BigNumber;
-    pendingRewardsUSD: BigNumber;
-  }[];
-  stakeToken: {
-    address: string;
-    symbol: string;
-    staked: BigNumber;
-    stakedUSD: BigNumber;
-    balance: BigNumber;
-    balanceUSD: BigNumber;
-    approved: BigNumber;
-    totalStaked: BigNumber;
-    totalStakedUSD: BigNumber;
-  };
-  apr: number;
-  depositFee: number;
-  depositBurnFee: number;
-  withdrawFee: number;
-  startBlock: number;
-  endBlock: number;
-} {
+): PoolChainData {
   const [
     _rewardToken,
     _rewardsPerBlock,
@@ -183,7 +160,13 @@ export function usePool(
     useTokenAllowance(chainId, stakeTokenAddress, address, poolAddress) ??
     BigNumber.from(0);
 
+  const staked =
+    stakedAmount && stakedDecimals
+      ? stakedAmount.mul(BigNumber.from(10).pow(18 - stakedDecimals))
+      : BigNumber.from(0);
+
   return {
+    interface: PoolSingleV2Interface,
     rewardTokens: rewardTokenAddresses.map((address: string, i) => ({
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
@@ -200,8 +183,8 @@ export function usePool(
     stakeToken: {
       address: stakeTokenAddress,
       symbol: useTokenSymbol(chainId, stakeTokenAddress) ?? '',
-      staked: stakedAmount ?? BigNumber.from(0),
-      stakedUSD: useTokenPrice(chainId, stakeTokenAddress, stakedAmount),
+      staked: staked,
+      stakedUSD: useTokenPrice(chainId, stakeTokenAddress, staked),
       balance,
       balanceUSD: useTokenPrice(chainId, stakeTokenAddress, balance),
       approved,

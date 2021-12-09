@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { BigNumber } from '@ethersproject/bignumber';
 import { ethers } from 'ethers';
 
 import { MDBCollapse } from 'mdb-react-ui-kit';
 
-import { PoolType } from '../configs';
 import numeral from 'numeral';
 
 import { useBlockNumber } from '../library/providers/BlockNumberProvider';
@@ -12,6 +10,8 @@ import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import GasIcon from '../assets/gas.svg';
 import QuestionIcon from '../assets/icons-question.svg';
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
+
+import { PoolResult } from '../hooks/Pools';
 // import Metamask from '../assets/wallets/metamask.png';
 
 export const HubCard = ({
@@ -19,36 +19,20 @@ export const HubCard = ({
   pool,
 }: {
   chainId: number;
-  pool: {
-    name: string;
-    type: PoolType;
-    rewardTokens: {
-      address: string;
-      symbol: string;
-      rewardsPerBlock: BigNumber;
-      pendingRewards: BigNumber;
-      pendingRewardsUSD: BigNumber;
-    }[];
-    stakeToken: {
-      address: string;
-      symbol: string;
-      staked: BigNumber;
-      stakedUSD: BigNumber;
-      balance: BigNumber;
-      balanceUSD: BigNumber;
-      approved: BigNumber;
-      totalStaked: BigNumber;
-      totalStakedUSD: BigNumber;
-    };
-    apr: number;
-    depositFee: number;
-    depositBurnFee: number;
-    withdrawFee: number;
-    startBlock: number;
-    endBlock: number;
-  };
+  pool: PoolResult;
 }) => {
   const currentBlock = useBlockNumber(chainId) ?? 0;
+
+  //   const [harvesting, setHarvesting] = useState(false);
+  //   const _harvest = pool.useHarvestAction(pool);
+
+  //   const harvest = () => {
+  //     setHarvesting(true);
+  //     _harvest().finally(() => setHarvesting(false));
+  //   };
+
+  //   const hasHarvest = pool.rewardTokens[0].pendingRewards.gt(0);
+  //   const isStaked = pool.stakeToken.staked.gt(0);
 
   const [showShow, setShowShow] = useState(false);
 
