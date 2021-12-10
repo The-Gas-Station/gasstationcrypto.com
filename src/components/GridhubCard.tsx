@@ -189,7 +189,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                             ~
                             {numeral(
                               ethers.utils.formatEther(
-                                pool.rewardTokens[0].pendingRewardsUSD,
+                                pool.rewardTokens[1].pendingRewardsUSD,
                               ),
                             ).format('$0,0.00')}
                           </span>
@@ -231,7 +231,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
 
               {!isStaked ? (
                 <>
-                  {account && chainId == connectedChainId && (
+                  {!isFinished && account && chainId == connectedChainId && (
                     <div className="action-item">
                       <button
                         className="join-btn"
