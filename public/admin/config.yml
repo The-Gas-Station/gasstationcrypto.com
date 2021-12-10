@@ -124,7 +124,7 @@ collections:
               },
               {
                 label: 'Reward Token Images',
-                name: 'rewardIcon',
+                name: 'rewardIcons',
                 widget: 'image',
                 allow_multiple: true,
                 media_folder: /public/images/tokens,
