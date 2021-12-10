@@ -27,6 +27,7 @@ export function usePoolDualV1(
     _depositBurnFee,
     _startBlock,
     _endBlock,
+    _totalStakedAmount,
     _userInfo,
     _pendingRewards,
   ] =
@@ -85,6 +86,12 @@ export function usePoolDualV1(
         method: 'endBlock',
         args: [],
       },
+      poolAddress && {
+        abi: PoolDualV1Interface,
+        address: poolAddress,
+        method: 'totalStaked',
+        args: [],
+      },
       poolAddress &&
         address && {
           abi: PoolDualV1Interface,
@@ -109,6 +116,7 @@ export function usePoolDualV1(
     depositBurnFee,
     startBlock,
     endBlock,
+    totalStakedAmount,
     stakedAmount,
     pendingRewards,
   ] = [
@@ -125,6 +133,7 @@ export function usePoolDualV1(
     _depositBurnFee ? parseInt(_depositBurnFee[0]) : 0,
     _startBlock ? _startBlock[0] : undefined,
     _endBlock ? _endBlock[0] : undefined,
+    _totalStakedAmount ? _totalStakedAmount[0] : undefined,
     _userInfo ? _userInfo[0] : undefined,
     [
       _pendingRewards && _pendingRewards[0] ? _pendingRewards[0] : undefined,
@@ -163,9 +172,7 @@ export function usePoolDualV1(
 
   const stakedDecimals = useTokenDecimals(chainId, stakeTokenAddress) ?? 18;
 
-  let totalStaked =
-    useTokenBalance(chainId, stakeTokenAddress, poolAddress) ??
-    BigNumber.from(0);
+  let totalStaked = totalStakedAmount ?? BigNumber.from(0);
 
   if (totalStaked && stakedDecimals) {
     totalStaked = totalStaked.mul(BigNumber.from(10).pow(18 - stakedDecimals));
