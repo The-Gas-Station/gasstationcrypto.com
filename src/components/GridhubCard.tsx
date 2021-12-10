@@ -22,16 +22,12 @@ import {
 } from '../library/constants/chains';
 
 type toggleProps = {
-  toggleStakeModal: any;
+  showStakeModal: any;
   chainId: ChainId;
   pool: PoolResult;
 };
 
-export const GridHubCard = ({
-  toggleStakeModal,
-  chainId,
-  pool,
-}: toggleProps) => {
+export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
   const {
     activateBrowserWallet,
     account,
@@ -138,7 +134,7 @@ export const GridHubCard = ({
           </div>
           <div className="card-body-content">
             <div className="title">
-              <span>APY</span>
+              <span>APR</span>
               <span>
                 {numeral(isFinished ? '0' : pool.apr).format('0.00%')}
               </span>
@@ -231,7 +227,11 @@ export const GridHubCard = ({
                     <div className="action-item">
                       <button
                         className="join-btn"
-                        onClick={isApproved ? toggleStakeModal : approve}
+                        onClick={
+                          isApproved
+                            ? () => showStakeModal(pool, true)
+                            : approve
+                        }
                       >
                         {isApproved
                           ? 'Stake'
@@ -264,7 +264,11 @@ export const GridHubCard = ({
                     </div>
                     <div className="reward-plus-minus">
                       <button
-                        onClick={isFinished ? withdrawAll : toggleStakeModal}
+                        onClick={
+                          isFinished
+                            ? withdrawAll
+                            : () => showStakeModal(pool, false)
+                        }
                         disabled={!account || chainId != connectedChainId}
                       >
                         <svg
@@ -281,7 +285,7 @@ export const GridHubCard = ({
                         </svg>
                       </button>
                       <button
-                        onClick={toggleStakeModal}
+                        onClick={() => showStakeModal(pool, true)}
                         disabled={
                           !account || chainId != connectedChainId || isFinished
                         }

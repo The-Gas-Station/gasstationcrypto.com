@@ -25,6 +25,7 @@ import GridHubCard from '../components/GridhubCard';
 import StackModal from '../components/stakeModal';
 import GasIcon from '../assets/gas.svg';
 import DollarIcon from '../assets/dollar.svg';
+import { PoolResult } from '../hooks/Pools';
 
 export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
@@ -42,7 +43,6 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const pools = usePools(chainId);
 
   const [isFilterShow, setIsFilterShow] = useState(false);
-  const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
   // const [isCardGride, setIsCardGride] = useState(false);
   const isCardGride = true;
   const [showOnlyStaked, setShowOnlyStaked] = useState(false);
@@ -51,8 +51,13 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
     setIsFilterShow(!isFilterShow);
   };
 
-  const toggleStakeModal = () => {
-    setIsStakeModalOpen(!isStakeModalOpen);
+  const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
+  const [modalPool, setModalPool] = useState<PoolResult>();
+  const [modalStaking, setModalStaking] = useState(false);
+  const showStakeModal = (pool: PoolResult, staking: boolean) => {
+    setModalPool(pool);
+    setModalStaking(staking);
+    setIsStakeModalOpen(true);
   };
 
   const switchNetwork = (e: any) => {
@@ -373,7 +378,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                 <GridHubCard
                   key={`grid-${pool.address}`}
                   chainId={chainId}
-                  toggleStakeModal={toggleStakeModal}
+                  showStakeModal={showStakeModal}
                   pool={pool}
                 />
               ))}
@@ -396,8 +401,13 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
         )}
       </div>
       <StackModal
+        key={modalPool?.address}
         isStakeModalOpen={isStakeModalOpen}
-        toggleStakeModal={toggleStakeModal}
+        closeStakeModal={() => setIsStakeModalOpen(false)}
+        setIsOpen={setIsStakeModalOpen}
+        chainId={chainId}
+        pool={modalPool}
+        staking={modalStaking}
       />
     </>
   );
