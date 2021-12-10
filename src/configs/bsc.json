@@ -3,7 +3,7 @@
   "tokenImage": "/public/images/tokens/bnb.png",
   "launched": true,
   "etherCoingeckoId": "wbnb",
-  "etherLiquidityPair": "evm:0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16",
+  "etherLiquidityPair": "evm:0xd00302278693E5084e2B06A996d1D14aE3467fE6",
   "gasTokenName": "bscGAS",
   "gasTokenAddress": "evm:0x6fabfe7946b23da23ad51dc45167cc2cfd0ce70e",
   "liquidityPairs": [
