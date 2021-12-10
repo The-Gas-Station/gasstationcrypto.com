@@ -36,9 +36,9 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const { readOnlyChainIds } = useConfig();
   const { setCurrentChainId } = useWeb3ConnectionsContext();
 
-  const marketCap = useGASTokenMarketCap();
+  const marketCap = useGASTokenMarketCap(chainId);
   const { gasTokenBalance, accountRewards, totalRewards, gasTokenBalanceUSD } =
-    useGASTokenRewardsInfo();
+    useGASTokenRewardsInfo(chainId);
 
   const pools = usePools(chainId);
 
