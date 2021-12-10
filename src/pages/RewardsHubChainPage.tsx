@@ -16,6 +16,7 @@ import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import { CHAIN_NAMES, CHAIN_ETHER, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 
+import useTVL from '../hooks/useTVL';
 import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
 import useGASTokenRewardsInfo from '../hooks/useGASTokenRewardsInfo';
 import usePools from '../hooks/usePools';
@@ -36,6 +37,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const { readOnlyChainIds } = useConfig();
   const { setCurrentChainId } = useWeb3ConnectionsContext();
 
+  const tvl = useTVL(chainId);
   const marketCap = useGASTokenMarketCap(chainId);
   const { gasTokenBalance, accountRewards, totalRewards, gasTokenBalanceUSD } =
     useGASTokenRewardsInfo(chainId);
@@ -126,7 +128,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
             <div className="amount-details">
               <div className="amount-tvl">
                 <small>TVL</small>
-                <p>$11,234,567</p>
+                <p>{numeral(ethers.utils.formatEther(tvl)).format('$0,0')}</p>
               </div>
               <div className="amount-market-cap">
                 <small>USD MARKET CAP</small>
@@ -181,7 +183,10 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                   </p>
                 </div>
                 <div className="rewards-icon">
-                  <img src={DollarIcon} alt="" />
+                  <img
+                    src={chainData.tokenImage.replace('/public/', '/')}
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
@@ -197,7 +202,10 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                   </p>
                 </div>
                 <div className="rewards-icon">
-                  <img src={DollarIcon} alt="" />
+                  <img
+                    src={chainData.tokenImage.replace('/public/', '/')}
+                    alt=""
+                  />
                 </div>
               </div>
             </div>

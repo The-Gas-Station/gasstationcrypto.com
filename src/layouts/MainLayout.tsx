@@ -239,7 +239,11 @@ export const MainLayout = () => {
                   <span className="text-fantom">
                     {account ? shortenString(account) : 'Connect Wallet'}
                   </span>
-                  <select className="custom-select" onChange={switchNetwork}>
+                  <select
+                    className="custom-select"
+                    onChange={switchNetwork}
+                    value={currentChainId}
+                  >
                     {(readOnlyChainIds || []).map((_chainId) => {
                       return (
                         _chainId == currentChainId &&
@@ -247,7 +251,6 @@ export const MainLayout = () => {
                           <option
                             key={`switch-chain-${_chainId}`}
                             value={_chainId}
-                            selected={true}
                           >
                             {CHAIN_NAMES[_chainId]}
                           </option>
@@ -465,6 +468,7 @@ export const MainLayout = () => {
                       <select
                         className="custom-select"
                         onChange={switchNetwork}
+                        value={currentChainId}
                       >
                         {(readOnlyChainIds || []).map((_chainId) => {
                           return (
@@ -473,7 +477,6 @@ export const MainLayout = () => {
                               <option
                                 key={`switch-chain-${_chainId}`}
                                 value={_chainId}
-                                selected={true}
                               >
                                 {CHAIN_NAMES[_chainId]}
                               </option>

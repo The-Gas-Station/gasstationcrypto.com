@@ -5,6 +5,7 @@ import numeral from 'numeral';
 import { useConfig } from '../library/providers/ConfigProvider';
 
 import useWidth from '../hooks/useWidth';
+import useCombinedTVL from '../hooks/useCombinedTVL';
 import useGASTokenCombinedMarketCap from '../hooks/useGASTokenCombinedMarketCap';
 
 import BannerSection from './home/BannerSection';
@@ -33,6 +34,7 @@ export const HomePage = () => {
   const { readOnlyChainIds } = useConfig();
   const { isTablet, isMobile } = useWidth();
 
+  const combinedTVL = useCombinedTVL();
   const combinedMarketCap = useGASTokenCombinedMarketCap();
 
   const [sectionList] = useState([
@@ -95,7 +97,11 @@ export const HomePage = () => {
               <div className="amount-details">
                 <div className="amount-tvl">
                   <small>TVL</small>
-                  <p>$11,234,567</p>
+                  <p>
+                    {numeral(ethers.utils.formatEther(combinedTVL)).format(
+                      '$0,0',
+                    )}
+                  </p>
                 </div>
                 <div className="amount-market-cap">
                   <small>USD MARKET CAP</small>

@@ -6,6 +6,7 @@ import {
 import { ethers } from 'ethers';
 import numeral from 'numeral';
 
+import useTVL from '../hooks/useTVL';
 import useGASTokenTotalLiquidity from '../hooks/useGASTokenTotalLiquidity';
 import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
 import useGASToken30DayVolume from '../hooks/useGASToken30DayVolume';
@@ -17,7 +18,7 @@ import { CHAIN_INFO } from '../configs';
 export const NetworkCard = ({ chainId }: { chainId: number }) => {
   const chainData = CHAIN_INFO[chainId];
 
-  const tvl = '50000';
+  const tvl = useTVL(chainId);
   const liquidity = useGASTokenTotalLiquidity(chainId);
   const marketCap = useGASTokenMarketCap(chainId);
   const volume30Day = useGASToken30DayVolume(chainId);
@@ -42,7 +43,7 @@ export const NetworkCard = ({ chainId }: { chainId: number }) => {
                   {tvl && (
                     <p className="card-text">
                       <small>TVL</small>
-                      {numeral(tvl).format('$0,0')}
+                      {numeral(ethers.utils.formatEther(tvl)).format('$0,0')}
                     </p>
                   )}
 
