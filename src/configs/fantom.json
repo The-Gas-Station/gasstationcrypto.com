@@ -49,7 +49,7 @@
       "name": "ftmGAS Maximizer",
       "address": "evm:0x2AF2D8520F2265Ae5711A7A7221f1ac87eEf7655",
       "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/ftm.png",
+      "stakeIcon": "/public/images/tokens/gas.svg",
       "rewardIcons": ["/public/images/tokens/gas.svg"]
     }
   ],
