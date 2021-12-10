@@ -25,7 +25,7 @@ collections:
               value_field: 'name',
               multiple: true,
             }
-      - name: 'upcomming_events'
+      - name: 'upcoming_events'
         label: 'Upcoming Events'
         file: 'src/upcoming_events.json'
         fields:
