@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import { BigNumber } from '@ethersproject/bignumber';
+
 import { useConfig } from '../library/providers/ConfigProvider';
 import useGASTokenMarketCap from './useGASTokenMarketCap';
 
@@ -15,10 +17,12 @@ export function useGASTokenCombinedMarketCap(): BigNumber {
     }
   }
 
-  return marketCaps.reduce(
-    (prev, marketCap) => prev.add(marketCap),
-    BigNumber.from(0),
-  );
+  return useMemo(() => {
+    return marketCaps.reduce(
+      (prev, marketCap) => prev.add(marketCap),
+      BigNumber.from(0),
+    );
+  }, [...marketCaps]);
 }
 
 export default useGASTokenCombinedMarketCap;

@@ -5,6 +5,7 @@ export const DEFAULT_CONFIG: FullConfig = {
   defaultChainId: ChainId.Mainnet,
   readOnlyChainIds: [],
   rpcUrls: RPC_URLS,
+  autoSwitch: true,
   pollingInterval: 15000,
   supportedChainIds: [
     ChainId.Mainnet,

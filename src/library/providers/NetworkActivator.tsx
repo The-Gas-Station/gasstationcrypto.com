@@ -8,7 +8,7 @@ import { CHAIN_NAMES } from '../constants/chains';
 
 export function NetworkActivator() {
   const { account, activate, active, chainId, connector, error } = useEthers();
-  const { readOnlyChainIds, defaultChainId } = useConfig();
+  const { readOnlyChainIds, defaultChainId, autoSwitch } = useConfig();
   const {
     currentChainId,
     chainRpcUrls,
@@ -19,9 +19,11 @@ export function NetworkActivator() {
 
   useEffect(() => {
     setCurrentAccount(account ?? '');
-    setCurrentChainId(
-      chainId && chainRpcUrls[chainId] ? chainId : defaultChainId,
-    );
+    if (autoSwitch) {
+      setCurrentChainId(
+        chainId && chainRpcUrls[chainId] ? chainId : defaultChainId,
+      );
+    }
   }, [account, chainId, defaultChainId]);
 
   // handle logic to recognize the connector currently being activated

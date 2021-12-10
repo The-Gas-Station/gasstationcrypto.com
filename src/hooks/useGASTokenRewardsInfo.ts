@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { BigNumber } from '@ethersproject/bignumber';
 
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
@@ -13,23 +14,20 @@ import useTokenDecimals from '../library/hooks/useTokenDecimals';
 
 import BUFFER from '../library/constants/percisionBuffer';
 
-export function useGASTokenRewardsInfo(chainId?: ChainId): {
+export function useGASTokenRewardsInfo(chainId: ChainId): {
   gasTokenBalance: BigNumber;
   accountRewards: BigNumber;
   totalRewards: BigNumber;
   gasTokenBalanceUSD: BigNumber;
 } {
-  const { currentChainId, currentAccount } = useWeb3ConnectionsContext();
-  const chainData = CHAIN_INFO[chainId ?? currentChainId];
+  const { currentAccount } = useWeb3ConnectionsContext();
+  const chainData = CHAIN_INFO[chainId];
 
   const gasTokenAddress = chainData.gasTokenAddress?.substring(4);
 
   const gasTokenBalance =
-    useTokenBalance(
-      chainId ?? currentChainId,
-      gasTokenAddress,
-      currentAccount,
-    ) ?? BigNumber.from(0);
+    useTokenBalance(chainId, gasTokenAddress, currentAccount) ??
+    BigNumber.from(0);
 
   const [_totalRewards, _accountRewards] =
     useContractCalls(chainId, [
@@ -54,15 +52,15 @@ export function useGASTokenRewardsInfo(chainId?: ChainId): {
   ];
 
   const { ratio: etherRatio, token1 } = useLiquidityPairRatio(
-    chainId ?? currentChainId,
+    chainId,
     chainData.etherLiquidityPair?.substring(4),
-    WRAPPED_ETHER_ADDRESSES[chainId ?? currentChainId],
+    WRAPPED_ETHER_ADDRESSES[chainId],
   );
 
-  const decimals = useTokenDecimals(chainId ?? currentChainId, token1);
+  const decimals = useTokenDecimals(chainId, token1);
 
   const { ratio } = useLiquidityPairRatio(
-    chainId ?? currentChainId,
+    chainId,
     chainData.liquidityPairs && chainData.liquidityPairs.length > 0
       ? chainData.liquidityPairs[0].address.substring(4)
       : undefined,
@@ -73,14 +71,15 @@ export function useGASTokenRewardsInfo(chainId?: ChainId): {
     gasTokenBalance,
     accountRewards,
     totalRewards,
-    gasTokenBalanceUSD:
-      gasTokenBalance && etherRatio && decimals && ratio
+    gasTokenBalanceUSD: useMemo(() => {
+      return gasTokenBalance && etherRatio && decimals && ratio
         ? gasTokenBalance
             .mul(ratio)
             .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
             .div(BUFFER)
             .div(BUFFER)
-        : BigNumber.from('0'),
+        : BigNumber.from('0');
+    }, [gasTokenBalance, etherRatio, decimals, ratio]),
   };
 }
 

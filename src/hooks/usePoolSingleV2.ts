@@ -13,7 +13,7 @@ import { ChainId, BLOCKS_PER_YEAR } from '../library/constants/chains';
 import { PoolChainData } from './Pools';
 
 export function usePool(
-  chainId: ChainId | undefined,
+  chainId: ChainId,
   poolAddress: string | Falsy,
   address: string | Falsy,
 ): PoolChainData {

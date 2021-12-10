@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   MDBTable,
@@ -66,13 +66,15 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
     navigate(`/${CHAIN_NAMES[newChainId]}/hub`);
   };
 
-  const filteredPools = pools.filter((pool) => {
-    let show = true;
-    show = show && showFinished == pool.endBlock < currentBlock;
-    show = show && (!showOnlyStaked || pool.stakeToken.staked.gt(0));
+  const filteredPools = useMemo(() => {
+    return pools.filter((pool) => {
+      let show = true;
+      show = show && showFinished == pool.endBlock < currentBlock;
+      show = show && (!showOnlyStaked || pool.stakeToken.staked.gt(0));
 
-    return show;
-  });
+      return show;
+    });
+  }, [showFinished, showOnlyStaked, currentBlock, ...pools]);
 
   return (
     <>

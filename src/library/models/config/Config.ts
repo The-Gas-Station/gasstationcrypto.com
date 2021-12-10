@@ -14,6 +14,7 @@ export type FullConfig = {
   rpcUrls?: NodeUrls;
   multicallAddresses?: MulticallAddresses;
   supportedChainIds: ChainId[];
+  autoSwitch: boolean;
   pollingInterval?: number;
   notifications: {
     checkInterval: number;

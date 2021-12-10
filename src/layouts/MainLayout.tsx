@@ -60,7 +60,7 @@ export const MainLayout = () => {
   const { currentChainId, setCurrentChainId } = useWeb3ConnectionsContext();
   const { activateBrowserWallet, account } = useEthers();
 
-  const gasTokenPrice = useGASTokenPrice();
+  const gasTokenPrice = useGASTokenPrice(currentChainId);
 
   const switchNetwork = (e: any) => {
     const newChainId: ChainId = parseInt(e.target.value);
@@ -236,9 +236,37 @@ export const MainLayout = () => {
             <div className="meta-mask-block d-flex d-lg-none">
               <div className="custom-select-box flex-row py-0">
                 <div className="text-right">
-                  <span className="text-fantom">XT576...</span>
-                  <select className="custom-select">
-                    <option value="">BSC Mainnet</option>
+                  <span className="text-fantom">
+                    {account ? shortenString(account) : 'Connect Wallet'}
+                  </span>
+                  <select className="custom-select" onChange={switchNetwork}>
+                    {(readOnlyChainIds || []).map((_chainId) => {
+                      return (
+                        _chainId == currentChainId &&
+                        CHAIN_INFO[_chainId].launched && (
+                          <option
+                            key={`switch-chain-${_chainId}`}
+                            value={_chainId}
+                            selected={true}
+                          >
+                            {CHAIN_NAMES[_chainId]}
+                          </option>
+                        )
+                      );
+                    })}
+                    {(readOnlyChainIds || []).map((_chainId) => {
+                      return (
+                        _chainId != currentChainId &&
+                        CHAIN_INFO[_chainId].launched && (
+                          <option
+                            key={`switch-chain-${_chainId}`}
+                            value={_chainId}
+                          >
+                            {CHAIN_NAMES[_chainId]}
+                          </option>
+                        )
+                      );
+                    })}
                   </select>
                 </div>
                 <div className="metamask-img">
@@ -445,6 +473,7 @@ export const MainLayout = () => {
                               <option
                                 key={`switch-chain-${_chainId}`}
                                 value={_chainId}
+                                selected={true}
                               >
                                 {CHAIN_NAMES[_chainId]}
                               </option>

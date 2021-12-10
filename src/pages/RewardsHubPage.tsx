@@ -20,11 +20,10 @@ export const RewardsHubPage = () => {
 
   if (!chainId) {
     navigate(`/${CHAIN_NAMES[currentChainId]}/hub`);
+    return <></>;
   }
 
-  return (
-    <RewardsHubChainPage key={chainId} chainId={chainId ?? currentChainId} />
-  );
+  return <RewardsHubChainPage key={chainId} chainId={chainId} />;
 };
 
 export default RewardsHubPage;

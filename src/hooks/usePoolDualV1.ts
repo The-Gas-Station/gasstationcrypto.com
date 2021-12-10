@@ -1,19 +1,20 @@
 import { BigNumber } from '@ethersproject/bignumber';
-
-import { PoolDualV1Interface } from '../constants';
-import { Falsy } from '../library/models/types';
 import { useContractCalls } from '../library/hooks/useContractCall';
 import useTokenAllowance from '../library/hooks/useTokenAllowance';
 import useTokenBalance from '../library/hooks/useTokenBalance';
 import useTokenSymbol from '../library/hooks/useTokenSymbol';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
+
 import { ChainId, BLOCKS_PER_YEAR } from '../library/constants/chains';
+import { Falsy } from '../library/models/types';
+
+import { PoolDualV1Interface } from '../constants';
 
 import { PoolChainData } from './Pools';
 
 export function usePoolDualV1(
-  chainId: ChainId | undefined,
+  chainId: ChainId,
   poolAddress: string | Falsy,
   address: string | Falsy,
 ): PoolChainData {
