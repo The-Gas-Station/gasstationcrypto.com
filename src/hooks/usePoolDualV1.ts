@@ -177,11 +177,20 @@ export function usePoolDualV1(
     totalStakedUSD = BigNumber.from(10).pow(18);
   }
 
-  const balance =
+  let balance =
     useTokenBalance(chainId, stakeTokenAddress, address) ?? BigNumber.from(0);
-  const approved =
+
+  if (balance && stakedDecimals) {
+    balance = balance.mul(BigNumber.from(10).pow(18 - stakedDecimals));
+  }
+
+  let approved =
     useTokenAllowance(chainId, stakeTokenAddress, address, poolAddress) ??
     BigNumber.from(0);
+
+  if (approved && stakedDecimals) {
+    approved = balance.mul(BigNumber.from(10).pow(18 - stakedDecimals));
+  }
 
   const staked =
     stakedAmount && stakedDecimals
