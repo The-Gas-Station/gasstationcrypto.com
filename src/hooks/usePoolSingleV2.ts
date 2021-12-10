@@ -173,7 +173,7 @@ export function usePool(
     BigNumber.from(0);
 
   if (approved && stakedDecimals) {
-    approved = balance.mul(BigNumber.from(10).pow(18 - stakedDecimals));
+    approved = approved.mul(BigNumber.from(10).pow(18 - stakedDecimals));
   }
 
   const staked =

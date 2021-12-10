@@ -229,7 +229,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                 <></>
               )}
 
-              {!isStaked ? (
+              {(!isStaked || !isApproved) && (
                 <>
                   {!isFinished && account && chainId == connectedChainId && (
                     <div className="action-item">
@@ -250,7 +250,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                     </div>
                   )}
                 </>
-              ) : (
+              )}
+
+              {isStaked && (
                 <div className="reward-stake-block">
                   <h5>STAKED</h5>
                   <div className="reward-stake-item">
