@@ -21,47 +21,68 @@
     {
       "name": "GAS Fuel Tank (bscGAS -> USDC)",
       "address": "evm:0xD9D8209dC88CB96D0a300C2ab2479608A8D1463d",
-      "type": "SingleV1"
+      "type": "SingleV1",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "GAS Fuel Tank (USDC -> bscGAS)",
       "address": "evm:0x0124378207aF3E62D842f66B5af02dF5e4F9719C",
-      "type": "SingleV1"
+      "type": "SingleV1",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "GAS Fuel Tank (USDC -> bscGAS)",
       "address": "evm:0x8a96E5E22e2b057b9c7e7474B95D02bd9B2D0628",
-      "type": "SingleV1"
+      "type": "SingleV1",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Dual Fuel (APE-LP)",
       "address": "evm:0xB1B058236C20A808Bd2277DB4C0D092468e6b626",
-      "type": "DoubleV1"
+      "type": "DoubleV1",
+      "stakeIcon": "/public/images/tokens/ape-lp.svg",
+      "rewardIcons": [
+        "/public/images/tokens/usdc.png",
+        "/public/images/tokens/gas.svg"
+      ]
     },
     {
       "name": "GAS MAXIMIZER",
       "address": "evm:0xE9916A99787b9f8a86116d86f900e18aF0a2aA51",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Fuel Up",
       "address": "evm:0xE35408BCD80Ab6A2954fD2858Ef4B96F2Da83F75",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Stable Up",
       "address": "evm:0x09c85d6F3b9Aa02314A839E69d6725A050678AbE",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "ftmGAS Liquidity Mining",
       "address": "evm:0x50fb6f7e75476b3493cab540201fbafb70c915fc",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "ftmGAS Liquidity Mining",
       "address": "evm:0x7213d547415284b95b0d7b01f11f351546678916",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     }
   ],
   "name": "bsc",

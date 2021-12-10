@@ -15,7 +15,16 @@ export type ChainInfo = {
   etherLiquidityPair?: string;
   gasTokenName: string;
   gasTokenAddress?: string;
-  liquidityPairs?: { name: string; address: string }[];
+  liquidityPairs?: {
+    name: string;
+    address: string;
+  }[];
   tokens?: { name: string; address: string }[];
-  pools?: { name: string; address: string; type: PoolType }[];
+  pools?: {
+    name: string;
+    address: string;
+    type: PoolType;
+    stakeIcon: string;
+    rewardIcons: string[];
+  }[];
 };

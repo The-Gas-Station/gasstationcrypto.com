@@ -17,22 +17,33 @@
     {
       "name": "Dual Fuel (SPOOKY-LP)",
       "address": "evm:0xFb6db9c955a2F1062b5584AbCEE8Cf4c975896F6",
-      "type": "DoubleV1"
+      "type": "DoubleV1",
+      "stakeIcon": "/public/images/tokens/spookyswap.png",
+      "rewardIcons": [
+        "/public/images/tokens/gas.svg",
+        "/public/images/tokens/ftm.png"
+      ]
     },
     {
       "name": "Fuel Up",
       "address": "evm:0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Stable Up",
       "address": "evm:0xe16D22501049Ebdd9bE44DDE377ffe2E945dF017",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "ftmGAS Liquidity Mining",
       "address": "evm:0xcC9808bC4Dc0115fBC8C3B9C99f900aD470e2d0D",
-      "type": "SingleV2"
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/ftm.png",
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     }
   ],
   "display": "Fantom Opera Network",

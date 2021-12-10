@@ -115,5 +115,19 @@ collections:
                 widget: 'select',
                 options: ['SingleV1', 'SingleV2', 'DoubleV1'],
               },
+              {
+                label: 'Stake Token Image',
+                name: 'stakeIcon',
+                widget: 'image',
+                allow_multiple: false,
+                media_folder: /public/images/tokens,
+              },
+              {
+                label: 'Reward Token Images',
+                name: 'rewardIcon',
+                widget: 'image',
+                allow_multiple: true,
+                media_folder: /public/images/tokens,
+              },
             ],
         }

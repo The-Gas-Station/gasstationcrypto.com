@@ -13,7 +13,6 @@ import numeral from 'numeral';
 
 import useTokenPrice from '../hooks/useTokenPrice';
 
-import UsdcIcon from '../assets/usdc-rewards.svg';
 import DoubleArrow from '../assets/double-arrow.svg';
 import { Range, getTrackBackground } from 'react-range';
 import { useDarkMode } from '../library/hooks/useDarkMode';
@@ -110,7 +109,11 @@ export const StackModal = ({
             <MDBModalBody>
               <div className="title">
                 <h5>
-                  <img src={UsdcIcon} alt="" />
+                  <img
+                    src={pool?.stakeIcon.replace('/public/', '/')}
+                    alt=""
+                    style={{ maxHeight: 55 }}
+                  />
                   {pool?.stakeToken.symbol}
                 </h5>
                 <p>

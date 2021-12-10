@@ -37,6 +37,8 @@ export type PoolData = PoolChainData & {
   address: string;
   type: PoolType;
   name: string;
+  stakeIcon: string;
+  rewardIcons: string[];
 };
 
 export type PoolResult = PoolData & {

@@ -9,8 +9,6 @@ import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import useEthers from '../library/hooks/useEthers';
 
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
-import DollarGas from '../assets/dollar-gas.svg';
-import Usdc from '../assets/usdc.png';
 
 import { PoolResult } from '../hooks/Pools';
 import {
@@ -129,7 +127,11 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
               </p>
             </div>
             <div className="card-right-img">
-              <img src={DollarGas} alt="" />
+              <img
+                src={pool?.stakeIcon.replace('/public/', '/')}
+                alt=""
+                style={{ maxHeight: 55 }}
+              />
             </div>
           </div>
           <div className="card-body-content">
@@ -147,7 +149,10 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                 <div className="reward-content">
                   <div className="reward-items">
                     <div className="reward-item">
-                      <img src={Usdc} alt="" />
+                      <img
+                        src={pool?.rewardIcons[0].replace('/public/', '/')}
+                        alt=""
+                      />
                       <p>
                         {numeral(
                           ethers.utils.formatEther(
@@ -168,7 +173,10 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                     </div>
                     {pool.rewardTokens[1] ? (
                       <div className="reward-item">
-                        <img src={Usdc} alt="" />
+                        <img
+                          src={pool?.rewardIcons[1].replace('/public/', '/')}
+                          alt=""
+                        />
                         <p>
                           {numeral(
                             ethers.utils.formatEther(
@@ -247,7 +255,11 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                   <h5>STAKED</h5>
                   <div className="reward-stake-item">
                     <div className="reward-item mb-0">
-                      <img src={Usdc} alt="" />
+                      <img
+                        src={pool?.stakeIcon.replace('/public/', '/')}
+                        alt=""
+                        style={{ maxHeight: 45 }}
+                      />
                       <p>
                         {numeral(
                           ethers.utils.formatEther(pool.stakeToken.staked),
