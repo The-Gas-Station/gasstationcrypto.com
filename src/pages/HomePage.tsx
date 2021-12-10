@@ -21,6 +21,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import upcomingEvents from '../upcoming_events.json';
+
 const settings1 = {
   dots: false,
   arrows: true,
@@ -143,42 +145,17 @@ export const HomePage = () => {
             <div className="upcoming-events flex-fill">
               <h5 className="upcoming-title mb-3">Upcoming events</h5>
               <ul className="list-group w-100">
-                <li className="list-group-item d-flex justify-content-between align-items-start">
-                  <div className="ms-2 me-auto">
-                    <div className="text-white">
-                      Non Fungible Patrons: Rare Mint 2/5
+                {upcomingEvents.items.map((item, i) => (
+                  <li
+                    key={`UpcomingEvents-${i}`}
+                    className="list-group-item d-flex justify-content-between align-items-start"
+                  >
+                    <div className="ms-2 me-auto">
+                      <div className="text-white">{item.headline}</div>
+                      <small>{item.subText}</small>
                     </div>
-                    <small>10 October 2021</small>
-                  </div>
-                </li>
-                <li className="list-group-item d-flex justify-content-between align-items-start">
-                  <div className="ms-2 me-auto">
-                    <div className="text-white">polyGAS Tax Reduces -1%</div>
-                    <small>3 October 2021</small>
-                  </div>
-                </li>
-                <li className="list-group-item d-flex justify-content-between align-items-start">
-                  <div className="ms-2 me-auto">
-                    <div className="text-white">bscGAS Tax Reduces -1%</div>
-                    <small>3 October 2021</small>
-                  </div>
-                </li>
-                <li className="list-group-item d-flex justify-content-between align-items-start">
-                  <div className="ms-2 me-auto">
-                    <div className="text-white">
-                      ftmGAS Liquidity Mining Event
-                    </div>
-                    <small>12 September - 10 November 2021</small>
-                  </div>
-                </li>
-                <li className="list-group-item d-flex justify-content-between align-items-start">
-                  <div className="ms-2 me-auto">
-                    <div className="text-white">
-                      Non Fungible Partons: Rare Mint 1/5
-                    </div>
-                    <small>3 September 2021</small>
-                  </div>
-                </li>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

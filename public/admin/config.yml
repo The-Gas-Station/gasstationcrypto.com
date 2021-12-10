@@ -25,6 +25,21 @@ collections:
               value_field: 'name',
               multiple: true,
             }
+      - name: 'upcomming_events'
+        label: 'Upcoming Events'
+        file: 'src/upcoming_events.json'
+        fields:
+          - {
+              label: 'Items',
+              name: 'items',
+              required: true,
+              widget: 'list',
+              fields:
+                [
+                  { label: 'Headline', name: 'headline', widget: 'string' },
+                  { label: 'Sub Text', name: 'subText', widget: 'string' },
+                ],
+            }
   - name: 'networks'
     label: 'Networks'
     identifier_field: 'name'
