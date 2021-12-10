@@ -25,18 +25,12 @@ export const StackModal = ({
   try {
     const { isDarkMode } = useDarkMode(true);
     const [values, setValue] = useState([50]);
-    console.log('range-values', values);
     const sliderColor = isDarkMode
       ? ['#28CCAB', '#32334A']
       : ['#28CCAB', '#e7e7ed'];
     return (
       <>
-        <MDBModal
-          show={isStakeModalOpen}
-          className="stack-modal"
-          setShow={toggleStakeModal}
-          tabIndex="-1"
-        >
+        <MDBModal show={isStakeModalOpen} className="stack-modal" tabIndex="-1">
           <MDBModalDialog>
             <MDBModalContent>
               <MDBModalHeader>

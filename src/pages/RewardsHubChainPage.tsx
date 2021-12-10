@@ -22,7 +22,7 @@ import usePools from '../hooks/usePools';
 
 import HubCard from '../components/hubCard';
 import GridHubCard from '../components/GridhubCard';
-// import StackModal from '../components/stakeModal';
+import StackModal from '../components/stakeModal';
 import GasIcon from '../assets/gas.svg';
 import DollarIcon from '../assets/dollar.svg';
 
@@ -395,10 +395,10 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
           </div>
         )}
       </div>
-      {/* <StackModal
+      <StackModal
         isStakeModalOpen={isStakeModalOpen}
         toggleStakeModal={toggleStakeModal}
-      /> */}
+      />
     </>
   );
 };

@@ -161,7 +161,7 @@ export function usePoolDualV1(
     BigNumber.from(0),
   );
 
-  const stakedDecimals = useTokenDecimals(chainId, stakeTokenAddress);
+  const stakedDecimals = useTokenDecimals(chainId, stakeTokenAddress) ?? 18;
 
   let totalStaked =
     useTokenBalance(chainId, stakeTokenAddress, poolAddress) ??
@@ -193,6 +193,7 @@ export function usePoolDualV1(
     rewardTokens: rewardTokenAddresses.map((address: string, i) => ({
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
+      decimals: rewardDecimals[i],
       rewardsPerBlock: rewardsPerBlock[i]
         ? rewardsPerBlock[i]
         : BigNumber.from(0),
@@ -206,6 +207,7 @@ export function usePoolDualV1(
     stakeToken: {
       address: stakeTokenAddress,
       symbol: useTokenSymbol(chainId, stakeTokenAddress) ?? '',
+      decimals: stakedDecimals,
       staked: staked,
       stakedUSD: useTokenPrice(chainId, stakeTokenAddress, staked),
       balance,

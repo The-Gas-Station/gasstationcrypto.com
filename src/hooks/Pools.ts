@@ -1,5 +1,4 @@
 import { Interface } from '@ethersproject/abi';
-import { Contract } from '@ethersproject/contracts';
 import { BigNumber } from '@ethersproject/bignumber';
 
 import { PoolType } from '../configs';
@@ -9,6 +8,7 @@ export type PoolChainData = {
   rewardTokens: {
     address: string;
     symbol: string;
+    decimals: number;
     rewardsPerBlock: BigNumber;
     pendingRewards: BigNumber;
     pendingRewardsUSD: BigNumber;
@@ -16,6 +16,7 @@ export type PoolChainData = {
   stakeToken: {
     address: string;
     symbol: string;
+    decimals: number;
     staked: BigNumber;
     stakedUSD: BigNumber;
     balance: BigNumber;

@@ -22,7 +22,9 @@ export function usePools(chainId: ChainId): PoolResult[] {
 
   const actions = {
     useApproveAction: (pool: PoolData) => {
-      const contract = new Contract(pool.stakeToken.address, ERC20Interface);
+      const contract = pool.stakeToken.address
+        ? new Contract(pool.stakeToken.address, ERC20Interface)
+        : new Contract(pool.address, pool.interface);
 
       const approve = useContractFunction(contract, 'approve');
 
@@ -33,7 +35,10 @@ export function usePools(chainId: ChainId): PoolResult[] {
 
       const deposit = useContractFunction(contract, 'deposit');
 
-      return (amount: BigNumber) => deposit.send(amount);
+      return (amount: BigNumber) =>
+        deposit.send(
+          amount.div(BigNumber.from(10).pow(18 - pool.stakeToken.decimals)),
+        );
     },
     useHarvestAction: (pool: PoolData) => {
       const contract = new Contract(pool.address, pool.interface);
@@ -47,7 +52,10 @@ export function usePools(chainId: ChainId): PoolResult[] {
 
       const withdraw = useContractFunction(contract, 'withdraw');
 
-      return (amount: BigNumber) => withdraw.send(amount);
+      return (amount: BigNumber) =>
+        withdraw.send(
+          amount.div(BigNumber.from(10).pow(18 - pool.stakeToken.decimals)),
+        );
     },
   };
 

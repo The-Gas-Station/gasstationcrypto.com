@@ -110,6 +110,23 @@ export const RPC_URLS = {
   ],
   [ChainId.Polygon]: ['https://polygon-rpc.com'],
   [ChainId.Fantom]: ['https://rpc.ftm.tools'],
+  [ChainId.Localhost]: [],
+  [ChainId.Hardhat]: [],
+  [ChainId.Mainnet]: [],
+  [ChainId.Ropsten]: [],
+  [ChainId.Kovan]: [],
+  [ChainId.Rinkeby]: [],
+  [ChainId.Goerli]: [],
+  [ChainId.BSCTestnet]: [],
+  [ChainId.xDai]: [],
+  [ChainId.Mumbai]: [],
+  [ChainId.Theta]: [],
+  [ChainId.ThetaTestnet]: [],
+  [ChainId.Moonriver]: [],
+  [ChainId.Harmony]: [],
+  [ChainId.Palm]: [],
+  [ChainId.Cronos]: [],
+  [ChainId.Avalanche]: [],
 };
 
 export const EXPLORER_URLS = {
@@ -131,6 +148,8 @@ export const EXPLORER_URLS = {
   [ChainId.Harmony]: 'https://explorer.harmony.one',
   [ChainId.Palm]: 'https://explorer.palm.io',
   [ChainId.Fantom]: 'https://ftmscan.com',
+  [ChainId.Cronos]: '',
+  [ChainId.Avalanche]: '',
 };
 
 export const MULTICALL_ADDRESSES = {

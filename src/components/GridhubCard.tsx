@@ -6,16 +6,24 @@ import { MDBCollapse } from 'mdb-react-ui-kit';
 import numeral from 'numeral';
 
 import { useBlockNumber } from '../library/providers/BlockNumberProvider';
+import useEthers from '../library/hooks/useEthers';
 
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
 import DollarGas from '../assets/dollar-gas.svg';
 import Usdc from '../assets/usdc.png';
 
 import { PoolResult } from '../hooks/Pools';
+import {
+  CHAIN_NAMES,
+  ChainId,
+  CHAIN_ETHER,
+  EXPLORER_URLS,
+  RPC_URLS,
+} from '../library/constants/chains';
 
 type toggleProps = {
   toggleStakeModal: any;
-  chainId: number;
+  chainId: ChainId;
   pool: PoolResult;
 };
 
@@ -24,6 +32,12 @@ export const GridHubCard = ({
   chainId,
   pool,
 }: toggleProps) => {
+  const {
+    activateBrowserWallet,
+    account,
+    chainId: connectedChainId,
+  } = useEthers();
+
   const currentBlock = useBlockNumber(chainId) ?? 0;
 
   const [harvesting, setHarvesting] = useState(false);
@@ -34,8 +48,62 @@ export const GridHubCard = ({
     _harvest().finally(() => setHarvesting(false));
   };
 
+  const [approving, setApproving] = useState(false);
+  const _approve = pool.useApproveAction(pool);
+
+  const approve = () => {
+    setApproving(true);
+    _approve(ethers.constants.MaxUint256).finally(() => setApproving(false));
+  };
+
+  const _withdraw = pool.useWithdrawAction(pool);
+
+  const withdrawAll = () => {
+    _withdraw(pool.stakeToken.staked);
+  };
+
   const hasHarvest = pool.rewardTokens[0].pendingRewards.gt(0);
   const isStaked = pool.stakeToken.staked.gt(0);
+  const isApproved = pool.stakeToken.approved.gt(pool.stakeToken.balance);
+  const isFinished = pool.endBlock < currentBlock;
+
+  const connect = async () => {
+    try {
+      await activateBrowserWallet((e) => {
+        console.log(e);
+      }, true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const forceChain = async () => {
+    try {
+      await (window as any).ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: `0x${chainId.toString(16)}` }],
+      });
+    } catch (e: any) {
+      if (e.code == 4902) {
+        await (window as any).ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainId: `0x${chainId.toString(16)}`,
+              chainName: CHAIN_NAMES[chainId],
+              nativeCurrency: {
+                name: CHAIN_ETHER[chainId],
+                symbol: CHAIN_ETHER[chainId],
+                decimals: 18,
+              },
+              rpcUrls: RPC_URLS[chainId],
+              blockExplorerUrls: [EXPLORER_URLS[chainId]],
+            },
+          ],
+        });
+      }
+    }
+  };
 
   const [showShow, setShowShow] = useState(false);
 
@@ -71,7 +139,9 @@ export const GridHubCard = ({
           <div className="card-body-content">
             <div className="title">
               <span>APY</span>
-              <span>{numeral(pool.apr).format('0.00%')}</span>
+              <span>
+                {numeral(isFinished ? '0' : pool.apr).format('0.00%')}
+              </span>
             </div>
             <div className="reward-money">
               <div className="reward-list">
@@ -125,7 +195,7 @@ export const GridHubCard = ({
                       <></>
                     )}
                   </div>
-                  {hasHarvest ? (
+                  {account && chainId == connectedChainId && hasHarvest ? (
                     <button
                       className="join-btn"
                       onClick={harvest}
@@ -134,19 +204,44 @@ export const GridHubCard = ({
                       {harvesting ? 'Harvesting...' : 'Harvest'}
                     </button>
                   ) : (
-                    <div className="harvest-btn">
-                      {harvesting ? 'Harvesting...' : 'Harvest'}
-                    </div>
+                    <div className="harvest-btn">Harvest</div>
                   )}
                 </div>
               </div>
 
-              {!isStaked ? (
+              {!account ? (
                 <div className="action-item">
-                  <button className="join-btn" onClick={toggleStakeModal}>
-                    Stake
+                  <button className="join-btn" onClick={connect}>
+                    Connect
                   </button>
                 </div>
+              ) : chainId != connectedChainId ? (
+                <div className="action-item">
+                  <button className="join-btn" onClick={forceChain}>
+                    Switch Chain
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
+
+              {!isStaked ? (
+                <>
+                  {account && chainId == connectedChainId && (
+                    <div className="action-item">
+                      <button
+                        className="join-btn"
+                        onClick={isApproved ? toggleStakeModal : approve}
+                      >
+                        {isApproved
+                          ? 'Stake'
+                          : approving
+                          ? 'Approving...'
+                          : 'Approve'}
+                      </button>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="reward-stake-block">
                   <h5>STAKED</h5>
@@ -168,7 +263,10 @@ export const GridHubCard = ({
                       </p>
                     </div>
                     <div className="reward-plus-minus">
-                      <span>
+                      <button
+                        onClick={isFinished ? withdrawAll : toggleStakeModal}
+                        disabled={!account || chainId != connectedChainId}
+                      >
                         <svg
                           width="14"
                           height="4"
@@ -181,8 +279,13 @@ export const GridHubCard = ({
                             fill="#28CCAB"
                           />
                         </svg>
-                      </span>
-                      <span>
+                      </button>
+                      <button
+                        onClick={toggleStakeModal}
+                        disabled={
+                          !account || chainId != connectedChainId || isFinished
+                        }
+                      >
                         <svg
                           width="14"
                           height="14"
@@ -195,7 +298,7 @@ export const GridHubCard = ({
                             fill="#28CCAB"
                           />
                         </svg>
-                      </span>
+                      </button>
                     </div>
                   </div>
                 </div>

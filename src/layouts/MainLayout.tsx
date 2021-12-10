@@ -58,7 +58,7 @@ export const MainLayout = () => {
 
   const { readOnlyChainIds } = useConfig();
   const { currentChainId, setCurrentChainId } = useWeb3ConnectionsContext();
-  const { activateBrowserWallet, active, account } = useEthers();
+  const { activateBrowserWallet, account } = useEthers();
 
   const gasTokenPrice = useGASTokenPrice();
 
@@ -432,9 +432,7 @@ export const MainLayout = () => {
                   <div className="custom-select-box flex-row py-0">
                     <div className="text-right">
                       <span className="text-fantom">
-                        {active && account
-                          ? shortenString(account)
-                          : 'Connect Wallet'}
+                        {account ? shortenString(account) : 'Connect Wallet'}
                       </span>
                       <select
                         className="custom-select"
@@ -514,16 +512,14 @@ export const MainLayout = () => {
                   outline
                   color="connect"
                   className={`mx-4 d-flex align-items-center justify-content-between ${
-                    active ? '' : 'not-connected'
+                    account ? '' : 'not-connected'
                   }`}
                   style={{ width: 252 }}
                   onClick={connect}
                 >
                   <SvgWallet />
                   <span className="flex-grow">
-                    {active && account
-                      ? shortenString(account)
-                      : 'Connect Wallet'}
+                    {account ? shortenString(account) : 'Connect Wallet'}
                   </span>
                   <svg
                     width="24"
