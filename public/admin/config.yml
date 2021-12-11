@@ -147,3 +147,9 @@ collections:
               },
             ],
         }
+      - {
+          label: 'Non-Fungible Patron',
+          name: 'nfpAddress',
+          required: false,
+          widget: 'crypto-address',
+        }

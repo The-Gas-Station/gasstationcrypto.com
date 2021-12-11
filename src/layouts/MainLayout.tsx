@@ -31,7 +31,7 @@ import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 
 import { ReactComponent as SvgHome } from '../assets/home.svg';
 import { ReactComponent as SvgRewards } from '../assets/rewards.svg';
-// import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
+import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
 // import { ReactComponent as SvgUtility } from '../assets/utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
@@ -92,11 +92,11 @@ export const MainLayout = () => {
       route: '/hub',
       icon: SvgRewards,
     },
-    // {
-    //   label: 'Non Fungible Patrons',
-    //   route: '/nfp',
-    //   icon: SvgNFPs,
-    // },
+    {
+      label: 'Non Fungible Patrons',
+      route: '/nfp',
+      icon: SvgNFPs,
+    },
     // {
     //   label: 'Utility',
     //   route: '/utility',

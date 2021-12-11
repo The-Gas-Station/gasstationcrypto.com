@@ -62,8 +62,9 @@
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
       "rewardIcons": ["/public/images/tokens/usdc.png"]
-    }  
+    }
   ],
+  "nfpAddress": "evm:0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b",
   "name": "bsc",
   "display": "Binance Smart Chain"
 }

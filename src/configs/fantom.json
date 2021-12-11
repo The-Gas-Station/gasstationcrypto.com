@@ -53,6 +53,7 @@
       "rewardIcons": ["/public/images/tokens/gas.svg"]
     }
   ],
+  "nfpAddress": "evm:0xDBD9BfcB77B6a0477411282022FEE2CF81f06cd6",
   "display": "Fantom Opera Network",
   "name": "fantom"
 }

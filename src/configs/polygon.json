@@ -106,6 +106,7 @@
       "rewardIcons": ["/public/images/tokens/gas.svg"]
     }
   ],
+  "nfpAddress": "evm:0x1a0b4e0facd171d5e5ce3d1cda30624ead73a06b",
   "name": "polygon",
   "display": "Polygon"
 }
