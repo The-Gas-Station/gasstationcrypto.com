@@ -16,7 +16,6 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import useLocalStorage from '../library/hooks/useLocalStorage';
 import useEthers from '../library/hooks/useEthers';
 import shortenString from '../library/helpers/shortenString';
-import numeral from 'numeral';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
@@ -583,9 +582,7 @@ export const MainLayout = () => {
                 <div className="d-flex align-items-center">
                   <SvgFuelcan />{' '}
                   <span className="px-3 text-primary-color">
-                    {numeral(ethers.utils.formatEther(gasTokenPrice)).format(
-                      '$0.00000000000',
-                    )}
+                    ${ethers.utils.formatEther(gasTokenPrice).substring(0, 13)}
                   </span>
                 </div>
               ) : (
