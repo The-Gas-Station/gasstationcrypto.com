@@ -16,7 +16,6 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import useLocalStorage from '../library/hooks/useLocalStorage';
 import useEthers from '../library/hooks/useEthers';
 import shortenString from '../library/helpers/shortenString';
-import numeral from 'numeral';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
