@@ -1,18 +1,19 @@
 {
-  "chainId": 250,
+  "launchDate": "11 Dec, 2021",
+  "display": "Fantom Opera Network",
   "tokenImage": "/public/images/tokens/ftm.png",
-  "launched": true,
-  "etherCoingeckoId": "fantom",
   "etherLiquidityPair": "evm:0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c",
-  "gasTokenName": "ftmGAS",
-  "gasTokenAddress": "evm:0x6741db012578615Ee07e029C1062B46730093912",
   "liquidityPairs": [
     {
       "name": "SpookySwap LP",
       "address": "evm:0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef"
     }
   ],
-  "tokens": [],
+  "gasTokenName": "ftmGAS",
+  "name": "fantom",
+  "etherCoingeckoId": "fantom",
+  "launched": true,
+  "gasTokenAddress": "evm:0x6741db012578615Ee07e029C1062B46730093912",
   "pools": [
     {
       "name": "Dual Fuel (SPOOKY-LP)",
@@ -29,30 +30,45 @@
       "address": "evm:0x2AF2D8520F2265Ae5711A7A7221f1ac87eEf7655",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "rewardIcons": [
+        "/public/images/tokens/gas.svg"
+      ]
     },
     {
       "name": "Fuel Up",
       "address": "evm:0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "rewardIcons": [
+        "/public/images/tokens/gas.svg"
+      ]
     },
     {
       "name": "Stable Up",
       "address": "evm:0xe16D22501049Ebdd9bE44DDE377ffe2E945dF017",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": ["/public/images/tokens/usdc.png"]
+      "rewardIcons": [
+        "/public/images/tokens/usdc.png"
+      ]
     },
     {
       "name": "WFTM Fuel Pool",
       "address": "evm:0xcC9808bC4Dc0115fBC8C3B9C99f900aD470e2d0D",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/ftm.png",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "rewardIcons": [
+        "/public/images/tokens/gas.svg"
+      ]
+    },
+    {
+      "name": "croGAS Presale Mining",
+      "address": "evm:0xf536F617e1Dbd7f3AFdF0D4C3E89Bec3D00fE5C5",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/spookyswap.png",
+      "rewardIcons": "/public/images/tokens/cro-circle.svg"
     }
   ],
-  "display": "Fantom Opera Network",
-  "name": "fantom"
+  "tokens": [],
+  "chainId": 250
 }
