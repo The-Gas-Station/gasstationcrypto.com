@@ -143,6 +143,7 @@ collections:
                 widget: 'image',
                 allow_multiple: true,
                 media_folder: /public/images/tokens,
+                media_library: { config: { multiple: true } },
               },
             ],
         }
