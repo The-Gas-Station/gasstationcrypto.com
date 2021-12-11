@@ -67,6 +67,13 @@
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/spookyswap.png",
       "rewardIcons": "/public/images/tokens/cro-circle.svg"
+    },
+    {
+      "name": "croGAS Presale Mining",
+      "address": "evm:0x45f892fFb01a3883d995d6BF1038E45b89DB4Aba",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": "/public/images/tokens/cro-circle.svg"
     }
   ],
   "tokens": [],
