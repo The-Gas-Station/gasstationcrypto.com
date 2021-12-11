@@ -583,9 +583,7 @@ export const MainLayout = () => {
                 <div className="d-flex align-items-center">
                   <SvgFuelcan />{' '}
                   <span className="px-3 text-primary-color">
-                    {numeral(ethers.utils.formatEther(gasTokenPrice)).format(
-                      '$0.00000000000',
-                    )}
+                    ${ethers.utils.formatEther(gasTokenPrice).substring(0, 13)}
                   </span>
                 </div>
               ) : (
