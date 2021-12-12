@@ -7,6 +7,7 @@ import numeral from 'numeral';
 
 import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import useEthers from '../library/hooks/useEthers';
+import { getExplorerCountdownLink } from '../library/helpers/chains';
 
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
 
@@ -142,9 +143,17 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
           </div>
           <div className="card-body-content">
             <div className="title">
-              <span>APR</span>
+              <span>{pool.apr ? 'APR' : 'Total Rewards/Day'}</span>
               <span>
-                {numeral(isFinished ? '0' : pool.apr).format('0.00%')}
+                {numeral(
+                  isFinished
+                    ? '0'
+                    : pool.apr
+                    ? pool.apr
+                    : ethers.utils.formatEther(
+                        pool.rewardTokens[0].rewardsPerDay,
+                      ),
+                ).format(isFinished || pool.apr ? '0.00%' : '0,0.0')}
               </span>
             </div>
             <div className="reward-money">
@@ -367,14 +376,25 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                       ).format('0.00%')}
                     </p>
                   </div>
-                  <div className="apy-content">
+                  <div className="apy-content d-flex justify-content-between">
                     <span>
                       {pool.endBlock > currentBlock
                         ? currentBlock < pool.startBlock
                           ? 'Starts in'
                           : 'Ends in'
                         : ''}{' '}
-                      <img src={StopwatchIcon} alt="" className="ms-1" />
+                      <a
+                        href={getExplorerCountdownLink(
+                          chainId,
+                          currentBlock < pool.startBlock
+                            ? pool.startBlock
+                            : pool.endBlock,
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img src={StopwatchIcon} alt="" className="ms-1" />
+                      </a>
                     </span>
                     <p>
                       {pool.endBlock > currentBlock ? (
@@ -383,8 +403,8 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                             currentBlock < pool.startBlock
                               ? pool.startBlock - currentBlock
                               : pool.endBlock - currentBlock,
-                          ).format('0,0')}{' '}
-                          <small>blocks</small>
+                          ).format('0,0')}
+                          <small> blocks</small>
                         </>
                       ) : (
                         'FINISHED'

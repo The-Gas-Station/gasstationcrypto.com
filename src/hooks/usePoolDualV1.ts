@@ -6,7 +6,7 @@ import useTokenSymbol from '../library/hooks/useTokenSymbol';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
 
-import { ChainId, BLOCKS_PER_YEAR } from '../library/constants/chains';
+import { ChainId, BLOCKS_PER_DAY } from '../library/constants/chains';
 import { Falsy } from '../library/models/types';
 
 import { PoolDualV1Interface } from '../constants';
@@ -142,6 +142,7 @@ export function usePoolDualV1(
     ],
   ];
 
+  const rewardsPerDay = [BigNumber.from(0), BigNumber.from(0)];
   const rewardDecimals: number[] = [18, 18];
 
   const rewardsPerYearUSD = rewardTokenAddresses.reduce(
@@ -150,9 +151,15 @@ export function usePoolDualV1(
 
       rewardDecimals[i] = decimals ?? 18;
 
-      if (rewardsPerBlock[i] && decimals) {
-        rewardsPerBlock[i] = rewardsPerBlock[i].mul(
-          BigNumber.from(10).pow(18 - decimals),
+      if (rewardsPerBlock[i]) {
+        if (decimals) {
+          rewardsPerBlock[i] = rewardsPerBlock[i].mul(
+            BigNumber.from(10).pow(18 - decimals),
+          );
+        }
+
+        rewardsPerDay[i] = rewardsPerBlock[i].mul(
+          chainId ? BLOCKS_PER_DAY[chainId] : 0,
         );
       }
 
@@ -162,9 +169,7 @@ export function usePoolDualV1(
         );
       }
 
-      const rewardsPerYear = BigNumber.from(
-        rewardsPerBlock[i] ? rewardsPerBlock[i] : BigNumber.from(0),
-      ).mul(chainId ? BLOCKS_PER_YEAR[chainId] : 0);
+      const rewardsPerYear = rewardsPerDay[i].mul(365);
 
       return prev.add(useTokenPrice(chainId, address, rewardsPerYear));
     },
@@ -214,6 +219,7 @@ export function usePoolDualV1(
       rewardsPerBlock: rewardsPerBlock[i]
         ? rewardsPerBlock[i]
         : BigNumber.from(0),
+      rewardsPerDay: rewardsPerDay[i],
       pendingRewards: pendingRewards[i] ? pendingRewards[i] : BigNumber.from(0),
       pendingRewardsUSD: useTokenPrice(
         chainId,

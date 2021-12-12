@@ -54,10 +54,10 @@ export const CHAIN_ETHER: { [chainId: number]: string } = {
   [ChainId.Avalanche]: 'AVAX',
 };
 
-export const BLOCKS_PER_YEAR = {
-  [ChainId.BSC]: (60 / 3) * 60 * 24 * 365,
-  [ChainId.Polygon]: (60 / 2) * 60 * 24 * 365,
-  [ChainId.Fantom]: 60 * 60 * 24 * 365,
+export const BLOCKS_PER_DAY = {
+  [ChainId.BSC]: (60 / 3) * 60 * 24,
+  [ChainId.Polygon]: (60 / 2) * 60 * 24,
+  [ChainId.Fantom]: 60 * 60 * 24,
   [ChainId.Localhost]: 0,
   [ChainId.Hardhat]: 0,
   [ChainId.Mainnet]: 0,

@@ -12,6 +12,7 @@ export type PoolChainData = {
     rewardsPerBlock: BigNumber;
     pendingRewards: BigNumber;
     pendingRewardsUSD: BigNumber;
+    rewardsPerDay: BigNumber;
   }[];
   stakeToken: {
     address: string;
