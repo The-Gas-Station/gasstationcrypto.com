@@ -157,7 +157,6 @@ collections:
                 allow_multiple: false,
                 media_folder: /public/images/tokens,
               },
-              },
               {
                 label: 'Reward Symbols Override',
                 name: 'rewardSymbols',
