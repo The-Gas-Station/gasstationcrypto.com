@@ -16,7 +16,6 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import useLocalStorage from '../library/hooks/useLocalStorage';
 import useEthers from '../library/hooks/useEthers';
 import shortenString from '../library/helpers/shortenString';
-import numeral from 'numeral';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
@@ -31,7 +30,7 @@ import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 
 import { ReactComponent as SvgHome } from '../assets/home.svg';
 import { ReactComponent as SvgRewards } from '../assets/rewards.svg';
-// import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
+import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
 // import { ReactComponent as SvgUtility } from '../assets/utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
@@ -92,11 +91,11 @@ export const MainLayout = () => {
       route: '/hub',
       icon: SvgRewards,
     },
-    // {
-    //   label: 'Non Fungible Patrons',
-    //   route: '/nfp',
-    //   icon: SvgNFPs,
-    // },
+    {
+      label: 'Non Fungible Patrons',
+      route: '/nfp',
+      icon: SvgNFPs,
+    },
     // {
     //   label: 'Utility',
     //   route: '/utility',
@@ -583,9 +582,7 @@ export const MainLayout = () => {
                 <div className="d-flex align-items-center">
                   <SvgFuelcan />{' '}
                   <span className="px-3 text-primary-color">
-                    {numeral(ethers.utils.formatEther(gasTokenPrice)).format(
-                      '$0.00000000000',
-                    )}
+                    ${ethers.utils.formatEther(gasTokenPrice).substring(0, 13)}
                   </span>
                 </div>
               ) : (

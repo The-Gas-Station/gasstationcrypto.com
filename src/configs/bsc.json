@@ -24,18 +24,14 @@
       "address": "evm:0xD9D8209dC88CB96D0a300C2ab2479608A8D1463d",
       "type": "SingleV1",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/usdc.png"
-      ]
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "GAS Fuel Tank (USDC -> bscGAS)",
       "address": "evm:0x8a96E5E22e2b057b9c7e7474B95D02bd9B2D0628",
       "type": "SingleV1",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Dual Fuel (APE-LP)",
@@ -52,27 +48,21 @@
       "address": "evm:0xE9916A99787b9f8a86116d86f900e18aF0a2aA51",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Fuel Up",
       "address": "evm:0xE35408BCD80Ab6A2954fD2858Ef4B96F2Da83F75",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Stable Up",
       "address": "evm:0x09c85d6F3b9Aa02314A839E69d6725A050678AbE",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/usdc.png"
-      ]
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "croGAS PRESALE MINING",
@@ -89,6 +79,7 @@
       "rewardIcons": "/public/images/tokens/cro-circle.svg"
     }
   ],
+  "nfpAddress": "evm:0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b",
   "tokens": [],
   "chainId": 56
 }

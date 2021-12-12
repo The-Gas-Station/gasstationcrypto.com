@@ -28,7 +28,7 @@ const chainIds = [
 ];
 
 export const AppConfig: Config = {
+  defaultChainId: chainIds[0],
   readOnlyChainIds: chainIds,
   supportedChainIds: chainIds,
-  autoSwitch: false,
 };
