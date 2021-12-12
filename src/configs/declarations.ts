@@ -30,6 +30,7 @@ export type ChainInfoDoc = {
     rewardSymbols?: string[];
   }[];
   nfpAddress?: string;
+  nfpGitHubBaseURL?: string;
   buyAddress?: string;
   chartAddress?: string;
 };
@@ -70,6 +71,7 @@ export type ChainInfo = {
     rewardSymbols?: string[];
   }[];
   nfpAddress?: string;
+  nfpGitHubBaseURL?: string;
   buyAddress?: string;
   chartAddress?: string;
 };

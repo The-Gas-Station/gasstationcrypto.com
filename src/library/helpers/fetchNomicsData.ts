@@ -17,13 +17,7 @@ export const fetchNomicsData =
       return await queue.add(() =>
         pRetry(
           async () => {
-            const data = await fetchFunction(url, {
-              mode: 'no-cors',
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
+            const data = await fetchFunction(url);
             return await data.json();
           },
           { retries: 5 },

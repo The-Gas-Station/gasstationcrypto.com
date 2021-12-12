@@ -10,9 +10,10 @@ export function useGASToken30DayVolume(chainId?: ChainId): string {
   const { currentChainId } = useWeb3ConnectionsContext();
   const chainData = CHAIN_INFO[chainId ?? currentChainId];
 
-  return '';
-
-  const nomicsData = useNomicsData('', chainData.gasTokenName);
+  const nomicsData = useNomicsData(
+    'b95f4cea76c425f0f3e1f1bf67d465e8ab9230bd',
+    chainData.gasTokenName,
+  );
 
   return _.get(nomicsData, '0.30d.volume', '0');
 }

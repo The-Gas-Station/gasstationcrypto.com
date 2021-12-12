@@ -124,6 +124,7 @@
     }
   ],
   "nfpAddress": "evm:0x1a0b4e0facd171d5e5ce3d1cda30624ead73a06b",
+  "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Polygon/",
   "buyAddress": "https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x840B5FC8C6deE2b1140174a3ABdC215190426CCf",
   "chartAddress": "https://dex.guru/token/0x840b5fc8c6dee2b1140174a3abdc215190426ccf-polygon",
   "tokens": [],

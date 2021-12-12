@@ -73,6 +73,7 @@
     }
   ],
   "nfpAddress": "evm:0xDBD9BfcB77B6a0477411282022FEE2CF81f06cd6",
+  "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Fantom/",
   "buyAddress": "https://spookyswap.finance/swap?outputCurrency=0x6741db012578615Ee07e029C1062B46730093912",
   "chartAddress": "https://www.dextools.io/app/fantom/pair-explorer/0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef",
   "tokens": [],

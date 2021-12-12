@@ -9,6 +9,7 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import useNFP from '../hooks/useNFP';
 import useMyNFPs from '../hooks/useMyNFPs';
 import useEthers from '../library/hooks/useEthers';
+import useJSONResult from '../library/hooks/useJSONResult';
 
 import {
   CHAIN_NAMES,
@@ -18,8 +19,6 @@ import {
   EXPLORER_URLS,
 } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
-
-import Img_1 from '../assets/NonFungible/card-img-1.png';
 
 export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
   const {
@@ -36,6 +35,54 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
 
   const { useApproveAction, useMintAction, rarities } = useNFP(chainId);
   const myNFPs = useMyNFPs();
+
+  let rareImage = '/images/nfps.gif';
+
+  if (chainData.nfpGitHubBaseURL) {
+    const rareMetadata = useJSONResult(
+      `${chainData.nfpGitHubBaseURL}metadata/2/${
+        rarities[2].minted + 1
+      }/index.json`,
+    );
+
+    if (
+      rarities[2].minted &&
+      rarities[2].total &&
+      rareMetadata &&
+      rareMetadata.image &&
+      rarities[2].total > 0
+    ) {
+      if (rarities[2].minted < rarities[2].total) {
+        rareImage = rareMetadata.image;
+      } else {
+        rareImage = '/images/nfp-soldout.png';
+      }
+    }
+  }
+
+  let legendaryImage = '/images/nfps.gif';
+
+  if (chainData.nfpGitHubBaseURL) {
+    const legendaryMetadata = useJSONResult(
+      `${chainData.nfpGitHubBaseURL}metadata/3/${
+        rarities[3].minted + 1
+      }/index.json`,
+    );
+
+    if (
+      rarities[3].minted &&
+      rarities[3].total &&
+      legendaryMetadata &&
+      legendaryMetadata.image &&
+      rarities[3].total > 0
+    ) {
+      if (rarities[3].minted < rarities[3].total) {
+        legendaryImage = legendaryMetadata.image;
+      } else {
+        legendaryImage = '/images/nfp-soldout.png';
+      }
+    }
+  }
 
   const [approving, setApproving] = useState(false);
   const _approve = useApproveAction();
@@ -148,7 +195,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </div>
               <div className="image-box">
-                <img src={Img_1} />
+                <img src="/images/nfps.gif" />
                 <div className="price-block">
                   <h2>
                     {numeral(
@@ -221,7 +268,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </div>
               <div className="image-box">
-                <img src={Img_1} />
+                <img src={rareImage} />
                 <div className="price-block">
                   <h2>
                     {numeral(
@@ -295,7 +342,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </div>
               <div className="image-box">
-                <img src={Img_1} />
+                <img src={legendaryImage} />
                 <div className="price-block">
                   <h2>
                     {numeral(

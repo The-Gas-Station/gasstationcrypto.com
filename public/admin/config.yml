@@ -99,6 +99,12 @@ collections:
           required: false,
           widget: 'crypto-address',
         }
+      - {
+          label: 'Non-Fungible Patron GitHub Base Url',
+          name: 'nfpGitHubBaseURL',
+          required: false,
+          widget: 'string',
+        }
       - { label: 'Buy Address', name: 'buyAddress', widget: 'string' }
       - { label: 'Chart Address', name: 'chartAddress', widget: 'string' }
       - {
