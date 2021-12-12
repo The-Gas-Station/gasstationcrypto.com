@@ -127,6 +127,20 @@
       "rewardIcons": [
         "/public/images/tokens/gas.svg"
       ]
+    },
+    {
+      "name": "croGAS Presale Mining",
+      "address": "evm:0x557AA94ff799B58Fb59e63E9EdE71565b07ffB43",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/ape-lp.svg",
+      "rewardIcons": "/public/images/tokens/cro-circle.svg"
+    },
+    {
+      "name": "croGAS Presale Mining",
+      "address": "evm:0xF20C0b4c39c3189439E247EAcDF6C6455d450C92",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": "/public/images/tokens/cro-circle.svg"
     }
   ],
   "tokens": [],
