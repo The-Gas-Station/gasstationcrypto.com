@@ -27,4 +27,5 @@ export type ChainInfo = {
     stakeIcon: string;
     rewardIcons: string[];
   }[];
+  nfpAddress?: string;
 };

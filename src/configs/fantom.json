@@ -30,36 +30,28 @@
       "address": "evm:0x2AF2D8520F2265Ae5711A7A7221f1ac87eEf7655",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Fuel Up",
       "address": "evm:0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Stable Up",
       "address": "evm:0xe16D22501049Ebdd9bE44DDE377ffe2E945dF017",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/usdc.png"
-      ]
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "WFTM Fuel Pool",
       "address": "evm:0xcC9808bC4Dc0115fBC8C3B9C99f900aD470e2d0D",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/ftm.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "croGAS Presale Mining",
@@ -76,6 +68,7 @@
       "rewardIcons": "/public/images/tokens/cro-circle.svg"
     }
   ],
+  "nfpAddress": "evm:0xDBD9BfcB77B6a0477411282022FEE2CF81f06cd6",
   "tokens": [],
   "chainId": 250
 }
