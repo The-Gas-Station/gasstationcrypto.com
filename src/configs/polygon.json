@@ -24,27 +24,21 @@
       "address": "evm:0x2bc0bf8e98c7bbf08dd682b3ed0da50991aa66bd",
       "type": "SingleV1",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/usdc.png"
-      ]
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "GAS Fuel Tank (USDC -> polyGAS)",
       "address": "evm:0x20024f775ab6bc96077c73fb2e45c8862ac35552",
       "type": "SingleV1",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "GAS Fuel Tank (USDC -> polyGAS)",
       "address": "evm:0x543b1da3a789bd9e72142ce7b7b320dbd4ddea0a",
       "type": "SingleV1",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Dual Fuel (APE-LP)",
@@ -54,95 +48,84 @@
       "rewardIcons": [
         "/public/images/tokens/usdc.png",
         "/public/images/tokens/gas.svg"
-      ]
+      ],
+      "stakeSymbol": "polyGAS-MATIC Ape LP"
     },
     {
       "name": "GAS MAXIMIZER",
       "address": "evm:0xBE9bEAc00d0a495Cb3482Fb22a9dc874305262E2",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Fuel Up",
       "address": "evm:0xE454a4262Cd345C4DA97B46AcAC7F8F2e6D3b3dD",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "Stable Up",
       "address": "evm:0x196986cbD3E4C9Ff4372F419BC94C43B49dB0A0c",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/usdc.png"
-      ]
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "ftmGAS Liquidity Mining",
       "address": "evm:0xacc18870ffd0a260a80459deaf47628983ae96af",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "ftmGAS Liquidity Mining",
       "address": "evm:0xed303497b674bae2173a8d7d881f74ddb1553c17",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "polyGAS Maximizer",
       "address": "evm:0xbf8C11f9e3D3a64F5ad0Ce237b96a8003d57e42b",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "polyGAS Stable Up (GAS -> USDC)",
       "address": "evm:0x58d64BB6A3d83C6C43b49782b00B5B415ae0bf18",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": [
-        "/public/images/tokens/usdc.png"
-      ]
+      "rewardIcons": ["/public/images/tokens/usdc.png"]
     },
     {
       "name": "polyGAS Fuel Up (USDC -> GAS)",
       "address": "evm:0x78967c9E500519A35EE73eC2C384884bb7880164",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg"
-      ]
+      "rewardIcons": ["/public/images/tokens/gas.svg"]
     },
     {
       "name": "croGAS Presale Mining",
       "address": "evm:0x557AA94ff799B58Fb59e63E9EdE71565b07ffB43",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/ape-lp.svg",
-      "rewardIcons": "/public/images/tokens/cro-circle.svg"
+      "rewardIcons": ["/public/images/tokens/cro-circle.svg"],
+      "stakeSymbol": "polyGAS-MATIC Ape LP"
     },
     {
       "name": "croGAS Presale Mining",
       "address": "evm:0xF20C0b4c39c3189439E247EAcDF6C6455d450C92",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": "/public/images/tokens/cro-circle.svg"
+      "rewardIcons": ["/public/images/tokens/cro-circle.svg"]
     }
   ],
+  "nfpAddress": "evm:0x1a0b4e0facd171d5e5ce3d1cda30624ead73a06b",
+  "buyAddress": "https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x840B5FC8C6deE2b1140174a3ABdC215190426CCf",
+  "chartAddress": "https://dex.guru/token/0x840b5fc8c6dee2b1140174a3abdc215190426ccf-polygon",
   "tokens": [],
   "chainId": 137
 }

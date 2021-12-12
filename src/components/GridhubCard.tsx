@@ -114,16 +114,22 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
               <h2>{pool.name}</h2>
               <p>
                 <span style={{ color: `#28CCAB` }}>EARN</span>{' '}
-                {pool.rewardTokens[0].symbol}
+                {pool.rewardSymbols && pool.rewardSymbols[0]
+                  ? pool.rewardSymbols[0]
+                  : pool.rewardTokens[0].symbol}
                 {pool.rewardTokens[1] ? (
-                  <> + {pool.rewardTokens[1].symbol}</>
+                  <>
+                    {pool.rewardSymbols && pool.rewardSymbols[1]
+                      ? pool.rewardSymbols[1]
+                      : pool.rewardTokens[1].symbol}
+                  </>
                 ) : (
                   <></>
                 )}
               </p>
               <p>
                 <span className="text-white1">STAKE</span>{' '}
-                {pool.stakeToken.symbol}
+                {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
               </p>
             </div>
             <div className="card-right-img">
@@ -159,7 +165,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                             pool.rewardTokens[0].pendingRewards,
                           ),
                         ).format('0,0.00')}{' '}
-                        {pool.rewardTokens[0].symbol}
+                        {pool.rewardSymbols && pool.rewardSymbols[0]
+                          ? pool.rewardSymbols[0]
+                          : pool.rewardTokens[0].symbol}
                         <br />
                         <span>
                           ~
@@ -183,7 +191,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                               pool.rewardTokens[1].pendingRewards,
                             ),
                           ).format('0,0.00')}{' '}
-                          {pool.rewardTokens[1].symbol}
+                          {pool.rewardSymbols && pool.rewardSymbols[1]
+                            ? pool.rewardSymbols[1]
+                            : pool.rewardTokens[1].symbol}
                           <br />{' '}
                           <span>
                             ~
@@ -266,7 +276,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                         {numeral(
                           ethers.utils.formatEther(pool.stakeToken.staked),
                         ).format('0,0.00')}{' '}
-                        {pool.stakeToken.symbol}
+                        {pool.stakeSymbol
+                          ? pool.stakeSymbol
+                          : pool.stakeToken.symbol}
                         <br />{' '}
                         <span>
                           ~
@@ -335,7 +347,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                       {numeral(
                         ethers.utils.formatEther(pool.stakeToken.totalStaked),
                       ).format('0,0.00')}{' '}
-                      {pool.stakeToken.symbol}
+                      {pool.stakeSymbol
+                        ? pool.stakeSymbol
+                        : pool.stakeToken.symbol}
                     </p>
                   </div>
                   <div className="apy-content">

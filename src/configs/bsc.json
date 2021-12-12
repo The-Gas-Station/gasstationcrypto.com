@@ -41,7 +41,8 @@
       "rewardIcons": [
         "/public/images/tokens/usdc.png",
         "/public/images/tokens/gas.svg"
-      ]
+      ],
+      "stakeSymbol": "bscGAS-BNB Ape LP"
     },
     {
       "name": "GAS MAXIMIZER",
@@ -69,7 +70,8 @@
       "address": "evm:0xd35BA89d4726Ad000901D84ebd901E691716be07",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/ape-lp.svg",
-      "rewardIcons": "/public/images/tokens/cro-circle.svg"
+      "rewardIcons": "/public/images/tokens/cro-circle.svg",
+      "stakeSymbol": "bscGAS-BNB Ape LP"
     },
     {
       "name": "croGAS PRESALE MINING",
@@ -80,6 +82,8 @@
     }
   ],
   "nfpAddress": "evm:0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b",
+  "buyAddress": "https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x6fabfe7946b23da23ad51dc45167cc2cfd0ce70e",
+  "chartAddress": "https://poocoin.app/tokens/0x6fAbfe7946b23da23aD51Dc45167cc2CFd0ce70e",
   "tokens": [],
   "chainId": 56
 }

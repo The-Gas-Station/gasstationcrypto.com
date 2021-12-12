@@ -1,7 +1,7 @@
 import { Interface } from '@ethersproject/abi';
 import { BigNumber } from '@ethersproject/bignumber';
 
-import { PoolType } from '../configs';
+import { ChainInfoPool } from '../configs/declarations';
 
 export type PoolChainData = {
   interface: Interface;
@@ -33,13 +33,7 @@ export type PoolChainData = {
   endBlock: number;
 };
 
-export type PoolData = PoolChainData & {
-  address: string;
-  type: PoolType;
-  name: string;
-  stakeIcon: string;
-  rewardIcons: string[];
-};
+export type PoolData = PoolChainData & ChainInfoPool;
 
 export type PoolResult = PoolData & {
   useApproveAction(pool: PoolData): (amount: BigNumber) => Promise<void>;

@@ -94,6 +94,14 @@ collections:
           widget: 'crypto-address',
         }
       - {
+          label: 'Non-Fungible Patron',
+          name: 'nfpAddress',
+          required: false,
+          widget: 'crypto-address',
+        }
+      - { label: 'Buy Address', name: 'buyAddress', widget: 'string' }
+      - { label: 'Chart Address', name: 'chartAddress', widget: 'string' }
+      - {
           label: 'Liquidity Pairs',
           name: 'liquidityPairs',
           required: false,
@@ -131,11 +139,24 @@ collections:
                 options: ['SingleV1', 'SingleV2', 'DoubleV1'],
               },
               {
+                label: 'Stake Symbol Override',
+                name: 'stakeSymbol',
+                required: false,
+                widget: 'string',
+              },
+              {
                 label: 'Stake Token Image',
                 name: 'stakeIcon',
                 widget: 'image',
                 allow_multiple: false,
                 media_folder: /public/images/tokens,
+              },
+              },
+              {
+                label: 'Reward Symbols Override',
+                name: 'rewardSymbols',
+                required: false,
+                widget: 'list',
               },
               {
                 label: 'Reward Token Images',
@@ -146,10 +167,4 @@ collections:
                 media_library: { config: { multiple: true } },
               },
             ],
-        }
-      - {
-          label: 'Non-Fungible Patron',
-          name: 'nfpAddress',
-          required: false,
-          widget: 'crypto-address',
         }

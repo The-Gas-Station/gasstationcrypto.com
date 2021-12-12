@@ -23,7 +23,8 @@
       "rewardIcons": [
         "/public/images/tokens/gas.svg",
         "/public/images/tokens/ftm.png"
-      ]
+      ],
+      "stakeSymbol": "ftmGAS-FTM spLP"
     },
     {
       "name": "ftmGAS Maximizer",
@@ -58,17 +59,22 @@
       "address": "evm:0xf536F617e1Dbd7f3AFdF0D4C3E89Bec3D00fE5C5",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/spookyswap.png",
-      "rewardIcons": "/public/images/tokens/cro-circle.svg"
+      "rewardIcons": "/public/images/tokens/cro-circle.svg",
+      "stakeSymbol": "ftmGAS-FTM spLP"
     },
     {
       "name": "croGAS Presale Mining",
       "address": "evm:0x45f892fFb01a3883d995d6BF1038E45b89DB4Aba",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": "/public/images/tokens/cro-circle.svg"
+      "rewardIcons": "/public/images/tokens/cro-circle.svg",
+      "stakeSymbol": "",
+      "rewardSymbols": []
     }
   ],
   "nfpAddress": "evm:0xDBD9BfcB77B6a0477411282022FEE2CF81f06cd6",
+  "buyAddress": "https://spookyswap.finance/swap?outputCurrency=0x6741db012578615Ee07e029C1062B46730093912",
+  "chartAddress": "https://www.dextools.io/app/fantom/pair-explorer/0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef",
   "tokens": [],
   "chainId": 250
 }
