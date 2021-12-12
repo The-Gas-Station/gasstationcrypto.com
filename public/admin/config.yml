@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: The-Gas-Station/gasstationcrypto.com
-  branch: master
+  branch: prod
   use_graphql: true
   squash_merges: true
 publish_mode: editorial_workflow
