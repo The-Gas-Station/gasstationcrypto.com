@@ -40,7 +40,7 @@ import { ReactComponent as SvgFuelcan } from '../assets/fuelcan.svg';
 import { ReactComponent as SvgTwitter } from '../assets/twitter.svg';
 import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
-import { ReactComponent as SvgReddit } from '../assets/reddit.svg';
+
 
 // import FtmToken from '../assets/tokens/ftm.png';
 import Metamask from '../assets/wallets/metamask.png';
@@ -106,23 +106,18 @@ export const MainLayout = () => {
   const socialLinks = [
     {
       label: 'Twitter',
-      route: '/',
+      route: 'https://twitter.com/GasStation_cryp',
       icon: SvgTwitter,
     },
     {
       label: 'Discord',
-      route: '/',
+      route: 'https://discord.gg/vaaZ2mrYaq',
       icon: SvgDiscord,
     },
     {
       label: 'Telegram',
-      route: '/',
+      route: 'https://t.me/TheGasStation_Crypto',
       icon: SvgTelegram,
-    },
-    {
-      label: 'Reddit',
-      route: '/',
-      icon: SvgReddit,
     },
   ];
 
