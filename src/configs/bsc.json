@@ -106,6 +106,20 @@
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "rewardIcons": "/public/images/tokens/movr-blue-circle.svg"
+    },
+    {
+      "name": "avaxGAS Presale Mining",
+      "address": "evm:0x578bc18FAF02d589d336778FDb88232F84d1DF73",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "rewardIcons": "/public/images/tokens/avax.png"
+    },
+    {
+      "name": "avaxGAS Presale Mining",
+      "address": "evm:0x6fa82b60693e83FAd3B042671FEEd0590B44c7CE",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "rewardIcons": "/public/images/tokens/avax.png"
     }
   ],
   "tokens": [],
