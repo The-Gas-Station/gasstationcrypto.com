@@ -9,7 +9,6 @@ export type PoolChainData = {
     address: string;
     symbol: string;
     decimals: number;
-    rewardsPerBlock: BigNumber;
     pendingRewards: BigNumber;
     pendingRewardsUSD: BigNumber;
     rewardsPerDay: BigNumber;
@@ -30,8 +29,9 @@ export type PoolChainData = {
   depositFee: number;
   depositBurnFee: number;
   withdrawFee: number;
-  startBlock: number;
-  endBlock: number;
+  usesBlocks: boolean;
+  start: number;
+  end: number;
 };
 
 export type PoolData = PoolChainData & ChainInfoPool;

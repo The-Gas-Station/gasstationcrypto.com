@@ -6,6 +6,7 @@ import { MDBCollapse } from 'mdb-react-ui-kit';
 import numeral from 'numeral';
 
 import { useBlockNumber } from '../library/providers/BlockNumberProvider';
+import { getExplorerCountdownLink } from '../library/helpers/chains';
 
 import GasIcon from '../assets/gas.svg';
 import QuestionIcon from '../assets/icons-question.svg';
@@ -114,20 +115,49 @@ export const HubCard = ({
         <td className="d-none d-sm-block">
           <div className="apy-content">
             <span>
-              {pool.endBlock > currentBlock
-                ? currentBlock < pool.startBlock
+              {(
+                pool.usesBlocks
+                  ? pool.end < currentBlock
+                  : pool.end * 1000 < Date.now()
+              )
+                ? (
+                    pool.usesBlocks
+                      ? currentBlock < pool.start
+                      : Date.now() < pool.end * 1000
+                  )
                   ? 'Starts in'
                   : 'Ends in'
-                : ''}
+                : ''}{' '}
             </span>
             <p>
-              <img src={StopwatchIcon} alt="" className="me-1" />
-              {pool.endBlock > currentBlock
-                ? numeral(
-                    currentBlock < pool.startBlock
-                      ? pool.startBlock - currentBlock
-                      : pool.endBlock - currentBlock,
-                  ).format('0,0') + ' blocks'
+              {pool.usesBlocks && (
+                <a
+                  href={getExplorerCountdownLink(
+                    chainId,
+                    currentBlock < pool.start ? pool.start : pool.end,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={StopwatchIcon} alt="" className="me-1" />
+                </a>
+              )}
+              {(
+                pool.usesBlocks
+                  ? pool.end > currentBlock
+                  : pool.end * 1000 > Date.now()
+              )
+                ? pool.usesBlocks
+                  ? numeral(
+                      currentBlock < pool.start
+                        ? pool.start - currentBlock
+                        : pool.end - currentBlock,
+                    ).format('0,0') + ' blocks'
+                  : numeral(
+                      Date.now() < pool.start * 1000
+                        ? (pool.start * 1000 - Date.now()) / 1000
+                        : (pool.end * 1000 - Date.now()) / 1000,
+                    ).format('0,0') + ' seconds'
                 : 'FINISHED'}
             </p>
           </div>
@@ -269,20 +299,49 @@ export const HubCard = ({
             </div>
             <div className="apy-content">
               <span>
-                {pool.endBlock > currentBlock
-                  ? currentBlock < pool.startBlock
+                {(
+                  pool.usesBlocks
+                    ? pool.end > currentBlock
+                    : pool.end * 1000 > Date.now()
+                )
+                  ? (
+                      pool.usesBlocks
+                        ? currentBlock < pool.start
+                        : Date.now() < pool.end * 1000
+                    )
                     ? 'Starts in'
                     : 'Ends in'
                   : ''}{' '}
-                <img src={StopwatchIcon} alt="" className="ms-1" />
+                {pool.usesBlocks && (
+                  <a
+                    href={getExplorerCountdownLink(
+                      chainId,
+                      currentBlock < pool.start ? pool.start : pool.end,
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={StopwatchIcon} alt="" className="ms-1" />
+                  </a>
+                )}
               </span>
               <p>
-                {pool.endBlock > currentBlock
-                  ? numeral(
-                      currentBlock < pool.startBlock
-                        ? pool.startBlock - currentBlock
-                        : pool.endBlock - currentBlock,
-                    ).format('0,0') + ' blocks'
+                {(
+                  pool.usesBlocks
+                    ? pool.end > currentBlock
+                    : pool.end * 1000 > Date.now()
+                )
+                  ? pool.usesBlocks
+                    ? numeral(
+                        currentBlock < pool.start
+                          ? pool.start - currentBlock
+                          : pool.end - currentBlock,
+                      ).format('0,0') + ' blocks'
+                    : numeral(
+                        Date.now() < pool.start * 1000
+                          ? (pool.start * 1000 - Date.now()) / 1000
+                          : (pool.end * 1000 - Date.now()) / 1000,
+                      ).format('0,0') + ' seconds'
                   : 'FINISHED'}
               </p>
             </div>

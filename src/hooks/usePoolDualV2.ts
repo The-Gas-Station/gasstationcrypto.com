@@ -6,14 +6,14 @@ import useTokenSymbol from '../library/hooks/useTokenSymbol';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
 
-import { ChainId, BLOCKS_PER_DAY } from '../library/constants/chains';
+import { ChainId } from '../library/constants/chains';
 import { Falsy } from '../library/models/types';
 
 import { PoolDualV1Interface } from '../constants';
 
 import { PoolChainData } from './Pools';
 
-export function usePoolDualV1(
+export function usePoolDualV2(
   chainId: ChainId,
   poolAddress: string | Falsy,
   address: string | Falsy,
@@ -21,13 +21,13 @@ export function usePoolDualV1(
   const [
     _rewardToken0,
     _rewardToken1,
-    _rewards0PerBlock,
-    _rewards1PerBlock,
+    _rewards0PerDay,
+    _rewards1PerDay,
     _stakeToken,
     _depositFee,
     _depositBurnFee,
-    _startBlock,
-    _endBlock,
+    _startTimestamp,
+    _endTimestamp,
     _totalStakedAmount,
     _userInfo,
     _pendingRewards,
@@ -48,13 +48,13 @@ export function usePoolDualV1(
       poolAddress && {
         abi: PoolDualV1Interface,
         address: poolAddress,
-        method: 'reward0PerBlock',
+        method: 'reward0PerDay',
         args: [],
       },
       poolAddress && {
         abi: PoolDualV1Interface,
         address: poolAddress,
-        method: 'reward1PerBlock',
+        method: 'reward1PerDay',
         args: [],
       },
       poolAddress && {
@@ -78,13 +78,13 @@ export function usePoolDualV1(
       poolAddress && {
         abi: PoolDualV1Interface,
         address: poolAddress,
-        method: 'startBlock',
+        method: 'startTimestamp',
         args: [],
       },
       poolAddress && {
         abi: PoolDualV1Interface,
         address: poolAddress,
-        method: 'endBlock',
+        method: 'endTimestamp',
         args: [],
       },
       poolAddress && {
@@ -111,12 +111,12 @@ export function usePoolDualV1(
 
   const [
     rewardTokenAddresses,
-    rewardsPerBlock,
+    rewardsPerDay,
     stakeTokenAddress,
     depositFee,
     depositBurnFee,
-    startBlock,
-    endBlock,
+    startTimestamp,
+    endTimestamp,
     totalStakedAmount,
     stakedAmount,
     pendingRewards,
@@ -126,14 +126,14 @@ export function usePoolDualV1(
       _rewardToken1 ? _rewardToken1[0] : undefined,
     ],
     [
-      _rewards0PerBlock ? _rewards0PerBlock[0] : undefined,
-      _rewards1PerBlock ? _rewards1PerBlock[0] : undefined,
+      (_rewards0PerDay ? _rewards0PerDay[0] : undefined) ?? BigNumber.from(0),
+      (_rewards1PerDay ? _rewards1PerDay[0] : undefined) ?? BigNumber.from(0),
     ],
     _stakeToken ? _stakeToken[0] : undefined,
     _depositFee ? parseInt(_depositFee[0]) : 0,
     _depositBurnFee ? parseInt(_depositBurnFee[0]) : 0,
-    _startBlock ? _startBlock[0] : undefined,
-    _endBlock ? _endBlock[0] : undefined,
+    _startTimestamp ? _startTimestamp[0] : undefined,
+    _endTimestamp ? _endTimestamp[0] : undefined,
     _totalStakedAmount ? _totalStakedAmount[0] : undefined,
     _userInfo ? _userInfo[0] : undefined,
     [
@@ -142,7 +142,6 @@ export function usePoolDualV1(
     ],
   ];
 
-  const rewardsPerDay = [BigNumber.from(0), BigNumber.from(0)];
   const rewardDecimals: number[] = [18, 18];
 
   const rewardsPerYearUSD = rewardTokenAddresses.reduce(
@@ -151,15 +150,9 @@ export function usePoolDualV1(
 
       rewardDecimals[i] = decimals ?? 18;
 
-      if (rewardsPerBlock[i]) {
-        if (decimals) {
-          rewardsPerBlock[i] = rewardsPerBlock[i].mul(
-            BigNumber.from(10).pow(18 - decimals),
-          );
-        }
-
-        rewardsPerDay[i] = rewardsPerBlock[i].mul(
-          chainId ? BLOCKS_PER_DAY[chainId] : 0,
+      if (rewardsPerDay[i] && decimals) {
+        rewardsPerDay[i] = rewardsPerDay[i].mul(
+          BigNumber.from(10).pow(18 - decimals),
         );
       }
 
@@ -216,9 +209,6 @@ export function usePoolDualV1(
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
       decimals: rewardDecimals[i],
-      rewardsPerBlock: rewardsPerBlock[i]
-        ? rewardsPerBlock[i]
-        : BigNumber.from(0),
       rewardsPerDay: rewardsPerDay[i],
       pendingRewards: pendingRewards[i] ? pendingRewards[i] : BigNumber.from(0),
       pendingRewardsUSD: useTokenPrice(
@@ -246,10 +236,10 @@ export function usePoolDualV1(
     depositFee,
     depositBurnFee,
     withdrawFee: 0,
-    usesBlocks: true,
-    start: startBlock ? startBlock.toNumber() : 0,
-    end: endBlock ? endBlock.toNumber() : 0,
+    usesBlocks: false,
+    start: startTimestamp ? startTimestamp.toNumber() : 0,
+    end: endTimestamp ? endTimestamp.toNumber() : 0,
   };
 }
 
-export default usePoolDualV1;
+export default usePoolDualV2;

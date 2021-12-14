@@ -12,7 +12,7 @@ import { ChainId, BLOCKS_PER_DAY } from '../library/constants/chains';
 
 import { PoolChainData } from './Pools';
 
-export function usePool(
+export function usePoolSingleV2(
   chainId: ChainId,
   poolAddress: string | Falsy,
   address: string | Falsy,
@@ -192,9 +192,6 @@ export function usePool(
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
       decimals: rewardDecimals[i],
-      rewardsPerBlock: rewardsPerBlock[i]
-        ? rewardsPerBlock[i]
-        : BigNumber.from(0),
       rewardsPerDay: rewardsPerDay[i],
       pendingRewards: pendingRewards[i] ? pendingRewards[i] : BigNumber.from(0),
       pendingRewardsUSD: useTokenPrice(
@@ -222,9 +219,10 @@ export function usePool(
     depositFee,
     depositBurnFee,
     withdrawFee: 0,
-    startBlock: startBlock ? startBlock.toNumber() : 0,
-    endBlock: endBlock ? endBlock.toNumber() : 0,
+    usesBlocks: true,
+    start: startBlock ? startBlock.toNumber() : 0,
+    end: endBlock ? endBlock.toNumber() : 0,
   };
 }
 
-export default usePool;
+export default usePoolSingleV2;

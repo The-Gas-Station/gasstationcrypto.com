@@ -1,108 +1,93 @@
 import { BigNumber } from '@ethersproject/bignumber';
+
+import { PoolSingleV2Interface } from '../constants';
+import { Falsy } from '../library/models/types';
 import { useContractCalls } from '../library/hooks/useContractCall';
 import useTokenAllowance from '../library/hooks/useTokenAllowance';
 import useTokenBalance from '../library/hooks/useTokenBalance';
 import useTokenSymbol from '../library/hooks/useTokenSymbol';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
-
-import { ChainId, BLOCKS_PER_DAY } from '../library/constants/chains';
-import { Falsy } from '../library/models/types';
-
-import { PoolDualV1Interface } from '../constants';
+import { ChainId } from '../library/constants/chains';
 
 import { PoolChainData } from './Pools';
 
-export function usePoolDualV1(
+export function usePoolSingleV3(
   chainId: ChainId,
   poolAddress: string | Falsy,
   address: string | Falsy,
 ): PoolChainData {
   const [
-    _rewardToken0,
-    _rewardToken1,
-    _rewards0PerBlock,
-    _rewards1PerBlock,
+    _rewardToken,
+    _rewardsPerDay,
     _stakeToken,
     _depositFee,
     _depositBurnFee,
-    _startBlock,
-    _endBlock,
+    _startTimestamp,
+    _endTimestamp,
     _totalStakedAmount,
     _userInfo,
     _pendingRewards,
   ] =
     useContractCalls(chainId, [
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
-        method: 'REWARD_TOKEN0',
+        method: 'REWARD_TOKEN',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
-        method: 'REWARD_TOKEN1',
+        method: 'rewardPerDay',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
-        address: poolAddress,
-        method: 'reward0PerBlock',
-        args: [],
-      },
-      poolAddress && {
-        abi: PoolDualV1Interface,
-        address: poolAddress,
-        method: 'reward1PerBlock',
-        args: [],
-      },
-      poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
         method: 'STAKE_TOKEN',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
         method: 'depositFee',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
         method: 'depositBurnFee',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
-        method: 'startBlock',
+        method: 'startTimestamp',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
-        method: 'endBlock',
+        method: 'endTimestamp',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolSingleV2Interface,
         address: poolAddress,
         method: 'totalStaked',
         args: [],
       },
       poolAddress &&
         address && {
-          abi: PoolDualV1Interface,
+          abi: PoolSingleV2Interface,
           address: poolAddress,
           method: 'userInfo',
           args: [address],
         },
       poolAddress &&
         address && {
-          abi: PoolDualV1Interface,
+          abi: PoolSingleV2Interface,
           address: poolAddress,
           method: 'pendingReward',
           args: [address],
@@ -111,39 +96,29 @@ export function usePoolDualV1(
 
   const [
     rewardTokenAddresses,
-    rewardsPerBlock,
+    rewardsPerDay,
     stakeTokenAddress,
     depositFee,
     depositBurnFee,
-    startBlock,
-    endBlock,
+    startTimestamp,
+    endTimestamp,
     totalStakedAmount,
     stakedAmount,
     pendingRewards,
   ] = [
-    [
-      _rewardToken0 ? _rewardToken0[0] : undefined,
-      _rewardToken1 ? _rewardToken1[0] : undefined,
-    ],
-    [
-      _rewards0PerBlock ? _rewards0PerBlock[0] : undefined,
-      _rewards1PerBlock ? _rewards1PerBlock[0] : undefined,
-    ],
+    [_rewardToken ? _rewardToken[0] : undefined],
+    [(_rewardsPerDay ? _rewardsPerDay[0] : undefined) ?? BigNumber.from(0)],
     _stakeToken ? _stakeToken[0] : undefined,
     _depositFee ? parseInt(_depositFee[0]) : 0,
     _depositBurnFee ? parseInt(_depositBurnFee[0]) : 0,
-    _startBlock ? _startBlock[0] : undefined,
-    _endBlock ? _endBlock[0] : undefined,
+    _startTimestamp ? _startTimestamp[0] : undefined,
+    _endTimestamp ? _endTimestamp[0] : undefined,
     _totalStakedAmount ? _totalStakedAmount[0] : undefined,
     _userInfo ? _userInfo[0] : undefined,
-    [
-      _pendingRewards && _pendingRewards[0] ? _pendingRewards[0] : undefined,
-      _pendingRewards && _pendingRewards[1] ? _pendingRewards[1] : undefined,
-    ],
+    [_pendingRewards ? _pendingRewards[0] : undefined],
   ];
 
-  const rewardsPerDay = [BigNumber.from(0), BigNumber.from(0)];
-  const rewardDecimals: number[] = [18, 18];
+  const rewardDecimals: number[] = [18];
 
   const rewardsPerYearUSD = rewardTokenAddresses.reduce(
     (prev, address: string, i) => {
@@ -151,15 +126,9 @@ export function usePoolDualV1(
 
       rewardDecimals[i] = decimals ?? 18;
 
-      if (rewardsPerBlock[i]) {
-        if (decimals) {
-          rewardsPerBlock[i] = rewardsPerBlock[i].mul(
-            BigNumber.from(10).pow(18 - decimals),
-          );
-        }
-
-        rewardsPerDay[i] = rewardsPerBlock[i].mul(
-          chainId ? BLOCKS_PER_DAY[chainId] : 0,
+      if (rewardsPerDay[i] && decimals) {
+        rewardsPerDay[i] = rewardsPerDay[i].mul(
+          BigNumber.from(10).pow(18 - decimals),
         );
       }
 
@@ -211,14 +180,11 @@ export function usePoolDualV1(
       : BigNumber.from(0);
 
   return {
-    interface: PoolDualV1Interface,
+    interface: PoolSingleV2Interface,
     rewardTokens: rewardTokenAddresses.map((address: string, i) => ({
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
       decimals: rewardDecimals[i],
-      rewardsPerBlock: rewardsPerBlock[i]
-        ? rewardsPerBlock[i]
-        : BigNumber.from(0),
       rewardsPerDay: rewardsPerDay[i],
       pendingRewards: pendingRewards[i] ? pendingRewards[i] : BigNumber.from(0),
       pendingRewardsUSD: useTokenPrice(
@@ -246,10 +212,10 @@ export function usePoolDualV1(
     depositFee,
     depositBurnFee,
     withdrawFee: 0,
-    usesBlocks: true,
-    start: startBlock ? startBlock.toNumber() : 0,
-    end: endBlock ? endBlock.toNumber() : 0,
+    usesBlocks: false,
+    start: startTimestamp ? startTimestamp.toNumber() : 0,
+    end: endTimestamp ? endTimestamp.toNumber() : 0,
   };
 }
 
-export default usePoolDualV1;
+export default usePoolSingleV3;

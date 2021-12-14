@@ -71,7 +71,12 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const filteredPools = useMemo(() => {
     return pools.filter((pool) => {
       let show = true;
-      show = show && showFinished == pool.endBlock < currentBlock;
+      show =
+        show &&
+        showFinished ==
+          (pool.usesBlocks
+            ? pool.end < currentBlock
+            : pool.end * 1000 < Date.now());
       show = show && (!showOnlyStaked || pool.stakeToken.staked.gt(0));
 
       return show;

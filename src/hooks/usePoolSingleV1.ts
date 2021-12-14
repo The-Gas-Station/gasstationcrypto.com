@@ -183,9 +183,6 @@ export function usePoolSingleV1(
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
       decimals: rewardDecimals[i],
-      rewardsPerBlock: rewardsPerBlock[i]
-        ? rewardsPerBlock[i]
-        : BigNumber.from(0),
       rewardsPerDay: rewardsPerDay[i],
       pendingRewards: pendingRewards[i] ? pendingRewards[i] : BigNumber.from(0),
       pendingRewardsUSD: useTokenPrice(
@@ -213,8 +210,9 @@ export function usePoolSingleV1(
     depositFee,
     depositBurnFee: 0,
     withdrawFee: 0,
-    startBlock: startBlock ? startBlock.toNumber() : 0,
-    endBlock: endBlock ? endBlock.toNumber() : 0,
+    usesBlocks: true,
+    start: startBlock ? startBlock.toNumber() : 0,
+    end: endBlock ? endBlock.toNumber() : 0,
   };
 }
 

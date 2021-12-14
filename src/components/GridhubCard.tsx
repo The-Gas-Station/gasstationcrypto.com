@@ -61,7 +61,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
   const hasHarvest = pool.rewardTokens[0].pendingRewards.gt(0);
   const isStaked = pool.stakeToken.staked.gt(0);
   const isApproved = pool.stakeToken.approved.gt(pool.stakeToken.balance);
-  const isFinished = pool.endBlock < currentBlock;
+  const isFinished = pool.usesBlocks
+    ? pool.end < currentBlock
+    : pool.end * 1000 < Date.now();
 
   const connect = async () => {
     try {
@@ -191,7 +193,8 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                         </span>
                       </p>
                     </div>
-                    {pool.type == PoolType.DoubleV1 ? (
+                    {pool.type == PoolType.DoubleV1 ||
+                    pool.type == PoolType.DoubleV2 ? (
                       <div className="reward-item">
                         <img
                           src={pool?.reward1Icon.replace('/public/', '/')}
@@ -381,34 +384,57 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                   </div>
                   <div className="apy-content d-flex justify-content-between">
                     <span>
-                      {pool.endBlock > currentBlock
-                        ? currentBlock < pool.startBlock
+                      {(
+                        pool.usesBlocks
+                          ? pool.end > currentBlock
+                          : pool.end * 1000 > Date.now()
+                      )
+                        ? (
+                            pool.usesBlocks
+                              ? currentBlock < pool.start
+                              : Date.now() < pool.end * 1000
+                          )
                           ? 'Starts in'
                           : 'Ends in'
                         : ''}{' '}
-                      <a
-                        href={getExplorerCountdownLink(
-                          chainId,
-                          currentBlock < pool.startBlock
-                            ? pool.startBlock
-                            : pool.endBlock,
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img src={StopwatchIcon} alt="" className="ms-1" />
-                      </a>
+                      {pool.usesBlocks && (
+                        <a
+                          href={getExplorerCountdownLink(
+                            chainId,
+                            currentBlock < pool.start ? pool.start : pool.end,
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img src={StopwatchIcon} alt="" className="ms-1" />
+                        </a>
+                      )}
                     </span>
                     <p>
-                      {pool.endBlock > currentBlock ? (
-                        <>
-                          {numeral(
-                            currentBlock < pool.startBlock
-                              ? pool.startBlock - currentBlock
-                              : pool.endBlock - currentBlock,
-                          ).format('0,0')}
-                          <small> blocks</small>
-                        </>
+                      {(
+                        pool.usesBlocks
+                          ? pool.end > currentBlock
+                          : pool.end * 1000 > Date.now()
+                      ) ? (
+                        pool.usesBlocks ? (
+                          <>
+                            {numeral(
+                              currentBlock < pool.start
+                                ? pool.start - currentBlock
+                                : pool.end - currentBlock,
+                            ).format('0,0')}
+                            <small> blocks</small>
+                          </>
+                        ) : (
+                          <>
+                            {numeral(
+                              Date.now() < pool.start * 1000
+                                ? (pool.start * 1000 - Date.now()) / 1000
+                                : (pool.end * 1000 - Date.now()) / 1000,
+                            ).format('0,0')}
+                            <small> seconds</small>
+                          </>
+                        )
                       ) : (
                         'FINISHED'
                       )}{' '}
