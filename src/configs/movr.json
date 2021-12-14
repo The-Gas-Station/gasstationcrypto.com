@@ -19,26 +19,29 @@
       "address": "evm:0x52CBeadCc101EFc4103C7134414e5C92479B9ddC",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": "/public/images/tokens/gas.svg"
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "WMOVR Fuel Pool",
       "address": "evm:0x8Ba2d53DC61A049c7886BF77030d48D91BDAa982",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/movr-blue-circle.svg",
-      "rewardIcons": "/public/images/tokens/gas.svg"
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "Fuel Up",
       "address": "evm:0x6b74DDE13d65eD760344DbEef61914F5aA5B133D",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": "/public/images/tokens/gas.svg"
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "LP Dual Fuel",
       "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
-      "type": "DoubleV1"
+      "type": "DoubleV1",
+      "stakeIcon": "/public/images/tokens/movr.png",
+      "reward0Icon": "/public/images/tokens/movr.png",
+      "reward1Icon": "/public/images/tokens/gas.svg"
     }
   ],
   "chainId": 1285
