@@ -36,7 +36,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
   const { useApproveAction, useMintAction, rarities } = useNFP(chainId);
   const myNFPs = useMyNFPs();
 
-  let rareImage = '/images/nfps.gif';
+  let rareImage = '/images/nfp-buyme.png';
 
   if (chainData.nfpGitHubBaseURL) {
     const rareMetadata = useJSONResult(
@@ -60,7 +60,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
     }
   }
 
-  let legendaryImage = '/images/nfps.gif';
+  let legendaryImage = '/images/nfp-buyme.png';
 
   if (chainData.nfpGitHubBaseURL) {
     const legendaryMetadata = useJSONResult(
