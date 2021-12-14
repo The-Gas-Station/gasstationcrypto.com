@@ -142,8 +142,7 @@ collections:
                 label: 'Type',
                 name: 'type',
                 widget: 'select',
-                options:
-                  ['SingleV1', 'SingleV2', 'SingleV3', 'DoubleV1', 'DoubleV2'],
+                options: ['SingleV1', 'SingleV2', 'DoubleV1'],
               },
               {
                 label: 'Stake Symbol Override',

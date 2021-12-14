@@ -1,15 +1,13 @@
 export enum PoolType {
   SingleV1 = 'SingleV1',
   SingleV2 = 'SingleV2',
-  SingleV3 = 'SingleV3',
   DoubleV1 = 'DoubleV1',
-  DoubleV2 = 'DoubleV2',
 }
 
 export type ChainInfoPoolSingle = {
   name: string;
   address: string;
-  type: PoolType.SingleV1 | PoolType.SingleV2 | PoolType.SingleV3;
+  type: PoolType.SingleV1 | PoolType.SingleV2;
   stakeIcon: string;
   reward0Icon: string;
   stakeSymbol?: string;
@@ -19,7 +17,7 @@ export type ChainInfoPoolSingle = {
 export type ChainInfoPoolDouble = {
   name: string;
   address: string;
-  type: PoolType.DoubleV1 | PoolType.DoubleV2;
+  type: PoolType.DoubleV1;
   stakeIcon: string;
   reward0Icon: string;
   reward1Icon: string;
