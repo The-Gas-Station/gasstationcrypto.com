@@ -23,6 +23,12 @@
   "chartAddress": "https://dex.guru/token/0x840b5fc8c6dee2b1140174a3abdc215190426ccf-polygon",
   "pools": [
     {
+      "name": "Dual Fuel LP",
+      "address": "evm:0x840B5FC8C6deE2b1140174a3ABdC215190426CCf",
+      "type": "DoubleV1",
+      "stakeIcon": "/public/images/tokens/ape-lp.svg"
+    },
+    {
       "name": "GAS Fuel Tank (polyGAS -> USDC)",
       "address": "evm:0x2bc0bf8e98c7bbf08dd682b3ed0da50991aa66bd",
       "type": "SingleV1",
