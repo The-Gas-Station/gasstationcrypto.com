@@ -48,7 +48,14 @@ $dark-bg8: #ffffff;
 $text-light4: #32334a;
 $dark-bg9: #f8f9fa;
 $dark-bg10: #e2e8f0;
+$dark-bg11: #ffffff;
 $text-light5: #2d3748;
+$text-light7: #2d3748;
+$text-light8: #718096;
+$text-light9: #2d3748;
+$text-light10: #28ccab;
+$text-light11: #2d3748;
+
 @mixin connect-button {
   background: #f4faf8;
   border: 1px solid #28ccab;
@@ -56,13 +63,17 @@ $text-light5: #2d3748;
   border-radius: 84px;
 }
 @mixin join-button {
-  background: linear-gradient(
-    89.23deg,
-    #28ccab 39.57%,
-    #e186b2 90.44%,
-    #f394af 100%
-  );
+  background: linear-gradient(89.23deg, #28ccab 39.57%, #e186b2 90.44%, #f394af 100%);
   border: none;
+}
+@mixin back-button {
+  background: linear-gradient(89.23deg, #28ccab 39.57%, #e186b2 90.44%, #f394af 100%);
+  color: rgba(255, 255, 255, 0.5);
+}
+@mixin connect-button {
+  background: #ffffff;
+  border: 1px solid #25a18c;
+  color: #2d3748;
 }
 @mixin box-shadow {
   box-shadow: 0px 2px 10px rgba(67, 71, 80, 0.1);
@@ -88,10 +99,8 @@ $text-light5: #2d3748;
 }
 
 @mixin box-shadow3 {
-  box-shadow: inset -2px -2px 8px #ffffff,
-    inset 4px 4px 8px rgba(160, 174, 192, 0.1);
-  filter: drop-shadow(4px 4px 12px rgba(166, 180, 200, 0.6))
-    drop-shadow(-8px -8px 10px #ffffff);
+  box-shadow: inset -2px -2px 8px #ffffff, inset 4px 4px 8px rgba(160, 174, 192, 0.1);
+  filter: drop-shadow(4px 4px 12px rgba(166, 180, 200, 0.6)) drop-shadow(-8px -8px 10px #ffffff);
 }
 @mixin box-shadow4 {
   box-shadow: 0px 2px 10px rgba(67, 71, 80, 0.1);
@@ -101,17 +110,16 @@ $text-light5: #2d3748;
   box-shadow: none;
   background: #f3f4f5;
 }
+@mixin box-shadow6 {
+  box-shadow: 0px 2px 10px rgba(67, 71, 80, 0.1);
+  background: #ffffff;
+}
 @mixin bg-color {
   background: #ebebeb;
   border: 1px solid #e2e8f0;
 }
 @mixin bg-color1 {
-  background: linear-gradient(
-      180deg,
-      rgba(218, 220, 221, 0.6) 0%,
-      rgba(233, 234, 236, 0) 5.21%
-    ),
-    #f3f4f5;
+  background: linear-gradient(180deg, rgba(218, 220, 221, 0.6) 0%, rgba(233, 234, 236, 0) 5.21%), #f3f4f5;
   border: 1px solid #e2e8f0;
 }
 @mixin bg-color2 {
@@ -153,25 +161,32 @@ $text-light5: #2d3748;
   border-bottom: 1px solid #e2e8f0 !important;
 }
 @mixin bg-color9 {
-  background: linear-gradient(
-    90deg,
-    rgba(5, 10, 14, 0.06) 0%,
-    rgba(5, 10, 14, 0) 100%
-  );
+  background: linear-gradient(90deg, rgba(5, 10, 14, 0.06) 0%, rgba(5, 10, 14, 0) 100%);
 }
 @mixin bg-color10 {
-  background: linear-gradient(
-    90deg,
-    rgba(5, 10, 14, 0) 0%,
-    rgba(5, 10, 14, 0.06) 100%
-  );
+  background: linear-gradient(90deg, rgba(5, 10, 14, 0) 0%, rgba(5, 10, 14, 0.06) 100%);
 }
 @mixin border2 {
   border: 1px solid #00b49c;
 }
+@mixin border3 {
+  border: 1px solid #cbd1d8;
+}
 @mixin bg-color11 {
   box-shadow: none;
   background-color: transparent;
+}
+@mixin bg-color12 {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+@mixin bg-color13 {
+  background-color: #ffffff;
+  border: 1px solid #a0aab6;
+  color: #2d3748;
+}
+@mixin bg-color14 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 90.1%);
 }
 // include theme styles
 :root[data-theme='theme-light'] {

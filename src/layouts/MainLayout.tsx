@@ -208,7 +208,7 @@ export const MainLayout = () => {
     <>
       <MDBNavbar fixed="top">
         <div className="menu-amount-sections">
-          <div className="menu-icon">
+          <div className={`menu-icon ${sideOpen ? '' : 'is-open'}`}>
             <MDBBtn
               onClick={toggleSide}
               rippleCentered
@@ -220,14 +220,30 @@ export const MainLayout = () => {
               {sideOpen ? <SvgMenuOpen /> : <SvgMenuClose />}
             </MDBBtn>
             <div className="logo-block">
-              <SvgLogoIcon
-                style={{
-                  width: 48,
-                  height: 48,
-                }}
-              />
-              <div className="d-none d-lg-block ms-3">
-                <SvgLogoFull />
+              <div className="d-block d-lg-none">
+                <SvgLogoIcon
+                  style={{
+                    width: 48,
+                    height: 48,
+                  }}
+                />
+              </div>
+              <div className="d-none d-lg-flex">
+                {sideOpen ? (
+                  <>
+                    <SvgLogoIcon
+                      style={{
+                        width: 48,
+                        height: 48,
+                      }}
+                    />
+                    <div className="d-none d-lg-block ms-3">
+                      <SvgLogoFull />
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
@@ -277,11 +293,10 @@ export const MainLayout = () => {
               </div>
             </div>
             <div
-              className={`row inner-content d-none d-lg-flex ${
-                isMobile ? 'd-none d-lg-block' : ''
-              }`}
+              className={`row inner-content d-none d-lg-flex
+              ${isMobile ? 'd-none d-lg-block' : ''}`}
             >
-              <div className={isMobile ? 'col-md-9' : 'col-md-10 col-lg-10'}>
+              <div className={isMobile ? 'col-md-9' : 'col-lg-9 col-xl-9'}>
                 {/* <div className="amount-sections amount-sections-scroll">
                   <Slider {...settings}>
                     <div className="amount-row">
@@ -457,7 +472,7 @@ export const MainLayout = () => {
                   </Slider>
                 </div> */}
               </div>
-              <div className={isMobile ? 'col-md-3' : 'col-md-2 col-lg-2'}>
+              <div className={isMobile ? 'col-md-3' : 'col-lg-3 col-xl-3'}>
                 <div className="meta-mask-block">
                   <div className="custom-select-box flex-row py-0">
                     <div className="text-right">
@@ -542,9 +557,8 @@ export const MainLayout = () => {
                 <MDBBtn
                   outline
                   color="connect"
-                  className={`mx-4 d-flex align-items-center justify-content-between ${
-                    account ? '' : 'not-connected'
-                  }`}
+                  className={`mx-4 d-flex align-items-center justify-content-between
+                  ${account ? '' : 'not-connected'}`}
                   style={{ width: 252 }}
                   onClick={connect}
                 >
@@ -572,11 +586,8 @@ export const MainLayout = () => {
             )}
             <hr className="mx-1" />
             <div
-              className={`d-flex align-items-center ${
-                sideOpen
-                  ? 'justify-content-between mx-4'
-                  : 'justify-content-center'
-              }`}
+              className={`d-flex align-items-center justify-content-center
+              ${sideOpen ? '' : ''}`}
             >
               {sideOpen ? (
                 <div className="d-flex align-items-center">
@@ -639,9 +650,8 @@ const ActiveLink = ({ to, children }: LinkProps) => {
     <MDBBtn
       href={to}
       color="none"
-      className={`w-100 d-flex align-items-center d-block ${
-        active ? 'active' : ''
-      }`}
+      className={`w-100 d-flex align-items-center d-block
+      ${active ? 'active' : ''}`}
       onClick={route}
     >
       {children}
