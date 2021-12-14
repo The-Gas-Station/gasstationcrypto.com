@@ -164,12 +164,19 @@ collections:
                 widget: 'list',
               },
               {
-                label: 'Reward Token Images',
-                name: 'rewardIcons',
+                label: 'Reward 0 Token Image',
+                name: 'reward0Icon',
                 widget: 'image',
-                allow_multiple: true,
+                allow_multiple: false,
                 media_folder: /public/images/tokens,
                 media_library: { config: { multiple: true } },
+              },
+              {
+                label: 'Reward 1 Token Image (for dual reward pools)',
+                name: 'reward1Icon',
+                widget: 'image',
+                allow_multiple: false,
+                media_folder: /public/images/tokens,
               },
             ],
         }

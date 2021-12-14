@@ -1,5 +1,5 @@
 import { Config } from '../library/models/config/Config';
-import { ChainInfo, fixDoc } from './declarations';
+import { ChainInfo } from './declarations';
 export { PoolType } from './declarations';
 
 import BSC_CHAIN_INFO from './bsc.json';
@@ -10,12 +10,12 @@ import AVAX_CHAIN_INFO from './avax.json';
 import MOVR_CHAIN_INFO from './movr.json';
 
 export const CHAIN_INFO: { [chainId: number]: ChainInfo } = {
-  [BSC_CHAIN_INFO.chainId]: fixDoc(BSC_CHAIN_INFO),
-  [POLYGON_CHAIN_INFO.chainId]: fixDoc(POLYGON_CHAIN_INFO),
-  [FANTOM_CHAIN_INFO.chainId]: fixDoc(FANTOM_CHAIN_INFO),
-  [CRONOS_CHAIN_INFO.chainId]: fixDoc(CRONOS_CHAIN_INFO),
-  [AVAX_CHAIN_INFO.chainId]: fixDoc(AVAX_CHAIN_INFO),
-  [MOVR_CHAIN_INFO.chainId]: fixDoc(MOVR_CHAIN_INFO),
+  [BSC_CHAIN_INFO.chainId]: BSC_CHAIN_INFO as ChainInfo,
+  [POLYGON_CHAIN_INFO.chainId]: POLYGON_CHAIN_INFO as ChainInfo,
+  [FANTOM_CHAIN_INFO.chainId]: FANTOM_CHAIN_INFO as ChainInfo,
+  [CRONOS_CHAIN_INFO.chainId]: CRONOS_CHAIN_INFO as ChainInfo,
+  [AVAX_CHAIN_INFO.chainId]: AVAX_CHAIN_INFO as ChainInfo,
+  [MOVR_CHAIN_INFO.chainId]: MOVR_CHAIN_INFO as ChainInfo,
 };
 
 const chainIds = [

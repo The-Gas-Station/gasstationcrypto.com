@@ -19,6 +19,7 @@ import {
   EXPLORER_URLS,
   RPC_URLS,
 } from '../library/constants/chains';
+import { PoolType } from '../configs';
 
 type toggleProps = {
   showStakeModal: any;
@@ -120,9 +121,11 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                   : pool.rewardTokens[0].symbol}
                 {pool.rewardTokens[1] ? (
                   <>
-                    {pool.rewardSymbols && pool.rewardSymbols[1]
-                      ? pool.rewardSymbols[1]
-                      : pool.rewardTokens[1].symbol}
+                    {pool.rewardSymbols && pool.rewardSymbols[1] ? (
+                      <> + {pool.rewardSymbols[1]}</>
+                    ) : (
+                      <> + {pool.rewardTokens[1].symbol}</>
+                    )}
                   </>
                 ) : (
                   <></>
@@ -165,7 +168,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                   <div className="reward-items">
                     <div className="reward-item">
                       <img
-                        src={pool?.rewardIcons[0].replace('/public/', '/')}
+                        src={pool?.reward0Icon.replace('/public/', '/')}
                         alt=""
                       />
                       <p>
@@ -188,10 +191,10 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                         </span>
                       </p>
                     </div>
-                    {pool.rewardTokens[1] ? (
+                    {pool.type == PoolType.DoubleV1 ? (
                       <div className="reward-item">
                         <img
-                          src={pool?.rewardIcons[1].replace('/public/', '/')}
+                          src={pool?.reward1Icon.replace('/public/', '/')}
                           alt=""
                         />
                         <p>
