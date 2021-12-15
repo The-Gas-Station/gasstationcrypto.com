@@ -20,28 +20,28 @@
       "address": "evm:0x57Dc3DFB48252daA731e70f9166252F8cc1B116f",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "WCRO Fuel Pool",
       "address": "evm:0x6F4456E0b8cdBE3fc98d5b5457B0782CC5c586EE",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/cro-circle.svg",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "Fuel Up",
       "address": "evm:0x840B5FC8C6deE2b1140174a3ABdC215190426CCf",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "croGAS LP Dual Fuel",
       "address": "evm:0x4501466a0F63fFe31Fc5979426BB48381b03e554",
       "type": "DoubleV1",
       "stakeIcon": "/public/images/tokens/cro-circle.svg",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "reward0Icon": "/public/images/tokens/gas.svg"
     }
   ],
   "tokens": [],

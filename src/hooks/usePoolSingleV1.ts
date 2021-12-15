@@ -8,7 +8,7 @@ import useTokenBalance from '../library/hooks/useTokenBalance';
 import useTokenSymbol from '../library/hooks/useTokenSymbol';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 import useTokenPrice from './useTokenPrice';
-import { ChainId, BLOCKS_PER_YEAR } from '../library/constants/chains';
+import { ChainId, BLOCKS_PER_DAY } from '../library/constants/chains';
 
 import { PoolChainData } from './Pools';
 
@@ -109,6 +109,7 @@ export function usePoolSingleV1(
     [_pendingRewards ? _pendingRewards[0] : undefined],
   ];
 
+  const rewardsPerDay = [BigNumber.from(0)];
   const rewardDecimals: number[] = [18];
 
   const rewardsPerYearUSD = rewardTokenAddresses.reduce(
@@ -117,9 +118,15 @@ export function usePoolSingleV1(
 
       rewardDecimals[i] = decimals ?? 18;
 
-      if (rewardsPerBlock[i] && decimals) {
-        rewardsPerBlock[i] = rewardsPerBlock[i].mul(
-          BigNumber.from(10).pow(18 - decimals),
+      if (rewardsPerBlock[i]) {
+        if (decimals) {
+          rewardsPerBlock[i] = rewardsPerBlock[i].mul(
+            BigNumber.from(10).pow(18 - decimals),
+          );
+        }
+
+        rewardsPerDay[i] = rewardsPerBlock[i].mul(
+          chainId ? BLOCKS_PER_DAY[chainId] : 0,
         );
       }
 
@@ -129,9 +136,7 @@ export function usePoolSingleV1(
         );
       }
 
-      const rewardsPerYear = BigNumber.from(
-        rewardsPerBlock[i] ? rewardsPerBlock[i] : BigNumber.from(0),
-      ).mul(chainId ? BLOCKS_PER_YEAR[chainId] : 0);
+      const rewardsPerYear = rewardsPerDay[i].mul(365);
 
       return prev.add(useTokenPrice(chainId, address, rewardsPerYear));
     },
@@ -178,9 +183,7 @@ export function usePoolSingleV1(
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
       decimals: rewardDecimals[i],
-      rewardsPerBlock: rewardsPerBlock[i]
-        ? rewardsPerBlock[i]
-        : BigNumber.from(0),
+      rewardsPerDay: rewardsPerDay[i],
       pendingRewards: pendingRewards[i] ? pendingRewards[i] : BigNumber.from(0),
       pendingRewardsUSD: useTokenPrice(
         chainId,
@@ -207,8 +210,9 @@ export function usePoolSingleV1(
     depositFee,
     depositBurnFee: 0,
     withdrawFee: 0,
-    startBlock: startBlock ? startBlock.toNumber() : 0,
-    endBlock: endBlock ? endBlock.toNumber() : 0,
+    usesBlocks: true,
+    start: startBlock ? startBlock.toNumber() : 0,
+    end: endBlock ? endBlock.toNumber() : 0,
   };
 }
 

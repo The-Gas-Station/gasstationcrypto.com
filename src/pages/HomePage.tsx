@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 import numeral from 'numeral';
 
 import { useConfig } from '../library/providers/ConfigProvider';
+import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 
 import useWidth from '../hooks/useWidth';
 import useCombinedTVL from '../hooks/useCombinedTVL';
@@ -21,6 +22,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { CHAIN_INFO } from '../configs';
 import upcomingEvents from '../upcoming_events.json';
 
 const settings1 = {
@@ -34,6 +36,8 @@ const settings1 = {
 
 export const HomePage = () => {
   const { readOnlyChainIds } = useConfig();
+  const { currentChainId } = useWeb3ConnectionsContext();
+
   const { isTablet, isMobile } = useWidth();
 
   const combinedTVL = useCombinedTVL();
@@ -57,8 +61,9 @@ export const HomePage = () => {
       tokens today to receive discounts on Gas
       fees while investing in our project early-
       stage for maximum rewards.`,
-      btnText: `Buy GAS on ApeSwap`,
+      btnText: `Buy ${CHAIN_INFO[currentChainId].gasTokenName}`,
       img: Fuelcan,
+      btnLink: CHAIN_INFO[currentChainId].buyAddress,
     },
     {
       title: 'Non-Fungible Patrons',
@@ -69,6 +74,7 @@ export const HomePage = () => {
       a few.`,
       btnText: 'Snag a Gas Station NFT',
       img: NFPToken,
+      btnLink: '/#/nfp',
     },
   ]);
 

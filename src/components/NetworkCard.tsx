@@ -9,7 +9,6 @@ import numeral from 'numeral';
 import useTVL from '../hooks/useTVL';
 import useGASTokenTotalLiquidity from '../hooks/useGASTokenTotalLiquidity';
 import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
-import useGASToken30DayVolume from '../hooks/useGASToken30DayVolume';
 
 import { CHAIN_ETHER } from '../library/constants/chains';
 
@@ -21,7 +20,7 @@ export const NetworkCard = ({ chainId }: { chainId: number }) => {
   const tvl = useTVL(chainId);
   const liquidity = useGASTokenTotalLiquidity(chainId);
   const marketCap = useGASTokenMarketCap(chainId);
-  const volume30Day = useGASToken30DayVolume(chainId);
+  const volume30Day = '';
 
   return (
     <>
