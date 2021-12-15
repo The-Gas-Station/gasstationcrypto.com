@@ -574,10 +574,31 @@ export const MainLayout = () => {
             >
               {sideOpen ? (
                 <div className="d-flex align-items-center">
-                  <SvgFuelcan />{' '}
-                  <span className="px-3 text-primary-color">
-                    ${ethers.utils.formatEther(gasTokenPrice).substring(0, 13)}
-                  </span>
+                  {CHAIN_INFO[currentChainId].chartAddress ? (
+                    <a
+                      href={CHAIN_INFO[currentChainId].chartAddress}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SvgFuelcan />{' '}
+                      <span className="px-3 text-primary-color">
+                        $
+                        {ethers.utils
+                          .formatEther(gasTokenPrice)
+                          .substring(0, 13)}
+                      </span>
+                    </a>
+                  ) : (
+                    <>
+                      <SvgFuelcan />{' '}
+                      <span className="px-3 text-primary-color">
+                        $
+                        {ethers.utils
+                          .formatEther(gasTokenPrice)
+                          .substring(0, 13)}
+                      </span>
+                    </>
+                  )}
                 </div>
               ) : (
                 <></>
