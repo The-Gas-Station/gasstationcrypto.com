@@ -39,10 +39,10 @@
       "name": "LP Dual Fuel",
       "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
       "type": "DoubleV2",
-      "stakeIcon": "/public/images/tokens/movr.png",
+      "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
       "reward0Icon": "/public/images/tokens/gas.svg",
       "reward1Icon": "/public/images/tokens/movr-blue-circle.svg",
-      "stakeSymbol": "movrGAS-MOVR LP"
+      "stakeSymbol": "movrGAS-MOVR SLP"
     }
   ],
   "chainId": 1285
