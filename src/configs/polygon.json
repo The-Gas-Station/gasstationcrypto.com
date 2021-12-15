@@ -145,13 +145,6 @@
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/avax.png"
-    },
-    {
-      "name": "test",
-      "address": "evm:0xcEC08c407c314C82b1aaeb889DE788eA56B16BD5",
-      "type": "SingleV3",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/usdc.png"
     }
   ],
   "tokens": [],
