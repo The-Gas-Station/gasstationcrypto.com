@@ -1,9 +1,49 @@
 {
-  "chainId": 43114,
-  "tokenImage": "/public/images/tokens/avax.png",
-  "launched": false,
   "launchDate": "",
   "display": "Avalanche",
+  "tokenImage": "/public/images/tokens/avax.png",
+  "liquidityPairs": [
+    {
+      "name": "LP",
+      "address": "evm:0x53Fb54E657458d39f8C8a37b797FbaBA7552C435"
+    }
+  ],
+  "gasTokenName": "avaxGAS",
   "name": "avax",
-  "gasTokenName": "avaxGAS"
+  "etherCoingeckoId": "wavax",
+  "launched": false,
+  "gasTokenAddress": "evm:0x57Dc3DFB48252daA731e70f9166252F8cc1B116f",
+  "pools": [
+    {
+      "name": "avaxGAS Maximizer",
+      "address": "evm:0x35CA22Ad35855Ff4355BA1C1052e73b78612B336",
+      "type": "SingleV3",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "WAVAX Fuel Pool",
+      "address": "evm:0xb86B1a856e95b1F970B683c9b60A9053E0cb3612",
+      "type": "SingleV3",
+      "stakeIcon": "/public/images/tokens/avax.png",
+      "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "Fuel Up",
+      "address": "evm:0xaA584995bABFC8cB54091EFc1D796B604b4a898A",
+      "type": "SingleV3",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "reward1Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "LP Dual Fuel",
+      "address": "evm:0xC08f1D67B8B2dE9896d7590D0bf90e6291100175",
+      "type": "DoubleV2",
+      "stakeIcon": "/public/images/tokens/logo.bc60f78d.png",
+      "stakeSymbol": "avaxGAS-AVAX LP",
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/avax.png"
+    }
+  ],
+  "chainId": 43114
 }
