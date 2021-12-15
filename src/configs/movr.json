@@ -16,21 +16,21 @@
   "pools": [
     {
       "name": "movrGAS Maximizer",
-      "address": "evm:0x52CBeadCc101EFc4103C7134414e5C92479B9ddC",
+      "address": "evm:0xbcD71f70560a6380c02e7f9EfB7388D2e257FdF8",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "WMOVR Fuel Pool",
-      "address": "evm:0x8Ba2d53DC61A049c7886BF77030d48D91BDAa982",
+      "address": "evm:0x4ABA7790c864Fc9cBaFA5D063C15890B2913635a",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/movr-blue-circle.svg",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "Fuel Up",
-      "address": "evm:0x6b74DDE13d65eD760344DbEef61914F5aA5B133D",
+      "address": "evm:0x7C545b5b8330CAbe5a8EdfE9954d7144533E76Fb",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
