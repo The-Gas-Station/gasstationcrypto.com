@@ -9,7 +9,7 @@ import useTokenPrice from './useTokenPrice';
 import { ChainId } from '../library/constants/chains';
 import { Falsy } from '../library/models/types';
 
-import { PoolDualV1Interface } from '../constants';
+import { PoolDualV2Interface } from '../constants';
 
 import { PoolChainData } from './Pools';
 
@@ -34,75 +34,75 @@ export function usePoolDualV2(
   ] =
     useContractCalls(chainId, [
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'REWARD_TOKEN0',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'REWARD_TOKEN1',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'reward0PerDay',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'reward1PerDay',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'STAKE_TOKEN',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'depositFee',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'depositBurnFee',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'startTimestamp',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'endTimestamp',
         args: [],
       },
       poolAddress && {
-        abi: PoolDualV1Interface,
+        abi: PoolDualV2Interface,
         address: poolAddress,
         method: 'totalStaked',
         args: [],
       },
       poolAddress &&
         address && {
-          abi: PoolDualV1Interface,
+          abi: PoolDualV2Interface,
           address: poolAddress,
           method: 'userInfo',
           args: [address],
         },
       poolAddress &&
         address && {
-          abi: PoolDualV1Interface,
+          abi: PoolDualV2Interface,
           address: poolAddress,
           method: 'pendingReward',
           args: [address],
@@ -204,7 +204,7 @@ export function usePoolDualV2(
       : BigNumber.from(0);
 
   return {
-    interface: PoolDualV1Interface,
+    interface: PoolDualV2Interface,
     rewardTokens: rewardTokenAddresses.map((address: string, i) => ({
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',

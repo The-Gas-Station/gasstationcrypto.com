@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
 
-import { PoolSingleV2Interface } from '../constants';
+import { PoolSingleV3Interface } from '../constants';
 import { Falsy } from '../library/models/types';
 import { useContractCalls } from '../library/hooks/useContractCall';
 import useTokenAllowance from '../library/hooks/useTokenAllowance';
@@ -31,63 +31,63 @@ export function usePoolSingleV3(
   ] =
     useContractCalls(chainId, [
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'REWARD_TOKEN',
         args: [],
       },
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'rewardPerDay',
         args: [],
       },
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'STAKE_TOKEN',
         args: [],
       },
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'depositFee',
         args: [],
       },
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'depositBurnFee',
         args: [],
       },
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'startTimestamp',
         args: [],
       },
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'endTimestamp',
         args: [],
       },
       poolAddress && {
-        abi: PoolSingleV2Interface,
+        abi: PoolSingleV3Interface,
         address: poolAddress,
         method: 'totalStaked',
         args: [],
       },
       poolAddress &&
         address && {
-          abi: PoolSingleV2Interface,
+          abi: PoolSingleV3Interface,
           address: poolAddress,
           method: 'userInfo',
           args: [address],
         },
       poolAddress &&
         address && {
-          abi: PoolSingleV2Interface,
+          abi: PoolSingleV3Interface,
           address: poolAddress,
           method: 'pendingReward',
           args: [address],
@@ -180,7 +180,7 @@ export function usePoolSingleV3(
       : BigNumber.from(0);
 
   return {
-    interface: PoolSingleV2Interface,
+    interface: PoolSingleV3Interface,
     rewardTokens: rewardTokenAddresses.map((address: string, i) => ({
       address,
       symbol: useTokenSymbol(chainId, address) ?? '',
