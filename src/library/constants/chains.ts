@@ -19,6 +19,10 @@ export enum ChainId {
   Fantom = 250,
   Cronos = 25,
   Avalanche = 43114,
+  TomoChain = 88,
+  KCC = 321,
+  IoTeX = 4689,
+  oETH = 10,
 }
 
 export const CHAIN_NAMES = {
@@ -42,6 +46,10 @@ export const CHAIN_NAMES = {
   [ChainId.Fantom]: 'Fantom',
   [ChainId.Cronos]: 'Cronos',
   [ChainId.Avalanche]: 'Avalanche',
+  [ChainId.TomoChain]: 'TomoChain',
+  [ChainId.KCC]: 'KCC',
+  [ChainId.IoTeX]: 'IoTeX',
+  [ChainId.oETH]: 'Optimistic Ethereum',
 };
 
 export const CHAIN_ETHER: { [chainId: number]: string } = {
@@ -52,6 +60,10 @@ export const CHAIN_ETHER: { [chainId: number]: string } = {
   [ChainId.Fantom]: 'FTM',
   [ChainId.Cronos]: 'CRO',
   [ChainId.Avalanche]: 'AVAX',
+  [ChainId.TomoChain]: 'TOMO',
+  [ChainId.KCC]: 'KCS',
+  [ChainId.IoTeX]: 'IOTX',
+  [ChainId.oETH]: 'OETH',
 };
 
 export const BLOCKS_PER_DAY = {
@@ -70,11 +82,15 @@ export const BLOCKS_PER_DAY = {
   [ChainId.Mumbai]: 0,
   [ChainId.Theta]: 0,
   [ChainId.ThetaTestnet]: 0,
-  [ChainId.Moonriver]: 0,
-  [ChainId.Harmony]: 0,
+  [ChainId.Moonriver]: (60 / 14) * 60 * 24,
+  [ChainId.Harmony]: (60 / 2) * 60 * 24,
   [ChainId.Palm]: 0,
-  [ChainId.Cronos]: 0,
-  [ChainId.Avalanche]: 0,
+  [ChainId.Cronos]: (60 / 5) * 60 * 24,
+  [ChainId.Avalanche]: (60 / 2) * 60 * 24,
+  [ChainId.TomoChain]: (60 / 2) * 60 * 24,
+  [ChainId.KCC]: 0,
+  [ChainId.IoTeX]: 0,
+  [ChainId.oETH]: 0,
 };
 
 export const WRAPPED_ETHER_ADDRESSES = {
@@ -93,11 +109,15 @@ export const WRAPPED_ETHER_ADDRESSES = {
   [ChainId.Mumbai]: '',
   [ChainId.Theta]: '',
   [ChainId.ThetaTestnet]: '',
-  [ChainId.Moonriver]: '',
-  [ChainId.Harmony]: '',
+  [ChainId.Moonriver]: '0x98878b06940ae243284ca214f92bb71a2b032b8a',
+  [ChainId.Harmony]: 'one18j54yjdjzk4r6gzy76g93wmh92wyaup70j2u8z',
   [ChainId.Palm]: '',
-  [ChainId.Cronos]: '',
-  [ChainId.Avalanche]: '',
+  [ChainId.Cronos]: '0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23',
+  [ChainId.Avalanche]: '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7',
+  [ChainId.TomoChain]: '',
+  [ChainId.KCC]: '',
+  [ChainId.IoTeX]: '',
+  [ChainId.oETH]: '',
 };
 
 export const RPC_URLS = {
@@ -112,21 +132,35 @@ export const RPC_URLS = {
   [ChainId.Fantom]: ['https://rpc.ftm.tools'],
   [ChainId.Localhost]: [],
   [ChainId.Hardhat]: [],
-  [ChainId.Mainnet]: [],
-  [ChainId.Ropsten]: [],
-  [ChainId.Kovan]: [],
-  [ChainId.Rinkeby]: [],
-  [ChainId.Goerli]: [],
-  [ChainId.BSCTestnet]: [],
-  [ChainId.xDai]: [],
-  [ChainId.Mumbai]: [],
-  [ChainId.Theta]: [],
+  [ChainId.Mainnet]: [
+    'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+  ],
+  [ChainId.Ropsten]: [
+    'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+  ],
+  [ChainId.Kovan]: [
+    'https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+  ],
+  [ChainId.Rinkeby]: [
+    'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+  ],
+  [ChainId.Goerli]: [
+    'https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+  ],
+  [ChainId.BSCTestnet]: ['https://data-seed-prebsc-1-s2.binance.org:8545/'],
+  [ChainId.xDai]: ['https://rpc.xdaichain.com'],
+  [ChainId.Mumbai]: ['https://rpc-mumbai.matic.today'],
+  [ChainId.Theta]: ['https://eth-rpc-api.thetatoken.org/rpc'],
   [ChainId.ThetaTestnet]: [],
-  [ChainId.Moonriver]: [],
-  [ChainId.Harmony]: [],
+  [ChainId.Moonriver]: ['https://rpc.moonriver.moonbeam.network'],
+  [ChainId.Harmony]: ['https://api.harmony.one'],
   [ChainId.Palm]: [],
-  [ChainId.Cronos]: [],
-  [ChainId.Avalanche]: [],
+  [ChainId.Cronos]: ['https://evm-cronos.crypto.org'],
+  [ChainId.Avalanche]: ['https://api.avax.network/ext/bc/C/rpc'],
+  [ChainId.TomoChain]: ['https://rpc.tomochain.com'],
+  [ChainId.KCC]: ['https://rpc-mainnet.kcc.network'],
+  [ChainId.IoTeX]: ['https://babel-api.mainnet.iotex.io'],
+  [ChainId.oETH]: ['https://mainnet.optimism.io'],
 };
 
 export const EXPLORER_URLS = {
@@ -144,12 +178,16 @@ export const EXPLORER_URLS = {
   [ChainId.Mumbai]: 'https://explorer-mumbai.maticvigil.com',
   [ChainId.Theta]: 'https://explorer.thetatoken.org',
   [ChainId.ThetaTestnet]: 'https://testnet-explorer.thetatoken.org',
-  [ChainId.Moonriver]: 'https://blockscout.moonriver.moonbeam.network',
+  [ChainId.Moonriver]: 'https://moonriver.moonscan.io/',
   [ChainId.Harmony]: 'https://explorer.harmony.one',
   [ChainId.Palm]: 'https://explorer.palm.io',
   [ChainId.Fantom]: 'https://ftmscan.com',
-  [ChainId.Cronos]: '',
-  [ChainId.Avalanche]: '',
+  [ChainId.Cronos]: 'https://cronos.crypto.org/explorer/',
+  [ChainId.Avalanche]: 'https://snowtrace.io/',
+  [ChainId.TomoChain]: 'https://scan.tomochain.com/',
+  [ChainId.KCC]: 'https://explorer.kcc.io/en',
+  [ChainId.IoTeX]: 'https://iotexscan.io',
+  [ChainId.oETH]: 'https://optimistic.etherscan.io',
 };
 
 export const MULTICALL_ADDRESSES = {
@@ -165,10 +203,12 @@ export const MULTICALL_ADDRESSES = {
   [ChainId.Mumbai]: '0x08411ADd0b5AA8ee47563b146743C13b3556c9Cc',
   [ChainId.Theta]: '0xe2ec58a54f3ab2714eddbae87533793011f1e14e',
   [ChainId.ThetaTestnet]: '0xf822bf2e728e264c58d7618022addd9cbc780350',
-  [ChainId.Moonriver]: '0xa9177F8d98DAaB74C24715Ba0A81b73654710523',
+  [ChainId.Moonriver]: '0xdf2122931feb939fb8cf4e67ea752d1125e18858',
   [ChainId.Harmony]: '0xFE4980f62D708c2A84D3929859Ea226340759320',
   [ChainId.Palm]: '0x99a73dfE34578348fb81BD078201C0BA84E9c840',
   [ChainId.Fantom]: '0xdf2122931FEb939FB8Cf4e67Ea752D1125e18858',
+  [ChainId.Cronos]: '0xdf2122931FEb939FB8Cf4e67Ea752D1125e18858',
+  [ChainId.Avalanche]: '0xdf2122931FEb939FB8Cf4e67Ea752D1125e18858',
 };
 
 export const TEST_CHAINS = [

@@ -85,26 +85,34 @@ export function useLiquidityPairRatio(
     state.token1 = token1;
 
     if (reserve0 && reserve1) {
-      state.ratio = BUFFER.mul(reserve1).div(reserve0);
+      state.ratio = BUFFER.mul(reserve1).div(reserve0.eq(0) ? 1 : reserve0);
     }
     if (reserve0 && totalSupply) {
-      state.percent0 = BUFFER.mul(reserve0).div(totalSupply);
+      state.percent0 = BUFFER.mul(reserve0).div(
+        totalSupply.eq(0) ? 1 : totalSupply,
+      );
     }
     if (reserve1 && totalSupply) {
-      state.percent1 = BUFFER.mul(reserve1).div(totalSupply);
+      state.percent1 = BUFFER.mul(reserve1).div(
+        totalSupply.eq(0) ? 1 : totalSupply,
+      );
     }
   } else {
     state.token0 = token1;
     state.token1 = token0;
 
     if (reserve0 && reserve1) {
-      state.ratio = BUFFER.mul(reserve0).div(reserve1);
+      state.ratio = BUFFER.mul(reserve0).div(reserve1.eq(0) ? 1 : reserve1);
     }
     if (reserve0 && totalSupply) {
-      state.percent1 = BUFFER.mul(reserve0).div(totalSupply);
+      state.percent1 = BUFFER.mul(reserve0).div(
+        totalSupply.eq(0) ? 1 : totalSupply,
+      );
     }
     if (reserve1 && totalSupply) {
-      state.percent0 = BUFFER.mul(reserve1).div(totalSupply);
+      state.percent0 = BUFFER.mul(reserve1).div(
+        totalSupply.eq(0) ? 1 : totalSupply,
+      );
     }
   }
 
