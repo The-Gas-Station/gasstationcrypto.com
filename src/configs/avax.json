@@ -35,7 +35,7 @@
       "address": "evm:0xaA584995bABFC8cB54091EFc1D796B604b4a898A",
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward1Icon": "/public/images/tokens/gas.svg"
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "LP Dual Fuel",
