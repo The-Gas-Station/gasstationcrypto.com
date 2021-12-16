@@ -45,8 +45,8 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const pools = usePools(chainId);
 
   const [isFilterShow, setIsFilterShow] = useState(false);
-  // const [isCardGride, setIsCardGride] = useState(false);
-  const isCardGride = true;
+  //   const [isCardGrid, setIsCardGrid] = useState(false);
+  const isCardGrid = true;
   const [showOnlyStaked, setShowOnlyStaked] = useState(false);
   const [showFinished, setShowFinished] = useState(false);
   const toggleFilter = () => {
@@ -250,8 +250,8 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
                 {/* <div className="grid-list-icon d-none d-md-flex">
                   <span
-                    className={isCardGride ? '' : 'active'}
-                    onClick={() => setIsCardGride(false)}
+                    className={isCardGrid ? '' : 'active'}
+                    onClick={() => setIsCardGrid(false)}
                   >
                     <svg
                       width="18"
@@ -267,8 +267,8 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                     </svg>
                   </span>
                   <span
-                    className={isCardGride ? 'active' : ''}
-                    onClick={() => setIsCardGride(true)}
+                    className={isCardGrid ? 'active' : ''}
+                    onClick={() => setIsCardGrid(true)}
                   >
                     <svg
                       width="16"
@@ -386,7 +386,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
           </div>
         </div>
-        {isCardGride ? (
+        {isCardGrid ? (
           <div className="rewards-grid-block">
             <div className="row">
               {(filteredPools ?? []).map((pool) => (

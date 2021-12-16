@@ -38,6 +38,7 @@ $text-light1: #d3d3d3;
 $text-light2: #f1f3f5;
 $text-light3: #a0aab6;
 $text-light6: #c3c6d4;
+$text-light8: #edf1f5;
 $dark-bg6: #3b4153;
 $text-primary-color3: #c3c6d4;
 $dark-bg7: #1e2835;
@@ -47,15 +48,15 @@ $dark-bg8: #1e1e2c;
 $text-light4: #e2e8f0;
 $dark-bg9: #050a0e;
 $dark-bg10: #32334a;
+$dark-bg11: #32334a;
 $text-light5: #ffffff;
-
+$text-light7: #a0aec0;
+$text-light9: #28ccab;
+$text-light10: #e2e8f0;
+$text-light11: #e2e8f0;
 @mixin connect-button {
-  /* GAS / Skew Morph Dark */
   box-shadow: inset -3px -3px 4px #2b3148, inset 2px 2px 20px #151824;
   filter: drop-shadow(-5px -5px 8px #353b54) drop-shadow(5px 5px 10px #000000);
-
-  /* background */
-
   background: $background-main-color;
   border: 1px solid #2a3147;
   box-sizing: border-box;
@@ -70,6 +71,14 @@ $text-light5: #ffffff;
     rgba(0, 180, 156, 0) 99.98%
   );
   border: 1px solid #28ccab;
+}
+@mixin back-button {
+  background: #1d2232;
+  border: 1px solid #718096;
+  color: rgba(237, 241, 245, 0.3);
+}
+@mixin connect-button {
+  background: #1d2232;
 }
 @mixin border-light {
   border: 1px solid #222738;
@@ -101,6 +110,10 @@ $text-light5: #ffffff;
   box-shadow: -3px -3px 6px #353b54, 3px 3px 6px #000000, inset -3px -3px 4px #2b3148, inset 2px 2px 20px #151824;
 }
 @mixin box-shadow5 {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+  background: #2c3246;
+}
+@mixin box-shadow6 {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
   background: #2c3246;
 }
@@ -161,9 +174,25 @@ $text-light5: #ffffff;
 @mixin border2 {
   border: 1px solid #000000;
 }
+@mixin border3 {
+  border: 1px solid #43445c;
+}
 @mixin bg-color11 {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
   background-color: #222738;
+}
+@mixin bg-color12 {
+  background: #1d2232;
+  border: 1px solid #2a3046;
+}
+
+@mixin bg-color13 {
+  background-color: #32334a;
+  border: 1px solid #a0aab6;
+  color: #e2e8f0;
+}
+@mixin bg-color14 {
+  background: linear-gradient(180deg, rgba(34, 39, 56, 0) 0%, #222738 90.1%);
 }
 // include theme styles
 :root[data-theme='theme-dark'] {

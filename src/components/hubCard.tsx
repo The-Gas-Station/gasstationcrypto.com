@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
 
-import { MDBCollapse } from 'mdb-react-ui-kit';
+import { MDBCollapse, MDBTooltip } from 'mdb-react-ui-kit';
 
 import numeral from 'numeral';
 
@@ -72,7 +72,15 @@ export const HubCard = ({
               ) : (
                 <></>
               )}{' '}
-              Earned <img src={QuestionIcon} alt="" className="ms-1" />
+              Earned
+              <MDBTooltip
+                tag="a"
+                wrapperProps={{ href: '#' }}
+                title="Hi! I'm a tooltip!"
+              >
+                {' '}
+                <img src={QuestionIcon} alt="" className="ms-1" />
+              </MDBTooltip>
             </span>
             <p className="text-green">
               {numeral(
@@ -96,7 +104,7 @@ export const HubCard = ({
             <p>{numeral(pool.apr).format('0.00%')}</p>
           </div>
         </td>
-        <td className="d-none d-sm-block">
+        <td className="desktop-view">
           <div className="apy-content">
             <span>Total Staked</span>
             <p>
@@ -112,7 +120,7 @@ export const HubCard = ({
             </span>
           </div>
         </td>
-        <td className="d-none d-sm-block">
+        <td className="desktop-view">
           <div className="apy-content">
             <span>
               {(
@@ -162,7 +170,7 @@ export const HubCard = ({
             </p>
           </div>
         </td>
-        <td className="d-none d-sm-block">
+        <td className="desktop-view">
           <div className="apy-content">
             <span>
               {pool.depositBurnFee > 0 && pool.depositFee > 0
@@ -192,177 +200,184 @@ export const HubCard = ({
           </div>
         </td>
       </tr>
-      <MDBCollapse show={showShow}>
-        <div className="action-dropdown">
-          <p className="d-block d-sm-none mb-2" style={{ color: `#8A92A6` }}>
-            Stake BNB-bscGAS ApeLP Earn USDC +bscGAS
-          </p>
-          {/* <p className="action-title">
-            Add Token to BCS Mainnet wallet
-            <img
-              src={Metamask}
-              alt=""
-              className="ms-2"
-              style={{ maxWidth: `16px` }}
-            />
-          </p> */}
-          <div className="row">
-            <div className="col-md-4">
-              <div className="action-item recent-item">
-                <div className="action-content">
-                  <span className="text-pink">
-                    RECENT {pool.rewardTokens[0].symbol} EARNED
-                  </span>
-                  <p>
-                    {numeral(
-                      ethers.utils.formatEther(
-                        pool.rewardTokens[0].pendingRewards,
-                      ),
-                    ).format('0,0.00')}{' '}
-                    {pool.rewardTokens[0].symbol}
-                  </p>
-                  <span>
-                    ~
-                    {numeral(
-                      ethers.utils.formatEther(
-                        pool.rewardTokens[0].pendingRewardsUSD,
-                      ),
-                    ).format('$0,0.00')}
-                  </span>
-                </div>
-                <div className="action-content">
-                  {pool.rewardTokens[1] ? (
-                    <>
+      <tr className="action-dropdown-box">
+        <th colSpan={7}>
+          <MDBCollapse className="action-dropdown-inner" show={showShow}>
+            <div className="action-dropdown">
+              <p
+                className="d-block d-sm-none mb-2"
+                style={{ color: `#8A92A6` }}
+              >
+                Stake BNB-bscGAS ApeLP Earn USDC +bscGAS
+              </p>
+              {/* <p className="action-title">
+                Add Token to BCS Mainnet wallet
+                <img
+                  src={Metamask}
+                  alt=""
+                  className="ms-2"
+                  style={{ maxWidth: `16px` }}
+                />
+              </p> */}
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="action-item recent-item">
+                    <div className="action-content">
                       <span className="text-pink">
-                        RECENT {pool.rewardTokens[1].symbol} EARNED
+                        RECENT {pool.rewardTokens[0].symbol} EARNED
                       </span>
                       <p>
-                        {' '}
                         {numeral(
                           ethers.utils.formatEther(
-                            pool.rewardTokens[1].pendingRewards,
+                            pool.rewardTokens[0].pendingRewards,
                           ),
                         ).format('0,0.00')}{' '}
-                        {pool.rewardTokens[1].symbol}
+                        {pool.rewardTokens[0].symbol}
                       </p>
                       <span>
                         ~
                         {numeral(
                           ethers.utils.formatEther(
-                            pool.rewardTokens[1].pendingRewardsUSD,
+                            pool.rewardTokens[0].pendingRewardsUSD,
                           ),
                         ).format('$0,0.00')}
                       </span>
-                    </>
-                  ) : (
-                    <></>
-                  )}
-                  {/* <span>
-                    0.1%{' '}
-                    <div className="text-decoration-underline">
-                      unstaking fee
-                    </div>{' '}
-                    until
-                  </span>
-                  <span>2d : 22h : 11m</span>
+                    </div>
+                    <div className="action-content">
+                      {pool.rewardTokens[1] ? (
+                        <>
+                          <span className="text-pink">
+                            RECENT {pool.rewardTokens[1].symbol} EARNED
+                          </span>
+                          <p>
+                            {' '}
+                            {numeral(
+                              ethers.utils.formatEther(
+                                pool.rewardTokens[1].pendingRewards,
+                              ),
+                            ).format('0,0.00')}{' '}
+                            {pool.rewardTokens[1].symbol}
+                          </p>
+                          <span>
+                            ~
+                            {numeral(
+                              ethers.utils.formatEther(
+                                pool.rewardTokens[1].pendingRewardsUSD,
+                              ),
+                            ).format('$0,0.00')}
+                          </span>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                      {/* <span>
+                        0.1%{' '}
+                        <div className="text-decoration-underline">
+                          unstaking fee
+                        </div>{' '}
+                        until
+                      </span>
+                      <span>2d : 22h : 11m</span>
+                      <span>
+                        <div className="text-decoration-underline">
+                          Performance Fee
+                        </div>{' '}
+                        5%
+                      </span> */}
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="action-item">
+                    <span className="pb-0 pb-sm-2">PRESALE MINING</span>
+                    <button className="join-btn">Join</button>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="action-item">
+                    <span className="pb-0 pb-sm-2">PRESALE MINING</span>
+                    <button className="join-btn">Enable</button>
+                  </div>
+                </div>
+              </div>
+              <div className="d-block d-sm-none mobile-apy-content">
+                <div className="apy-content">
+                  <span>Total Staked</span>
+                  <p>
+                    {numeral(
+                      ethers.utils.formatEther(pool.stakeToken.totalStaked),
+                    ).format('0,0.00')}{' '}
+                    {pool.stakeToken.symbol}
+                  </p>
+                </div>
+                <div className="apy-content">
                   <span>
-                    <div className="text-decoration-underline">
-                      Performance Fee
-                    </div>{' '}
-                    5%
-                  </span> */}
+                    {(
+                      pool.usesBlocks
+                        ? pool.end > currentBlock
+                        : pool.end * 1000 > Date.now()
+                    )
+                      ? (
+                          pool.usesBlocks
+                            ? currentBlock < pool.start
+                            : Date.now() < pool.end * 1000
+                        )
+                        ? 'Starts in'
+                        : 'Ends in'
+                      : ''}{' '}
+                    {pool.usesBlocks && (
+                      <a
+                        href={getExplorerCountdownLink(
+                          chainId,
+                          currentBlock < pool.start ? pool.start : pool.end,
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img src={StopwatchIcon} alt="" className="ms-1" />
+                      </a>
+                    )}
+                  </span>
+                  <p>
+                    {(
+                      pool.usesBlocks
+                        ? pool.end > currentBlock
+                        : pool.end * 1000 > Date.now()
+                    )
+                      ? pool.usesBlocks
+                        ? numeral(
+                            currentBlock < pool.start
+                              ? pool.start - currentBlock
+                              : pool.end - currentBlock,
+                          ).format('0,0') + ' blocks'
+                        : numeral(
+                            Date.now() < pool.start * 1000
+                              ? (pool.start * 1000 - Date.now()) / 1000
+                              : (pool.end * 1000 - Date.now()) / 1000,
+                          ).format('0,0') + ' seconds'
+                      : 'FINISHED'}
+                  </p>
+                </div>
+                <div className="apy-content">
+                  <span>
+                    {pool.depositBurnFee > 0 && pool.depositFee > 0
+                      ? 'Burn/Deposit'
+                      : pool.depositBurnFee > 0
+                      ? 'Burn'
+                      : 'Deposit'}{' '}
+                    Fee
+                  </span>
+                  <p>
+                    {numeral(
+                      (pool.depositBurnFee + pool.depositFee) / 10000.0,
+                    ).format('0.00%')}
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="action-item">
-                <span className="pb-0 pb-sm-2">PRESALE MINING</span>
-                <button className="join-btn">Join</button>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="action-item">
-                <span className="pb-0 pb-sm-2">PRESALE MINING</span>
-                <button className="join-btn">Enable</button>
-              </div>
-            </div>
-          </div>
-          <div className="d-block d-sm-none mobile-apy-content">
-            <div className="apy-content">
-              <span>Total Staked</span>
-              <p>
-                {numeral(
-                  ethers.utils.formatEther(pool.stakeToken.totalStaked),
-                ).format('0,0.00')}{' '}
-                {pool.stakeToken.symbol}
-              </p>
-            </div>
-            <div className="apy-content">
-              <span>
-                {(
-                  pool.usesBlocks
-                    ? pool.end > currentBlock
-                    : pool.end * 1000 > Date.now()
-                )
-                  ? (
-                      pool.usesBlocks
-                        ? currentBlock < pool.start
-                        : Date.now() < pool.end * 1000
-                    )
-                    ? 'Starts in'
-                    : 'Ends in'
-                  : ''}{' '}
-                {pool.usesBlocks && (
-                  <a
-                    href={getExplorerCountdownLink(
-                      chainId,
-                      currentBlock < pool.start ? pool.start : pool.end,
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={StopwatchIcon} alt="" className="ms-1" />
-                  </a>
-                )}
-              </span>
-              <p>
-                {(
-                  pool.usesBlocks
-                    ? pool.end > currentBlock
-                    : pool.end * 1000 > Date.now()
-                )
-                  ? pool.usesBlocks
-                    ? numeral(
-                        currentBlock < pool.start
-                          ? pool.start - currentBlock
-                          : pool.end - currentBlock,
-                      ).format('0,0') + ' blocks'
-                    : numeral(
-                        Date.now() < pool.start * 1000
-                          ? (pool.start * 1000 - Date.now()) / 1000
-                          : (pool.end * 1000 - Date.now()) / 1000,
-                      ).format('0,0') + ' seconds'
-                  : 'FINISHED'}
-              </p>
-            </div>
-            <div className="apy-content">
-              <span>
-                {pool.depositBurnFee > 0 && pool.depositFee > 0
-                  ? 'Burn/Deposit'
-                  : pool.depositBurnFee > 0
-                  ? 'Burn'
-                  : 'Deposit'}{' '}
-                Fee
-              </span>
-              <p>
-                {numeral(
-                  (pool.depositBurnFee + pool.depositFee) / 10000.0,
-                ).format('0.00%')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </MDBCollapse>
+          </MDBCollapse>
+        </th>
+      </tr>
     </>
   );
 };
