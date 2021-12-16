@@ -30,12 +30,13 @@ export const UtilityPage = () => {
   const [isTokenShow, setIsTokenShow] = useState(false);
   const toggleToken = () => setIsTokenShow(!isTokenShow);
   const [isCardGride, setIsCardGride] = useState(false);
-  const [isLive, setIsLive] = useState(false);
-  const [file, setFile] = useState(null);
+  // const [isLive, setIsLive] = useState(false);
+  // const [file, setFile] = useState(null);
+  const [setFile] = useState(null);
   const handleChange = (file: any) => {
     setFile(file);
   };
-  const { isDarkMode, toggle } = useDarkMode(true);
+  const { isDarkMode } = useDarkMode(true);
   const [values, setValue] = useState([50]);
   console.log('range-values', values);
   const sliderColor = isDarkMode
