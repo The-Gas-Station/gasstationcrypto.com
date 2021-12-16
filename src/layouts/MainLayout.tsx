@@ -31,7 +31,7 @@ import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 import { ReactComponent as SvgHome } from '../assets/home.svg';
 import { ReactComponent as SvgRewards } from '../assets/rewards.svg';
 import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
-// import { ReactComponent as SvgUtility } from '../assets/utility.svg';
+import { ReactComponent as SvgUtility } from '../assets/utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
 import { ReactComponent as SvgToken } from '../assets/token.svg';
@@ -96,11 +96,11 @@ export const MainLayout = () => {
       route: '/nfp',
       icon: SvgNFPs,
     },
-    // {
-    //   label: 'Utility',
-    //   route: '/utility',
-    //   icon: SvgUtility,
-    // },
+    {
+      label: 'Utility',
+      route: '/utility',
+      icon: SvgUtility,
+    },
   ];
 
   const socialLinks = [
