@@ -314,7 +314,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                         : 'Approve USDC'
                       : minting
                       ? 'Minting...'
-                      : 'Mint a Common'}
+                      : 'Mint a Rare'}
                   </button>
                 )}
                 {/* <button className="custom-btn-2">
@@ -389,7 +389,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                         : 'Approve USDC'
                       : minting
                       ? 'Minting...'
-                      : 'Mint a Common'}
+                      : 'Mint a Legendary'}
                   </button>
                 )}
                 {/* <button className="custom-btn-2">
