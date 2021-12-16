@@ -32,9 +32,8 @@ export const UtilityPage = () => {
   const [isCardGride, setIsCardGride] = useState(false);
   // const [isLive, setIsLive] = useState(false);
   // const [file, setFile] = useState(null);
-  const [setFile] = useState(null);
   const handleChange = (file: any) => {
-    setFile(file);
+    // setFile(file);
   };
   const { isDarkMode } = useDarkMode(true);
   const [values, setValue] = useState([50]);
