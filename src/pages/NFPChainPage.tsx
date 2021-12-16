@@ -84,12 +84,20 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
     }
   }
 
-  const [approving, setApproving] = useState(false);
+  const [approving, setApproving] = useState([false, false, false]);
   const _approve = useApproveAction();
 
   const approve = (rarity: number) => {
-    setApproving(true);
-    _approve(rarity).finally(() => setApproving(false));
+    setApproving((prev) => {
+      prev[rarity - 1] = true;
+      return prev;
+    });
+    _approve(rarity).finally(() =>
+      setApproving((prev) => {
+        prev[rarity - 1] = false;
+        return prev;
+      }),
+    );
   };
 
   const [minting, setMinting] = useState(false);
@@ -235,7 +243,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                     {!rarities[1].canAfford
                       ? 'Not Enough USDC'
                       : rarities[1].needsApproval
-                      ? approving
+                      ? approving[0]
                         ? 'Approving...'
                         : 'Approve USDC'
                       : minting
@@ -309,7 +317,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                     {!rarities[2].canAfford
                       ? 'Not Enough USDC'
                       : rarities[2].needsApproval
-                      ? approving
+                      ? approving[1]
                         ? 'Approving...'
                         : 'Approve USDC'
                       : minting
@@ -384,7 +392,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                     {!rarities[3].canAfford
                       ? 'Not Enough USDC'
                       : rarities[3].needsApproval
-                      ? approving
+                      ? approving[2]
                         ? 'Approving...'
                         : 'Approve USDC'
                       : minting
