@@ -34,6 +34,7 @@ export const UtilityPage = () => {
   // const [file, setFile] = useState(null);
   const handleChange = (file: any) => {
     // setFile(file);
+    console.log(file);
   };
   const { isDarkMode } = useDarkMode(true);
   const [values, setValue] = useState([50]);
