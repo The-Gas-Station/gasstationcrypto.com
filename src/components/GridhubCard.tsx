@@ -193,8 +193,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                         </span>
                       </p>
                     </div>
-                    {pool.type == PoolType.DoubleV1 ||
-                    pool.type == PoolType.DoubleV2 ? (
+                    {pool.type == PoolType.DoubleV1 ? (
                       <div className="reward-item">
                         <img
                           src={pool?.reward1Icon.replace('/public/', '/')}
