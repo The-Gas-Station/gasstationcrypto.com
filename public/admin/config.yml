@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: The-Gas-Station/gasstationcrypto.com
-  branch: master
+  branch: prod
   use_graphql: true
   squash_merges: true
 publish_mode: editorial_workflow
@@ -94,6 +94,20 @@ collections:
           widget: 'crypto-address',
         }
       - {
+          label: 'Non-Fungible Patron',
+          name: 'nfpAddress',
+          required: false,
+          widget: 'crypto-address',
+        }
+      - {
+          label: 'Non-Fungible Patron GitHub Base Url',
+          name: 'nfpGitHubBaseURL',
+          required: false,
+          widget: 'string',
+        }
+      - { label: 'Buy Address', name: 'buyAddress', widget: 'string' }
+      - { label: 'Chart Address', name: 'chartAddress', widget: 'string' }
+      - {
           label: 'Liquidity Pairs',
           name: 'liquidityPairs',
           required: false,
@@ -128,7 +142,14 @@ collections:
                 label: 'Type',
                 name: 'type',
                 widget: 'select',
-                options: ['SingleV1', 'SingleV2', 'DoubleV1'],
+                options:
+                  ['SingleV1', 'SingleV2', 'SingleV3', 'DoubleV1', 'DoubleV2'],
+              },
+              {
+                label: 'Stake Symbol Override',
+                name: 'stakeSymbol',
+                required: false,
+                widget: 'string',
               },
               {
                 label: 'Stake Token Image',
@@ -138,18 +159,26 @@ collections:
                 media_folder: /public/images/tokens,
               },
               {
-                label: 'Reward Token Images',
-                name: 'rewardIcons',
+                label: 'Reward Symbols Override',
+                name: 'rewardSymbols',
+                required: false,
+                widget: 'list',
+              },
+              {
+                label: 'Reward 0 Token Image',
+                name: 'reward0Icon',
                 widget: 'image',
-                allow_multiple: true,
+                allow_multiple: false,
                 media_folder: /public/images/tokens,
                 media_library: { config: { multiple: true } },
               },
+              {
+                label: 'Reward 1 Token Image (for dual reward pools)',
+                name: 'reward1Icon',
+                required: false,
+                widget: 'image',
+                allow_multiple: false,
+                media_folder: /public/images/tokens,
+              },
             ],
-        }
-      - {
-          label: 'Non-Fungible Patron',
-          name: 'nfpAddress',
-          required: false,
-          widget: 'crypto-address',
         }

@@ -1,59 +1,107 @@
 {
-  "chainId": 250,
+  "launchDate": "11 Dec, 2021",
+  "display": "Fantom Opera Network",
   "tokenImage": "/public/images/tokens/ftm.png",
-  "launched": true,
-  "etherCoingeckoId": "fantom",
+  "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Fantom/",
   "etherLiquidityPair": "evm:0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c",
-  "gasTokenName": "ftmGAS",
-  "gasTokenAddress": "evm:0x6741db012578615Ee07e029C1062B46730093912",
   "liquidityPairs": [
     {
       "name": "SpookySwap LP",
       "address": "evm:0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef"
     }
   ],
-  "tokens": [],
+  "gasTokenName": "ftmGAS",
+  "name": "fantom",
+  "etherCoingeckoId": "fantom",
+  "buyAddress": "https://spookyswap.finance/swap?outputCurrency=0x6741db012578615Ee07e029C1062B46730093912",
+  "launched": true,
+  "gasTokenAddress": "evm:0x6741db012578615Ee07e029C1062B46730093912",
+  "chartAddress": "https://www.dextools.io/app/fantom/pair-explorer/0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef",
   "pools": [
     {
       "name": "Dual Fuel (SPOOKY-LP)",
       "address": "evm:0xFb6db9c955a2F1062b5584AbCEE8Cf4c975896F6",
       "type": "DoubleV1",
       "stakeIcon": "/public/images/tokens/spookyswap.png",
-      "rewardIcons": [
-        "/public/images/tokens/gas.svg",
-        "/public/images/tokens/ftm.png"
-      ]
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/ftm.png",
+      "stakeSymbol": "ftmGAS-FTM spLP"
     },
     {
       "name": "ftmGAS Maximizer",
       "address": "evm:0x2AF2D8520F2265Ae5711A7A7221f1ac87eEf7655",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "Fuel Up",
       "address": "evm:0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "Stable Up",
       "address": "evm:0xe16D22501049Ebdd9bE44DDE377ffe2E945dF017",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
-      "rewardIcons": ["/public/images/tokens/usdc.png"]
+      "reward0Icon": "/public/images/tokens/usdc.png"
     },
     {
       "name": "WFTM Fuel Pool",
       "address": "evm:0xcC9808bC4Dc0115fBC8C3B9C99f900aD470e2d0D",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/ftm.png",
-      "rewardIcons": ["/public/images/tokens/gas.svg"]
+      "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "croGAS Presale Mining",
+      "address": "evm:0xf536F617e1Dbd7f3AFdF0D4C3E89Bec3D00fE5C5",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/spookyswap.png",
+      "reward0Icon": "/public/images/tokens/cro-circle.svg",
+      "stakeSymbol": "ftmGAS-FTM spLP"
+    },
+    {
+      "name": "croGAS Presale Mining",
+      "address": "evm:0x45f892fFb01a3883d995d6BF1038E45b89DB4Aba",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "reward0Icon": "/public/images/tokens/cro-circle.svg",
+      "stakeSymbol": "",
+      "rewardSymbols": []
+    },
+    {
+      "name": "movrGAS Presale Mining",
+      "address": "evm:0xC066069E7706f88452bd6675698e44993fB92062",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
+    },
+    {
+      "name": "movrGAS Presale Mining",
+      "address": "evm:0x64e0a00bDACC2671cE8A651420F10d9b8dE37ACA",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
+    },
+    {
+      "name": "avaxGAS Presale Mining",
+      "address": "evm:0xf6c2Aa24a31F097E89Fe887a2572b227C03e2764",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "reward0Icon": "/public/images/tokens/avax.png"
+    },
+    {
+      "name": "avaxGAS Presale Mining",
+      "address": "evm:0x400083aD19B9D77F1753bCf4103C587fb7379C81",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/usdc.png",
+      "reward0Icon": "/public/images/tokens/avax.png"
     }
   ],
+  "tokens": [],
   "nfpAddress": "evm:0xDBD9BfcB77B6a0477411282022FEE2CF81f06cd6",
-  "display": "Fantom Opera Network",
-  "name": "fantom"
+  "chainId": 250
 }

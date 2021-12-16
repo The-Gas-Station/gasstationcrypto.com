@@ -6,12 +6,7 @@ export const useJSONResult = (url: string): any => {
   useEffect(() => {
     async function getResult() {
       try {
-        const data = await window.fetch(url, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        const data = await window.fetch(url);
         const result = await data.json();
         setResult(result);
       } catch (_) {

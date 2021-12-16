@@ -7,6 +7,7 @@ import numeral from 'numeral';
 
 import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import useEthers from '../library/hooks/useEthers';
+import { getExplorerCountdownLink } from '../library/helpers/chains';
 
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
 
@@ -18,6 +19,7 @@ import {
   EXPLORER_URLS,
   RPC_URLS,
 } from '../library/constants/chains';
+import { PoolType } from '../configs';
 
 type toggleProps = {
   showStakeModal: any;
@@ -59,7 +61,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
   const hasHarvest = pool.rewardTokens[0].pendingRewards.gt(0);
   const isStaked = pool.stakeToken.staked.gt(0);
   const isApproved = pool.stakeToken.approved.gt(pool.stakeToken.balance);
-  const isFinished = pool.endBlock < currentBlock;
+  const isFinished = pool.usesBlocks
+    ? pool.end < currentBlock
+    : pool.end * 1000 < Date.now();
 
   const connect = async () => {
     try {
@@ -114,16 +118,24 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
               <h2>{pool.name}</h2>
               <p>
                 <span style={{ color: `#28CCAB` }}>EARN</span>{' '}
-                {pool.rewardTokens[0].symbol}
+                {pool.rewardSymbols && pool.rewardSymbols[0]
+                  ? pool.rewardSymbols[0]
+                  : pool.rewardTokens[0].symbol}
                 {pool.rewardTokens[1] ? (
-                  <> + {pool.rewardTokens[1].symbol}</>
+                  <>
+                    {pool.rewardSymbols && pool.rewardSymbols[1] ? (
+                      <> + {pool.rewardSymbols[1]}</>
+                    ) : (
+                      <> + {pool.rewardTokens[1].symbol}</>
+                    )}
+                  </>
                 ) : (
                   <></>
                 )}
               </p>
               <p>
                 <span className="text-white1">STAKE</span>{' '}
-                {pool.stakeToken.symbol}
+                {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
               </p>
             </div>
             <div className="card-right-img">
@@ -136,9 +148,17 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
           </div>
           <div className="card-body-content">
             <div className="title">
-              <span>APR</span>
+              <span>{pool.apr ? 'APR' : 'Total Rewards/Day'}</span>
               <span>
-                {numeral(isFinished ? '0' : pool.apr).format('0.00%')}
+                {numeral(
+                  isFinished
+                    ? '0'
+                    : pool.apr
+                    ? pool.apr
+                    : ethers.utils.formatEther(
+                        pool.rewardTokens[0].rewardsPerDay,
+                      ),
+                ).format(isFinished || pool.apr ? '0.00%' : '0,0.0')}
               </span>
             </div>
             <div className="reward-money">
@@ -150,7 +170,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                   <div className="reward-items">
                     <div className="reward-item">
                       <img
-                        src={pool?.rewardIcons[0].replace('/public/', '/')}
+                        src={pool?.reward0Icon.replace('/public/', '/')}
                         alt=""
                       />
                       <p>
@@ -159,7 +179,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                             pool.rewardTokens[0].pendingRewards,
                           ),
                         ).format('0,0.00')}{' '}
-                        {pool.rewardTokens[0].symbol}
+                        {pool.rewardSymbols && pool.rewardSymbols[0]
+                          ? pool.rewardSymbols[0]
+                          : pool.rewardTokens[0].symbol}
                         <br />
                         <span>
                           ~
@@ -171,10 +193,11 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                         </span>
                       </p>
                     </div>
-                    {pool.rewardTokens[1] ? (
+                    {pool.type == PoolType.DoubleV1 ||
+                    pool.type == PoolType.DoubleV2 ? (
                       <div className="reward-item">
                         <img
-                          src={pool?.rewardIcons[1].replace('/public/', '/')}
+                          src={pool?.reward1Icon.replace('/public/', '/')}
                           alt=""
                         />
                         <p>
@@ -183,7 +206,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                               pool.rewardTokens[1].pendingRewards,
                             ),
                           ).format('0,0.00')}{' '}
-                          {pool.rewardTokens[1].symbol}
+                          {pool.rewardSymbols && pool.rewardSymbols[1]
+                            ? pool.rewardSymbols[1]
+                            : pool.rewardTokens[1].symbol}
                           <br />{' '}
                           <span>
                             ~
@@ -266,7 +291,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                         {numeral(
                           ethers.utils.formatEther(pool.stakeToken.staked),
                         ).format('0,0.00')}{' '}
-                        {pool.stakeToken.symbol}
+                        {pool.stakeSymbol
+                          ? pool.stakeSymbol
+                          : pool.stakeToken.symbol}
                         <br />{' '}
                         <span>
                           ~
@@ -335,7 +362,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                       {numeral(
                         ethers.utils.formatEther(pool.stakeToken.totalStaked),
                       ).format('0,0.00')}{' '}
-                      {pool.stakeToken.symbol}
+                      {pool.stakeSymbol
+                        ? pool.stakeSymbol
+                        : pool.stakeToken.symbol}
                     </p>
                   </div>
                   <div className="apy-content">
@@ -353,25 +382,59 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                       ).format('0.00%')}
                     </p>
                   </div>
-                  <div className="apy-content">
+                  <div className="apy-content d-flex justify-content-between">
                     <span>
-                      {pool.endBlock > currentBlock
-                        ? currentBlock < pool.startBlock
+                      {(
+                        pool.usesBlocks
+                          ? pool.end > currentBlock
+                          : pool.end * 1000 > Date.now()
+                      )
+                        ? (
+                            pool.usesBlocks
+                              ? currentBlock < pool.start
+                              : Date.now() < pool.end * 1000
+                          )
                           ? 'Starts in'
                           : 'Ends in'
                         : ''}{' '}
-                      <img src={StopwatchIcon} alt="" className="ms-1" />
+                      {pool.usesBlocks && (
+                        <a
+                          href={getExplorerCountdownLink(
+                            chainId,
+                            currentBlock < pool.start ? pool.start : pool.end,
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img src={StopwatchIcon} alt="" className="ms-1" />
+                        </a>
+                      )}
                     </span>
                     <p>
-                      {pool.endBlock > currentBlock ? (
-                        <>
-                          {numeral(
-                            currentBlock < pool.startBlock
-                              ? pool.startBlock - currentBlock
-                              : pool.endBlock - currentBlock,
-                          ).format('0,0')}{' '}
-                          <small>blocks</small>
-                        </>
+                      {(
+                        pool.usesBlocks
+                          ? pool.end > currentBlock
+                          : pool.end * 1000 > Date.now()
+                      ) ? (
+                        pool.usesBlocks ? (
+                          <>
+                            {numeral(
+                              currentBlock < pool.start
+                                ? pool.start - currentBlock
+                                : pool.end - currentBlock,
+                            ).format('0,0')}
+                            <small> blocks</small>
+                          </>
+                        ) : (
+                          <>
+                            {numeral(
+                              Date.now() < pool.start * 1000
+                                ? (pool.start * 1000 - Date.now()) / 1000
+                                : (pool.end * 1000 - Date.now()) / 1000,
+                            ).format('0,0')}
+                            <small> seconds</small>
+                          </>
+                        )
                       ) : (
                         'FINISHED'
                       )}{' '}

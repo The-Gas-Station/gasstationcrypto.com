@@ -114,7 +114,9 @@ export const StackModal = ({
                     alt=""
                     style={{ maxHeight: 55 }}
                   />
-                  {pool?.stakeToken.symbol}
+                  {pool?.stakeSymbol
+                    ? pool?.stakeSymbol
+                    : pool?.stakeToken.symbol}
                 </h5>
                 <p>
                   Balance <br />
