@@ -100,12 +100,20 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
     );
   };
 
-  const [minting, setMinting] = useState(false);
+  const [minting, setMinting] = useState([false, false, false]);
   const _mint = useMintAction();
 
   const mint = (rarity: number) => {
-    setMinting(true);
-    _mint(rarity).finally(() => setMinting(false));
+    setMinting((prev) => {
+      prev[rarity - 1] = true;
+      return prev;
+    });
+    _mint(rarity).finally(() =>
+      setMinting((prev) => {
+        prev[rarity - 1] = false;
+        return prev;
+      }),
+    );
   };
 
   const switchNetwork = (e: any) => {
@@ -246,7 +254,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                       ? approving[0]
                         ? 'Approving...'
                         : 'Approve USDC'
-                      : minting
+                      : minting[0]
                       ? 'Minting...'
                       : 'Mint a Common'}
                   </button>
@@ -320,7 +328,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                       ? approving[1]
                         ? 'Approving...'
                         : 'Approve USDC'
-                      : minting
+                      : minting[1]
                       ? 'Minting...'
                       : 'Mint a Rare'}
                   </button>
@@ -395,7 +403,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                       ? approving[2]
                         ? 'Approving...'
                         : 'Approve USDC'
-                      : minting
+                      : minting[2]
                       ? 'Minting...'
                       : 'Mint a Legendary'}
                   </button>
