@@ -38,49 +38,45 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
 
   let rareImage = '/images/nfp-buyme.png';
 
-  if (chainData.nfpGitHubBaseURL) {
-    const rareMetadata = useJSONResult(
-      `${chainData.nfpGitHubBaseURL}metadata/2/${
-        rarities[2].minted + 1
-      }/index.json`,
-    );
+  const rareMetadata = chainData.nfpGitHubBaseURL
+    ? useJSONResult(
+        `${chainData.nfpGitHubBaseURL}metadata/2/${
+          rarities[2].minted + 1
+        }/index.json`,
+      )
+    : undefined;
 
-    if (
-      rarities[2].minted &&
-      rarities[2].total &&
-      rareMetadata &&
-      rareMetadata.image &&
-      rarities[2].total > 0
-    ) {
-      if (rarities[2].minted < rarities[2].total) {
+  if (rarities[2].minted && rarities[2].total && rarities[2].total > 0) {
+    if (rarities[2].minted < rarities[2].total) {
+      if (chainData.nfpGitHubBaseURL && rareMetadata && rareMetadata.image) {
         rareImage = rareMetadata.image;
-      } else {
-        rareImage = '/images/nfp-soldout.png';
       }
+    } else {
+      rareImage = '/images/nfp-soldout.png';
     }
   }
 
   let legendaryImage = '/images/nfp-buyme.png';
 
-  if (chainData.nfpGitHubBaseURL) {
-    const legendaryMetadata = useJSONResult(
-      `${chainData.nfpGitHubBaseURL}metadata/3/${
-        rarities[3].minted + 1
-      }/index.json`,
-    );
+  const legendaryMetadata = chainData.nfpGitHubBaseURL
+    ? useJSONResult(
+        `${chainData.nfpGitHubBaseURL}metadata/3/${
+          rarities[3].minted + 1
+        }/index.json`,
+      )
+    : undefined;
 
-    if (
-      rarities[3].minted &&
-      rarities[3].total &&
-      legendaryMetadata &&
-      legendaryMetadata.image &&
-      rarities[3].total > 0
-    ) {
-      if (rarities[3].minted < rarities[3].total) {
+  if (rarities[3].minted && rarities[3].total && rarities[3].total > 0) {
+    if (rarities[3].minted < rarities[3].total) {
+      if (
+        chainData.nfpGitHubBaseURL &&
+        legendaryMetadata &&
+        legendaryMetadata.image
+      ) {
         legendaryImage = legendaryMetadata.image;
-      } else {
-        legendaryImage = '/images/nfp-soldout.png';
       }
+    } else {
+      legendaryImage = '/images/nfp-soldout.png';
     }
   }
 
