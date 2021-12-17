@@ -251,7 +251,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                       rarities[1].needsApproval ? approve(1) : mint(1)
                     }
                   >
-                    {rarities[3].minted < rarities[3].total
+                    {rarities[1].minted < rarities[1].total
                       ? !rarities[1].canAfford
                         ? 'Not Enough USDC'
                         : rarities[1].needsApproval
@@ -330,7 +330,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                       rarities[2].needsApproval ? approve(2) : mint(2)
                     }
                   >
-                    {rarities[3].minted < rarities[3].total
+                    {rarities[2].minted < rarities[2].total
                       ? !rarities[2].canAfford
                         ? 'Not Enough USDC'
                         : rarities[2].needsApproval
