@@ -37,7 +37,7 @@ import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
 import { ReactComponent as SvgToken } from '../assets/token.svg';
 import { ReactComponent as SvgFuelcan } from '../assets/fuelcan.svg';
 
-import { ReactComponent as SvgGitbook } from '../assets/gitbook.svg'
+import { ReactComponent as SvgGitbook } from '../assets/gitbook.svg';
 import { ReactComponent as SvgTwitter } from '../assets/twitter.svg';
 import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
