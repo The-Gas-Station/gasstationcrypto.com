@@ -97,7 +97,14 @@ export const MainLayout = () => {
       icon: SvgNFPs,
     },
     {
-      label: 'Utility',
+      label: (
+        <>
+          Utility{' '}
+          <i>
+            <small>BETA</small>
+          </i>
+        </>
+      ),
       route: '/utility',
       icon: SvgUtility,
     },
