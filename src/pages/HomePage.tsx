@@ -68,7 +68,7 @@ export const HomePage = () => {
     {
       title: 'Non-Fungible Patrons',
       text: `Become a Non-Fungible Patron today by
-      buying a Common, Rare or Legendary NET
+      buying a Common, Rare or Legendary NFT
       and enjoy exclusive Patron perks – free
       transactions and transaction fees, to name
       a few.`,
