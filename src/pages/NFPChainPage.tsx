@@ -243,20 +243,25 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                 ) : (
                   <button
                     className="custom-btn flex-fill"
-                    disabled={!rarities[1].canAfford}
+                    disabled={
+                      rarities[1].minted >= rarities[1].total ||
+                      !rarities[1].canAfford
+                    }
                     onClick={() =>
                       rarities[1].needsApproval ? approve(1) : mint(1)
                     }
                   >
-                    {!rarities[1].canAfford
-                      ? 'Not Enough USDC'
-                      : rarities[1].needsApproval
-                      ? approving[0]
-                        ? 'Approving...'
-                        : 'Approve USDC'
-                      : minting[0]
-                      ? 'Minting...'
-                      : 'Mint a Common'}
+                    {rarities[3].minted < rarities[3].total
+                      ? !rarities[1].canAfford
+                        ? 'Not Enough USDC'
+                        : rarities[1].needsApproval
+                        ? approving[0]
+                          ? 'Approving...'
+                          : 'Approve USDC'
+                        : minting[0]
+                        ? 'Minting...'
+                        : 'Mint a Common'
+                      : 'Sold Out'}
                   </button>
                 )}
                 {/* <button className="custom-btn-2">
@@ -317,20 +322,25 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                 ) : (
                   <button
                     className="custom-btn flex-fill"
-                    disabled={!rarities[2].canAfford}
+                    disabled={
+                      rarities[2].minted >= rarities[2].total ||
+                      !rarities[2].canAfford
+                    }
                     onClick={() =>
                       rarities[2].needsApproval ? approve(2) : mint(2)
                     }
                   >
-                    {!rarities[2].canAfford
-                      ? 'Not Enough USDC'
-                      : rarities[2].needsApproval
-                      ? approving[1]
-                        ? 'Approving...'
-                        : 'Approve USDC'
-                      : minting[1]
-                      ? 'Minting...'
-                      : 'Mint a Rare'}
+                    {rarities[3].minted < rarities[3].total
+                      ? !rarities[2].canAfford
+                        ? 'Not Enough USDC'
+                        : rarities[2].needsApproval
+                        ? approving[1]
+                          ? 'Approving...'
+                          : 'Approve USDC'
+                        : minting[1]
+                        ? 'Minting...'
+                        : 'Mint a Rare'
+                      : 'Sold Out'}
                   </button>
                 )}
                 {/* <button className="custom-btn-2">
@@ -392,20 +402,25 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
                 ) : (
                   <button
                     className="custom-btn flex-fill"
-                    disabled={!rarities[3].canAfford}
+                    disabled={
+                      rarities[3].minted >= rarities[3].total ||
+                      !rarities[3].canAfford
+                    }
                     onClick={() =>
                       rarities[3].needsApproval ? approve(3) : mint(3)
                     }
                   >
-                    {!rarities[3].canAfford
-                      ? 'Not Enough USDC'
-                      : rarities[3].needsApproval
-                      ? approving[2]
-                        ? 'Approving...'
-                        : 'Approve USDC'
-                      : minting[2]
-                      ? 'Minting...'
-                      : 'Mint a Legendary'}
+                    {rarities[3].minted < rarities[3].total
+                      ? !rarities[3].canAfford
+                        ? 'Not Enough USDC'
+                        : rarities[3].needsApproval
+                        ? approving[2]
+                          ? 'Approving...'
+                          : 'Approve USDC'
+                        : minting[2]
+                        ? 'Minting...'
+                        : 'Mint a Legendary'
+                      : 'Sold Out'}
                   </button>
                 )}
                 {/* <button className="custom-btn-2">
