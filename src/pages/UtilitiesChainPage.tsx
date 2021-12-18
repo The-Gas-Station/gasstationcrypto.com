@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MDBCollapse } from 'mdb-react-ui-kit';
-import { ethers } from 'ethers';
-import numeral from 'numeral';
 
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
-import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 
-import { CHAIN_NAMES, CHAIN_ETHER, ChainId } from '../library/constants/chains';
+import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 
 import ExchangeIcon from '../assets/exchange.svg';
@@ -32,7 +29,6 @@ import { FileUploader } from 'react-drag-drop-files';
 const fileTypes = ['xlsx', 'xls', 'csv', 'txt'];
 export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
-  const currentBlock = useBlockNumber(chainId) ?? 0;
 
   const chainData = CHAIN_INFO[chainId];
 
