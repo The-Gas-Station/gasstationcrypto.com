@@ -2,6 +2,7 @@
   "launchDate": "",
   "display": "Avalanche",
   "tokenImage": "/public/images/tokens/avax.png",
+  "etherLiquidityPair": "evm:0xA389f9430876455C36478DeEa9769B7Ca4E3DDB1",
   "liquidityPairs": [
     {
       "name": "LP",
