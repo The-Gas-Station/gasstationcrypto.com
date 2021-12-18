@@ -81,7 +81,7 @@ collections:
         }
       - { label: 'CoinGecko', name: 'etherCoingeckoId', widget: 'string' }
       - {
-          label: 'Ether Liquidity Pair',
+          label: 'Ether/USDC Liquidity Pair',
           name: 'etherLiquidityPair',
           required: false,
           widget: 'crypto-address',
