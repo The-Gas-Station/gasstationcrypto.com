@@ -18,6 +18,15 @@
   "chartAddress": "https://dexscreener.com/avalanche/0x53fb54e657458d39f8c8a37b797fbaba7552c435",
   "pools": [
     {
+      "name": "LP Dual Fuel",
+      "address": "evm:0xC08f1D67B8B2dE9896d7590D0bf90e6291100175",
+      "type": "DoubleV2",
+      "stakeIcon": "/public/images/tokens/logo.bc60f78d.png",
+      "stakeSymbol": "avaxGAS-AVAX LP",
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/avax.png"
+    },
+    {
       "name": "avaxGAS Maximizer",
       "address": "evm:0x35CA22Ad35855Ff4355BA1C1052e73b78612B336",
       "type": "SingleV3",
@@ -37,15 +46,6 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
-    },
-    {
-      "name": "LP Dual Fuel",
-      "address": "evm:0xC08f1D67B8B2dE9896d7590D0bf90e6291100175",
-      "type": "DoubleV2",
-      "stakeIcon": "/public/images/tokens/logo.bc60f78d.png",
-      "stakeSymbol": "avaxGAS-AVAX LP",
-      "reward0Icon": "/public/images/tokens/gas.svg",
-      "reward1Icon": "/public/images/tokens/avax.png"
     }
   ],
   "chainId": 43114
