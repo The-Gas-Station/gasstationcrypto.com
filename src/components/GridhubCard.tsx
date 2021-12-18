@@ -392,7 +392,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                         ? (
                             pool.usesBlocks
                               ? currentBlock < pool.start
-                              : Date.now() < pool.end * 1000
+                              : Date.now() < pool.start * 1000
                           )
                           ? 'Starts in'
                           : 'Ends in'
