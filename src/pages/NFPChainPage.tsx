@@ -224,7 +224,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
               <span className="drow-line"></span>
               <p className="desc flex-fill">
-                Common patrons are algrithmically generate NFTs. Own one to
+                Common patrons are algorithmically generate NFTs. Own one to
                 enjoy free transfers on Gas Station Bridge.
               </p>
               <div className="btn-blocks d-flex justify-content-center">
