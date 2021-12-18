@@ -12,7 +12,7 @@
   "name": "movr",
   "etherCoingeckoId": "wmovr",
   "buyAddress": "https://app.solarbeam.io/exchange/swap?outputCurrency=0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
-  "launched": false,
+  "launched": true,
   "gasTokenAddress": "evm:0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
   "chartAddress": "https://dexscreener.com/moonriver/0x88e5319621a16696728e8e4bb45a5dd407b85a54",
   "pools": [
