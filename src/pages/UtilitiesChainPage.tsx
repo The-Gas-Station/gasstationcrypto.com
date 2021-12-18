@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MDBCollapse } from 'mdb-react-ui-kit';
-import BscIcon from '../assets/bsc.png';
+import { ethers } from 'ethers';
+import numeral from 'numeral';
+
+import { useConfig } from '../library/providers/ConfigProvider';
+import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
+import { useBlockNumber } from '../library/providers/BlockNumberProvider';
+
+import { CHAIN_NAMES, CHAIN_ETHER, ChainId } from '../library/constants/chains';
+import { CHAIN_INFO } from '../configs';
+
 import ExchangeIcon from '../assets/exchange.svg';
 import ForwardIcon from '../assets/forward.svg';
 import ConvertIcon from '../assets/convert.svg';
@@ -20,7 +30,21 @@ import { useDarkMode } from '../library/hooks/useDarkMode';
 import { FileUploader } from 'react-drag-drop-files';
 
 const fileTypes = ['xlsx', 'xls', 'csv', 'txt'];
-export const UtilityPage = () => {
+export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
+  const navigate = useNavigate();
+  const currentBlock = useBlockNumber(chainId) ?? 0;
+
+  const chainData = CHAIN_INFO[chainId];
+
+  const { readOnlyChainIds } = useConfig();
+  const { setCurrentChainId } = useWeb3ConnectionsContext();
+
+  const switchNetwork = (e: any) => {
+    const newChainId: ChainId = parseInt(e.target.value);
+    setCurrentChainId(newChainId);
+    navigate(`/${CHAIN_NAMES[newChainId]}/utilities`);
+  };
+
   const [showShow, setShowShow] = useState(false);
   const toggleShow = () => setShowShow(!showShow);
   const [isMiningShow, setIsMiningShow] = useState(false);
@@ -44,19 +68,34 @@ export const UtilityPage = () => {
     : ['#28CCAB', '#e7e7ed'];
   return (
     <>
-      <div className="rewards-first-block utility-wrapper">
-        <div className="rewards-title-block mb-0">
-          <div className="rewards-title">
-            <h2>
-              <img src={BscIcon} alt="" className="me-3" />
-              Binance Smart Chain
-            </h2>
-            <select className="custom-select d-none d-lg-block">
-              <option value="">Switch Network</option>
-            </select>
-          </div>
+      <section className="page-background">
+        <div className="page-banner-top-title">
+          <h3>
+            <img src={chainData.tokenImage.replace('/public/', '/')} alt="#" />{' '}
+            {CHAIN_NAMES[chainId]} Utilities
+          </h3>
+          <select onChange={switchNetwork}>
+            <option>Switch Network</option>
+            {(readOnlyChainIds || []).map((_chainId) => {
+              return (
+                _chainId != chainId &&
+                CHAIN_INFO[_chainId].launched && (
+                  <option key={`switch-chain-${_chainId}`} value={_chainId}>
+                    {CHAIN_NAMES[_chainId]}
+                  </option>
+                )
+              );
+            })}
+          </select>
         </div>
-      </div>
+        <div className="nfp-banner-center-text">
+          <h4>Utilities</h4>
+          <p>
+            This page is still underconstruction. This is just a preview of some
+            of the items coming soon.
+          </p>
+        </div>
+      </section>
       <div className="rewards-second-block utility-block">
         <div className={`utility-collapse ${showShow ? 'open' : ''}`}>
           <div className="title-block">
@@ -475,4 +514,4 @@ export const UtilityPage = () => {
   );
 };
 
-export default UtilityPage;
+export default UtilitiesChainPage;

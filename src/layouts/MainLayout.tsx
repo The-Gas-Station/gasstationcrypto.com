@@ -99,7 +99,7 @@ export const MainLayout = () => {
     {
       label: (
         <>
-          Utility{' '}
+          Utilities{' '}
           <i>
             <small>BETA</small>
           </i>
