@@ -27,7 +27,7 @@ export function useTVL(chainId: ChainId) {
       ]) ?? []
     ).map((stakeToken) => (stakeToken ? stakeToken[0] : undefined));
 
-    const totalStakes = (
+    let totalStakes = (
       useContractCalls(chainId, [
         ...chainData.pools.map((pool) => ({
           abi: PoolSingleV1Interface,
@@ -45,7 +45,7 @@ export function useTVL(chainId: ChainId) {
       (stakeToken) => useTokenDecimals(chainId, stakeToken) ?? 18,
     );
 
-    totalStakes.map((totalStake, i) =>
+    totalStakes = totalStakes.map((totalStake, i) =>
       totalStake && stakeDecimals[i]
         ? totalStake.mul(BigNumber.from(10).pow(18 - stakeDecimals[i]))
         : totalStake,

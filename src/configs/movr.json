@@ -19,7 +19,7 @@
   "pools": [
     {
       "name": "LP Dual Fuel",
-      "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
+      "address": "evm:0xa916a8b06Ce44F12c63D411E98f3D0340c48CF38",
       "type": "DoubleV2",
       "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
       "reward0Icon": "/public/images/tokens/gas.svg",

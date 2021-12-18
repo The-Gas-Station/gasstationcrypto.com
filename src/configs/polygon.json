@@ -32,6 +32,13 @@
       "stakeSymbol": "polyGAS-MATIC Ape LP"
     },
     {
+      "name": "polyGAS Maximizer",
+      "address": "evm:0xbf8C11f9e3D3a64F5ad0Ce237b96a8003d57e42b",
+      "type": "SingleV2",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
       "name": "GAS Fuel Tank (polyGAS -> USDC)",
       "address": "evm:0x2bc0bf8e98c7bbf08dd682b3ed0da50991aa66bd",
       "type": "SingleV1",
@@ -81,13 +88,6 @@
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
       "reward0Icon": "/public/images/tokens/usdc.png"
-    },
-    {
-      "name": "polyGAS Maximizer",
-      "address": "evm:0xbf8C11f9e3D3a64F5ad0Ce237b96a8003d57e42b",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/gas.svg",
-      "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "polyGAS Stable Up (GAS -> USDC)",
