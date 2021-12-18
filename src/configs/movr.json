@@ -18,6 +18,15 @@
   "chartAddress": "https://dexscreener.com/moonriver/0x88e5319621a16696728e8e4bb45a5dd407b85a54",
   "pools": [
     {
+      "name": "LP Dual Fuel",
+      "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
+      "type": "DoubleV2",
+      "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/movr-blue-circle.svg",
+      "stakeSymbol": "movrGAS-MOVR SLP"
+    },
+    {
       "name": "movrGAS Maximizer",
       "address": "evm:0xbcD71f70560a6380c02e7f9EfB7388D2e257FdF8",
       "type": "SingleV3",
@@ -37,15 +46,6 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
-    },
-    {
-      "name": "LP Dual Fuel",
-      "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
-      "type": "DoubleV2",
-      "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
-      "reward0Icon": "/public/images/tokens/gas.svg",
-      "reward1Icon": "/public/images/tokens/movr-blue-circle.svg",
-      "stakeSymbol": "movrGAS-MOVR SLP"
     }
   ],
   "chainId": 1285
