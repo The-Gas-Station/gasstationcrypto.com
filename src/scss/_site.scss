@@ -469,6 +469,18 @@ img {
 						}
 					}
 				}
+
+                .avatar-25,
+                .avatar-1285 {
+                  border-radius: 0;
+        
+                  img {
+                    border-radius: 0;
+                    border: 0;
+                    max-width: 45px;
+                    height: initial;
+                  }
+                }
 			}
 			.card-body {
 				background: $dark-bg;
