@@ -7,6 +7,10 @@
     {
       "name": "Pair",
       "address": "evm:0x88e5319621a16696728e8E4bb45a5dd407b85A54"
+    },
+    {
+      "name": "HBLP",
+      "address": "evm:0x34C28190473FF08113Ea4006E941a0682086CcfA"
     }
   ],
   "gasTokenName": "movrGAS",
