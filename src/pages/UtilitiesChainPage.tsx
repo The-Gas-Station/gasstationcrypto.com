@@ -113,13 +113,13 @@ export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
               <div className="row g-lg-5">
                 <div className="col-lg-4 position-relative">
                   <div className="dec-text">
-                    Convert Single Assets to Share Tokens!
-                    Share Tokens are identical to how DEX LP Tokens Work,
-                    Assets in and LP Tokens out. The LP Token represents the
-                    assets that are used for trading liquidity.
-                    Here the asset is used as bridge transfer liquidity! Share Tokens are
-                    the LP Tokens for our Network Bridges,
-                    so anyone can support the ecosystem by supplying their own liquidity!
+                    Convert Single Assets to Share Tokens! Share Tokens are
+                    identical to how DEX LP Tokens Work, Assets in and LP Tokens
+                    out. The LP Token represents the assets that are used for
+                    trading liquidity. Here the asset is used as bridge transfer
+                    liquidity! Share Tokens are the LP Tokens for our Network
+                    Bridges, so anyone can support the ecosystem by supplying
+                    their own liquidity!
                   </div>
                   <div className="read-more d-block d-lg-none">
                     READ MORE
@@ -262,10 +262,10 @@ export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
                 <div className="col-lg-4 position-relative">
                   <div className="dec-text">
-                    Mining Passes are ERC-721 Tokens that passively
-                    grant GAS Tokens to the holder every day!
-                    These passes are also spent on entry for
-                    premium fuel tanks, which offer even greater rewards!
+                    Mining Passes are ERC-721 Tokens that passively grant GAS
+                    Tokens to the holder every day! These passes are also spent
+                    on entry for premium fuel tanks, which offer even greater
+                    rewards!
                   </div>
                   <div className="read-more d-block d-lg-none">
                     READ MORE
@@ -316,8 +316,8 @@ export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
               <div className="row g-lg-5">
                 <div className="col-lg-4 position-relative">
                   <div className="dec-text">
-                    Send ANY Token To ANY Amount of Receipients! 
-                    Combine all of your outgoing transfers into one transaction! 
+                    Send ANY Token To ANY Amount of Receipients! Combine all of
+                    your outgoing transfers into one transaction!
                   </div>
                   <div className="read-more d-block d-lg-none">
                     READ MORE
@@ -395,10 +395,10 @@ export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
                 <div className="col-lg-4">
                   <div className="dec-text">
-                    Safely and Securely lock any ERC-20 or
-                    ERC-721 Token for any duration of time!
-                    Only the creator of the lock can withdraw
-                    the locked tokens after expiration, therefore all risk is eliminated!
+                    Safely and Securely lock any ERC-20 or ERC-721 Token for any
+                    duration of time! Only the creator of the lock can withdraw
+                    the locked tokens after expiration, therefore all risk is
+                    eliminated!
                   </div>
                   <div className="project-list">
                     <div className="project-item">
