@@ -51,6 +51,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import useGASTokenPrice from '../hooks/useGASTokenPrice';
 import { ethers } from 'ethers';
+import InfoDropdown from '../components/InfoDropdown';
 
 export const MainLayout = () => {
   const navigate = useNavigate();
@@ -556,6 +557,7 @@ export const MainLayout = () => {
                   </ActiveLink>
                 </MDBSideNavItem>
               ))}
+              <InfoDropdown />
             </MDBSideNavMenu>
           </MDBScrollbar>
           <div className="d-flex flex-column justify-content-between fixed-bottom">
