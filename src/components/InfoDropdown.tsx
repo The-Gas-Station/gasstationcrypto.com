@@ -37,14 +37,14 @@ const infoLinks = [
 const InfoLinks = () => (
   <>
     {infoLinks.map((link, index) => (
-      <MDBSideNavLink key={index} className="sidenav-item">
+      <MDBSideNavLink key={index} className="sidenav-item m-2">
         <a
           href={link.href}
           target="_blank"
           className="ripple ripple-surface"
           color="none"
         >
-          <span>{link.label}</span>
+          <span style={{ width: '175px' }}>{link.label}</span>
         </a>
       </MDBSideNavLink>
     ))}
@@ -55,7 +55,7 @@ const InfoDropdown = () => {
   const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(true);
   return (
     <MDBSideNavMenu>
-      <MDBSideNavItem className="m-2">
+      <MDBSideNavItem>
         <MDBSideNavLink
           icon="angle-down"
           shouldBeExpanded={infoDropdownCollapse}
