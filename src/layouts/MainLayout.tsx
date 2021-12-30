@@ -559,95 +559,95 @@ export const MainLayout = () => {
               ))}
             </MDBSideNavMenu>
             <InfoDropdown />
-          </MDBScrollbar>
-          <div className="d-flex flex-column justify-content-between fixed-bottom">
-            {sideOpen ? (
-              <>
-                <MDBBtn
-                  outline
-                  color="connect"
-                  className={`mx-4 d-flex align-items-center justify-content-between
-                  ${account ? '' : 'not-connected'}`}
-                  style={{ width: 252 }}
-                  onClick={connect}
-                >
-                  <SvgWallet />
-                  <span className="flex-grow">
-                    {account ? shortenString(account) : 'Connect Wallet'}
-                  </span>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="12" cy="12" r="4" fill="#FDBF16" />
-                  </svg>
-                </MDBBtn>
-                <div className="mx-4 token-btn d-flex align-items-center">
-                  <SvgToken />
-                  <span>Add Token to Wallet</span>
-                </div>
-              </>
-            ) : (
-              <></>
-            )}
-            <hr className="mx-1" />
-            <div
-              className={`d-flex align-items-center justify-content-center
-              ${sideOpen ? '' : ''}`}
-            >
+            <div className="d-flex flex-column justify-content-between">
               {sideOpen ? (
-                <div className="d-flex align-items-center">
-                  {CHAIN_INFO[currentChainId].chartAddress ? (
-                    <a
-                      href={CHAIN_INFO[currentChainId].chartAddress}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                <>
+                  <MDBBtn
+                    outline
+                    color="connect"
+                    className={`mx-4 d-flex align-items-center justify-content-between
+                    ${account ? '' : 'not-connected'}`}
+                    style={{ width: 252 }}
+                    onClick={connect}
+                  >
+                    <SvgWallet />
+                    <span className="flex-grow">
+                      {account ? shortenString(account) : 'Connect Wallet'}
+                    </span>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <SvgFuelcan />{' '}
-                      <span className="px-3 text-primary-color">
-                        $
-                        {ethers.utils
-                          .formatEther(gasTokenPrice)
-                          .substring(0, 13)}
-                      </span>
-                    </a>
-                  ) : (
-                    <>
-                      <SvgFuelcan />{' '}
-                      <span className="px-3 text-primary-color">
-                        $
-                        {ethers.utils
-                          .formatEther(gasTokenPrice)
-                          .substring(0, 13)}
-                      </span>
-                    </>
-                  )}
-                </div>
+                      <circle cx="12" cy="12" r="4" fill="#FDBF16" />
+                    </svg>
+                  </MDBBtn>
+                  <div className="mx-4 token-btn d-flex align-items-center">
+                    <SvgToken />
+                    <span>Add Token to Wallet</span>
+                  </div>
+                </>
               ) : (
                 <></>
               )}
-              <ColorModeSwitcher />
+              <hr className="mx-1" />
+              <div
+                className={`d-flex align-items-center justify-content-center
+                ${sideOpen ? '' : ''}`}
+              >
+                {sideOpen ? (
+                  <div className="d-flex align-items-center">
+                    {CHAIN_INFO[currentChainId].chartAddress ? (
+                      <a
+                        href={CHAIN_INFO[currentChainId].chartAddress}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <SvgFuelcan />{' '}
+                        <span className="px-3 text-primary-color">
+                          $
+                          {ethers.utils
+                            .formatEther(gasTokenPrice)
+                            .substring(0, 13)}
+                        </span>
+                      </a>
+                    ) : (
+                      <>
+                        <SvgFuelcan />{' '}
+                        <span className="px-3 text-primary-color">
+                          $
+                          {ethers.utils
+                            .formatEther(gasTokenPrice)
+                            .substring(0, 13)}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                ) : (
+                  <></>
+                )}
+                <ColorModeSwitcher />
+              </div>
+              <div className="d-flex align-items-center justify-content-center flex-wrap my-2">
+                {socialLinks.map((link) => (
+                  <MDBBtn
+                    tag="a"
+                    href={link.route}
+                    color="none"
+                    className="m-1 p-1"
+                    style={{ color: '#55acee' }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={link.label}
+                  >
+                    <link.icon />
+                  </MDBBtn>
+                ))}
+              </div>
             </div>
-            <div className="d-flex align-items-center justify-content-center flex-wrap my-2">
-              {socialLinks.map((link) => (
-                <MDBBtn
-                  tag="a"
-                  href={link.route}
-                  color="none"
-                  className="m-1 p-1"
-                  style={{ color: '#55acee' }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key={link.label}
-                >
-                  <link.icon />
-                </MDBBtn>
-              ))}
-            </div>
-          </div>
+          </MDBScrollbar>
         </MDBSideNav>
         <MDBContainer fluid className="flex-grow scrollView">
           <Outlet />

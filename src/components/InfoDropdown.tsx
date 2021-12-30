@@ -36,7 +36,7 @@ const infoLinks = [
 
 const InfoLinks = () => (
   <>
-    {infoLinks.map((link, index) => (
+    {infoLinks.map((link) => (
       <a
         href={link.href}
         target="_blank"
