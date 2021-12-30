@@ -557,8 +557,8 @@ export const MainLayout = () => {
                   </ActiveLink>
                 </MDBSideNavItem>
               ))}
-              <InfoDropdown />
             </MDBSideNavMenu>
+            <InfoDropdown />
           </MDBScrollbar>
           <div className="d-flex flex-column justify-content-between fixed-bottom">
             {sideOpen ? (
