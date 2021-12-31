@@ -584,10 +584,7 @@ export const MainLayout = () => {
                     <circle cx="12" cy="12" r="4" fill="#FDBF16" />
                   </svg>
                 </MDBBtn>
-                <div className="mx-4 token-btn d-flex align-items-center">
-                  <SvgToken />
-                  <span>Add Token to Wallet</span>
-                </div>
+                <AddToken collapsed={!sideOpen} />
               </>
             ) : (
               <></>
@@ -646,7 +643,6 @@ export const MainLayout = () => {
                 </MDBBtn>
               ))}
             </div>
-            <AddToken />
           </div>
         </MDBSideNav>
         <MDBContainer fluid className="flex-grow scrollView">
