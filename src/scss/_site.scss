@@ -18,8 +18,8 @@ img {
 	&.sidenav-slim-collapsed,
 	&.sidenav-slim-collapsed .scrollbar-container,
 	&.sidenav-slim-collapsed ul,
-	&.is-open {
-		min-width: 75px;
+	&.is-closed {
+		min-width: 85px;
 	}
 	@media (max-width: 575px) {
 		min-width: 95% !important;
@@ -78,6 +78,10 @@ img {
 		}
 	}
 
+    i {
+        color: $text-secondary-color;
+    }
+
 	span {
 		color: $text-secondary-color;
 		margin-left: 24px;
@@ -98,16 +102,13 @@ img {
 				stroke: $background-main-color;
 			}
 		}
+    
+        i {
+            color: #ffffff;
+        }
 
 		span {
 			color: #ffffff;
-		}
-
-		i {
-			color: #8a92a6;
-			&:hover {
-				color: #ffffff;
-			}
 		}
 	}
 }
@@ -137,9 +138,16 @@ a.mode-switcher {
 	color: $text-secondary-color !important;
 	i {
 		color: $text-secondary-color;
+        path {
+            fill: $text-secondary-color;
+        }
 
 		&.active {
 			color: $brand-main-color;
+            
+            path {
+                fill: $brand-main-color;
+            }
 		}
 	}
 }
@@ -616,12 +624,12 @@ img {
 	padding: 0 12px;
 	height: 100%;
 	z-index: 10;
-	&.is-open {
+	&.is-closed {
 		@media (min-width: 992px) {
 			+ .right-content {
-				padding-left: 70px;
+				padding-left: 85px;
 				&:after {
-					left: 70px;
+					left: 85px;
 				}
 			}
 		}

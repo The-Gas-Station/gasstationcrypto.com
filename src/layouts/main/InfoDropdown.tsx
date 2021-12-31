@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MDBSideNavItem,
   MDBSideNavMenu,
@@ -6,6 +6,8 @@ import {
   MDBSideNavCollapse,
   MDBIcon,
 } from 'mdb-react-ui-kit';
+
+import { ReactComponent as SvgInfo } from '../../assets/info.svg';
 
 const infoLinks = [
   {
@@ -36,23 +38,43 @@ const infoLinks = [
 
 const InfoLinks = () => (
   <>
-    {infoLinks.map((link) => (
+    {infoLinks.map((link, i) => (
       <a
+        key={i}
         href={link.href}
         target="_blank"
         className="d-flex d-block sidenav-item m-2"
         role="button"
       >
-        <span>{link.label}</span>
+        <span>
+          {link.label} <MDBIcon fas icon="external-link-alt" size="xs" />
+        </span>
       </a>
     ))}
   </>
 );
 
-const InfoDropdown = () => {
-  const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(false);
+const InfoDropdown = ({
+  sideOpen,
+  setDropdownCollapse,
+}: {
+  sideOpen: boolean;
+  setDropdownCollapse: (collapse: boolean) => void;
+}) => {
+  const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(sideOpen);
+
+  useEffect(() => {
+    setDropdownCollapse(infoDropdownCollapse);
+  }, [infoDropdownCollapse]);
+
+  useEffect(() => {
+    if (!sideOpen) {
+      setInfoDropdownCollapse(sideOpen);
+    }
+  }, [sideOpen]);
+
   return (
-    <MDBSideNavMenu className="sidenav-menu">
+    <MDBSideNavMenu>
       <MDBSideNavItem>
         <MDBSideNavLink
           icon="angle-down"
@@ -60,8 +82,8 @@ const InfoDropdown = () => {
           onClick={() => setInfoDropdownCollapse(!infoDropdownCollapse)}
           className="sidenav-item m-2"
         >
-          <MDBIcon icon="info-circle" className="fa-fw" color="#8a92a6" />
-          <span>Info</span>
+          <SvgInfo className="" style={{ minWidth: 24, minHeight: 24 }} />
+          {sideOpen && <span>Info</span>}
         </MDBSideNavLink>
         <MDBSideNavCollapse show={infoDropdownCollapse}>
           <InfoLinks />
