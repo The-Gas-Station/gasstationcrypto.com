@@ -21,6 +21,7 @@ import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 
 import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
+import AddToken from '../components/AddToken';
 
 import { ReactComponent as SvgMenuOpen } from '../assets/menu-open.svg';
 import { ReactComponent as SvgMenuClose } from '../assets/menu-close.svg';
@@ -645,6 +646,7 @@ export const MainLayout = () => {
                 </MDBBtn>
               ))}
             </div>
+            <AddToken />
           </div>
         </MDBSideNav>
         <MDBContainer fluid className="flex-grow scrollView">
