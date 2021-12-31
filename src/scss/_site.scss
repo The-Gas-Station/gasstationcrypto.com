@@ -19,7 +19,7 @@ img {
 	&.sidenav-slim-collapsed .scrollbar-container,
 	&.sidenav-slim-collapsed ul,
 	&.is-open {
-		min-width: 70px;
+		min-width: 75px;
 	}
 	@media (max-width: 575px) {
 		min-width: 95% !important;
@@ -102,6 +102,13 @@ img {
 		span {
 			color: #ffffff;
 		}
+
+		i {
+			color: #8a92a6;
+			&:hover {
+				color: #ffffff;
+			}
+		}
 	}
 }
 
@@ -128,7 +135,6 @@ img {
 
 a.mode-switcher {
 	color: $text-secondary-color !important;
-
 	i {
 		color: $text-secondary-color;
 
