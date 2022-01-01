@@ -51,7 +51,7 @@ export const HomePage = () => {
       easily and with the lowest fees. We also
       provide a faucet, so you're never without
       Gas fees ever again.`,
-      launchDate: `Launching December 2021`,
+      launchDate: `Launching January 2022`,
       img: UsdcToken,
     },
     {
