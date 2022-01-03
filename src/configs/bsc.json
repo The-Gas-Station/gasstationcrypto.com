@@ -28,8 +28,8 @@
       "type": "DoubleV2",
       "stakeSymbol": "bscGAS-BNB Ape LP",
       "stakeIcon": "/public/images/tokens/ape-lp.svg",
-      "reward0Icon": "/public/images/tokens/bnb.png",
-      "reward1Icon": "/public/images/tokens/gas.svg"
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/bnb.svg"
     },
     {
       "name": "bscGAS Maximizer",
