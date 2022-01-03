@@ -2,44 +2,46 @@
   "launchDate": "",
   "display": "Cronos",
   "tokenImage": "/public/images/tokens/cro-hex.png",
-  "etherLiquidityPair": "",
+  "etherLiquidityPair": "evm:0x637348EaCE7f44C1dF82e15bcb0F968351fB7406",
   "liquidityPairs": [
     {
       "name": "reward pair",
-      "address": "evm:0x769A41224008F257980E7717e5d47cB012096F42"
+      "address": "evm:0xB45e42133b577F78EA4ce2aAF9fC530D399cbB40"
     }
   ],
   "gasTokenName": "croGAS",
   "name": "cronos",
   "etherCoingeckoId": "WCRO",
+  "buyAddress": "https://photonswap.finance/#/swap?outputCurrency=0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
   "launched": false,
   "gasTokenAddress": "evm:0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
+  "chartAddress": "https://dexscreener.com/cronos/0xB45e42133b577F78EA4ce2aAF9fC530D399cbB40",
   "pools": [
     {
       "name": "croGAS Maximizer",
-      "address": "evm:0x57Dc3DFB48252daA731e70f9166252F8cc1B116f",
-      "type": "SingleV2",
+      "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
+      "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/gas.svg",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "WCRO Fuel Pool",
-      "address": "evm:0x6F4456E0b8cdBE3fc98d5b5457B0782CC5c586EE",
-      "type": "SingleV2",
+      "address": "evm:0xDBD9BfcB77B6a0477411282022FEE2CF81f06cd6",
+      "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/cro-circle.svg",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "Fuel Up",
-      "address": "evm:0x840B5FC8C6deE2b1140174a3ABdC215190426CCf",
-      "type": "SingleV2",
+      "address": "evm:0x9FF531AedbA6d086b60e6d57A3472CEDf47c1f9e",
+      "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "croGAS LP Dual Fuel",
-      "address": "evm:0x4501466a0F63fFe31Fc5979426BB48381b03e554",
-      "type": "DoubleV1",
+      "address": "evm:0xE07707d3C7a04a7ABBcee3527482b309121f9d2a",
+      "type": "DoubleV2",
       "stakeIcon": "/public/images/tokens/cro-circle.svg",
       "reward0Icon": "/public/images/tokens/gas.svg",
       "reward1Icon": "/public/images/tokens/gas.svg"
