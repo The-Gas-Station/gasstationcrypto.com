@@ -1,15 +1,15 @@
 import React, { ReactNode, useCallback, useState, useEffect } from 'react';
 import { useLocation, useNavigate, Outlet } from 'react-router-dom';
-
 import {
   MDBSideNav,
   MDBSideNavMenu,
   MDBSideNavItem,
   MDBNavbar,
   MDBBtn,
-  MDBScrollbar,
   MDBContainer,
 } from 'mdb-react-ui-kit';
+
+import { ethers } from 'ethers';
 
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
@@ -20,8 +20,11 @@ import shortenString from '../library/helpers/shortenString';
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 
-import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
-import AddToken from './AddToken';
+import useGASTokenPrice from '../hooks/useGASTokenPrice';
+
+import InfoDropdown from './main/InfoDropdown';
+import AddToken from './main/AddToken';
+import { ColorModeSwitcher } from './main/ColorModeSwitcher';
 
 import { ReactComponent as SvgMenuOpen } from '../assets/menu-open.svg';
 import { ReactComponent as SvgMenuClose } from '../assets/menu-close.svg';
@@ -49,10 +52,6 @@ import Metamask from '../assets/wallets/metamask.png';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import useGASTokenPrice from '../hooks/useGASTokenPrice';
-import { ethers } from 'ethers';
-import InfoDropdown from '../components/InfoDropdown';
-
 export const MainLayout = () => {
   const navigate = useNavigate();
 
@@ -71,15 +70,19 @@ export const MainLayout = () => {
   };
 
   const [storage, setStorage] = useLocalStorage('sideNav', true);
-  const [sideOpen, setSideOpen] = useState(storage);
+  const [slimMode, setSlimMode] = useState(storage);
+  const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(false);
 
   useEffect(() => {
-    setStorage(sideOpen);
-  }, [sideOpen]);
+    setStorage(slimMode);
+  }, [slimMode]);
 
   const toggleSide = () => {
-    setSideOpen(!sideOpen);
+    setInfoDropdownCollapse(!sideOpen);
+    setSlimMode(!sideOpen);
   };
+
+  const sideOpen = slimMode || infoDropdownCollapse;
 
   const headerLinks = [
     {
@@ -216,13 +219,13 @@ export const MainLayout = () => {
     <>
       <MDBNavbar fixed="top">
         <div className="menu-amount-sections">
-          <div className={`menu-icon ${sideOpen ? '' : 'is-open'}`}>
+          <div className={`menu-icon ${!sideOpen ? 'is-closed' : 'is-open'}`}>
             <MDBBtn
               onClick={toggleSide}
               rippleCentered
               tag="a"
               color="none"
-              className="p-2 ps-0 d-flex align-items-center justify-content-center"
+              className="p-2 d-flex align-items-center justify-content-center"
               style={{ minWidth: 42, minHeight: 50 }}
             >
               {sideOpen ? <SvgMenuOpen /> : <SvgMenuClose />}
@@ -537,29 +540,41 @@ export const MainLayout = () => {
         <MDBSideNav
           backdrop={false}
           slim={isMobile ? false : !sideOpen}
+          slimCollapsed={!infoDropdownCollapse}
           hidden={isMobile ? !sideOpen : false}
           triggerOpening={!sideOpen}
           relative
+          closeOnEsc={false}
           className="h-100"
         >
-          <MDBScrollbar sidenav tag="ul" suppressScrollX>
-            <MDBSideNavMenu>
-              {headerLinks.map((link) => (
-                <MDBSideNavItem className="m-2" key={link.route}>
-                  <ActiveLink to={link.route}>
-                    <link.icon
-                      className=""
-                      style={{ minWidth: 24, minHeight: 24 }}
-                    />
-                    {sideOpen && (
-                      <span style={{ minWidth: 160 }}>{link.label}</span>
-                    )}
-                  </ActiveLink>
-                </MDBSideNavItem>
-              ))}
-            </MDBSideNavMenu>
-            {sideOpen && <InfoDropdown />}
-            <div className="d-flex flex-column justify-content-between">
+          <div className="d-flex flex-column justify-content-between h-100">
+            <div
+              className="flex-grow-1"
+              style={{ overflowX: 'hidden', overflowY: 'auto' }}
+            >
+              <MDBSideNavMenu>
+                {headerLinks.map((link) => (
+                  <MDBSideNavItem className="m-2" key={link.route}>
+                    <ActiveLink to={link.route}>
+                      <link.icon
+                        className=""
+                        style={{ minWidth: 24, minHeight: 24 }}
+                      />
+                      {sideOpen && (
+                        <span style={{ minWidth: 160 }}>{link.label}</span>
+                      )}
+                    </ActiveLink>
+                  </MDBSideNavItem>
+                ))}
+              </MDBSideNavMenu>
+              <InfoDropdown
+                sideOpen={sideOpen}
+                setDropdownCollapse={setInfoDropdownCollapse}
+              />
+            </div>
+
+            <div className="d-flex flex-column justify-content-between align-self-end">
+              <hr className="mx-1" />
               {sideOpen ? (
                 <>
                   <MDBBtn
@@ -644,7 +659,7 @@ export const MainLayout = () => {
                 ))}
               </div>
             </div>
-          </MDBScrollbar>
+          </div>
         </MDBSideNav>
         <MDBContainer fluid className="flex-grow scrollView">
           <Outlet />

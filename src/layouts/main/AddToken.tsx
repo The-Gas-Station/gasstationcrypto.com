@@ -1,9 +1,9 @@
-import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
-import useEthers from '../library/hooks/useEthers';
+import { useWeb3ConnectionsContext } from '../../library/providers/Web3ConnectionsProvider';
+import useEthers from '../../library/hooks/useEthers';
 import { useMemo } from 'react';
-import { CHAIN_INFO } from '../configs';
-import { ReactComponent as SvgToken } from '../assets/token.svg';
-import '../scss/token.scss';
+import { CHAIN_INFO } from '../../configs';
+import { ReactComponent as SvgToken } from '../../assets/token.svg';
+import '../../scss/token.scss';
 
 const onClick = async (chainId: number) => {
   const chainInfo = CHAIN_INFO[chainId];

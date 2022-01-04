@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
 
-import { useDarkMode } from '../library/hooks/useDarkMode';
+import { useDarkMode } from '../../library/hooks/useDarkMode';
 
 export const ColorModeSwitcher = () => {
   const { isDarkMode, toggle } = useDarkMode(true);
@@ -29,8 +29,8 @@ export const ColorModeSwitcher = () => {
             fill="#8A92A6"
           />
         </svg>
-      </MDBIcon>{' '}
-      /{' '}
+      </MDBIcon>
+      {' / '}
       <MDBIcon className={isDarkMode ? 'active' : ''}>
         <svg
           width="24"
