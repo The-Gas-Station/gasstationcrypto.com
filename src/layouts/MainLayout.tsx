@@ -23,6 +23,7 @@ import { CHAIN_INFO } from '../configs';
 import useGASTokenPrice from '../hooks/useGASTokenPrice';
 
 import InfoDropdown from './main/InfoDropdown';
+import AddToken from './main/AddToken';
 import { ColorModeSwitcher } from './main/ColorModeSwitcher';
 
 import { ReactComponent as SvgMenuOpen } from '../assets/menu-open.svg';
@@ -37,7 +38,6 @@ import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
 import { ReactComponent as SvgUtility } from '../assets/utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
-import { ReactComponent as SvgToken } from '../assets/token.svg';
 import { ReactComponent as SvgFuelcan } from '../assets/fuelcan.svg';
 
 import { ReactComponent as SvgGitbook } from '../assets/gitbook.svg';
@@ -599,10 +599,7 @@ export const MainLayout = () => {
                       <circle cx="12" cy="12" r="4" fill="#FDBF16" />
                     </svg>
                   </MDBBtn>
-                  <div className="mx-4 token-btn d-flex align-items-center">
-                    <SvgToken />
-                    <span>Add Token to Wallet</span>
-                  </div>
+                  <AddToken />
                 </>
               ) : (
                 <></>
