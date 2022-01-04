@@ -7,7 +7,8 @@ import '../scss/token.scss';
 
 const onClick = async (chainId: number) => {
   const chainInfo = CHAIN_INFO[chainId];
-  const tokenAddress = chainInfo.gasTokenAddress!.replace('evm:', '');
+  const tokenAddress = chainInfo.gasTokenAddress?.replace('evm:', '');
+  if (!tokenAddress) return;
   const tokenImage = 'https://www.gasstationcrypto.com/images/tokens/gas.png';
   const walletWatchAssetParams = {
     type: 'ERC20',
