@@ -6,17 +6,26 @@
   "liquidityPairs": [
     {
       "name": "reward pair",
-      "address": "evm:0xB45e42133b577F78EA4ce2aAF9fC530D399cbB40"
+      "address": "evm:0x769A41224008F257980E7717e5d47cB012096F42"
     }
   ],
   "gasTokenName": "croGAS",
   "name": "cronos",
   "etherCoingeckoId": "WCRO",
-  "buyAddress": "https://photonswap.finance/#/swap?outputCurrency=0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
+  "buyAddress": "https://swap.crodex.app/#/swap?outputCurrency=0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
   "launched": false,
   "gasTokenAddress": "evm:0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
-  "chartAddress": "https://dexscreener.com/cronos/0xB45e42133b577F78EA4ce2aAF9fC530D399cbB40",
+  "chartAddress": "https://dexscreener.com/cronos/0x769a41224008f257980e7717e5d47cb012096f42",
   "pools": [
+    {
+      "name": "croGAS LP Dual Fuel",
+      "address": "evm:0xE38DBE5A09eA804cdCF6Fdc284f9d6035ed06990",
+      "type": "DoubleV2",
+      "stakeIcon": "/public/images/tokens/cro-circle.svg",
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/cro-circle.svg",
+      "stakeSymbol": "croGAS-WCRO CroDex LP"
+    },
     {
       "name": "croGAS Maximizer",
       "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
@@ -37,14 +46,6 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
-    },
-    {
-      "name": "croGAS LP Dual Fuel",
-      "address": "evm:0xE07707d3C7a04a7ABBcee3527482b309121f9d2a",
-      "type": "DoubleV2",
-      "stakeIcon": "/public/images/tokens/cro-circle.svg",
-      "reward0Icon": "/public/images/tokens/gas.svg",
-      "reward1Icon": "/public/images/tokens/gas.svg"
     }
   ],
   "tokens": [],
