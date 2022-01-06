@@ -42,7 +42,7 @@
     },
     {
       "name": "Fuel Up",
-      "address": "evm:0x9FF531AedbA6d086b60e6d57A3472CEDf47c1f9e",
+      "address": "evm:0x025fC72Ff96BF32AED5a9894Ffb4aA4da32Cc976",
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
