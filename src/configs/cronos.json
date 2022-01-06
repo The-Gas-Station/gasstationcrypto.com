@@ -13,7 +13,7 @@
   "name": "cronos",
   "etherCoingeckoId": "WCRO",
   "buyAddress": "https://swap.crodex.app/#/swap?outputCurrency=0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
-  "launched": false,
+  "launched": true,
   "gasTokenAddress": "evm:0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
   "chartAddress": "https://dexscreener.com/cronos/0x769a41224008f257980e7717e5d47cb012096f42",
   "pools": [
