@@ -1,4 +1,5 @@
-import React, { ReactNode, useCallback, useState, useEffect } from 'react';
+import React from 'react';
+import { ReactNode, useCallback, useState, useEffect } from 'react';
 import { useLocation, useNavigate, Outlet } from 'react-router-dom';
 import {
   MDBSideNav,
@@ -69,20 +70,20 @@ export const MainLayout = () => {
     }
   };
 
-  const [storage, setStorage] = useLocalStorage('sideNav', true);
-  const [slimMode, setSlimMode] = useState(storage);
+  const [sideNav, setSidenavStorage] = useLocalStorage('sideNav', true);
+  const [slimMode, setSlimMode] = useState(sideNav === false);
   const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(false);
 
+  const sideOpen = !slimMode;
+
   useEffect(() => {
-    setStorage(slimMode);
-  }, [slimMode]);
+    setSidenavStorage(sideOpen);
+  });
 
   const toggleSide = () => {
-    setInfoDropdownCollapse(!sideOpen);
-    setSlimMode(!sideOpen);
+    setSlimMode(!slimMode);
+    setSidenavStorage(!slimMode);
   };
-
-  const sideOpen = slimMode || infoDropdownCollapse;
 
   const headerLinks = [
     {
@@ -540,17 +541,18 @@ export const MainLayout = () => {
         <MDBSideNav
           backdrop={false}
           slim={isMobile ? false : !sideOpen}
-          slimCollapsed={!infoDropdownCollapse}
+          slimCollapsed={isMobile ? false : !sideOpen}
           hidden={isMobile ? !sideOpen : false}
-          triggerOpening={!sideOpen}
           relative
           closeOnEsc={false}
-          className="h-100"
         >
-          <div className="d-flex flex-column justify-content-between h-100">
+          <div className="d-flex flex-column justify-content-between">
             <div
               className="flex-grow-1"
-              style={{ overflowX: 'hidden', overflowY: 'auto' }}
+              style={{
+                overflowX: 'hidden',
+                ...(!isMobile && { overflowY: 'auto' }),
+              }}
             >
               <MDBSideNavMenu>
                 {headerLinks.map((link) => (
