@@ -46,6 +46,13 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "High Vibe",
+      "address": "evm:0xFDE2129A6BbEb01140EEB3d6309a03B910aE57b9",
+      "type": "SingleV3",
+      "stakeIcon": "/public/images/tokens/gas.svg",
+      "reward0Icon": "/public/images/tokens/crystlbg.png"
     }
   ],
   "tokens": [],
