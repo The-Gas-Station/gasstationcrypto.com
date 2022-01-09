@@ -75,6 +75,7 @@ export const MainLayout = () => {
   const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(false);
 
   const sideOpen = !slimMode;
+  const infoDropdownOpen = sideOpen && infoDropdownCollapse;
 
   useEffect(() => {
     setSidenavStorage(sideOpen);
@@ -341,7 +342,7 @@ export const MainLayout = () => {
                 ))}
               </MDBSideNavMenu>
               <InfoDropdown
-                sideOpen={sideOpen}
+                sideOpen={infoDropdownOpen}
                 setDropdownCollapse={setInfoDropdownCollapse}
               />
             </div>
