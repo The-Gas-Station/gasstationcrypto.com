@@ -27,7 +27,7 @@
       "address": "evm:0xF7b7869d2568c20C904aD52FF2c7408EBF3cad63",
       "type": "DoubleV2",
       "stakeSymbol": "bscGAS-BNB Ape LP",
-      "stakeIcon": "/public/images/tokens/ape-lp.svg",
+      "stakeIcon": "/public/images/tokens/asset-7.svg",
       "reward0Icon": "/public/images/tokens/gas.svg",
       "reward1Icon": "/public/images/tokens/bnb.svg"
     },
@@ -35,21 +35,21 @@
       "name": "bscGAS Maximizer",
       "address": "evm:0x0cccA6C57aCAa3084483a99d7C39549E9B04DC3B",
       "type": "SingleV3",
-      "stakeIcon": "/public/images/tokens/gas.svg",
+      "stakeIcon": "/public/images/tokens/asset-9.svg",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "WBNB Fuel Pool",
       "address": "evm:0x15679CE246B27Ad767F9F7984F72068b30F3a6dC",
       "type": "SingleV3",
-      "stakeIcon": "/public/images/tokens/bnb.png",
+      "stakeIcon": "/public/images/tokens/asset-10.svg",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
       "name": "Fuel Up",
       "address": "evm:0x80D4C5ad955a070655d21e75c89Fb5FCD6571038",
       "type": "SingleV3",
-      "stakeIcon": "/public/images/tokens/usdc.png",
+      "stakeIcon": "/public/images/tokens/asset-11.svg",
       "reward0Icon": "/public/images/tokens/gas.svg"
     },
     {
