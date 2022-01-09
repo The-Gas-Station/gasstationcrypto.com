@@ -541,8 +541,8 @@ export const MainLayout = () => {
           backdrop={false}
           slim={isMobile ? false : !sideOpen}
           slimCollapsed={!infoDropdownCollapse}
-          hidden={isMobile ? !sideOpen : false}
-          triggerOpening={!sideOpen}
+          isOpen={isMobile ? sideOpen : true}
+          mode={isMobile ? 'over' : 'side'}
           relative
           closeOnEsc={false}
           className="h-100"
