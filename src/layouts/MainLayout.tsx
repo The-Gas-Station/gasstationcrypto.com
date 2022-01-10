@@ -574,9 +574,9 @@ export const MainLayout = () => {
             </div>
 
             <div className="d-flex flex-column justify-content-between align-self-end">
-              <hr className="mx-1" />
               {sideOpen ? (
                 <>
+                  <hr className="mx-1" />
                   <MDBBtn
                     outline
                     color="connect"
