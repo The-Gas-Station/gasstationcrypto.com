@@ -32,7 +32,7 @@ const BannerSection = () => {
   useEffect(() => {
     const APR = getHighestRewardAPR(allAPRs);
     setHighAPR(APR);
-  }, [highAPR, allAPRs.reduce((a, b) => a + b)]);
+  }, [highAPR, JSON.stringify(allAPRs)]);
   const APRBanner = highAPR ? (
     <p>Earn up to {formatAPR(highAPR)} APR in our reward hub.</p>
   ) : null;
