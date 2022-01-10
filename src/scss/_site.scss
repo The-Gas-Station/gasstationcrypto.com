@@ -11,6 +11,10 @@ img {
 	-ms-interpolation-mode: nearest-neighbor;
 }
 
+body {
+    @include bg-color;
+}
+
 .menu-icon,
 .sidenav,
 .sidenav .scrollbar-container {
@@ -24,6 +28,12 @@ img {
 	@media (max-width: 575px) {
 		min-width: 95% !important;
 	}
+    @media (max-width: 991px) {
+        &.sidenav-hidden {
+            width: 0;
+            min-width: 0 !important;
+        }
+    }
 }
 // .sidenav-menu{
 //   padding: 0 15px;
@@ -52,16 +62,6 @@ img {
 
 .text-primary-color {
 	color: $text-primary-color;
-}
-.sidenav {
-	// @media (max-width: 991px) {
-	//   width: 0;
-	//   min-width: auto;
-	//   &.sidenav-slim-collapsed {
-	//     min-width: 300px;
-	//     width: auto;
-	//   }
-	// }
 }
 .sidenav-item a {
 	font-size: 16px;

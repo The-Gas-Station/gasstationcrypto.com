@@ -71,18 +71,18 @@ export const MainLayout = () => {
 
   const [storage, setStorage] = useLocalStorage('sideNav', true);
   const [slimMode, setSlimMode] = useState(storage);
-  const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(false);
+  const [infoDropdownExpanded, setInfoDropdownExpanded] = useState(false);
 
   useEffect(() => {
     setStorage(slimMode);
   }, [slimMode]);
 
   const toggleSide = () => {
-    setInfoDropdownCollapse(!sideOpen);
+    setInfoDropdownExpanded(!sideOpen);
     setSlimMode(!sideOpen);
   };
 
-  const sideOpen = slimMode || infoDropdownCollapse;
+  const sideOpen = slimMode || infoDropdownExpanded;
 
   const headerLinks = [
     {
@@ -540,9 +540,9 @@ export const MainLayout = () => {
         <MDBSideNav
           backdrop={false}
           slim={isMobile ? false : !sideOpen}
-          slimCollapsed={!infoDropdownCollapse}
-          hidden={isMobile ? !sideOpen : false}
-          triggerOpening={!sideOpen}
+          slimCollapsed={!infoDropdownExpanded}
+          isOpen={isMobile ? sideOpen : true}
+          mode={isMobile ? 'over' : 'side'}
           relative
           closeOnEsc={false}
           className="h-100"
@@ -569,14 +569,14 @@ export const MainLayout = () => {
               </MDBSideNavMenu>
               <InfoDropdown
                 sideOpen={sideOpen}
-                setDropdownCollapse={setInfoDropdownCollapse}
+                setDropdownCollapse={setInfoDropdownExpanded}
               />
             </div>
 
             <div className="d-flex flex-column justify-content-between align-self-end">
-              <hr className="mx-1" />
               {sideOpen ? (
                 <>
+                  <hr className="mx-1" />
                   <MDBBtn
                     outline
                     color="connect"

@@ -61,15 +61,15 @@ const InfoDropdown = ({
   sideOpen: boolean;
   setDropdownCollapse: (collapse: boolean) => void;
 }) => {
-  const [infoDropdownCollapse, setInfoDropdownCollapse] = useState(sideOpen);
+  const [infoDropdownExpanded, setInfoDropdownExpanded] = useState(sideOpen);
 
   useEffect(() => {
-    setDropdownCollapse(infoDropdownCollapse);
-  }, [infoDropdownCollapse]);
+    setDropdownCollapse(infoDropdownExpanded);
+  }, [infoDropdownExpanded]);
 
   useEffect(() => {
     if (!sideOpen) {
-      setInfoDropdownCollapse(sideOpen);
+      setInfoDropdownExpanded(sideOpen);
     }
   }, [sideOpen]);
 
@@ -78,14 +78,14 @@ const InfoDropdown = ({
       <MDBSideNavItem>
         <MDBSideNavLink
           icon="angle-down"
-          shouldBeExpanded={infoDropdownCollapse}
-          onClick={() => setInfoDropdownCollapse(!infoDropdownCollapse)}
+          shouldBeExpanded={infoDropdownExpanded}
+          onClick={() => setInfoDropdownExpanded(!infoDropdownExpanded)}
           className="sidenav-item m-2"
         >
           <SvgInfo className="" style={{ minWidth: 24, minHeight: 24 }} />
           {sideOpen && <span>Info</span>}
         </MDBSideNavLink>
-        <MDBSideNavCollapse show={infoDropdownCollapse}>
+        <MDBSideNavCollapse show={infoDropdownExpanded}>
           <InfoLinks />
         </MDBSideNavCollapse>
       </MDBSideNavItem>
