@@ -13,9 +13,9 @@ import BannerSection from './home/BannerSection';
 import BridgeSection from './home/BridgeSection';
 import NetworkCard from '../components/NetworkCard';
 
-import UsdcToken from '../assets/tokens/usdc.png';
-import NFPToken from '../assets/tokens/nfp.png';
-import Fuelcan from '../assets/fuelcan.svg';
+import Gauge from '../assets/Gauge.svg';
+import NFPToken from '../assets/NFPcolor.svg';
+import GASToken from '../assets/GASToken.svg';
 
 import Slider from 'react-slick';
 
@@ -45,34 +45,33 @@ export const HomePage = () => {
 
   const [sectionList] = useState([
     {
-      title: 'USDC Bridge',
-      text: `Gas Station allows you to swap USDC
-      between major crypto networks instantly,
-      easily and with the lowest fees. We also
-      provide a faucet, so you're never without
-      Gas fees ever again.`,
-      launchDate: `Launching January 2022`,
-      img: UsdcToken,
+      title: 'Fuel Tanks',
+      text: `Fuel Up! Earn GAS Tokens 
+      between major crypto networks by staking
+      in our Fuel Tanks. Staking for GAS Tokens, Native Ether, USDC,
+      & More. Low Risk, High Reward! `,
+      btnText: `Take Me There!`,
+      img: Gauge,
+      btnLink: '/#/hub',
     },
     {
       title: 'GAS Tokens',
-      text: `Each network has a total supply of 100b
-      Gas Tokens. Tokens are available now! Buy
-      tokens today to receive discounts on Gas
-      fees while investing in our project early-
-      stage for maximum rewards.`,
-      btnText: `Buy ${CHAIN_INFO[currentChainId].gasTokenName}`,
-      img: Fuelcan,
+      text: `The GAS Token is a dividend paying
+      token that offers static rewards in the native
+      ether per blockchain. Each network has a total 
+      supply of 100B Gas Tokens. To earn ether rewards
+      simply hold a minimum of 200,000 GAS Tokens. `,
+      btnText: `Buy ${CHAIN_INFO[currentChainId].gasTokenName}!`,
+      img: GASToken,
       btnLink: CHAIN_INFO[currentChainId].buyAddress,
     },
     {
       title: 'Non-Fungible Patrons',
-      text: `Become a Non-Fungible Patron today by
-      buying a Common, Rare or Legendary NFT
-      and enjoy exclusive Patron perks – free
-      transactions and transaction fees, to name
-      a few.`,
-      btnText: 'Snag a Gas Station NFT',
+      text: `Become a Non-Fungible Patron! 
+      Mint a Common, Rare or Legendary NFP
+      and enjoy exclusive Patron perks! No Service Fees,
+      USDC Dividends, & More!`,
+      btnText: 'Mint NFPs!',
       img: NFPToken,
       btnLink: '/#/nfp',
     },

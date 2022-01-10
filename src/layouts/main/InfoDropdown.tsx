@@ -7,7 +7,7 @@ import {
   MDBIcon,
 } from 'mdb-react-ui-kit';
 
-import { ReactComponent as SvgInfo } from '../../assets/info.svg';
+import { ReactComponent as SvgInfo } from '../../assets/Info.svg';
 
 const infoLinks = [
   {

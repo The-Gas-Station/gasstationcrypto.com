@@ -32,10 +32,10 @@ import { ReactComponent as SvgMenuClose } from '../assets/menu-close.svg';
 import { ReactComponent as SvgLogoIcon } from '../assets/gas.svg';
 import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 
-import { ReactComponent as SvgHome } from '../assets/home.svg';
-import { ReactComponent as SvgRewards } from '../assets/rewards.svg';
-import { ReactComponent as SvgNFPs } from '../assets/nfps.svg';
-import { ReactComponent as SvgUtility } from '../assets/utility.svg';
+import { ReactComponent as SvgHome } from '../assets/Nozzle.svg';
+import { ReactComponent as SvgRewards } from '../assets/Pump.svg';
+import { ReactComponent as SvgNFPs } from '../assets/NFP.svg';
+import { ReactComponent as SvgUtility } from '../assets/Utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
 import { ReactComponent as SvgFuelcan } from '../assets/fuelcan.svg';
