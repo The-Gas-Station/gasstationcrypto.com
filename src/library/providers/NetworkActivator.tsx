@@ -8,7 +8,8 @@ import { CHAIN_NAMES } from '../constants/chains';
 
 export function NetworkActivator() {
   const { account, activate, active, chainId, connector, error } = useEthers();
-  const { readOnlyChainIds, defaultChainId, autoSwitch } = useConfig();
+  const { readOnlyChainIds, defaultChainId, autoSwitch, supportedChainIds } =
+    useConfig();
   const {
     currentChainId,
     chainRpcUrls,
@@ -21,7 +22,9 @@ export function NetworkActivator() {
     setCurrentAccount(account ?? '');
     if (autoSwitch) {
       setCurrentChainId(
-        chainId && chainRpcUrls[chainId] ? chainId : defaultChainId,
+        chainId && supportedChainIds.includes(chainId)
+          ? chainId
+          : defaultChainId,
       );
     }
   }, [account, chainId, defaultChainId]);

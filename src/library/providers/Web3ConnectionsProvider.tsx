@@ -77,7 +77,11 @@ export function Web3ConnectionsProvider({
     defaultChainId,
   );
 
-  const [currentChainId, setCurrentChainId] = useState(_defaultChainId);
+  const [currentChainId, setCurrentChainId] = useState(
+    supportedChainIds.includes(_defaultChainId)
+      ? _defaultChainId
+      : defaultChainId,
+  );
   const [currentAccount, setCurrentAccount] = useState('');
 
   const getReadOnlyLibrary = useCallback(
