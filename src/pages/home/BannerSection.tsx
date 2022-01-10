@@ -4,6 +4,7 @@ import BannerImg from '../../assets/banner-img.png';
 import { useConfig } from '../../library/providers/ConfigProvider';
 import usePools from '../../hooks/usePools';
 import numeral from 'numeral';
+import { useBlockNumber } from '../../library/providers/BlockNumberProvider';
 
 const getHighestRewardAPR = (aprs: number[]) => {
   const highestAPRs = aprs.sort((a, b) => b - a);
@@ -17,7 +18,14 @@ const BannerSection = () => {
   const allAPRs = chainIds
     .map((chainId) => {
       const pools = usePools(chainId);
-      return pools.map((p) => p.apr);
+      const currentBlock = useBlockNumber(chainId) ?? 0;
+      const activePools = pools.filter((p) => {
+        const isFinished = p.usesBlocks
+          ? p.end < currentBlock
+          : p.end * 1000 < Date.now();
+        return !isFinished;
+      });
+      return activePools.map((p) => p.apr);
     })
     .flat(2);
   const [highAPR, setHighAPR] = useState(0);
