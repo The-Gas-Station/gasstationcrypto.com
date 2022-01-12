@@ -27,12 +27,32 @@ export function useTokenPrice(
 
   const gasTokenPrice = useGASTokenPrice(chainId);
 
-  const { ratio, percent1 } = useLiquidityPairRatio(
+  const { percent1 } = useLiquidityPairRatio(
     chainId,
     tokenAddress,
     chainData.gasTokenAddress?.substring(4),
     false,
   );
+
+  let lookupPercent1: BigNumber | undefined;
+
+  if (chainData.lookupLiquidityPairs) {
+    const liquidityPairRatioResults = chainData.lookupLiquidityPairs
+      .map((lookup) =>
+        useLiquidityPairRatio(
+          chainId,
+          lookup.address?.substring(4),
+          WRAPPED_ETHER_ADDRESSES[chainId],
+          false,
+        ),
+      )
+      .find(
+        (liquidityPairRatioResults) =>
+          liquidityPairRatioResults.token1 == tokenAddress,
+      );
+
+    lookupPercent1 = liquidityPairRatioResults?.percent1;
+  }
 
   return useMemo(() => {
     if (
@@ -59,7 +79,18 @@ export function useTokenPrice(
         : BigNumber.from(0);
     }
 
-    return amount && etherRatio && decimals && ratio && percent1
+    if (lookupPercent1) {
+      return amount && etherRatio && decimals && lookupPercent1
+        ? amount
+            .mul(lookupPercent1)
+            .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
+            .mul(2)
+            .div(BUFFER)
+            .div(BUFFER)
+        : BigNumber.from('0');
+    }
+
+    return amount && etherRatio && decimals && percent1
       ? amount
           .mul(percent1)
           .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
@@ -74,8 +105,8 @@ export function useTokenPrice(
     decimals,
     token1,
     gasTokenPrice,
-    ratio,
     percent1,
+    lookupPercent1,
   ]);
 }
 

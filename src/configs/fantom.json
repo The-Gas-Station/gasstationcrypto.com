@@ -101,7 +101,7 @@
       "reward0Icon": "/public/images/tokens/avax.png"
     }
   ],
-  "tokens": [],
+  "lookupLiquidityPairs": [],
   "nfpAddress": "evm:0xC2fa4a36Cf90f54aE70C6e89CEE6C13E865552F2",
   "chainId": 250
 }
