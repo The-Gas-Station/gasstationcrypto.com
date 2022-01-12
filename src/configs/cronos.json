@@ -7,10 +7,6 @@
     {
       "name": "reward pair",
       "address": "evm:0x769A41224008F257980E7717e5d47cB012096F42"
-    },
-    {
-      "name": "crystl LP",
-      "address": "evm:0xDF06013797083E077aA1347D74bD7c7cDfeF7856"
     }
   ],
   "gasTokenName": "croGAS",
@@ -59,6 +55,15 @@
       "reward0Icon": "https://www.polycrystal.finance/images/pools/crystl-crystl.svg"
     }
   ],
-  "tokens": [],
+  "tokens": [
+    {
+      "name": "crystl LP",
+      "address": "evm:0xDF06013797083E077aA1347D74bD7c7cDfeF7856"
+    },
+    {
+      "name": "CRYSTL Token",
+      "address": "evm:0xCbDE0E17d14F49e10a10302a32d17AE88a7Ecb8B"
+    }
+  ],
   "chainId": 25
 }
