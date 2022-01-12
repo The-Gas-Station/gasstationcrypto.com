@@ -44,7 +44,7 @@ export type ChainInfo = {
     name: string;
     address: string;
   }[];
-  tokens?: { name: string; address: string }[];
+  lookupLiquidityPairs?: { name: string; address: string }[];
   pools?: ChainInfoPool[];
   nfpAddress?: string;
   nfpGitHubBaseURL?: string;

@@ -119,8 +119,8 @@ collections:
             ],
         }
       - {
-          label: 'Tokens',
-          name: 'tokens',
+          label: 'Lookup Liquidity Pairs',
+          name: 'lookupLiquidityPairs',
           required: false,
           widget: 'list',
           fields:
