@@ -111,7 +111,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
 
   return (
     <>
-      <div className="col-sm-6 col-lg-4 col-xl-3">
+      <div className="col-sm-6 col-lg-4 col-xl-4 grid-hub-card">
         <div className="rewards-grid-item">
           <div className="card-sub-header">
             <div className="card-left-text">

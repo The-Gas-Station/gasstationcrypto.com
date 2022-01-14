@@ -2098,11 +2098,17 @@ select {
 	color: $text-light2;
 }
 .rewards-grid-block {
+	.grid-hub-card {
+		margin-bottom: 25px;
+		@media (min-width: 1600px) {
+			width: 25%;
+		}
+	}
 	.rewards-grid-item {
 		@include box-shadow1;
 		background: $background-main-color;
 		border-radius: 15px;
-		margin-bottom: 25px;
+		height: 100%;
 		.card-sub-header {
 			@include box-shadow5;
 			border-radius: 15px 15px 0px 0px;
@@ -2110,6 +2116,7 @@ select {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			min-height: 180px;
 			.card-left-text {
 				padding-right: 5px;
 				min-width: 0;
@@ -2223,10 +2230,11 @@ select {
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
-
+					flex-wrap: wrap;
 					.reward-plus-minus {
 						display: inline-flex;
 						align-items: center;
+						margin: 10px auto;
 						span {
 							border: 1px solid #28ccab;
 							box-sizing: border-box;
