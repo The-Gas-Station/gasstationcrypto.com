@@ -55,7 +55,7 @@ const BannerSection = () => {
   const allRewardsUSD = getAllChainsTotalRewardsUSD(chainIds);
 
   const [highestAPR, setHighestAPR] = useState(0);
-  const [totalUSDRewards, setTotalUSDRewards] = useState('');
+  const [totalUSDRewards, setTotalUSDRewards] = useState(BigNumber.from(0));
 
   useEffect(() => {
     const APR = getHighestRewardAPR(allAPRs);
@@ -63,13 +63,13 @@ const BannerSection = () => {
   }, [highestAPR, JSON.stringify(allAPRs)]);
 
   useEffect(() => {
-    setTotalUSDRewards(formatEther(allRewardsUSD));
+    setTotalUSDRewards(allRewardsUSD);
   }, [JSON.stringify(totalRewardsStr)]);
 
   const APRBanner = highestAPR ? (
     <>
       <p>Earn up to {formatAPR(highestAPR)} APR in our reward hub.</p>
-      <p>{totalUSDRewards}</p>
+      <p>{formatEther(totalUSDRewards)}</p>
     </>
   ) : null;
   return (

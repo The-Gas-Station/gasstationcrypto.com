@@ -59,10 +59,6 @@ export function useGASTokenRewardsInfo(chainId: ChainId): {
   );
 
   const decimals = useTokenDecimals(chainId, token1);
-  const etherDecimals = useTokenDecimals(
-    chainId,
-    WRAPPED_ETHER_ADDRESSES[chainId],
-  );
 
   const { ratio } = useLiquidityPairRatio(
     chainId,
@@ -77,10 +73,9 @@ export function useGASTokenRewardsInfo(chainId: ChainId): {
     accountRewards,
     totalRewards,
     totalRewardsUSD: useMemo(() => {
-      return totalRewards && etherRatio && etherDecimals
+      return totalRewards && etherRatio && decimals
         ? totalRewards
-            .mul(etherRatio.mul(BigNumber.from(10).pow(18 - etherDecimals)))
-            .div(BUFFER)
+            .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
             .div(BUFFER)
         : BigNumber.from('0');
     }, [totalRewards, etherRatio, decimals]),
