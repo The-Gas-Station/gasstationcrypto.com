@@ -5,13 +5,29 @@ import { useConfig } from '../../library/providers/ConfigProvider';
 import usePools from '../../hooks/usePools';
 import numeral from 'numeral';
 import { useBlockNumber } from '../../library/providers/BlockNumberProvider';
+import useGASTokenRewardsInfo from '../../hooks/useGASTokenRewardsInfo';
+import { BigNumber, ethers } from 'ethers';
+import { ChainId } from '../../library/constants/chains';
 
 const getHighestRewardAPR = (aprs: number[]) => {
   const highestAPRs = aprs.sort((a, b) => b - a);
   return highestAPRs?.shift() || 0;
 };
 
+const getAllChainsTotalRewardsUSD = (chains: ChainId[]) => {
+  const rewardsPerChain = chains.map((chainA) => {
+    const { totalRewardsUSD } = useGASTokenRewardsInfo(chainA);
+    return totalRewardsUSD;
+  });
+  return rewardsPerChain.reduce((rewardA, rewardB) => {
+    return rewardA.add(rewardB);
+  });
+};
+
 const formatAPR = (apr: number): string => numeral(apr).format('0.00%');
+
+const formatEther = (ether: BigNumber) =>
+  numeral(ethers.utils.formatEther(ether)).format('$0,0.00');
 
 const BannerSection = () => {
   const { readOnlyChainIds: chainIds = [] } = useConfig();
@@ -28,13 +44,33 @@ const BannerSection = () => {
       return activePools.map((p) => p.apr);
     })
     .flat(2);
-  const [highAPR, setHighAPR] = useState(0);
+
+  const totalRewardsStr = chainIds
+    .map((chainId) => {
+      const { totalRewards } = useGASTokenRewardsInfo(chainId);
+      return totalRewards;
+    })
+    .map((reward) => formatEther(reward));
+
+  const allRewardsUSD = getAllChainsTotalRewardsUSD(chainIds);
+
+  const [highestAPR, setHighestAPR] = useState(0);
+  const [totalUSDRewards, setTotalUSDRewards] = useState('');
+
   useEffect(() => {
     const APR = getHighestRewardAPR(allAPRs);
-    setHighAPR(APR);
-  }, [highAPR, JSON.stringify(allAPRs)]);
-  const APRBanner = highAPR ? (
-    <p>Earn up to {formatAPR(highAPR)} APR in our reward hub.</p>
+    setHighestAPR(APR);
+  }, [highestAPR, JSON.stringify(allAPRs)]);
+
+  useEffect(() => {
+    setTotalUSDRewards(formatEther(allRewardsUSD));
+  }, [JSON.stringify(totalRewardsStr)]);
+
+  const APRBanner = highestAPR ? (
+    <>
+      <p>Earn up to {formatAPR(highestAPR)} APR in our reward hub.</p>
+      <p>{totalUSDRewards}</p>
+    </>
   ) : null;
   return (
     <>
