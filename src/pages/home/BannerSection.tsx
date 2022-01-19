@@ -2,17 +2,11 @@ import React, { useEffect, useState } from 'react';
 import BannerImg from '../../assets/banner-img.png';
 
 import { useConfig } from '../../library/providers/ConfigProvider';
-import usePools from '../../hooks/usePools';
 import numeral from 'numeral';
-import { useBlockNumber } from '../../library/providers/BlockNumberProvider';
 import useGASTokenRewardsInfo from '../../hooks/useGASTokenRewardsInfo';
 import { BigNumber, ethers } from 'ethers';
 import { ChainId } from '../../library/constants/chains';
-
-const getHighestRewardAPR = (aprs: number[]) => {
-  const highestAPRs = aprs.sort((a, b) => b - a);
-  return highestAPRs?.shift() || 0;
-};
+import HigestAPR from './HighestAPR';
 
 const getAllChainsTotalRewardsUSD = (chains: ChainId[]) => {
   const rewardsPerChain = chains.map((chainA) => {
@@ -24,26 +18,11 @@ const getAllChainsTotalRewardsUSD = (chains: ChainId[]) => {
   });
 };
 
-const formatAPR = (apr: number): string => numeral(apr).format('0.00%');
-
 const formatEther = (ether: BigNumber) =>
   numeral(ethers.utils.formatEther(ether)).format('$0,0.00');
 
 const BannerSection = () => {
   const { readOnlyChainIds: chainIds = [] } = useConfig();
-  const allAPRs = chainIds
-    .map((chainId) => {
-      const pools = usePools(chainId);
-      const currentBlock = useBlockNumber(chainId) ?? 0;
-      const activePools = pools.filter((p) => {
-        const isFinished = p.usesBlocks
-          ? p.end < currentBlock
-          : p.end * 1000 < Date.now();
-        return !isFinished;
-      });
-      return activePools.map((p) => p.apr);
-    })
-    .flat(2);
 
   const totalRewardsStr = chainIds
     .map((chainId) => {
@@ -54,23 +33,17 @@ const BannerSection = () => {
 
   const allRewardsUSD = getAllChainsTotalRewardsUSD(chainIds);
 
-  const [highestAPR, setHighestAPR] = useState(0);
-  const [totalUSDRewards, setTotalUSDRewards] = useState(BigNumber.from(0));
-
-  useEffect(() => {
-    const APR = getHighestRewardAPR(allAPRs);
-    setHighestAPR(APR);
-  }, [highestAPR, JSON.stringify(allAPRs)]);
+  const [totalUSDRewards, setTotalUSDRewards] = useState<BigNumber | null>(
+    null,
+  );
 
   useEffect(() => {
     setTotalUSDRewards(allRewardsUSD);
   }, [JSON.stringify(totalRewardsStr)]);
 
-  const APRBanner = highestAPR ? (
-    <>
-      <p>Earn up to {formatAPR(highestAPR)} APR in our reward hub.</p>
-      <p>{formatEther(totalUSDRewards)}</p>
-    </>
+  const validTotalUSDRewards = totalUSDRewards !== null;
+  const TotalRewardsUSDBanner = validTotalUSDRewards ? (
+    <p>Over {formatEther(totalUSDRewards)} + in GAS Rewards</p>
   ) : null;
   return (
     <>
@@ -83,9 +56,13 @@ const BannerSection = () => {
                 between major crypto networks.
               </h5>
               <p className="text-green">
-                <strong>Invest in the project today.</strong>
+                <strong>Invest in the project today</strong>
               </p>
-              {APRBanner}
+              <HigestAPR />
+              {TotalRewardsUSDBanner}
+              <p className="text-green">
+                <strong>Fuel your Tank today!</strong>
+              </p>
             </div>
             <div className="banner-img d-block d-md-none">
               <img src={BannerImg} alt="" />
