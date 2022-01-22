@@ -49,11 +49,17 @@ $text-light4: #e2e8f0;
 $dark-bg9: #050a0e;
 $dark-bg10: #32334a;
 $dark-bg11: #32334a;
+$dark-bg12: #242636;
 $text-light5: #ffffff;
 $text-light7: #a0aec0;
 $text-light9: #28ccab;
 $text-light10: #e2e8f0;
 $text-light11: #e2e8f0;
+$text-light12: #F1F3F5;
+$text-light13: #A0AAB6;
+$text-light14: #A0AAB6;
+$border-bg3: #1E1E2C;
+
 @mixin connect-button {
   box-shadow: inset -3px -3px 4px #2b3148, inset 2px 2px 20px #151824;
   filter: drop-shadow(-5px -5px 8px #353b54) drop-shadow(5px 5px 10px #000000);
@@ -193,6 +199,15 @@ $text-light11: #e2e8f0;
 }
 @mixin bg-color14 {
   background: linear-gradient(180deg, rgba(34, 39, 56, 0) 0%, #222738 90.1%);
+}
+@mixin bg-color15 {
+  background-color: #222738;
+  border: 1px solid #222738;
+}
+@mixin bg-color16 {
+  background: #2C3246;
+  border: 1px solid #43445C;
+  color: #A0AAB6;
 }
 // include theme styles
 :root[data-theme='theme-dark'] {

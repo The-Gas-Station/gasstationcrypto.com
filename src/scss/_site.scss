@@ -100,7 +100,7 @@ body {
 				stroke: $background-main-color;
 			}
 		}
-    
+
         i {
             color: #ffffff;
         }
@@ -142,7 +142,7 @@ a.mode-switcher {
 
 		&.active {
 			color: $brand-main-color;
-            
+
             path {
                 fill: $brand-main-color;
             }
@@ -485,7 +485,7 @@ img {
                 .avatar-25,
                 .avatar-1285 {
                   border-radius: 0;
-        
+
                   img {
                     border-radius: 0;
                     border: 0;
@@ -3008,5 +3008,179 @@ select {
 	display: none !important;
 	@media (min-width: 576px) {
 		display: block !important;
+	}
+}
+.wallet-modal{
+	@media (min-width: 576px) {
+		.modal-dialog {
+			max-width: 375px;
+		}
+	}
+	.modal-content{
+		@include box-shadow6;
+		border-radius: 10px;
+	}
+	.btn-close {
+		background: url(../assets/close.svg) center/1em auto no-repeat;
+		background-size: 21px;
+	}
+	.modal-header{
+		border-bottom: 1px solid $border-bg3;
+		color: $text-primary-color;
+	}
+	.modal-body{
+		background: $dark-bg12;
+		border-bottom: 1px solid $border-bg3;
+		padding: 25px;
+		.filter-name-wrapper{
+			span{
+				font-weight: 500;
+				font-size: 12px;
+				line-height: 14px;
+				color: #A0AAB6;
+				display: block;
+			}
+			.filter-name-block{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				.filter-name{
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					display: flex;
+					align-items: center;
+					li{
+						font-weight: 600;
+						font-size: 16px;color: $text-light14;
+						position: relative;
+						&.active{
+							color: #13B497;
+							&:after{
+								content: "";
+								position: absolute;
+								bottom: -9px;
+								left: 0;
+								right: 0;
+								width: 9px;
+								margin: auto;
+								border-top: 7px solid #13B497;
+								border-left: 5px solid transparent;
+								border-right: 5px solid transparent;
+							}
+						}
+						&:hover{
+							color: #13B497;
+						}
+						~li{
+							margin-left: 13px;
+						}
+					}
+				}
+				.filter-search{
+					.search-icon{
+						width: 30px;
+						height: 30px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						position: relative;
+						svg{
+							*{
+								fill: #A0AAB6;
+							}
+						}
+						&.active {
+							svg{
+								*{
+									fill: #13B497;
+								}
+							}
+							&:after{
+								content: "";
+								position: absolute;
+								bottom: -9px;
+								left: 0;
+								right: 0;
+								width: 9px;
+								margin: auto;
+								border-top: 7px solid #13B497;
+								border-left: 5px solid transparent;
+								border-right: 5px solid transparent;
+							}
+						}
+					}
+				}
+			}
+			.search-input{
+				position: relative;
+				margin-top: 20px;
+				svg{
+					position: absolute;
+					left: 15px;
+					top: 0;
+					bottom: 0;
+					height: 17px;
+					margin: auto;
+					*{
+						fill: #A0AAB6;
+					}
+				}
+				input{
+					@include bg-color16;
+					border-radius: 15px;
+					font-weight: normal;
+					font-size: 16px;
+					min-height: 40px;
+					padding: 10px 10px 10px 40px;
+					width: 100%;
+					&::placeholder{
+						color: #A0AAB6;
+					}
+				}
+			}
+		}
+	}
+	.modal-footer{
+		padding: 25px;
+		display: block;
+		border: none;
+		*{
+			margin: 0;
+		}
+	}
+	.wallet-item-block{
+		.title{
+			font-weight: 500;
+			font-size: 12px;color: $text-light13;
+			margin-bottom: 14px;
+			display: block;
+		}
+		.wallet-items{
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			column-gap: 20px;
+			.wallet-item{
+				@include bg-color15;
+				border-radius: 10px;
+				text-align: center;
+				padding: 16px 7px;
+				&.active{
+					border: 1px solid #13B497;
+				}
+				&:hover{
+					border: 1px solid #13B497;
+				}
+				img{
+					max-width: 48px;
+					margin: auto;
+				}
+				p{
+					font-weight: normal;
+					font-size: 13px;color: $text-light12;
+					margin: 8px 0 0 0;
+				}
+			}
+		}
 	}
 }

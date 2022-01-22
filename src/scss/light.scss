@@ -49,12 +49,18 @@ $text-light4: #32334a;
 $dark-bg9: #f8f9fa;
 $dark-bg10: #e2e8f0;
 $dark-bg11: #ffffff;
+$dark-bg12: #F8F9FA;
 $text-light5: #2d3748;
 $text-light7: #2d3748;
 $text-light8: #718096;
 $text-light9: #2d3748;
 $text-light10: #28ccab;
 $text-light11: #2d3748;
+$text-light12: #718096;
+$text-light13: #2D3748;
+$text-light14: #718096;
+$border-bg3: #DBE0E4;
+
 
 @mixin connect-button {
   background: #f4faf8;
@@ -187,6 +193,15 @@ $text-light11: #2d3748;
 }
 @mixin bg-color14 {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 90.1%);
+}
+@mixin bg-color15 {
+  background: #F8F9FA;
+border: 1px solid #EDF1F5;
+}
+@mixin bg-color16 {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  color: #A0AEC0;
 }
 // include theme styles
 :root[data-theme='theme-light'] {

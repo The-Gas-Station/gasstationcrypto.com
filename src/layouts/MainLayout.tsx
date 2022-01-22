@@ -19,6 +19,7 @@ import shortenString from '../library/helpers/shortenString';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
+import WalletModal from '../components/walletModal';
 
 import useGASTokenPrice from '../hooks/useGASTokenPrice';
 
@@ -35,7 +36,7 @@ import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 import { ReactComponent as SvgHome } from '../assets/Nozzle.svg';
 import { ReactComponent as SvgRewards } from '../assets/Pump.svg';
 import { ReactComponent as SvgNFPs } from '../assets/NFP.svg';
-import { ReactComponent as SvgUtility } from '../assets/Utility.svg';
+import { ReactComponent as SvgUtility } from '../assets/utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
 import { ReactComponent as SvgFuelcan } from '../assets/fuelcan.svg';
@@ -58,7 +59,7 @@ export const MainLayout = () => {
   const { readOnlyChainIds } = useConfig();
   const { currentChainId, setCurrentChainId } = useWeb3ConnectionsContext();
   const { activateBrowserWallet, account } = useEthers();
-
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const gasTokenPrice = useGASTokenPrice(currentChainId);
 
   const switchNetwork = (e: any) => {
@@ -583,7 +584,8 @@ export const MainLayout = () => {
                     className={`mx-4 d-flex align-items-center justify-content-between
                     ${account ? '' : 'not-connected'}`}
                     style={{ width: 252 }}
-                    onClick={connect}
+                    // onClick={connect}
+                    onClick={() => setIsWalletModalOpen(true)}
                   >
                     <SvgWallet />
                     <span className="flex-grow">
@@ -665,6 +667,11 @@ export const MainLayout = () => {
           <Outlet />
         </MDBContainer>
       </div>
+      <WalletModal
+        isWalletModalOpen={isWalletModalOpen}
+        setIsOpen={setIsWalletModalOpen}
+        closeWalletModal={() => setIsWalletModalOpen(false)}
+      />
     </>
   );
 };
