@@ -36,7 +36,7 @@ import { ReactComponent as SvgLogoFull } from '../assets/logo-full.svg';
 import { ReactComponent as SvgHome } from '../assets/Nozzle.svg';
 import { ReactComponent as SvgRewards } from '../assets/Pump.svg';
 import { ReactComponent as SvgNFPs } from '../assets/NFP.svg';
-import { ReactComponent as SvgUtility } from '../assets/utility.svg';
+import { ReactComponent as SvgUtility } from '../assets/Utility.svg';
 
 import { ReactComponent as SvgWallet } from '../assets/wallet.svg';
 import { ReactComponent as SvgFuelcan } from '../assets/fuelcan.svg';
@@ -58,7 +58,8 @@ export const MainLayout = () => {
 
   const { readOnlyChainIds } = useConfig();
   const { currentChainId, setCurrentChainId } = useWeb3ConnectionsContext();
-  const { activateBrowserWallet, account } = useEthers();
+  // const { activateBrowserWallet, account } = useEthers();
+  const { account } = useEthers();
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const gasTokenPrice = useGASTokenPrice(currentChainId);
 
@@ -138,15 +139,15 @@ export const MainLayout = () => {
     },
   ];
 
-  const connect = async () => {
-    try {
-      await activateBrowserWallet((e) => {
-        console.log(e);
-      }, true);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const connect = async () => {
+  //   try {
+  //     await activateBrowserWallet((e) => {
+  //       console.log(e);
+  //     }, true);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   //   const settings = {
   //     dots: false,
