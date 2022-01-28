@@ -13,11 +13,28 @@ import useLiquidityPairRatio from '../library/hooks/useLiquidityPairRatio';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 
 import BUFFER from '../library/constants/percisionBuffer';
+import { useConfig } from '../library/providers/ConfigProvider';
+
+export function useTotalUSDRewards(): BigNumber {
+  const { readOnlyChainIds: chains = [] } = useConfig();
+  const totalRewards: BigNumber[] = [];
+  for (let index = 0; index < chains.length; index++) {
+    const chain = chains[index];
+    const { totalRewardsUSD } = useGASTokenRewardsInfo(chain);
+    totalRewards.push(totalRewardsUSD);
+  }
+  return useMemo(() => {
+    return totalRewards.reduce((rewardA, rewardB) => {
+      return rewardA.add(rewardB);
+    });
+  }, [...chains, totalRewards]);
+}
 
 export function useGASTokenRewardsInfo(chainId: ChainId): {
   gasTokenBalance: BigNumber;
   accountRewards: BigNumber;
   totalRewards: BigNumber;
+  totalRewardsUSD: BigNumber;
   gasTokenBalanceUSD: BigNumber;
 } {
   const { currentAccount } = useWeb3ConnectionsContext();
@@ -71,6 +88,13 @@ export function useGASTokenRewardsInfo(chainId: ChainId): {
     gasTokenBalance,
     accountRewards,
     totalRewards,
+    totalRewardsUSD: useMemo(() => {
+      return totalRewards && etherRatio && decimals
+        ? totalRewards
+            .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
+            .div(BUFFER)
+        : BigNumber.from('0');
+    }, [totalRewards, etherRatio, decimals]),
     gasTokenBalanceUSD: useMemo(() => {
       return gasTokenBalance && etherRatio && decimals && ratio
         ? gasTokenBalance
