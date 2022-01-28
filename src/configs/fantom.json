@@ -1,5 +1,6 @@
 {
   "launchDate": "11 Dec, 2021",
+  "lookupLiquidityPairs": [],
   "display": "Fantom Opera Network",
   "tokenImage": "/public/images/tokens/ftm.png",
   "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Fantom/",
@@ -26,6 +27,15 @@
       "reward0Icon": "/public/images/tokens/gas.svg",
       "reward1Icon": "/public/images/tokens/ftm.png",
       "stakeSymbol": "ftmGAS-FTM spLP"
+    },
+    {
+      "name": "Dual Fuel Rewards",
+      "address": "evm:0xE3c94c80A48bF59cB04f8B4392e962B7a5AC8194",
+      "type": "DoubleV2",
+      "stakeSymbol": "ftmGAS-FTM Spooky LP",
+      "stakeIcon": "/public/images/tokens/spookyswap.png",
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/ftm.png"
     },
     {
       "name": "ftmGAS Maximizer",
@@ -101,7 +111,6 @@
       "reward0Icon": "/public/images/tokens/avax.png"
     }
   ],
-  "lookupLiquidityPairs": [],
   "nfpAddress": "evm:0xC2fa4a36Cf90f54aE70C6e89CEE6C13E865552F2",
   "chainId": 250
 }
