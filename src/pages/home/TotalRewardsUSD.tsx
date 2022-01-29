@@ -15,7 +15,7 @@ const TotalRewardsUSD = () => {
     setTotalUSDRewards(formatRewards(totalRewardsCalc));
   }, [totalRewardsCalc]);
 
-  return <p>Over {totalUSDRewards} + in GAS Rewards</p>;
+  return <p>Over {totalUSDRewards}+ in GAS Rewards</p>;
 };
 
 export default TotalRewardsUSD;

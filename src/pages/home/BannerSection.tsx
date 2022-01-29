@@ -12,13 +12,10 @@ const BannerSection = () => (
           major crypto networks.
         </h5>
         <p className="text-green">
-          <strong>Invest in the project today</strong>
+          <strong>Fuel your Tank today!</strong>
         </p>
         <HigestAPR />
         <TotalRewardsUSD />
-        <p className="text-green">
-          <strong>Fuel your Tank today!</strong>
-        </p>
       </div>
       <div className="banner-img d-block d-md-none">
         <img src={BannerImg} alt="" />
