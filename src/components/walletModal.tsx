@@ -14,6 +14,7 @@ import { ReactComponent as SvgSearch } from '../assets/search.svg';
 import WalletSelect from '../assets/wallet-select.png';
 import Coinbase from '../assets/coinbase.png';
 import Metamask from '../assets/metamask.png';
+import useEthers from '../library/hooks/useEthers';
 
 type modalOpen = {
   isWalletModalOpen: boolean;
@@ -29,6 +30,21 @@ export const WalletModal = ({
   const [showShow, setShowShow] = useState(false);
 
   const toggleShow = () => setShowShow(!showShow);
+
+  const { activateBrowserWallet, activateWalletConnect } = useEthers();
+
+  const connect = async (connector: 'metamask' | 'walletconnect') => {
+    const _connector =
+      connector === 'metamask' ? activateBrowserWallet : activateWalletConnect;
+    try {
+      await _connector((e) => {
+        console.log(e);
+      }, true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       <MDBModal
@@ -77,13 +93,19 @@ export const WalletModal = ({
               <div className="wallet-item-block">
                 <span className="title">Select a Wallet</span>
                 <div className="wallet-items">
-                  <div className="wallet-item">
+                  <div
+                    className="wallet-item"
+                    onClick={() => connect('metamask')}
+                  >
                     <img src={Metamask} alt="" />
                     <p>Meta Mask</p>
                   </div>
-                  <div className="wallet-item">
+                  <div
+                    className="wallet-item"
+                    onClick={() => connect('walletconnect')}
+                  >
                     <img src={WalletSelect} alt="" />
-                    <p>Meta Mask</p>
+                    <p>Wallet Connect</p>
                   </div>
                   <div className="wallet-item">
                     <img src={Coinbase} alt="" />
