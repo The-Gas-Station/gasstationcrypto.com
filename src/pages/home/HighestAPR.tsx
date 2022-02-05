@@ -4,16 +4,14 @@ import useDebounce from '../../library/hooks/useDebounce';
 import { useActivePools } from '../../hooks/useActivePools';
 
 import numeral from 'numeral';
-import { useWeb3ConnectionsContext } from '../../library/providers/Web3ConnectionsProvider';
+import { ChainId } from '../../library/constants/chains';
 import { CHAIN_INFO } from '../../configs';
 
-const HighestAPR = () => {
-  const { currentChainId } = useWeb3ConnectionsContext();
-
-  const chainData = CHAIN_INFO[currentChainId];
+const HighestAPR = ({ chainId }: { chainId: ChainId }) => {
+  const chainData = CHAIN_INFO[chainId];
 
   const [highestAPR, setHighestAPR] = useState<number>(0);
-  const activePoolAPRs = useActivePools(currentChainId).map((p) => p.apr);
+  const activePoolAPRs = useActivePools(chainId).map((p) => p.apr);
 
   const debouncedActivePoolAPRs = useDebounce(activePoolAPRs, 50);
 
