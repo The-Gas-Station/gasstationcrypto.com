@@ -18,7 +18,7 @@
   position: absolute;
   touch-action: none;
   transform: scale(0);
-  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
   transition-timing-function: $cubicBezier, $cubicBezier;
   z-index: 999;
   &.active {
