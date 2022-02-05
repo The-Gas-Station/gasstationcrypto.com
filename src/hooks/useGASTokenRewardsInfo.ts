@@ -13,22 +13,6 @@ import useLiquidityPairRatio from '../library/hooks/useLiquidityPairRatio';
 import useTokenDecimals from '../library/hooks/useTokenDecimals';
 
 import BUFFER from '../library/constants/percisionBuffer';
-import { useConfig } from '../library/providers/ConfigProvider';
-
-export function useTotalUSDRewards(): BigNumber {
-  const { readOnlyChainIds: chains = [] } = useConfig();
-  const totalRewards: BigNumber[] = [];
-  for (let index = 0; index < chains.length; index++) {
-    const chain = chains[index];
-    const { totalRewardsUSD } = useGASTokenRewardsInfo(chain);
-    totalRewards.push(totalRewardsUSD);
-  }
-  return useMemo(() => {
-    return totalRewards.reduce((rewardA, rewardB) => {
-      return rewardA.add(rewardB);
-    });
-  }, [...chains, totalRewards]);
-}
 
 export function useGASTokenRewardsInfo(chainId: ChainId): {
   gasTokenBalance: BigNumber;

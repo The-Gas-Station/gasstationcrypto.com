@@ -1,21 +1,24 @@
-import numeral from 'numeral';
-import { formatEther } from 'ethers/lib/utils';
-import { useTotalUSDRewards } from '../../hooks/useGASTokenRewardsInfo';
-import React, { useEffect, useState } from 'react';
-import { BigNumber } from 'ethers';
+import { ethers } from 'ethers';
 
-const formatRewards = (amount: BigNumber) =>
-  numeral(formatEther(amount)).format('$0,0.00');
+import useDebounce from '../../library/hooks/useDebounce';
+import useTotalUSDRewards from '../../hooks/useTotalUSDRewards';
+
+import numeral from 'numeral';
 
 const TotalRewardsUSD = () => {
   const totalRewardsCalc = useTotalUSDRewards();
-  const [totalUSDRewards, setTotalUSDRewards] = useState('');
 
-  useEffect(() => {
-    setTotalUSDRewards(formatRewards(totalRewardsCalc));
-  }, [totalRewardsCalc]);
+  const debouncedTotalRewardsCalc = useDebounce(totalRewardsCalc, 50);
 
-  return <p>Over {totalUSDRewards} + in GAS Rewards</p>;
+  return (
+    <p>
+      Over{' '}
+      {numeral(ethers.utils.formatEther(debouncedTotalRewardsCalc)).format(
+        '$0,0.00',
+      )}
+      + in GAS Rewards across all networks
+    </p>
+  );
 };
 
 export default TotalRewardsUSD;

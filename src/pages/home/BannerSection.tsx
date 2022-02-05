@@ -14,8 +14,8 @@ const BannerSection = () => (
         <p className="text-green">
           <strong>Invest in the project today</strong>
         </p>
-        <HigestAPR />
         <TotalRewardsUSD />
+        <HigestAPR />
         <p className="text-green">
           <strong>Fuel your Tank today!</strong>
         </p>

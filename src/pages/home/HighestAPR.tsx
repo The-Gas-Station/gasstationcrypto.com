@@ -1,25 +1,32 @@
-import numeral from 'numeral';
-import React, { useEffect, useState } from 'react';
-import { PoolData } from '../../hooks/Pools';
+import { useEffect, useState } from 'react';
+
+import useDebounce from '../../library/hooks/useDebounce';
 import { useActivePools } from '../../hooks/useActivePools';
 
-const formatAPR = (apr: number): string => numeral(apr).format('0.00%');
-
-export function getHighestAPRPool(pools: PoolData[]): number {
-  const aprs = pools.map((p) => p.apr);
-  const orderedAPRs = aprs.sort((a, b) => b - a);
-  const highestAPR = orderedAPRs.shift() || 0;
-  return highestAPR;
-}
+import numeral from 'numeral';
+import { useWeb3ConnectionsContext } from '../../library/providers/Web3ConnectionsProvider';
+import { CHAIN_INFO } from '../../configs';
 
 const HighestAPR = () => {
+  const { currentChainId } = useWeb3ConnectionsContext();
+
+  const chainData = CHAIN_INFO[currentChainId];
+
   const [highestAPR, setHighestAPR] = useState<number>(0);
-  const activePools = useActivePools();
+  const activePoolAPRs = useActivePools(currentChainId).map((p) => p.apr);
+
+  const debouncedActivePoolAPRs = useDebounce(activePoolAPRs, 50);
+
   useEffect(() => {
-    const currentHighestAPR = getHighestAPRPool(activePools);
-    setHighestAPR(currentHighestAPR);
-  }, [...activePools, highestAPR]);
-  return <p>Earn up to {formatAPR(highestAPR)} APR in our reward hub!</p>;
+    setHighestAPR(debouncedActivePoolAPRs.sort((a, b) => b - a)[0] || 0);
+  }, [JSON.stringify(debouncedActivePoolAPRs)]);
+
+  return (
+    <p>
+      Earn up to {numeral(highestAPR).format('0.00%')} APR on{' '}
+      {chainData.display}!
+    </p>
+  );
 };
 
 export default HighestAPR;
