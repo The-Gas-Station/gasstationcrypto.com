@@ -45,9 +45,7 @@ import { ReactComponent as SvgTwitter } from '../assets/twitter.svg';
 import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
 import Slider from 'react-slick';
-import FtmToken from '../assets/tokens/ftm.png';
 
-import newsFeed from '../news_feed.json';
 
 // import FtmToken from '../assets/tokens/ftm.png';
 import Metamask from '../assets/wallets/metamask.png';
