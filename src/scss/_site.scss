@@ -3161,10 +3161,12 @@ select {
 			grid-template-columns: repeat(3, 1fr);
 			column-gap: 20px;
 			.wallet-item{
+                cursor: pointer;
 				@include bg-color15;
 				border-radius: 10px;
 				text-align: center;
 				padding: 16px 7px;
+                margin-top: 9px;
 				&.active{
 					border: 1px solid #13B497;
 				}
