@@ -163,10 +163,13 @@ export function Web3ConnectionsProvider({
 
       const deFiConnect = new DeFiConnector({
         name: 'The Gas Station',
-        supprtedChainTypes: ['eth'],
+        supprtedChainTypes: ['eth', 'cosmos'],
         eth: {
           rpc: chainRpcUrls,
           supportedChainIds: supportedChainIds,
+        },
+        cosmos: {
+          supportedChainIds: ['cronosmainnet_25-1'],
         },
       });
 
