@@ -164,6 +164,9 @@ export function Web3ConnectionsProvider({
       const deFiConnect = new DeFiConnector({
         name: 'The Gas Station',
         supprtedChainTypes: ['cosmos'],
+        cosmos: {
+          supportedChainIds: supportedChainIds.map((chain) => chain.toString()),
+        },
       });
 
       return {

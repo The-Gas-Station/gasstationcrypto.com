@@ -64,10 +64,10 @@ export const WalletModal = ({
     } else if (
       connectError instanceof UserRejectedRequestErrorInjected ||
       connectError instanceof UserRejectedRequestErrorWalletConnect ||
-      connectError.message == 'User denied account authorization'
+      connectError.message == 'User denied account authorization' ||
+      connectError.message == 'User close QRCode Modal'
     ) {
-      errorMessage =
-        'Please authorize this website to access your Ethereum account.';
+      errorMessage = 'Please authorize this website to access your wallet.';
     } else {
       console.error(connectError);
       errorMessage =

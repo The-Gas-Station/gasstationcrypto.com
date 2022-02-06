@@ -9,6 +9,27 @@ img {
 	-ms-interpolation-mode: nearest-neighbor;
 }
 
+.ReactModalPortal {
+    z-index: 1080;
+    position: fixed;
+}
+
+#walletconnect-wrapper {
+  a {
+    color: #1266f1;
+  }
+}
+
+.-walletlink-css-reset {
+  body {
+    background-color: #ffffff !important;
+    border: 0;
+  }
+  a {
+    color: #1652f0 !important;
+  }
+}
+
 body {
     @include bg-color;
 }
