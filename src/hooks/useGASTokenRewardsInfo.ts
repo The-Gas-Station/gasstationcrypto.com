@@ -18,6 +18,7 @@ export function useGASTokenRewardsInfo(chainId: ChainId): {
   gasTokenBalance: BigNumber;
   accountRewards: BigNumber;
   totalRewards: BigNumber;
+  totalRewardsUSD: BigNumber;
   gasTokenBalanceUSD: BigNumber;
 } {
   const { currentAccount } = useWeb3ConnectionsContext();
@@ -71,6 +72,13 @@ export function useGASTokenRewardsInfo(chainId: ChainId): {
     gasTokenBalance,
     accountRewards,
     totalRewards,
+    totalRewardsUSD: useMemo(() => {
+      return totalRewards && etherRatio && decimals
+        ? totalRewards
+            .mul(etherRatio.mul(BigNumber.from(10).pow(18 - decimals)))
+            .div(BUFFER)
+        : BigNumber.from('0');
+    }, [totalRewards, etherRatio, decimals]),
     gasTokenBalanceUSD: useMemo(() => {
       return gasTokenBalance && etherRatio && decimals && ratio
         ? gasTokenBalance
