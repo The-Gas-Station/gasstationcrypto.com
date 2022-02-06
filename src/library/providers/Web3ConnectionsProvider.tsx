@@ -20,7 +20,7 @@ import {
   UserRejectedRequestError as UserRejectedRequestErrorWalletConnect,
 } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
-import { DeFiConnector } from 'deficonnect';
+import { DeFiWeb3Connector } from 'deficonnect';
 import sample from 'lodash.sample';
 
 import { ChainId, CHAIN_NAMES } from '../constants/chains';
@@ -161,16 +161,9 @@ export function Web3ConnectionsProvider({
         supportedChainIds: [chainId],
       });
 
-      const deFiConnect = new DeFiConnector({
-        name: 'The Gas Station',
-        supprtedChainTypes: ['eth', 'cosmos'],
-        eth: {
-          rpc: chainRpcUrls,
-          supportedChainIds: supportedChainIds,
-        },
-        cosmos: {
-          supportedChainIds: ['cronosmainnet_25-1'],
-        },
+      const deFiConnect = new DeFiWeb3Connector({
+        rpc: chainRpcUrls,
+        supportedChainIds: supportedChainIds,
       });
 
       return {
