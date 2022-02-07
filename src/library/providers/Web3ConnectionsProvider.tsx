@@ -28,7 +28,10 @@ import { useConfig } from './ConfigProvider';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
+export const CONNECTOR_KEY = 'connectorIdv2';
+
 export enum ConnectorNames {
+  None = 'None',
   Injected = 'Injected',
   WalletConnect = 'WalletConnect',
   WalletLink = 'WalletLink',
@@ -54,6 +57,7 @@ const context = createContext<{
   currentAccount: '',
   chainRpcUrls: {},
   getConnectors: () => ({
+    None: null,
     Injected: null,
     WalletConnect: null,
     WalletLink: null,
@@ -163,10 +167,11 @@ export function Web3ConnectionsProvider({
 
       const deFiConnect = new DeFiWeb3Connector({
         rpc: chainRpcUrls,
-        supportedChainIds: supportedChainIds,
+        supportedChainIds: [25],
       });
 
       return {
+        [ConnectorNames.None]: null,
         [ConnectorNames.Injected]: injected,
         [ConnectorNames.WalletConnect]: walletconnect,
         [ConnectorNames.WalletLink]: walletlink,

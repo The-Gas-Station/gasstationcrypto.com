@@ -27,12 +27,11 @@ type toggleProps = {
   pool: PoolResult;
 };
 
+import { useLayoutContext } from '../layouts/MainLayout';
+
 export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
-  const {
-    activateBrowserWallet,
-    account,
-    chainId: connectedChainId,
-  } = useEthers();
+  const { setIsWalletModalOpen } = useLayoutContext();
+  const { account, chainId: connectedChainId } = useEthers();
 
   const currentBlock = useBlockNumber(chainId) ?? 0;
 
@@ -65,14 +64,8 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
     ? pool.end < currentBlock
     : pool.end * 1000 < Date.now();
 
-  const connect = async () => {
-    try {
-      await activateBrowserWallet((e) => {
-        console.log(e);
-      }, true);
-    } catch (e) {
-      console.log(e);
-    }
+  const connect = () => {
+    setIsWalletModalOpen(true);
   };
 
   const forceChain = async () => {

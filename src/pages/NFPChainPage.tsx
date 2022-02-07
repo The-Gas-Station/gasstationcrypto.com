@@ -20,12 +20,11 @@ import {
 } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 
+import { useLayoutContext } from '../layouts/MainLayout';
+
 export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
-  const {
-    activateBrowserWallet,
-    account,
-    chainId: connectedChainId,
-  } = useEthers();
+  const { setIsWalletModalOpen } = useLayoutContext();
+  const { account, chainId: connectedChainId } = useEthers();
   const navigate = useNavigate();
 
   const chainData = CHAIN_INFO[chainId];
@@ -118,14 +117,8 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
     navigate(`/${CHAIN_NAMES[newChainId]}/nfp`);
   };
 
-  const connect = async () => {
-    try {
-      await activateBrowserWallet((e) => {
-        console.log(e);
-      }, true);
-    } catch (e) {
-      console.log(e);
-    }
+  const connect = () => {
+    setIsWalletModalOpen(true);
   };
 
   const forceChain = async () => {

@@ -76,10 +76,12 @@ export const WalletModal = ({
   }
 
   const connect = async (connector: ConnectorNames) => {
-    let _connector: (
-      onError?: (error: Error) => void,
-      throwErrors?: boolean,
-    ) => Promise<void>;
+    let _connector:
+      | ((
+          onError?: (error: Error) => void,
+          throwErrors?: boolean,
+        ) => Promise<void>)
+      | undefined;
 
     switch (connector) {
       case ConnectorNames.Injected:
@@ -96,12 +98,14 @@ export const WalletModal = ({
         break;
     }
 
-    try {
-      await _connector(undefined, true)
-        .then(() => setIsOpen(false))
-        .catch(setConnectError);
-    } catch (e) {
-      console.log(e);
+    if (_connector) {
+      try {
+        await _connector(undefined, true)
+          .then(() => setIsOpen(false))
+          .catch(setConnectError);
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 

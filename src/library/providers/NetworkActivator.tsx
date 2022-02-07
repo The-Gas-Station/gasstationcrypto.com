@@ -3,10 +3,21 @@ import { NetworkConnector } from '@web3-react/network-connector';
 import useEthers from '../hooks/useEthers';
 import useDebounce from '../hooks/useDebounce';
 import { useConfig } from './ConfigProvider';
-import { useWeb3ConnectionsContext } from './Web3ConnectionsProvider';
+import {
+  useWeb3ConnectionsContext,
+  ConnectorNames,
+  CONNECTOR_KEY,
+} from './Web3ConnectionsProvider';
 import { CHAIN_NAMES } from '../constants/chains';
 
+import useLocalStorage from '../hooks/useLocalStorage';
+
 export function NetworkActivator() {
+  const [storedConnector, setStoredConnector] = useLocalStorage<ConnectorNames>(
+    CONNECTOR_KEY,
+    ConnectorNames.None,
+  );
+
   const { account, activate, active, chainId, connector, error } = useEthers();
   const { readOnlyChainIds, defaultChainId, autoSwitch, supportedChainIds } =
     useConfig();
@@ -37,17 +48,52 @@ export function NetworkActivator() {
     }
   }, [activatingConnector, connector]);
 
-  const { Injected } = getConnectors(currentChainId);
+  const { Injected, WalletConnect, WalletLink, DeFiConnect } =
+    getConnectors(currentChainId);
 
   // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
   const [tried, setTried] = useState(false);
   useEffect(() => {
     const timeout = setTimeout(() => {
-      Injected.isAuthorized().then((isAuthorized: boolean) => {
-        if (isAuthorized) {
-          return activate(Injected, undefined, true).catch(() => {
+      const isSupportedConnectorId =
+        Object.values(ConnectorNames).includes(storedConnector) &&
+        storedConnector != ConnectorNames.None;
+
+      let connector: any;
+
+      if (isSupportedConnectorId) {
+        switch (storedConnector) {
+          case ConnectorNames.Injected:
+            connector = Injected;
+            break;
+          case ConnectorNames.WalletConnect:
+            connector = WalletConnect;
+            break;
+          case ConnectorNames.WalletLink:
+            connector = WalletLink;
+            break;
+          case ConnectorNames.DeFiConnect:
+            connector = DeFiConnect;
+            break;
+        }
+
+        if (connector) {
+          return activate(connector, undefined, true).catch(() => {
+            setStoredConnector(ConnectorNames.None);
             setTried(true);
           });
+        }
+      }
+
+      Injected.isAuthorized().then((isAuthorized: boolean) => {
+        if (isAuthorized) {
+          return activate(Injected, undefined, true)
+            .then(() => {
+              setStoredConnector(ConnectorNames.Injected);
+            })
+            .catch(() => {
+              setTried(true);
+            });
         } else {
           setTried(true);
         }
@@ -55,7 +101,7 @@ export function NetworkActivator() {
     }, 0);
 
     return () => clearTimeout(timeout);
-  }, []); // intentionally only running on mount (make sure it's only mounted once :))
+  }, [activate]); // intentionally only running on mount (make sure it's only mounted once :))
 
   // if the connection worked, wait until we get confirmation of that to flip the flag
   useEffect(() => {

@@ -8,7 +8,7 @@ import RewardsHubChainPage from './RewardsHubChainPage';
 
 export const RewardsHubPage = () => {
   const navigate = useNavigate();
-  const { chain }: { chain: string | undefined } = useParams();
+  const { chain } = useParams<{ chain: string | undefined }>();
 
   const search = Object.entries(CHAIN_NAMES).find(
     (data) => data[1].toLowerCase() == chain?.toLowerCase(),

@@ -1,4 +1,11 @@
-import React, { ReactNode, useCallback, useState, useEffect } from 'react';
+import React, {
+  ReactNode,
+  useCallback,
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+} from 'react';
 import { useLocation, useNavigate, Outlet } from 'react-router-dom';
 import {
   MDBSideNav,
@@ -47,11 +54,18 @@ import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
 
 // import FtmToken from '../assets/tokens/ftm.png';
-import Metamask from '../assets/wallets/metamask.png';
 // import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+type ContextType = {
+  setIsWalletModalOpen: (isWalletModalOpen: boolean) => void;
+};
+
+const LayoutContext = createContext<ContextType>({
+  setIsWalletModalOpen: () => undefined,
+});
 
 export const MainLayout = () => {
   const navigate = useNavigate();
@@ -264,7 +278,13 @@ export const MainLayout = () => {
             <div className="meta-mask-block d-flex d-lg-none">
               <div className="custom-select-box flex-row py-0">
                 <div className="text-right">
-                  <span className="text-fantom">
+                  <span
+                    className="text-fantom"
+                    style={{ cursor: !account ? 'pointer' : 'unset' }}
+                    onClick={() => {
+                      !account && setIsWalletModalOpen(true);
+                    }}
+                  >
                     {account ? shortenString(account) : 'Connect Wallet'}
                   </span>
                   <select
@@ -301,7 +321,7 @@ export const MainLayout = () => {
                   </select>
                 </div>
                 <div className="metamask-img">
-                  <img src={Metamask} alt="icons" />
+                  <SvgWallet />
                 </div>
               </div>
             </div>
@@ -489,7 +509,13 @@ export const MainLayout = () => {
                 <div className="meta-mask-block">
                   <div className="custom-select-box flex-row py-0">
                     <div className="text-right">
-                      <span className="text-fantom">
+                      <span
+                        className="text-fantom"
+                        style={{ cursor: !account ? 'pointer' : 'unset' }}
+                        onClick={() => {
+                          !account && setIsWalletModalOpen(true);
+                        }}
+                      >
                         {account ? shortenString(account) : 'Connect Wallet'}
                       </span>
                       <select
@@ -526,7 +552,7 @@ export const MainLayout = () => {
                       </select>
                     </div>
                     <div className="metamask-img">
-                      <img src={Metamask} alt="icons" />
+                      <SvgWallet />
                     </div>
                   </div>
                 </div>
@@ -584,9 +610,14 @@ export const MainLayout = () => {
                     color="connect"
                     className={`mx-4 d-flex align-items-center justify-content-between
                     ${account ? '' : 'not-connected'}`}
-                    style={{ width: 252 }}
+                    style={{
+                      width: 252,
+                      cursor: !account ? 'pointer' : 'unset',
+                    }}
                     // onClick={connect}
-                    onClick={() => setIsWalletModalOpen(true)}
+                    onClick={() => {
+                      !account && setIsWalletModalOpen(true);
+                    }}
                   >
                     <SvgWallet />
                     <span className="flex-grow">
@@ -665,7 +696,9 @@ export const MainLayout = () => {
           </div>
         </MDBSideNav>
         <MDBContainer fluid className="flex-grow scrollView">
-          <Outlet />
+          <LayoutContext.Provider value={{ setIsWalletModalOpen }}>
+            <Outlet />
+          </LayoutContext.Provider>
         </MDBContainer>
       </div>
       <WalletModal
@@ -676,6 +709,10 @@ export const MainLayout = () => {
     </>
   );
 };
+
+export function useLayoutContext() {
+  return useContext(LayoutContext);
+}
 
 export default MainLayout;
 

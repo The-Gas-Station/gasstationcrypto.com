@@ -155,7 +155,7 @@ export const RPC_URLS = {
   [ChainId.Moonriver]: ['https://rpc.moonriver.moonbeam.network'],
   [ChainId.Harmony]: ['https://api.harmony.one'],
   [ChainId.Palm]: [],
-  [ChainId.Cronos]: ['https://evm-cronos.crypto.org'],
+  [ChainId.Cronos]: ['https://evm-cronos.crypto.org/'],
   [ChainId.Avalanche]: ['https://api.avax.network/ext/bc/C/rpc'],
   [ChainId.TomoChain]: ['https://rpc.tomochain.com'],
   [ChainId.KCC]: ['https://rpc-mainnet.kcc.network'],

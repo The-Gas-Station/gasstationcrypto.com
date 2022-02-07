@@ -2484,7 +2484,7 @@
     "@walletconnect/window-metadata" "1.0.0"
     detect-browser "5.2.0"
 
-"@deficonnect/client@^1.6.13", "@deficonnect/client@^1.6.8":
+"@deficonnect/client@^1.6.13", "@deficonnect/client@^1.6.7-alpha.25":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/client/-/client-1.6.13.tgz#f70666eb4b7b544ef8b42c079e9b9907d914417c"
   integrity sha512-8MUEPzx/elQ5YAl9iKE1Cx/RvH89VAaawuN0k9Ashehe9ejzWqLHIF/HpQZ1c1o/iWkj0lrywHRBYwySQQyQxA==
@@ -2494,7 +2494,7 @@
     "@deficonnect/types" "^1.6.13"
     "@deficonnect/utils" "^1.6.13"
 
-"@deficonnect/core@^1.6.13", "@deficonnect/core@^1.6.8":
+"@deficonnect/core@^1.6.13", "@deficonnect/core@^1.6.7-alpha.25":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/core/-/core-1.6.13.tgz#b1eb70ec485945bb785f3d522ef01b6ad85aefca"
   integrity sha512-qP/T/bt2LzHnmQs+UA7Gmsb38XhvDMjDu047fpkGSzQCJDxPSiB3mXHdgx2SbiY+nLdiAJPM/sjNJ7akTCWDWw==
@@ -2513,7 +2513,7 @@
     eventemitter3 "4.0.7"
     xhr2-cookies "1.1.0"
 
-"@deficonnect/iso-crypto@^1.6.13", "@deficonnect/iso-crypto@^1.6.8":
+"@deficonnect/iso-crypto@^1.6.13", "@deficonnect/iso-crypto@^1.6.7-alpha.25":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/iso-crypto/-/iso-crypto-1.6.13.tgz#fa8fe9fad9880fc6474debbacf470953c41b501a"
   integrity sha512-1MT5E+yKABLtSp4w65OiJ/0U5OmbdBL3LqxVOE74lTOH6cdf1AZatZmCy4UUdVaciWlqEX6P/4s4wcsXXp521g==
@@ -2543,12 +2543,12 @@
     "@deficonnect/utils" "^1.6.13"
     ws "7.5.3"
 
-"@deficonnect/types@^1.6.13", "@deficonnect/types@^1.6.8":
+"@deficonnect/types@^1.6.13", "@deficonnect/types@^1.6.7-alpha.25":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/types/-/types-1.6.13.tgz#106c1cad675d9db1a2dbc1c5245ff42c179d57ea"
   integrity sha512-5ls9LHgQpgaVSsppd/DzlNDO7ZmP9PH8SsbW0TZ1Rw8MG6T66ev7PxxxbkkyKdHqHeQoR7U9SjOtWRRUMVceDQ==
 
-"@deficonnect/utils@^1.6.13", "@deficonnect/utils@^1.6.8":
+"@deficonnect/utils@^1.6.13", "@deficonnect/utils@^1.6.7-alpha.25":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/utils/-/utils-1.6.13.tgz#f927062f3930ace33166eeab8a4f3346cda96dd6"
   integrity sha512-tvnbP91IyHH6ALkNsshn39JWwNZE6xR9qGbOgGqM0X+q6l/B9d8tzUogcmIKY5Wi+gxxW6OAEXhPC4lAdeIwpg==
@@ -2561,7 +2561,7 @@
     js-sha3 "0.8.0"
     query-string "6.13.5"
 
-"@deficonnect/web3-provider@^1.6.8":
+"@deficonnect/web3-provider@^1.6.7-alpha.25":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/web3-provider/-/web3-provider-1.6.13.tgz#f0d89fe519814fb2b078d83c75b5af73f5a0394b"
   integrity sha512-1hPAvruGGMERFwPsA2Ot28GIGRfPWjtndw9FNfCIcjC4BAX5k/Sl1Hf0Spjt24Ub1MZjXE9He70jwT6zhiKqoA==
@@ -6561,24 +6561,23 @@ deferred-leveldown@~1.2.1:
   dependencies:
     abstract-leveldown "~2.6.0"
 
-deficonnect@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/deficonnect/-/deficonnect-1.1.7.tgz#e40fcaacff644fda28179e2dbba80c088ee96aaa"
-  integrity sha512-2fJmzPNyXetOWla5x1pP95yhVb0JdsN9GcdgVOleWTGFWlC6ZUOmNZ+g19yfUd/kYjWREaI8661mAYxmZRSLIw==
+deficonnect@1.1.0-alpha.37:
+  version "1.1.0-alpha.37"
+  resolved "https://registry.yarnpkg.com/deficonnect/-/deficonnect-1.1.0-alpha.37.tgz#9eabe478323abced04f7f5ff726f104ad1c793a1"
+  integrity sha512-+SPS8K99GwRogEdpr/mT6Jnow8GiHRN4lJnXTsboHs4cH/TSvHlmjTMhHaBtK7l8/va9aOab27HOuwFPTyW8bg==
   dependencies:
     "@cosmjs/amino" "^0.26.0"
     "@cosmjs/encoding" "^0.26.0"
     "@cosmjs/proto-signing" "^0.26.0"
     "@cosmjs/stargate" "^0.26.1"
-    "@deficonnect/client" "^1.6.8"
-    "@deficonnect/core" "^1.6.8"
-    "@deficonnect/iso-crypto" "^1.6.8"
-    "@deficonnect/types" "^1.6.8"
-    "@deficonnect/utils" "^1.6.8"
-    "@deficonnect/web3-provider" "^1.6.8"
+    "@deficonnect/client" "^1.6.7-alpha.25"
+    "@deficonnect/core" "^1.6.7-alpha.25"
+    "@deficonnect/iso-crypto" "^1.6.7-alpha.25"
+    "@deficonnect/types" "^1.6.7-alpha.25"
+    "@deficonnect/utils" "^1.6.7-alpha.25"
+    "@deficonnect/web3-provider" "^1.6.7-alpha.25"
     "@types/qrcode" "^1.4.1"
     "@types/react-modal" "^3.12.0"
-    "@web3-react/injected-connector" "^6.0.7"
     cosmjs-types "^0.2.0"
     qrcode "^1.4.4"
     react "^16.13.1"
@@ -8427,10 +8426,10 @@ hey-listen@^1.0.8:
   resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
   integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
-history@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/history/-/history-5.1.0.tgz#2e93c09c064194d38d52ed62afd0afc9d9b01ece"
-  integrity sha512-zPuQgPacm2vH2xdORvGGz1wQMuHSIB56yNAy5FnLuwOwgSYyPKptJtcMm6Ev+hRGeS+GzhbmRacHzvlESbFwDg==
+history@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/history/-/history-5.2.0.tgz#7cdd31cf9bac3c5d31f09c231c9928fad0007b7c"
+  integrity sha512-uPSF6lAJb3nSePJ43hN3eKj1dTWpN9gMod0ZssbFTIsen+WehTmEadgL+kg78xLJFdRfrrC//SavDzmRVdE+Ig==
   dependencies:
     "@babel/runtime" "^7.7.6"
 
@@ -12031,20 +12030,20 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.0.2.tgz#860cefa697b9d4965eced3f91e82cdbc5995f3ad"
-  integrity sha512-cOpJ4B6raFutr0EG8O/M2fEoyQmwvZWomf1c6W2YXBZuFBx8oTk/zqjXghwScyhfrtnt0lANXV2182NQblRxFA==
+react-router-dom@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.2.1.tgz#32ec81829152fbb8a7b045bf593a22eadf019bec"
+  integrity sha512-I6Zax+/TH/cZMDpj3/4Fl2eaNdcvoxxHoH1tYOREsQ22OKDYofGebrNm6CTPUcvLvZm63NL/vzCYdjf9CUhqmA==
   dependencies:
-    history "^5.1.0"
-    react-router "6.0.2"
+    history "^5.2.0"
+    react-router "6.2.1"
 
-react-router@6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.0.2.tgz#bd2b0fa84fd1d152671e9f654d9c0b1f5a7c86da"
-  integrity sha512-8/Wm3Ed8t7TuedXjAvV39+c8j0vwrI5qVsYqjFr5WkJjsJpEvNSoLRUbtqSEYzqaTUj1IV+sbPJxvO+accvU0Q==
+react-router@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.2.1.tgz#be2a97a6006ce1d9123c28934e604faef51448a3"
+  integrity sha512-2fG0udBtxou9lXtK97eJeET2ki5//UWfQSl1rlJ7quwe6jrktK9FCCc8dQb5QY6jAv3jua8bBQRhhDOM/kVRsg==
   dependencies:
-    history "^5.1.0"
+    history "^5.2.0"
 
 react-scripts@5.0.0:
   version "5.0.0"

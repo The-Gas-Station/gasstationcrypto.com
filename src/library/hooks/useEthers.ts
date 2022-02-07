@@ -2,7 +2,13 @@ import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import { ChainId } from '../constants/chains';
 import { useCallback } from 'react';
-import { useWeb3ConnectionsContext } from '../providers/Web3ConnectionsProvider';
+import {
+  useWeb3ConnectionsContext,
+  ConnectorNames,
+  CONNECTOR_KEY,
+} from '../providers/Web3ConnectionsProvider';
+
+import useLocalStorage from './useLocalStorage';
 
 type ActivateBrowserWallet = (
   onError?: (error: Error) => void,
@@ -31,6 +37,11 @@ export type Web3Ethers = ReturnType<typeof useWeb3React> & {
 };
 
 export function useEthers(key?: string | undefined): Web3Ethers {
+  const [, setStoredConnector] = useLocalStorage<ConnectorNames>(
+    CONNECTOR_KEY,
+    ConnectorNames.None,
+  );
+
   const result = useWeb3React<Web3Provider>(key);
   const { currentChainId, getConnectors } = useWeb3ConnectionsContext();
 
@@ -38,11 +49,22 @@ export function useEthers(key?: string | undefined): Web3Ethers {
     async (onError, throwErrors) => {
       const { Injected } = getConnectors(currentChainId);
 
-      if (onError instanceof Function) {
-        await result.activate(Injected, onError, throwErrors);
-      } else {
-        await result.activate(Injected, undefined, throwErrors);
+      const handleError = (err: Error) => {
+        if (onError instanceof Function) {
+          onError(err);
+        }
+
+        setStoredConnector(ConnectorNames.None);
+      };
+
+      try {
+        await result.activate(Injected, handleError, throwErrors);
+      } catch (err) {
+        setStoredConnector(ConnectorNames.None);
+        throw err;
       }
+
+      setStoredConnector(ConnectorNames.Injected);
     },
     [currentChainId, getConnectors],
   );
@@ -51,11 +73,22 @@ export function useEthers(key?: string | undefined): Web3Ethers {
     async (onError, throwErrors) => {
       const { WalletConnect } = getConnectors(currentChainId);
 
-      if (onError instanceof Function) {
-        await result.activate(WalletConnect, onError, throwErrors);
-      } else {
-        await result.activate(WalletConnect, undefined, throwErrors);
+      const handleError = (err: Error) => {
+        if (onError instanceof Function) {
+          onError(err);
+        }
+
+        setStoredConnector(ConnectorNames.None);
+      };
+
+      try {
+        await result.activate(WalletConnect, handleError, throwErrors);
+      } catch (err) {
+        setStoredConnector(ConnectorNames.None);
+        throw err;
       }
+
+      setStoredConnector(ConnectorNames.WalletConnect);
     },
     [currentChainId, getConnectors],
   );
@@ -64,11 +97,22 @@ export function useEthers(key?: string | undefined): Web3Ethers {
     async (onError, throwErrors) => {
       const { WalletLink } = getConnectors(currentChainId);
 
-      if (onError instanceof Function) {
-        await result.activate(WalletLink, onError, throwErrors);
-      } else {
-        await result.activate(WalletLink, undefined, throwErrors);
+      const handleError = (err: Error) => {
+        if (onError instanceof Function) {
+          onError(err);
+        }
+
+        setStoredConnector(ConnectorNames.None);
+      };
+
+      try {
+        await result.activate(WalletLink, handleError, throwErrors);
+      } catch (err) {
+        setStoredConnector(ConnectorNames.None);
+        throw err;
       }
+
+      setStoredConnector(ConnectorNames.WalletLink);
     },
     [currentChainId, getConnectors],
   );
@@ -77,11 +121,22 @@ export function useEthers(key?: string | undefined): Web3Ethers {
     async (onError, throwErrors) => {
       const { DeFiConnect } = getConnectors(currentChainId);
 
-      if (onError instanceof Function) {
-        await result.activate(DeFiConnect, onError, throwErrors);
-      } else {
-        await result.activate(DeFiConnect, undefined, throwErrors);
+      const handleError = (err: Error) => {
+        if (onError instanceof Function) {
+          onError(err);
+        }
+
+        setStoredConnector(ConnectorNames.None);
+      };
+
+      try {
+        await result.activate(DeFiConnect, handleError, throwErrors);
+      } catch (err) {
+        setStoredConnector(ConnectorNames.None);
+        throw err;
       }
+
+      setStoredConnector(ConnectorNames.DeFiConnect);
     },
     [currentChainId, getConnectors],
   );
