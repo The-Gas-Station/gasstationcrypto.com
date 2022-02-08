@@ -13,7 +13,7 @@ import HomePage from './pages/HomePage';
 import RewardsHubPage from './pages/RewardsHubPage';
 import NFPPage from './pages/NFPPage';
 import UtilitiesPage from './pages/UtilitiesPage';
-import BridgePage from './pages/BridgeChainPage';
+import BridgePage from './pages/BridgePage';
 
 export const App = () => {
   const { currentChainId } = useWeb3ConnectionsContext();
