@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MDBCollapse } from 'mdb-react-ui-kit';
 
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
+import { TxHistory } from '../components/txHistory';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
+  const [showFinished, setShowFinished] = useState(false);
 
   const chainData = CHAIN_INFO[chainId];
+  const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
+  const toggleShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
 
   const { readOnlyChainIds } = useConfig();
   const { setCurrentChainId } = useWeb3ConnectionsContext();
@@ -23,7 +28,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
 
   return (
     <>
-      <section className="page-background">
+      <section className="page-background-bridge">
         <div className="page-banner-top-title">
           <h3>
             <img src={chainData.tokenImage.replace('/public/', '/')} alt="#" />{' '}
@@ -49,10 +54,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
         </div>
       </section>
       <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-6 d-none d-md-block card-list">
+        <div className="col-lg-7 d-none d-md-block">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
-            <div className="row justify-content-center">
+            <div className="row justify-content-center card-list">
               <div className="col-md-5 col-lg-5 d-none d-md-block">
                 <p>Please Select Your Networks</p>
               </div>
@@ -74,7 +79,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
             </div>
             <br />
-            <div className="row justify-content-center">
+            <div className="row justify-content-center card-list">
               <div className="col-md-5 col-lg-5 d-none d-md-block">
                 <p>Select Your Asset</p>
               </div>
@@ -87,22 +92,23 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
             </div>
             <br />
-            <div className="row justify-content-center">
+            <div className="row justify-content-center card-list">
               <div className="col-md-5 col-lg-5 d-none d-md-block">
                 <p>Recipient</p>
               </div>
               <div className="col-md-6 col-lg-6 d-none d-md-block">
                 <div className="convert-inner">
+                  <span className="top-title">Destination Address</span>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Destination Address"
+                    placeholder="0x......."
                   />
                 </div>
               </div>
             </div>
             <br />
-            <div className="row justify-content-center">
+            <div className="row justify-content-center card-list">
               <div className="col-md-5 col-lg-5 d-none d-md-block">
                 <p>Amount</p>
               </div>
@@ -141,11 +147,23 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                   </div>
                 </div>
                 <div className="col bridge-amount fee-box">
-                  <div className="grid-live-icon d-none d-md-inline-block fee-box">
+                  <div className="d-none d-md-inline-block fee-box">
                     <span className="subtext-left">Void Fees</span>
                     <div className="btn">
-                      <span className="active">Use GAS</span>
-                      <span className="active">Use Patron</span>
+                      <div className="row">
+                        <span
+                          className={showFinished ? '' : 'active'}
+                          onClick={() => setShowFinished(false)}
+                        >
+                          Use GAS Balance
+                        </span>
+                        <span
+                          className={showFinished ? 'active' : ''}
+                          onClick={() => setShowFinished(true)}
+                        >
+                          Use Patron
+                        </span>
+                      </div>
                     </div>
                     <br />
                     <div className="row justify-content-center">
@@ -168,13 +186,13 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
             </div>
             <br />
-            <div className="row justify-content-center">
+            <div className="row justify-content-center card-list">
               <div className="col-md-5 col-lg-5 d-none d-md-block">
                 <p>Send</p>
               </div>
               <div className="col-md-6 col-lg-6 d-none d-md-block">
+                <span className="top-title">What You Recieve</span>
                 <div className="bridge-amount">
-                  <span className="text-left">AMOUNT YOU RECIEVE</span>
                   <div className="fee-box">
                     <h5>Output</h5>
                   </div>
@@ -186,26 +204,24 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
           </div>
         </div>
-        <div className="col-md-6 col-lg-4 d-none d-md-block card-list">
+        <div className="col-md-3 col-lg-3 d-none d-md-block">
           <h4 className="title-msg">Transaction History</h4>
-          <div className="convert-grid-block">
-            <span className="top-title">ConvertING tokens to shares</span>
-            <div className="convert-inner">
-              <select className="custom-select">
-                <option value="">Select or add token address</option>
-              </select>
-              <div className="or-btn d-none d-lg-none">OR</div>
+          <div className={`utility-collapse ${isTxHistoryOpen ? 'open' : ''}`}>
+            <div className="card-list">
+              <div
+                className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
+                onClick={toggleShow}
+              >
+                <span className="d-none d-lg-block tx-history">
+                  {isTxHistoryOpen ? 'Hide' : 'Show TX History'}
+                </span>
+              </div>
             </div>
-            <button className="join-btn">Convert Tokens to Shares</button>
-          </div>
-          <div className="convert-list-block">
-            <span className="top-title">ConvertING TOKENS FROM SHARES</span>
-            <div className="convert-inner">
-              <select className="custom-select">
-                <option value="">Select or add token address</option>
-              </select>
-            </div>
-            <button className="join-btn">Convert Tokens from Shares</button>
+            <TxHistory
+              isTxHistoryOpen={isTxHistoryOpen}
+              setIsOpen={setIsTxHistoryOpen}
+              closeTxHistory={() => setIsTxHistoryOpen(false)}
+            />
           </div>
         </div>
       </div>

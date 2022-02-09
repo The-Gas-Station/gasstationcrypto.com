@@ -39,9 +39,7 @@ export const App = () => {
           />
           <Route
             path="/bridge"
-            element={
-              <Navigate to={`/${CHAIN_NAMES[currentChainId]}/bridge`} />
-            }
+            element={<Navigate to={`/${CHAIN_NAMES[currentChainId]}/bridge`} />}
           />
           <Route path="/:chain">
             <Route path="hub" element={<RewardsHubPage />} />

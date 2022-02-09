@@ -9,7 +9,6 @@ img {
   -ms-interpolation-mode: nearest-neighbor;
 }
 
-
 body {
   @include bg-color;
 }
@@ -734,7 +733,7 @@ img {
     padding: 1px 9px 12px 2px;
     position: relative;
     z-index: 1;
-	height:75px;
+    height: 75px;
     &:before {
       content: '';
       position: absolute;
@@ -747,11 +746,11 @@ img {
     }
     .amount-col {
       display: block;
-	  color: $card-title-color;
+      color: $card-title-color;
       flex-direction: column;
       justify-content: center;
-	  min-width: 160px;
-	  font-size: 14px;
+      min-width: 160px;
+      font-size: 14px;
       span {
         &.sub-text {
           color: $text-secondary-color;
@@ -1784,6 +1783,99 @@ select {
     }
   }
 }
+.page-background-bridge {
+  position: relative;
+  padding: 10px;
+  margin: 0 -12px;
+  margin-bottom: 20px;
+  background: linear-gradient(
+    83.48deg,
+    #00b098 4.46%,
+    #521a4c 78.43%,
+    #521a4c 100%
+  );
+  .page-banner-top-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+
+    h3 {
+      margin-right: 20px;
+      color: #fff;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+      img {
+        margin-right: 20px;
+      }
+    }
+    select {
+      background-color: $dark-color1;
+      border: 1px solid $background-main-color;
+      border-radius: 25px;
+      padding: 2px 20px;
+      color: $text-light3;
+      font-size: 13px;
+    }
+  }
+  .nfp-banner-center-text {
+    max-width: 900px;
+    background: linear-gradient(
+      90.44deg,
+      #151824 0.76%,
+      rgba(21, 24, 36, 0) 98.45%
+    );
+    padding: 5px;
+    border-radius: 15px;
+    h4 {
+      font-size: 27px;
+      font-weight: 500;
+      color: #fff;
+    }
+    p {
+      font-size: 21px;
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+  @media (max-width: 767px) {
+    padding: 20px 20px 100px;
+    .page-banner-top-title {
+      h3 {
+        font-size: 20px;
+        margin-right: 0;
+      }
+    }
+    .nfp-banner-center-text {
+      background: linear-gradient(
+        90.44deg,
+        #151824 12.65%,
+        rgba(21, 24, 36, 0.3) 95.35%
+      );
+      padding: 24px;
+      h4 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  @media (max-width: 575px) {
+    .page-banner-top-title {
+      display: block;
+      text-align: center;
+      h3 {
+        margin-bottom: 10px;
+        text-align: left;
+        img {
+          margin-right: 13px;
+        }
+      }
+    }
+  }
+}
 .card-box {
   background-color: $background-main-color;
   @include box-shadow;
@@ -2537,7 +2629,7 @@ select {
   @include join-button;
   width: 60px;
   height: 40px;
-  left: calc(50% - 60px/2 + 66.5px);
+  left: calc(50% - 60px / 2 + 66.5px);
   top: 125px;
   border-radius: 8px;
   text-align: center;
@@ -2558,134 +2650,144 @@ select {
   margin-bottom: 10px;
   border-bottom: 3px solid #28ccac;
 }
+.vert-break {
+  margin-right: 10px;
+  border-right: 3px solid #28ccac;
+}
 .bridge-amount {
   display: block;
   font-size: 12px;
   line-height: 14px;
   align-items: center;
-    .text-left {
-      display: block;
-      text-align: left;
-      color: $text-primary-color;
-      font-weight: 600;
-    }
-    .text-right {
-      display: block;
-      text-align: right;
-      color: $text-primary-color;
-      font-weight: 600;
-    }
-    .subtext-left {
-      display: block;
-      color: $text-secondary-color;
+  .text-left {
+    display: block;
+    text-align: left;
+    color: $text-primary-color;
+    font-weight: 600;
+  }
+  .text-right {
+    display: block;
+    text-align: right;
+    color: $text-primary-color;
+    font-weight: 600;
+  }
+  .subtext-left {
+    display: block;
+    color: $text-secondary-color;
     font-weight: 400;
-    text-align: left
-    }
-    .subtext-right {
-      display: block;
-      color: $text-secondary-color;
-      font-weight: 400;
-    text-align: right
-    }
-    .fee-box {
-      border-radius: 6px;
-      margin: 3px;
-      border: 2px solid $border-color-secondary;
-      position: relative;
-      padding: 15px;
-      background-color: $border-bg3;
-      display: block;
-      width: 100%;
-      align-items: center;
-      text-align: left;
+    text-align: left;
+  }
+  .subtext-right {
+    display: block;
+    color: $text-secondary-color;
+    font-weight: 400;
+    text-align: right;
+  }
+  .fee-box {
+    border-radius: 6px;
+    margin: 3px;
+    border: 2px solid $border-color-secondary;
+    position: relative;
+    padding: 15px;
+    background-color: $border-bg3;
+    display: block;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+    .footer {
+      display: flex;
+      vertical-align: bottom;
       justify-content: center;
-      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
-      .footer {
-        display: flex;
-        vertical-align: bottom;
-        justify-content: center;
-        margin-top: 12px;
+      margin-top: 12px;
       .apply {
-        border: 2px solid linear-gradient(89.23deg, #28ccab 39.57%, #e186b2 90.44%, #f394af 100%);;
-box-sizing: border-box;
-border-radius: 8px;
-cursor: pointer;
-@include join-button;
-position: absolute;
-bottom: 2%;
-.text {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-  color: white;
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-}
-      }
-    }
-      .btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $background-main-color;
-        width: 100%;
-        cursor: default;
-        .active {
-          @include join-button;
-          border-radius: 26px;
+        border: 2px solid
+          linear-gradient(
+            89.23deg,
+            #28ccab 39.57%,
+            #e186b2 90.44%,
+            #f394af 100%
+          );
+        box-sizing: border-box;
+        border-radius: 8px;
+        cursor: pointer;
+        @include join-button;
+        position: absolute;
+        bottom: 2%;
+        .text {
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 14px;
           text-align: center;
           color: white;
-          min-width: 95px;
-          height: 30px;
-          padding: 5px;
-          margin: 5px;
-          cursor: pointer;
-          align-items: center;
-        justify-content: center;
-        }
-        .inactive {
-          background-color: $seperator-color;
-          color: gray;
-          width: 70px;
-          height: 30px;
-          padding: 5px;
-          margin: 5px;
-          cursor: pointer;
-          align-items: center;
-        justify-content: center;
+          margin-bottom: 10px;
+          padding-bottom: 20px;
         }
       }
-      .big-left {
-        display: block;
-        text-align: left;
-        color: $text-primary-color;
-        font-weight: 600;
-        white-space: nowrap;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $background-main-color;
+      width: 100%;
+      cursor: default;
+      .active {
+        @include join-button;
+        border-radius: 26px;
+        text-align: center;
+        color: white;
+        min-width: 95px;
+        height: 30px;
+        padding: 5px;
+        margin: 5px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
       }
-      .big-right {
-        display: block;
-        text-align: right;
-        color: $text-primary-color;
-        white-space: nowrap;
-        font-weight: 600;
+      .inactive {
+        background-color: $seperator-color;
+        color: gray;
+        width: 70px;
+        height: 30px;
+        padding: 5px;
+        margin: 5px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
       }
-      .small-left {
-        display: block;
-        color: $text-secondary-color;
+    }
+    .big-left {
+      display: block;
+      text-align: left;
+      color: $text-primary-color;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .big-right {
+      display: block;
+      text-align: right;
+      color: $text-primary-color;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    .small-left {
+      display: block;
+      color: $text-secondary-color;
       font-weight: 400;
       text-align: left;
       white-space: nowrap;
-      }
-      .small-right {
-        display: block;
-        color: $text-secondary-color;
-        font-weight: 400;
+    }
+    .small-right {
+      display: block;
+      color: $text-secondary-color;
+      font-weight: 400;
       text-align: right;
       white-space: nowrap;
-      }
     }
   }
+}
 
 // utility-wrapper
 .utility-wrapper {
@@ -3247,5 +3349,90 @@ bottom: 2%;
     margin: 0 auto;
     text-align: center;
   }
-  
+}
+
+.grid-live-icon {
+  background: $dark-color2;
+  border-radius: 15px;
+  display: inline-block;
+  max-width: fit-content;
+  span {
+    color: $text-light3;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 3px 25px;
+    min-height: 32px;
+    text-align: center;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @media (max-width: 1399px) {
+      font-size: 14px;
+    }
+    &.active {
+      @include box-shadow1;
+      border: none !important;
+      background: $dark-color4;
+      color: #28ccab;
+    }
+  }
+}
+.form-control {
+  display: block;
+  @include bg-color4;
+  border-radius: 15px;
+  min-height: 40px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  text-align: right;
+  &::placeholder {
+    color: $text-light2;
+  }
+}
+.tx-history {
+  color: $card-title-color;
+  cursor: pointer;
+  padding: 2px;
+  margin: 2px;
+}
+.tx-history-collapse {
+  display: block;
+  text-align: center;
+  .date {
+    color: $card-title-color;
+    font-size: 12px;
+  }
+  .box {
+    background: #151824;
+    display: flex;
+    border: 2px solid #2A3046;
+    margin: 5px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    justify-content: center;
+    text-align: center;
+    .items {
+      margin: 3px;
+      padding: 3px;
+    }
+    .left {
+      display: block;
+      width: 50%;
+    padding: 10px;
+    height: auto;
+    margin: 0 auto;
+    text-align: left;
+    }
+    .right {
+      display: block;
+      width: 50%;
+    padding: 10px;
+    height: auto;
+    margin: 0 auto;
+    text-align: right;
+    }
+  }
 }

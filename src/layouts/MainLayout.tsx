@@ -108,6 +108,11 @@ export const MainLayout = () => {
       icon: SvgHome,
     },
     {
+      label: 'Bridge',
+      route: '/bridge',
+      icon: SvgHome,
+    },
+    {
       label: 'Rewards Hub',
       route: '/hub',
       icon: SvgRewards,
