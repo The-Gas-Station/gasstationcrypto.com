@@ -3405,9 +3405,9 @@ select {
     font-size: 12px;
   }
   .box {
-    background: #151824;
+    background: $border-bg3;
     display: flex;
-    border: 2px solid #2A3046;
+    border: 2px solid $border-color-secondary;
     margin: 5px;
     border-radius: 15px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
