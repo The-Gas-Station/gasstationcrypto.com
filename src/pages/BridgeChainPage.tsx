@@ -12,6 +12,8 @@ import { TxHistory } from '../components/txHistory';
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
   const [showFinished, setShowFinished] = useState(false);
+  const [showShow, setShowShow] = useState(false);
+  const toggleShowShow = () => setShowShow(!showShow);
 
   const chainData = CHAIN_INFO[chainId];
   const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
@@ -31,7 +33,11 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
       <section className="page-background-bridge">
         <div className="page-banner-top-title">
           <h3>
-            <img src={chainData.tokenImage.replace('/public/', '/')} alt="#" />{' '}
+            <img
+              src={chainData.tokenImage.replace('/public/', '/')}
+              alt="#"
+              className="img-size"
+            />{' '}
             {CHAIN_NAMES[chainId]} Bridge
           </h3>
           <select onChange={switchNetwork}>
@@ -48,20 +54,16 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             })}
           </select>
         </div>
-        <div className="nfp-banner-center-text">
-          <h4>Bridge Assets</h4>
-          <p>Migrate Assets From One Network To Another, Simply and Securely</p>
-        </div>
       </section>
       <div className="row justify-content-center">
         <div className="col-lg-7 d-none d-md-block">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
             <div className="row justify-content-center card-list">
-              <div className="col-md-5 col-lg-5 d-none d-md-block">
+              <div className="col-lg-3 d-none d-md-block">
                 <p>Please Select Your Networks</p>
               </div>
-              <div className="col-md-6 col-lg-6 d-none d-md-block">
+              <div className="col-lg-9 d-none d-md-block">
                 <span className="top-title">Sending Network</span>
                 <div className="convert-inner">
                   <select className="select">
@@ -80,10 +82,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-md-5 col-lg-5 d-none d-md-block">
+              <div className="col-lg-3 d-none d-md-block">
                 <p>Select Your Asset</p>
               </div>
-              <div className="col-md-6 col-lg-6 d-none d-md-block">
+              <div className="col-lg-9 d-none d-md-block">
                 <span className="top-title">Assets</span>
                 <br />
                 <select className="select">
@@ -93,10 +95,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-md-5 col-lg-5 d-none d-md-block">
+              <div className="col-lg-3 d-none d-md-block">
                 <p>Recipient</p>
               </div>
-              <div className="col-md-6 col-lg-6 d-none d-md-block">
+              <div className="col-lg-9 d-none d-md-block">
                 <div className="convert-inner">
                   <span className="top-title">Destination Address</span>
                   <input
@@ -104,15 +106,19 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                     className="form-control"
                     placeholder="0x......."
                   />
+                  <label>
+                    <input type="checkbox" />
+                    Send To $CONNECTED ADDRESS$
+                  </label>
                 </div>
               </div>
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-md-5 col-lg-5 d-none d-md-block">
+              <div className="col-lg-3 d-none d-md-block">
                 <p>Amount</p>
               </div>
-              <div className="col-md-6 col-lg-6 d-none d-md-block">
+              <div className="col-lg-9 d-none d-md-block">
                 <div className="convert-inner">
                   <span className="top-title">Enter Amount To Send</span>
                   <input
@@ -146,51 +152,67 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                     <span className="subtext-right">$$$</span>
                   </div>
                 </div>
-                <div className="col bridge-amount fee-box">
-                  <div className="d-none d-md-inline-block fee-box">
-                    <span className="subtext-left">Void Fees</span>
-                    <div className="btn">
-                      <div className="row">
-                        <span
-                          className={showFinished ? '' : 'active'}
-                          onClick={() => setShowFinished(false)}
-                        >
-                          Use GAS Balance
-                        </span>
-                        <span
-                          className={showFinished ? 'active' : ''}
-                          onClick={() => setShowFinished(true)}
-                        >
-                          Use Patron
-                        </span>
-                      </div>
-                    </div>
-                    <br />
-                    <div className="row justify-content-center">
-                      <div className="col bridge-amount">
-                        <span className="small-left">Token Balance</span>
-                        <span className="big-left">Waiver</span>
-                      </div>
-                      <div className="col bridge-amount">
-                        <span className="small-right">700,000,000 bscGAS</span>
-                        <span className="big-right">$2.22</span>
-                      </div>
-                    </div>
-                    <div className="footer">
-                      <button className="apply">
-                        <span className="text">Waive Fees</span>
-                      </button>
-                    </div>
+                <div className="row">
+                  <div
+                    className={`title-box waiveFee  ${
+                      isTxHistoryOpen ? 'open' : ''
+                    }`}
+                    onClick={toggleShowShow}
+                  >
+                    <span className="d-none d-lg-block">
+                      {isTxHistoryOpen ? 'Close' : 'Waive Fee?'}
+                    </span>
                   </div>
                 </div>
+                <MDBCollapse show={showShow}>
+                  <div className="col bridge-amount">
+                    <div className="d-none d-md-inline-block fee-box">
+                      <span className="subtext-left">Void Fees</span>
+                      <div className="row justify-content-center">
+                        <div className="grid-live-icon">
+                          <span
+                            className={showFinished ? '' : 'active'}
+                            onClick={() => setShowFinished(false)}
+                          >
+                            Use GAS
+                          </span>
+                          <span
+                            className={showFinished ? 'active' : ''}
+                            onClick={() => setShowFinished(true)}
+                          >
+                            Use Patron
+                          </span>
+                        </div>
+                      </div>
+                      <br />
+                      <div className="row justify-content-center">
+                        <div className="col bridge-amount">
+                          <span className="small-left">Token Balance</span>
+                          <span className="big-left">Waiver</span>
+                        </div>
+                        <div className="col bridge-amount">
+                          <span className="small-right">
+                            700,000,000 bscGAS
+                          </span>
+                          <span className="big-right">$2.22</span>
+                        </div>
+                      </div>
+                      <div className="footer">
+                        <button className="apply">
+                          <span className="text">Waive Fees</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </MDBCollapse>
               </div>
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-md-5 col-lg-5 d-none d-md-block">
+              <div className="col-lg-3 d-none d-md-block">
                 <p>Send</p>
               </div>
-              <div className="col-md-6 col-lg-6 d-none d-md-block">
+              <div className="col-lg-9 d-none d-md-block">
                 <span className="top-title">What You Recieve</span>
                 <div className="bridge-amount">
                   <div className="fee-box">
@@ -208,14 +230,16 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
           <h4 className="title-msg">Transaction History</h4>
           <div className={`utility-collapse ${isTxHistoryOpen ? 'open' : ''}`}>
             <div className="card-list">
-              <div
-                className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                onClick={toggleShow}
-              >
-                <span className="d-none d-lg-block tx-history">
-                  {isTxHistoryOpen ? 'Hide' : 'Show TX History'}
-                </span>
-              </div>
+              <button className="join-btn">
+                <div
+                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
+                  onClick={toggleShow}
+                >
+                  <span className="d-none d-lg-block">
+                    {isTxHistoryOpen ? 'Hide History' : 'Show History'}
+                  </span>
+                </div>
+              </button>
             </div>
             <TxHistory
               isTxHistoryOpen={isTxHistoryOpen}

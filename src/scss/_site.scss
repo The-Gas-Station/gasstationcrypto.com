@@ -1783,9 +1783,14 @@ select {
     }
   }
 }
+.img-size {
+  max-width: 50px;
+  max-height: 50px;
+}
 .page-background-bridge {
   position: relative;
   padding: 10px;
+  height: 112px;
   margin: 0 -12px;
   margin-bottom: 20px;
   background: linear-gradient(
@@ -2696,6 +2701,31 @@ select {
     text-align: left;
     justify-content: center;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+    .grid-live-icon {
+      background: $dark-color2;
+      border-radius: 15px;
+      display: flex;
+      vertical-align: middle;
+      justify-content: center;
+      span {
+        color: $text-light3;
+        font-weight: normal;
+        font-size: 16px;
+        min-height: 32px;
+        text-align: center;
+        border-radius: 15px;
+        cursor: pointer;
+        @media (max-width: 1399px) {
+          font-size: 14px;
+        }
+        &.active {
+          @include box-shadow1;
+          border: none !important;
+          background: $dark-color4;
+          color: #28ccab;
+        }
+      }
+    }
     .footer {
       display: flex;
       vertical-align: bottom;
@@ -3435,4 +3465,15 @@ select {
     text-align: right;
     }
   }
+}
+.waiveFee {
+  font-weight: 600;
+font-size: 16px;
+line-height: 14px;
+text-transform: uppercase;
+width: auto;
+color: #28CCAB;
+cursor: pointer;
+margin-top: 15px;
+display: flex;
 }
