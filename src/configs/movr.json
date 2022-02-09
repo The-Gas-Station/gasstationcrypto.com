@@ -1,5 +1,6 @@
 {
   "launchDate": "",
+  "lookupLiquidityPairs": [],
   "display": "Moonriver",
   "tokenImage": "/public/images/tokens/movr.png",
   "etherLiquidityPair": "evm:0xe537f70a8b62204832B8Ba91940B77d3f79AEb81",
@@ -50,6 +51,17 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "Stable Up",
+      "address": "evm:0xf6c2Aa24a31F097E89Fe887a2572b227C03e2764",
+      "type": "SingleV3",
+      "stakeSymbol": "movrGAS",
+      "stakeIcon": "/public/images/tokens/gas.png",
+      "rewardSymbols": [
+        "USDC"
+      ],
+      "reward0Icon": "/public/images/tokens/usdc.png"
     }
   ],
   "chainId": 1285
