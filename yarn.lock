@@ -2484,7 +2484,7 @@
     "@walletconnect/window-metadata" "1.0.0"
     detect-browser "5.2.0"
 
-"@deficonnect/client@^1.6.13", "@deficonnect/client@^1.6.7-alpha.25":
+"@deficonnect/client@^1.6.13", "@deficonnect/client@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/client/-/client-1.6.13.tgz#f70666eb4b7b544ef8b42c079e9b9907d914417c"
   integrity sha512-8MUEPzx/elQ5YAl9iKE1Cx/RvH89VAaawuN0k9Ashehe9ejzWqLHIF/HpQZ1c1o/iWkj0lrywHRBYwySQQyQxA==
@@ -2494,7 +2494,7 @@
     "@deficonnect/types" "^1.6.13"
     "@deficonnect/utils" "^1.6.13"
 
-"@deficonnect/core@^1.6.13", "@deficonnect/core@^1.6.7-alpha.25":
+"@deficonnect/core@^1.6.13", "@deficonnect/core@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/core/-/core-1.6.13.tgz#b1eb70ec485945bb785f3d522ef01b6ad85aefca"
   integrity sha512-qP/T/bt2LzHnmQs+UA7Gmsb38XhvDMjDu047fpkGSzQCJDxPSiB3mXHdgx2SbiY+nLdiAJPM/sjNJ7akTCWDWw==
@@ -2513,7 +2513,7 @@
     eventemitter3 "4.0.7"
     xhr2-cookies "1.1.0"
 
-"@deficonnect/iso-crypto@^1.6.13", "@deficonnect/iso-crypto@^1.6.7-alpha.25":
+"@deficonnect/iso-crypto@^1.6.13", "@deficonnect/iso-crypto@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/iso-crypto/-/iso-crypto-1.6.13.tgz#fa8fe9fad9880fc6474debbacf470953c41b501a"
   integrity sha512-1MT5E+yKABLtSp4w65OiJ/0U5OmbdBL3LqxVOE74lTOH6cdf1AZatZmCy4UUdVaciWlqEX6P/4s4wcsXXp521g==
@@ -2543,12 +2543,12 @@
     "@deficonnect/utils" "^1.6.13"
     ws "7.5.3"
 
-"@deficonnect/types@^1.6.13", "@deficonnect/types@^1.6.7-alpha.25":
+"@deficonnect/types@^1.6.13", "@deficonnect/types@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/types/-/types-1.6.13.tgz#106c1cad675d9db1a2dbc1c5245ff42c179d57ea"
   integrity sha512-5ls9LHgQpgaVSsppd/DzlNDO7ZmP9PH8SsbW0TZ1Rw8MG6T66ev7PxxxbkkyKdHqHeQoR7U9SjOtWRRUMVceDQ==
 
-"@deficonnect/utils@^1.6.13", "@deficonnect/utils@^1.6.7-alpha.25":
+"@deficonnect/utils@^1.6.13", "@deficonnect/utils@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/utils/-/utils-1.6.13.tgz#f927062f3930ace33166eeab8a4f3346cda96dd6"
   integrity sha512-tvnbP91IyHH6ALkNsshn39JWwNZE6xR9qGbOgGqM0X+q6l/B9d8tzUogcmIKY5Wi+gxxW6OAEXhPC4lAdeIwpg==
@@ -2561,7 +2561,7 @@
     js-sha3 "0.8.0"
     query-string "6.13.5"
 
-"@deficonnect/web3-provider@^1.6.7-alpha.25":
+"@deficonnect/web3-provider@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/web3-provider/-/web3-provider-1.6.13.tgz#f0d89fe519814fb2b078d83c75b5af73f5a0394b"
   integrity sha512-1hPAvruGGMERFwPsA2Ot28GIGRfPWjtndw9FNfCIcjC4BAX5k/Sl1Hf0Spjt24Ub1MZjXE9He70jwT6zhiKqoA==
@@ -6519,23 +6519,24 @@ deferred-leveldown@~1.2.1:
   dependencies:
     abstract-leveldown "~2.6.0"
 
-deficonnect@1.1.0-alpha.37:
-  version "1.1.0-alpha.37"
-  resolved "https://registry.yarnpkg.com/deficonnect/-/deficonnect-1.1.0-alpha.37.tgz#9eabe478323abced04f7f5ff726f104ad1c793a1"
-  integrity sha512-+SPS8K99GwRogEdpr/mT6Jnow8GiHRN4lJnXTsboHs4cH/TSvHlmjTMhHaBtK7l8/va9aOab27HOuwFPTyW8bg==
+deficonnect@1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/deficonnect/-/deficonnect-1.1.7.tgz#e40fcaacff644fda28179e2dbba80c088ee96aaa"
+  integrity sha512-2fJmzPNyXetOWla5x1pP95yhVb0JdsN9GcdgVOleWTGFWlC6ZUOmNZ+g19yfUd/kYjWREaI8661mAYxmZRSLIw==
   dependencies:
     "@cosmjs/amino" "^0.26.0"
     "@cosmjs/encoding" "^0.26.0"
     "@cosmjs/proto-signing" "^0.26.0"
     "@cosmjs/stargate" "^0.26.1"
-    "@deficonnect/client" "^1.6.7-alpha.25"
-    "@deficonnect/core" "^1.6.7-alpha.25"
-    "@deficonnect/iso-crypto" "^1.6.7-alpha.25"
-    "@deficonnect/types" "^1.6.7-alpha.25"
-    "@deficonnect/utils" "^1.6.7-alpha.25"
-    "@deficonnect/web3-provider" "^1.6.7-alpha.25"
+    "@deficonnect/client" "^1.6.8"
+    "@deficonnect/core" "^1.6.8"
+    "@deficonnect/iso-crypto" "^1.6.8"
+    "@deficonnect/types" "^1.6.8"
+    "@deficonnect/utils" "^1.6.8"
+    "@deficonnect/web3-provider" "^1.6.8"
     "@types/qrcode" "^1.4.1"
     "@types/react-modal" "^3.12.0"
+    "@web3-react/injected-connector" "^6.0.7"
     cosmjs-types "^0.2.0"
     qrcode "^1.4.4"
     react "^16.13.1"
@@ -12138,12 +12139,7 @@ regenerate@^1.4.0:
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.2.tgz#b9346d8827e8f5a32f7ba29637d398b69014848a"
   integrity sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
 
-regenerator-runtime@^0.13.4:
-  version "0.13.7"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
-  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
-
-regenerator-runtime@^0.13.9:
+regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.9:
   version "0.13.9"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
   integrity sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==
@@ -14322,15 +14318,10 @@ ws@^5.1.1:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7, ws@^7.4.6:
+ws@^7, ws@^7.4.0, ws@^7.4.6:
   version "7.5.6"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.6.tgz#e59fc509fb15ddfb65487ee9765c5a51dec5fe7b"
   integrity sha512-6GLgCqo2cy2A2rjCNFlxQS6ZljG/coZfZXclldI8FB/1G3CCI36Zd8xy2HrFVACi8tfk5XrgLQEk+P0Tnz9UcA==
-
-ws@^7.4.0:
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.5.tgz#8b4bc4af518cfabd0473ae4f99144287b33eb881"
-  integrity sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w==
 
 ws@^8.4.2:
   version "8.4.2"
