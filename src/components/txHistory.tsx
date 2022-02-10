@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MDBCollapse } from 'mdb-react-ui-kit';
-import { useNavigate } from 'react-router-dom';
 
 type collapseOpen = {
   isTxHistoryOpen: boolean;
