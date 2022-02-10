@@ -203,6 +203,102 @@ a.mode-switcher {
     margin-top: -5px;
   }
 }
+.row-flex {
+  display: flex;
+  .container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    gap: 10px;
+  }
+}
+.card-list-row-inner {
+  background: linear-gradient(
+    83.48deg,
+    #00b098 4.46%,
+    #521a4c 78.43%,
+    #521a4c 100%
+  );
+  @include box-shadow;
+  border: 0.5px solid $dark-color;
+  box-sizing: border-box;
+  font-family: $font-family-default;
+  font-size: 1.125rem;
+  height: auto;
+  display: flex;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  @media (max-width: 767px) {
+    background-color: $background-main-color;
+    @include box-shadow;
+    color: $text-secondary-color;
+    border: 0.5px solid $dark-color;
+    box-sizing: border-box;
+    font-family: $font-family-default;
+    font-size: 1.125rem;
+    line-height: 200%;
+    letter-spacing: 0.01em;
+    border-radius: 15px;
+    height: 100%;
+  }
+}
+.card-list-row {
+  background-color: $background-main-color;
+  @include box-shadow;
+  color: $text-secondary-color;
+  border: 0.5px solid $dark-color;
+  box-sizing: border-box;
+  font-family: $font-family-default;
+  font-size: 1.125rem;
+  line-height: 75%;
+  letter-spacing: 0.01em;
+  border-radius: 15px;
+  height: auto;
+  display: flex;
+  @media (max-width: 767px) {
+    background-color: $background-main-color;
+    @include box-shadow;
+    color: $text-secondary-color;
+    border: 0.5px solid $dark-color;
+    box-sizing: border-box;
+    font-family: $font-family-default;
+    font-size: 1.125rem;
+    line-height: 200%;
+    letter-spacing: 0.01em;
+    border-radius: 15px;
+    height: 100%;
+  }
+  .circle-img {
+    text-align: center;
+    width: 84px;
+    height: 84px;
+    background: $background-main-color;
+    @include box-shadow;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 7px;
+  }
+  .text {
+    color: $text-primary-color3;
+    letter-spacing: 0.01em;
+    margin-top: 25px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 140%;
+    text-align: center;
+    .green {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 140%;
+      color: #28ccab;
+    }
+  }
+}
 .card-list {
   background-color: $background-main-color;
   @include box-shadow;
