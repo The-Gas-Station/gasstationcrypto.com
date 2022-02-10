@@ -8,6 +8,7 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 import { TxHistory } from '../components/txHistory';
+import { BridgeTxModal } from '../components/bridgeTx';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const chainData = CHAIN_INFO[chainId];
   const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
   const toggleShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
+  const [isBridgeTxOpen, setIsBridgeTxOpen] = useState(false);
+  const toggleShowBridge = () => setIsBridgeTxOpen(!isTxHistoryOpen);
 
   const { readOnlyChainIds } = useConfig();
   const { setCurrentChainId } = useWeb3ConnectionsContext();
@@ -219,9 +222,21 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                     <h5>Output</h5>
                   </div>
                   <button className="join-btn">
-                    <span className="text">SEND</span>
+                    <div
+                      className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
+                      onClick={toggleShowBridge}
+                    >
+                      <span className=" d-lg-block">
+                        {isTxHistoryOpen ? 'Sending...' : 'Send'}
+                      </span>
+                    </div>
                   </button>
                 </div>
+                <BridgeTxModal
+                  isBridgeTxOpen={isBridgeTxOpen}
+                  setIsOpen={setIsBridgeTxOpen}
+                  closeBridgeTx={() => setIsBridgeTxOpen(false)}
+                />
               </div>
             </div>
           </div>
