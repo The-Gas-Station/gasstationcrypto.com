@@ -56,14 +56,14 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
         </div>
       </section>
       <div className="row justify-content-center">
-        <div className="col-lg-7 d-none d-md-block">
+        <div className="col col-md-7 col-lg-7  d-md-block">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
             <div className="row justify-content-center card-list">
-              <div className="col-lg-3 d-none d-md-block">
+              <div className="col-lg-3 d-md-block">
                 <p>Please Select Your Networks</p>
               </div>
-              <div className="col-lg-9 d-none d-md-block">
+              <div className="col-lg-9 d-md-block">
                 <span className="top-title">Sending Network</span>
                 <div className="convert-inner">
                   <select className="select">
@@ -82,10 +82,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-lg-3 d-none d-md-block">
+              <div className="col-lg-3  d-md-block">
                 <p>Select Your Asset</p>
               </div>
-              <div className="col-lg-9 d-none d-md-block">
+              <div className="col-lg-9  d-md-block">
                 <span className="top-title">Assets</span>
                 <br />
                 <select className="select">
@@ -95,10 +95,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-lg-3 d-none d-md-block">
+              <div className="col-lg-3  d-md-block">
                 <p>Recipient</p>
               </div>
-              <div className="col-lg-9 d-none d-md-block">
+              <div className="col-lg-9  d-md-block">
                 <div className="convert-inner">
                   <span className="top-title">Destination Address</span>
                   <input
@@ -115,10 +115,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-lg-3 d-none d-md-block">
+              <div className="col-lg-3  d-md-block">
                 <p>Amount</p>
               </div>
-              <div className="col-lg-9 d-none d-md-block">
+              <div className="col-lg-9  d-md-block">
                 <div className="convert-inner">
                   <span className="top-title">Enter Amount To Send</span>
                   <input
@@ -159,14 +159,14 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                     }`}
                     onClick={toggleShowShow}
                   >
-                    <span className="d-none d-lg-block">
+                    <span className=" d-lg-block">
                       {isTxHistoryOpen ? 'Close' : 'Waive Fee?'}
                     </span>
                   </div>
                 </div>
                 <MDBCollapse show={showShow}>
                   <div className="col bridge-amount">
-                    <div className="d-none d-md-inline-block fee-box">
+                    <div className=" d-md-inline-block fee-box">
                       <span className="subtext-left">Void Fees</span>
                       <div className="row justify-content-center">
                         <div className="grid-live-icon">
@@ -209,10 +209,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <br />
             <div className="row justify-content-center card-list">
-              <div className="col-lg-3 d-none d-md-block">
+              <div className="col-lg-3  d-md-block">
                 <p>Send</p>
               </div>
-              <div className="col-lg-9 d-none d-md-block">
+              <div className="col-lg-9  d-md-block">
                 <span className="top-title">What You Recieve</span>
                 <div className="bridge-amount">
                   <div className="fee-box">
@@ -226,7 +226,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
           </div>
         </div>
-        <div className="col-md-3 col-lg-3 d-none d-md-block">
+        <div className="col-md-3 col-lg-3  d-md-block">
           <h4 className="title-msg">Transaction History</h4>
           <div className={`utility-collapse ${isTxHistoryOpen ? 'open' : ''}`}>
             <div className="card-list">
@@ -235,7 +235,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                   className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
                   onClick={toggleShow}
                 >
-                  <span className="d-none d-lg-block">
+                  <span className=" d-lg-block">
                     {isTxHistoryOpen ? 'Hide History' : 'Show History'}
                   </span>
                 </div>

@@ -25,6 +25,7 @@ import AngleDown from '../assets/angle-down.svg';
 import { Range, getTrackBackground } from 'react-range';
 import { useDarkMode } from '../library/hooks/useDarkMode';
 import { FileUploader } from 'react-drag-drop-files';
+import { TxHistory } from '../components/txHistory';
 
 const fileTypes = ['xlsx', 'xls', 'csv', 'txt'];
 export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
@@ -40,7 +41,9 @@ export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
     setCurrentChainId(newChainId);
     navigate(`/${CHAIN_NAMES[newChainId]}/utilities`);
   };
-
+  const [showFinished, setShowFinished] = useState(false);
+  const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
+  const toggleShowShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
   const [showShow, setShowShow] = useState(false);
   const toggleShow = () => setShowShow(!showShow);
   const [isMiningShow, setIsMiningShow] = useState(false);
@@ -110,127 +113,207 @@ export const UtilitiesChainPage = ({ chainId }: { chainId: ChainId }) => {
           </div>
           <MDBCollapse show={showShow}>
             <div className="inner-content">
-              <div className="row g-lg-5">
-                <div className="col-lg-4 position-relative">
-                  <div className="dec-text">
-                    Convert Single Assets to Share Tokens! Share Tokens are
-                    identical to how DEX LP Tokens Work, Assets in and LP Tokens
-                    out. The LP Token represents the assets that are used for
-                    trading liquidity. Here the asset is used as bridge transfer
-                    liquidity! Share Tokens are the LP Tokens for our Network
-                    Bridges, so anyone can support the ecosystem by supplying
-                    their own liquidity!
-                  </div>
-                  <div className="read-more d-block d-lg-none">
-                    READ MORE
-                    <img src={AngleDown} alt="" />
-                  </div>
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <div className="convert-block">
-                    <div className="d-none d-md-block">
-                      <span className="top-title">
-                        <img src={ForwardIcon} alt="" className="me-2" />
-                        Convert To
-                      </span>
-                      <div className="convert-inner">
-                        <select className="custom-select">
-                          <option value="">Select or add token address</option>
-                        </select>
-                        <div className="or-btn">OR</div>
+              <div className="row justify-content-center">
+                <div className="col-md-7 col-lg-7 d-none d-md-block">
+                  <h4 className="title-msg">Bridge Tokens</h4>
+                  <div className="convert-grid-block">
+                    <div className="row justify-content-center card-list">
+                      <div className="col-lg-3 d-none d-md-block">
+                        <p>Please Select Your Networks</p>
                       </div>
-                      <button className="join-btn">Convert to Shares</button>
-                    </div>
-                    <div className="tab-list d-block d-md-none">
-                      <div className="grid-list-icon">
-                        <span
-                          className={isCardGride ? '' : 'active'}
-                          onClick={() => setIsCardGride(false)}
-                        >
-                          <svg
-                            className="me-2 me-sm-3"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M10 0.666992V4.66699C2 4.66699 0 8.76699 0 14.667C1.04 10.707 4 8.66699 8 8.66699H10V12.667L16 6.34699L10 0.666992Z"
-                              fill="#A0AEC0"
-                            />
-                          </svg>
-                          Convert to
-                        </span>
-                        <span
-                          className={isCardGride ? 'active' : ''}
-                          onClick={() => setIsCardGride(true)}
-                        >
-                          Convert From
-                          <svg
-                            className="ms-2 ms-sm-3"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M6 15.333V11.333C14 11.333 16 7.23301 16 1.33301C14.96 5.29301 12 7.33301 8 7.33301H6V3.33301L0 9.65301L6 15.333Z"
-                              fill="#A0AEC0"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                      {isCardGride ? (
-                        <div className="convert-grid-block">
-                          <span className="top-title">
-                            ConvertING tokens to shares
-                          </span>
-                          <div className="convert-inner">
-                            <select className="custom-select">
-                              <option value="">
-                                Select or add token address
-                              </option>
-                            </select>
-                            <div className="or-btn d-none d-lg-none">OR</div>
-                          </div>
-                          <button className="join-btn">
-                            Convert Tokens to Shares
-                          </button>
+                      <div className="col-lg-9 d-none d-md-block">
+                        <span className="top-title">Sending Network</span>
+                        <div className="convert-inner">
+                          <select className="select">
+                            <option value="">Select A Network</option>
+                          </select>
                         </div>
-                      ) : (
                         <div className="convert-list-block">
-                          <span className="top-title">
-                            ConvertING TOKENS FROM SHARES
-                          </span>
+                          <span className="top-title">Receiving Network</span>
                           <div className="convert-inner">
-                            <select className="custom-select">
-                              <option value="">
-                                Select or add token address
-                              </option>
+                            <select className="select">
+                              <option value="">Select A Network</option>
                             </select>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div className="row justify-content-center card-list">
+                      <div className="col-lg-3 d-none d-md-block">
+                        <p>Select Your Asset</p>
+                      </div>
+                      <div className="col-lg-9 d-none d-md-block">
+                        <span className="top-title">Assets</span>
+                        <br />
+                        <select className="select">
+                          <option value="">Select Asset</option>
+                        </select>
+                      </div>
+                    </div>
+                    <br />
+                    <div className="row justify-content-center card-list">
+                      <div className="col-lg-3 d-none d-md-block">
+                        <p>Recipient</p>
+                      </div>
+                      <div className="col-lg-9 d-none d-md-block">
+                        <div className="convert-inner">
+                          <span className="top-title">Destination Address</span>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="0x......."
+                          />
+                          <label>
+                            <input type="checkbox" />
+                            Send To $CONNECTED ADDRESS$
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div className="row justify-content-center card-list">
+                      <div className="col-lg-3 d-none d-md-block">
+                        <p>Amount</p>
+                      </div>
+                      <div className="col-lg-9 d-none d-md-block">
+                        <div className="convert-inner">
+                          <span className="top-title">
+                            Enter Amount To Send
+                          </span>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter An Amount"
+                          />
+                          <div className="row justify-content-center">
+                            <button className="bridge-btn">
+                              <span className="text">25%</span>
+                            </button>
+                            <button className="bridge-btn">
+                              <span className="text">50%</span>
+                            </button>
+                            <button className="bridge-btn">
+                              <span className="text">75%</span>
+                            </button>
+                            <button className="bridge-btn">
+                              <span className="text">MAX</span>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="line-break" />
+                        <div className="row justify-content-center">
+                          <div className="col bridge-amount">
+                            <span className="text-left">SERVICE FEE</span>
+                            <span className="subtext-left">Estimated Fee</span>
+                          </div>
+                          <div className="col bridge-amount">
+                            <span className="subtext-right">0.05%</span>
+                            <span className="subtext-right">$$$</span>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div
+                            className={`title-box waiveFee  ${
+                              isTxHistoryOpen ? 'open' : ''
+                            }`}
+                            onClick={toggleShowShow}
+                          >
+                            <span className="d-none d-lg-block">
+                              {isTxHistoryOpen ? 'Close' : 'Waive Fee?'}
+                            </span>
+                          </div>
+                        </div>
+                        <MDBCollapse show={showShow}>
+                          <div className="col bridge-amount">
+                            <div className="d-none d-md-inline-block fee-box">
+                              <span className="subtext-left">Void Fees</span>
+                              <div className="row justify-content-center">
+                                <div className="grid-live-icon">
+                                  <span
+                                    className={showFinished ? '' : 'active'}
+                                    onClick={() => setShowFinished(false)}
+                                  >
+                                    Use GAS
+                                  </span>
+                                  <span
+                                    className={showFinished ? 'active' : ''}
+                                    onClick={() => setShowFinished(true)}
+                                  >
+                                    Use Patron
+                                  </span>
+                                </div>
+                              </div>
+                              <br />
+                              <div className="row justify-content-center">
+                                <div className="col bridge-amount">
+                                  <span className="small-left">
+                                    Token Balance
+                                  </span>
+                                  <span className="big-left">Waiver</span>
+                                </div>
+                                <div className="col bridge-amount">
+                                  <span className="small-right">
+                                    700,000,000 bscGAS
+                                  </span>
+                                  <span className="big-right">$2.22</span>
+                                </div>
+                              </div>
+                              <div className="footer">
+                                <button className="apply">
+                                  <span className="text">Waive Fees</span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </MDBCollapse>
+                      </div>
+                    </div>
+                    <br />
+                    <div className="row justify-content-center card-list">
+                      <div className="col-lg-3 d-none d-md-block">
+                        <p>Send</p>
+                      </div>
+                      <div className="col-lg-9 d-none d-md-block">
+                        <span className="top-title">What You Recieve</span>
+                        <div className="bridge-amount">
+                          <div className="fee-box">
+                            <h5>Output</h5>
+                          </div>
                           <button className="join-btn">
-                            Convert Tokens from Shares
+                            <span className="text">SEND</span>
                           </button>
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6 col-lg-4 d-none d-md-block">
-                  <div className="convert-block">
-                    <span className="top-title">
-                      <img src={ConvertIcon} alt="" className="me-2" />
-                      Convert Back
-                    </span>
-                    <select className="custom-select">
-                      <option value="">Select or add token address</option>
-                    </select>
-                    <button className="join-btn back-btn">
-                      Convert Back to Assets
-                    </button>
+                <div className="col-md-3 col-lg-3 d-none d-md-block">
+                  <h4 className="title-msg">Transaction History</h4>
+                  <div
+                    className={`utility-collapse ${
+                      isTxHistoryOpen ? 'open' : ''
+                    }`}
+                  >
+                    <div className="card-list">
+                      <button className="join-btn">
+                        <div
+                          className={`title-box ${
+                            isTxHistoryOpen ? 'open' : ''
+                          }`}
+                          onClick={toggleShow}
+                        >
+                          <span className="d-none d-lg-block">
+                            {isTxHistoryOpen ? 'Hide History' : 'Show History'}
+                          </span>
+                        </div>
+                      </button>
+                    </div>
+                    <TxHistory
+                      isTxHistoryOpen={isTxHistoryOpen}
+                      setIsOpen={setIsTxHistoryOpen}
+                      closeTxHistory={() => setIsTxHistoryOpen(false)}
+                    />
                   </div>
                 </div>
               </div>

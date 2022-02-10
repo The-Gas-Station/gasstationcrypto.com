@@ -193,6 +193,19 @@ a.mode-switcher {
   letter-spacing: 0.01em;
   border-radius: 15px;
   height: 100%;
+  @media (max-width: 767px) {
+    background-color: $background-main-color;
+    @include box-shadow;
+    color: $text-secondary-color;
+    border: 0.5px solid $dark-color;
+    box-sizing: border-box;
+    font-family: $font-family-default;
+    font-size: 1.125rem;
+    line-height: 200%;
+    letter-spacing: 0.01em;
+    border-radius: 15px;
+    height: 100%;
+  }
   .circle-img {
     text-align: center;
     width: 84px;
