@@ -64,15 +64,15 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
           <div className="convert-grid-block">
             <div className="row justify-content-center card-list">
               <div className="col-lg-3 d-md-block">
-                <p>Please Select Your Networks</p>
+                <p>Select A Network</p>
               </div>
               <div className="col-lg-9 d-md-block">
-                <span className="top-title">Sending Network</span>
+                {/*<span className="top-title">Sending Network</span>
                 <div className="convert-inner">
                   <select className="select">
                     <option value="">Select A Network</option>
                   </select>
-                </div>
+          </div>*/}
                 <div className="convert-list-block">
                   <span className="top-title">Receiving Network</span>
                   <div className="convert-inner">
@@ -97,7 +97,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
             </div>
             <br />
-            <div className="row justify-content-center card-list">
+            {/*<div className="row justify-content-center card-list">
               <div className="col-lg-3  d-md-block">
                 <p>Recipient</p>
               </div>
@@ -115,8 +115,8 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                   </label>
                 </div>
               </div>
-            </div>
-            <br />
+          </div>
+          <br />*/}
             <div className="row justify-content-center card-list">
               <div className="col-lg-3  d-md-block">
                 <p>Amount</p>
