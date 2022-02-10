@@ -58,8 +58,8 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
           </select>
         </div>
       </section>
-      <div className="row justify-content-center">
-        <div className="col col-md-7 col-lg-7  d-md-block">
+      <div className="row justify-content-center row-flex">
+        <div className="col col-md-7 col-lg-7  d-md-block container">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
             <div className="row justify-content-center card-list">
@@ -83,7 +83,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </div>
             </div>
-            <br />
+            <div className="white-space" />
             <div className="row justify-content-center card-list">
               <div className="col-lg-3  d-md-block">
                 <p>Select Your Asset</p>
@@ -96,7 +96,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </select>
               </div>
             </div>
-            <br />
+            <div className="white-space" />
             {/*<div className="row justify-content-center card-list">
               <div className="col-lg-3  d-md-block">
                 <p>Recipient</p>
@@ -210,7 +210,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </MDBCollapse>
               </div>
             </div>
-            <br />
+            <div className="white-space" />
             <div className="row justify-content-center card-list">
               <div className="col-lg-3  d-md-block">
                 <p>Send</p>
@@ -241,7 +241,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
           </div>
         </div>
-        <div className="col-md-3 col-lg-3  d-md-block">
+        <div className="col-md-3 col-lg-3  d-md-block container">
           <h4 className="title-msg">Transaction History</h4>
           <div className={`utility-collapse ${isTxHistoryOpen ? 'open' : ''}`}>
             <div className="card-list">
