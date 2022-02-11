@@ -13,18 +13,15 @@ import { TxHistorySm } from '../components/txHistorysm';
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
   const [showFinished, setShowFinished] = useState(false);
-  const [showShow, setShowShow] = useState(false);
-  const toggleShowShow = () => setShowShow(!showShow);
+  const [WaiveFee, setWaiveFee] = useState(false);
+  const toggleWaiveFee = () => setWaiveFee(!WaiveFee);
   const [UseGAS, setUseGAS] = useState(true);
-  const toggleUseGAS = () => setUseGAS(!UseGAS);
   const [UsePatron, setUsePatron] = useState(false);
-  const toggleUsePatron = () => setUsePatron(!UsePatron);
 
   const chainData = CHAIN_INFO[chainId];
   const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
   const toggleShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
   const [isBridgeTxOpen, setIsBridgeTxOpen] = useState(false);
-  const toggleShowBridge = () => setIsBridgeTxOpen(!isTxHistoryOpen);
 
   const { readOnlyChainIds } = useConfig();
   const { setCurrentChainId } = useWeb3ConnectionsContext();
@@ -161,27 +158,26 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
                 <div className="row">
                   <div
-                    className={`title-box waiveFee  ${
-                      isTxHistoryOpen ? 'open' : ''
-                    }`}
-                    onClick={toggleShowShow}
+                    className={`title-box waiveFee  ${WaiveFee ? 'open' : ''}`}
+                    onClick={toggleWaiveFee}
                   >
                     <span className=" d-lg-block">
-                      {isTxHistoryOpen ? 'Close' : 'Waive Fee?'}
+                      {WaiveFee ? 'Close' : 'Waive Fee?'}
                     </span>
                   </div>
                 </div>
-                <MDBCollapse show={showShow}>
+                <MDBCollapse show={WaiveFee}>
                   <div className="col bridge-amount">
                     <div className=" d-md-inline-block fee-box">
                       <span className="subtext-left">Void Fees</span>
-                      <div className="row justify-content-center">
+                      <div className="d-flex flex-row justify-content-center">
                         <div className="grid-live-icon">
                           <span
                             className={showFinished ? '' : 'active'}
                             onClick={() => {
                               setShowFinished(false);
-                              toggleUseGAS();
+                              setUseGAS(true);
+                              setUsePatron(false);
                             }}
                           >
                             Use GAS
@@ -190,7 +186,8 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                             className={showFinished ? 'active' : ''}
                             onClick={() => {
                               setShowFinished(true);
-                              toggleUsePatron();
+                              setUsePatron(true);
+                              setUseGAS(false);
                             }}
                           >
                             Use Patron
@@ -199,41 +196,48 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                       </div>
                       <br />
                       <MDBCollapse show={UseGAS}>
-                        <div className="row justify-content-center">
+                        <div className="d-flex flex-row justify-content-center">
                           <div className="col bridge-amount">
                             <span className="small-left">Token Balance</span>
-                            <span className="big-left">Waiver</span>
+                            <span className="big-left">Fees</span>
                           </div>
                           <div className="col bridge-amount">
                             <span className="small-right">
                               700,000,000 bscGAS
                             </span>
-                            <span className="big-right">$2.22</span>
+                            <span className="big-right">
+                              <span className="text-green">$0.00 </span>
+                              <span className="strike">$2.22</span>
+                            </span>
+                            <span className="big-right text-green">
+                              You Saved $2.22
+                            </span>
                           </div>
-                        </div>
-                        <div className="footer">
-                          <button className="apply">
-                            <span className="text">Waive Fees</span>
-                          </button>
                         </div>
                       </MDBCollapse>
                       <MDBCollapse show={UsePatron}>
-                        <div className="row justify-content-center">
+                        <div className="d-flex flex-row justify-content-center">
                           <div className="col bridge-amount">
                             <span className="small-left">Patron Balance</span>
-                            <span className="big-left">Waiver</span>
+                            <span className="big-left">Fees</span>
                           </div>
                           <div className="col bridge-amount">
                             <span className="small-right">1 Patron</span>
-                            <span className="big-right">$2.22</span>
+                            <span className="big-right">
+                              <span className="text-green">$0.00 </span>
+                              <span className="strike">$2.22</span>
+                            </span>
+                            <span className="big-right text-green">
+                              You Saved $2.22
+                            </span>
                           </div>
                         </div>
-                        <div className="footer">
-                          <button className="apply">
-                            <span className="text">Waive Fees</span>
-                          </button>
-                        </div>
                       </MDBCollapse>
+                      <div className="footer">
+                        <button className="apply">
+                          <span className="text">Waive Fees</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </MDBCollapse>
@@ -247,17 +251,16 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               <div className="col-lg-9  d-md-block">
                 <span className="top-title">What You Recieve</span>
                 <div className="bridge-amount">
-                  <div className="fee-box">
+                  <div className="output-box">
                     <h5>Output</h5>
                   </div>
                   <button className="join-btn">
                     <div
-                      className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                      onClick={toggleShowBridge}
+                      onClick={() => {
+                        setIsBridgeTxOpen(true);
+                      }}
                     >
-                      <span className=" d-lg-block">
-                        {isTxHistoryOpen ? 'Sending...' : 'Send'}
-                      </span>
+                      <span className=" d-lg-block">Send</span>
                     </div>
                   </button>
                 </div>

@@ -13,7 +13,7 @@ export const TxHistorySm = ({ isTxHistorySmOpen }: collapseOpen) => {
   const toggleShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
   return (
     <MDBCollapse show={isTxHistorySmOpen}>
-      <div className="inner-content">
+      <div className="utility-block">
         <div className="d-flex flex-column card-list">
           <div className="clean-collapse d-flex flex-row">
             <div className="container-sm">
