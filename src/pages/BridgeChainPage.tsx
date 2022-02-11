@@ -7,9 +7,8 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
-import { TxHistory } from '../components/txHistory';
 import { BridgeTxModal } from '../components/bridgeTx';
-import txHistorysm, { TxHistorySm } from '../components/txHistorysm';
+import { TxHistorySm } from '../components/txHistorysm';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
