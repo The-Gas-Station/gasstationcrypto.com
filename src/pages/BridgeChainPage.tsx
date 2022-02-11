@@ -16,6 +16,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const [showFinished, setShowFinished] = useState(false);
   const [showShow, setShowShow] = useState(false);
   const toggleShowShow = () => setShowShow(!showShow);
+  const [UseGAS, setUseGAS] = useState(true);
+  const toggleUseGAS = () => setUseGAS(!UseGAS);
+  const [UsePatron, setUsePatron] = useState(false);
+  const toggleUsePatron = () => setUsePatron(!UsePatron);
 
   const chainData = CHAIN_INFO[chainId];
   const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
@@ -176,36 +180,61 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                         <div className="grid-live-icon">
                           <span
                             className={showFinished ? '' : 'active'}
-                            onClick={() => setShowFinished(false)}
+                            onClick={() => {
+                              setShowFinished(false);
+                              toggleUseGAS();
+                            }}
                           >
                             Use GAS
                           </span>
                           <span
                             className={showFinished ? 'active' : ''}
-                            onClick={() => setShowFinished(true)}
+                            onClick={() => {
+                              setShowFinished(true);
+                              toggleUsePatron();
+                            }}
                           >
                             Use Patron
                           </span>
                         </div>
                       </div>
                       <br />
-                      <div className="row justify-content-center">
-                        <div className="col bridge-amount">
-                          <span className="small-left">Token Balance</span>
-                          <span className="big-left">Waiver</span>
+                      <MDBCollapse show={UseGAS}>
+                        <div className="row justify-content-center">
+                          <div className="col bridge-amount">
+                            <span className="small-left">Token Balance</span>
+                            <span className="big-left">Waiver</span>
+                          </div>
+                          <div className="col bridge-amount">
+                            <span className="small-right">
+                              700,000,000 bscGAS
+                            </span>
+                            <span className="big-right">$2.22</span>
+                          </div>
                         </div>
-                        <div className="col bridge-amount">
-                          <span className="small-right">
-                            700,000,000 bscGAS
-                          </span>
-                          <span className="big-right">$2.22</span>
+                        <div className="footer">
+                          <button className="apply">
+                            <span className="text">Waive Fees</span>
+                          </button>
                         </div>
-                      </div>
-                      <div className="footer">
-                        <button className="apply">
-                          <span className="text">Waive Fees</span>
-                        </button>
-                      </div>
+                      </MDBCollapse>
+                      <MDBCollapse show={UsePatron}>
+                        <div className="row justify-content-center">
+                          <div className="col bridge-amount">
+                            <span className="small-left">Patron Balance</span>
+                            <span className="big-left">Waiver</span>
+                          </div>
+                          <div className="col bridge-amount">
+                            <span className="small-right">1 Patron</span>
+                            <span className="big-right">$2.22</span>
+                          </div>
+                        </div>
+                        <div className="footer">
+                          <button className="apply">
+                            <span className="text">Waive Fees</span>
+                          </button>
+                        </div>
+                      </MDBCollapse>
                     </div>
                   </div>
                 </MDBCollapse>
