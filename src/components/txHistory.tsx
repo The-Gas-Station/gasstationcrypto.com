@@ -14,8 +14,9 @@ export const TxHistory = ({ isTxHistoryOpen }: collapseOpen) => {
         <div className="row card-list-row row-flex">
           <div className="container">
             <span className="date">2/14/2022 @ 20:00 PM PST</span>
-            <br />
-            <span className="date">You Sent: $ASSETNAME</span>
+          </div>
+          <div className="container">
+            <span className="date">2/14/2022 @ 20:00 PM PST</span>
           </div>
         </div>
       </div>
