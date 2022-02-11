@@ -9,6 +9,7 @@ import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 import { TxHistory } from '../components/txHistory';
 import { BridgeTxModal } from '../components/bridgeTx';
+import txHistorysm, { TxHistorySm } from '../components/txHistorysm';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
         </div>
       </section>
       <div className="row justify-content-center row-flex">
-        <div className="col col-md-7 col-lg-7  d-md-block container">
+        <div className="col col-md-7 col-lg-8  d-md-block container">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
             <div className="row justify-content-center card-list">
@@ -256,10 +257,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </button>
             </div>
-            <TxHistory
-              isTxHistoryOpen={isTxHistoryOpen}
+            <TxHistorySm
+              isTxHistorySmOpen={isTxHistoryOpen}
               setIsOpen={setIsTxHistoryOpen}
-              closeTxHistory={() => setIsTxHistoryOpen(false)}
+              closeTxHistorySm={() => setIsTxHistoryOpen(false)}
             />
           </div>
         </div>
