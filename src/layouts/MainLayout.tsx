@@ -333,69 +333,44 @@ export const MainLayout = () => {
               <div className={isMobile ? 'col-md-9' : 'col-lg-9 col-xl-9'}>
                 <div className="amount-sections amount-sections-scroll">
                   <Slider {...settings}>
-                    <div className="amount-row">
-                      <div className="amount-col">
-                        <div className="amount-col">
-                          <span>
-                            Tax Break -{' '}
-                            <span className="sub-text">2/14/22</span>
-                          </span>
-                        </div>
-                        <span className="amount-text">
-                          ftmGAS New Tax is 17%
-                        </span>
+                    <div className="news">
+                      <div className="header">Meme Contest</div>
+                      <div className="date">2/01-2/12</div>
+                      <div className="body">
+                        <a href="https://discord.gg/vaaZ2mrYaq">
+                          Submit your original GAS Meme in Discord!
+                        </a>
                       </div>
                     </div>
-                    <div className="amount-row">
-                      <div className="amount-col">
-                        <div className="amount-col">
-                          <span>
-                            Fresh Mint -{' '}
-                            <span className="sub-text">2/04/22</span>
-                          </span>
-                        </div>
-                        <span className="amount-text">
-                          New Fantom Patrons Available For Mint!
-                        </span>
+                    <div className="news">
+                      <div className="header">Fuel Alert</div>
+                      <div className="date">2/10</div>
+                      <div className="body">
+                        New Fuel Tanks on Moonriver/Avalanche/Cronos!
                       </div>
                     </div>
-                    <div className="amount-row">
-                      <div className="amount-col">
-                        <div className="amount-col">
-                          <span>
-                            Fuel Alert - <span className="sub-text">2/10</span>
-                          </span>
-                        </div>
-                        <span className="amount-text">
-                          New Fuel Tanks on Moonriver/Avalanche/Cronos!
-                        </span>
-                      </div>
+                    <div className="news">
+                      <div className="header">Tax Break</div>
+                      <div className="date">2/18/22</div>
+                      <div className="body">movrGAS New Tax is 19%</div>
                     </div>
-                    <div className="amount-row">
-                      <div className="amount-col">
-                        <div className="amount-col">
-                          <span>
-                            Meme Contest -{' '}
-                            <span className="sub-text">2/01-2/28</span>
-                          </span>
-                        </div>
-                        <span className="amount-text text-center">
-                          <a href="https://discord.gg/vaaZ2mrYaq">
-                            Submit your original GAS Meme in Discord!
-                          </a>
-                        </span>
-                      </div>
+                    <div className="news">
+                      <div className="header">Tax Break</div>
+                      <div className="date">2/18/22</div>
+                      <div className="body">avaxGAS New Tax is 19%</div>
                     </div>
-                    <div className="amount-row">
-                      <div className="amount-col">
-                        <div className="amount-col">
-                          <span>Don't Missout - </span>
-                        </div>
-                        <span className="amount-text text-center">
-                          <a href="https://www.twitter.com/gasstation_cryp">
-                            Follow Us For All Of Our Updates!
-                          </a>
-                        </span>
+                    <div className="news">
+                      <div className="header">Tax Break</div>
+                      <div className="date">2/24/22</div>
+                      <div className="body">croGAS New Tax is 19%</div>
+                    </div>
+                    <div className="news">
+                      <div className="date"></div>
+                      <div className="header">Follow Us On Twitter</div>
+                      <div className="body">
+                        <a href="https://twitter.com/gasstation_cryp">
+                          Never Miss An Update!
+                        </a>
                       </div>
                     </div>
                   </Slider>
