@@ -9,6 +9,8 @@ import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 import { BridgeTxModal } from '../components/bridgeTx';
 import { TxHistorySm } from '../components/txHistorysm';
+import asset from '../assets/usdc.png';
+import network from '../assets/ftm.png';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
@@ -36,66 +38,75 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   return (
     <>
       <section className="page-background-bridge">
-        <div className="page-banner-top-title">
-          <h3>
-            <img
-              src={chainData.tokenImage.replace('/public/', '/')}
-              alt="#"
-              className="img-size"
-            />{' '}
-            {CHAIN_NAMES[chainId]} Bridge
-          </h3>
-          <select onChange={switchNetwork}>
-            <option>Switch Network</option>
-            {(readOnlyChainIds || []).map((_chainId) => {
-              return (
-                _chainId != chainId &&
-                CHAIN_INFO[_chainId].launched && (
-                  <option key={`switch-chain-${_chainId}`} value={_chainId}>
-                    {CHAIN_NAMES[_chainId]}
-                  </option>
-                )
-              );
-            })}
-          </select>
+        <div className="bridge-banner-img">
+          <div className="isolate">
+            <div className="page-banner-top-title">
+              <h3>
+                <img
+                  src={chainData.tokenImage.replace('/public/', '/')}
+                  alt="#"
+                  className="img-size"
+                />{' '}
+                {CHAIN_NAMES[chainId]} Bridge
+              </h3>
+              <select onChange={switchNetwork}>
+                <option>Switch Network</option>
+                {(readOnlyChainIds || []).map((_chainId) => {
+                  return (
+                    _chainId != chainId &&
+                    CHAIN_INFO[_chainId].launched && (
+                      <option key={`switch-chain-${_chainId}`} value={_chainId}>
+                        {CHAIN_NAMES[_chainId]}
+                      </option>
+                    )
+                  );
+                })}
+              </select>
+            </div>
+          </div>
         </div>
       </section>
       <div className="row justify-content-center row-flex">
         <div className="col col-md-7 col-lg-8  d-md-block container">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
-            <div className="row justify-content-center card-body1">
-              <div className="col-lg-3 d-md-block">
+            <div className="d-flex flex-row justify-content-center card-body1">
+              <div className="col-lg-3  d-md-block">
                 <p>Select A Network</p>
               </div>
-              <div className="col-lg-9 d-md-block">
-                {/*<span className="top-title">Sending Network</span>
-                <div className="convert-inner">
-                  <select className="select">
-                    <option value="">Select A Network</option>
-                  </select>
-          </div>*/}
-                <div className="convert-list-block">
-                  <span className="top-title">Receiving Network</span>
-                  <div className="convert-inner">
-                    <select className="select">
-                      <option value="">Select A Network</option>
+              <div className="col-lg-9  d-md-block">
+                <span className="top-title">Receiving Networks</span>
+                <br />
+                <div className="d-flex flex-row dropdown">
+                  <div className="col-lg-11">
+                    <select className="item-1">
+                      <option value="">Select Network</option>
                     </select>
+                  </div>
+                  <div className="col-lg-1 item-2">
+                    <img src={network} className="img" />
                   </div>
                 </div>
               </div>
             </div>
             <div className="white-space" />
-            <div className="row justify-content-center card-body1">
+            <div className="d-flex flex-row justify-content-center card-body1">
               <div className="col-lg-3  d-md-block">
                 <p>Select Your Asset</p>
               </div>
               <div className="col-lg-9  d-md-block">
                 <span className="top-title">Assets</span>
                 <br />
-                <select className="select">
-                  <option value="">Select Asset</option>
-                </select>
+                <div className="d-flex flex-row dropdown">
+                  <div className="col-lg-11">
+                    <select className="item-1">
+                      <option value="">Select Asset</option>
+                    </select>
+                  </div>
+                  <div className="col-lg-1 item-2">
+                    <img src={asset} className="img" />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="white-space" />

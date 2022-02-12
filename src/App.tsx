@@ -16,7 +16,6 @@ import UtilitiesPage from './pages/UtilitiesPage';
 import BridgePage from './pages/BridgePage';
 import SharesPage from './pages/SharesPage';
 
-
 export const App = () => {
   const { currentChainId } = useWeb3ConnectionsContext();
 
