@@ -2124,7 +2124,45 @@ select {
     }
   }
 }
-
+.tooltip {
+  display: block;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.dropdown {
+  border: 2px solid $border-color-secondary;
+box-sizing: border-box;
+border-radius: 15px 15px 15px 0px;
+margin-bottom: 18px;
+width: 100%;
+align-items: center;
+.item-2 {
+  background: $border-bg3;
+box-sizing: border-box;
+border-radius: 0px 15px 15px 0px;
+.img {
+  width: 90%;
+  height: 90%;
+  justify-content: center;
+  margin: 5%;
+  border: 3px solid $text-green;
+  border-radius: 100%;
+}
+}
+.item-1 {
+  @include bg-color13;
+  border: none !important;
+  border-radius: 20px !important;
+  font-weight: normal;
+  font-size: 16px;
+  min-height: 48px;
+  width: 100%;
+  padding: 0 15px !important;
+  background-image: url(../assets/arrow-down-white.svg) !important;
+  background-position: 96% center;
+}
+}
 .page-background-bridge {
   position: relative;
   height: auto;
