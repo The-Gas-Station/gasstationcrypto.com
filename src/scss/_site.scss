@@ -330,6 +330,130 @@ a.mode-switcher {
     }
   }
 }
+.card-body1 {
+  background-color: $background-main-color;
+  @include box-shadow;
+  color: $text-secondary-color;
+  border: 0.5px solid $dark-color;
+  box-sizing: border-box;
+  font-family: $font-family-default;
+  font-size: 1.125rem;
+  line-height: 200%;
+  letter-spacing: 0.01em;
+  border-radius: 15px;
+  height: 100%;
+  padding: 25px;
+  margin: 10px;
+  @media (max-width: 767px) {
+    background-color: $background-main-color;
+    @include box-shadow;
+    color: $text-secondary-color;
+    border: 0.5px solid $dark-color;
+    box-sizing: border-box;
+    font-family: $font-family-default;
+    font-size: 1.125rem;
+    line-height: 200%;
+    letter-spacing: 0.01em;
+    border-radius: 15px;
+    height: 100%;
+  }
+  .circle-img {
+    text-align: center;
+    width: 84px;
+    height: 84px;
+    background: $background-main-color;
+    @include box-shadow;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: -40px;
+    padding: 7px;
+
+    .circle-img-bg {
+      background: $dark-bg9;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    @media (min-width: 1499px) {
+      width: 100px;
+      height: 100px;
+      .circle-img-bg {
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+  .card-list-title {
+    font-family: $font-family-default;
+    font-size: 36px;
+    line-height: 140%;
+    text-align: center;
+    color: $card-title-color;
+    @include text-shadow;
+  }
+  .card-footer {
+    background-color: transparent !important;
+    border: none;
+    padding: 30px 24px 24px;
+  }
+  .card-text {
+    color: $text-primary-color3;
+    letter-spacing: 0.01em;
+    margin-bottom: 0;
+  }
+  .card-link {
+    font-size: 24px;
+    @media (max-width: 1399px) {
+      font-size: 18px;
+    }
+  }
+  .btn-block {
+    text-transform: none;
+    color: #ffffff;
+    @include join-button;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    &.not-connected {
+      @include connect-button;
+      cursor: pointer;
+    }
+
+    svg {
+      & > path {
+        stroke: $text-primary-color;
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    .card-body {
+      padding: 10px 20px;
+    }
+    .card-list-title {
+      font-size: 30px;
+    }
+    .card-text {
+      font-size: 16px;
+      line-height: 26px;
+    }
+    .card-footer {
+      padding: 15px 20px 20px;
+    }
+  }
+}
 img {
   max-width: 100%;
 }
@@ -2701,7 +2825,7 @@ select {
 }
 .bridge-amount {
   display: block;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 14px;
   align-items: center;
   .text-left {
@@ -2737,10 +2861,10 @@ select {
     display: block;
     width: 100%;
     align-items: center;
-    text-align: left;
+    text-align: right;
     justify-content: center;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
-    height: 80px;
+    height: auto;
   }
   .fee-box {
     border-radius: 6px;
@@ -2756,6 +2880,7 @@ select {
     justify-content: center;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
     height: 150px;
+    margin-bottom: 10px;
     .grid-live-icon {
       background: $dark-color2;
       border-radius: 15px;
@@ -2787,17 +2912,8 @@ select {
       justify-content: center;
       margin-top: 12px;
       .apply {
-        border: 2px solid
-          linear-gradient(
-            89.23deg,
-            #28ccab 39.57%,
-            #e186b2 90.44%,
-            #f394af 100%
-          );
         box-sizing: border-box;
-        border-radius: 8px;
         cursor: pointer;
-        @include join-button;
         position: absolute;
         bottom: 2%;
         .text {
@@ -2845,17 +2961,23 @@ select {
     }
     .big-left {
       display: block;
+      font-size: 18px;
       text-align: left;
       color: $text-primary-color;
       font-weight: 600;
       white-space: nowrap;
+      margin-top: 2px;
+      margin-bottom: 2px;
     }
     .big-right {
       display: block;
       text-align: right;
+      font-size: 18px;
       color: $text-primary-color;
       white-space: nowrap;
       font-weight: 600;
+      margin-top: 2px;
+      margin-bottom: 2px;
       .strike {
         text-decoration: line-through;
       }
@@ -2864,15 +2986,21 @@ select {
       display: block;
       color: $text-secondary-color;
       font-weight: 400;
+      font-size: 16px;
       text-align: left;
       white-space: nowrap;
+      margin-top: 2px;
+      margin-bottom: 2px;
     }
     .small-right {
       display: block;
       color: $text-secondary-color;
       font-weight: 400;
+      font-size: 16px;
       text-align: right;
       white-space: nowrap;
+      margin-top: 2px;
+      margin-bottom: 2px;
     }
   }
 }
@@ -2893,7 +3021,100 @@ select {
     }
   }
 }
+.vh40 {
+  height: 40vh;
+  overflow: auto;
+}
+.vh63 {
+  height: 63vh;
+  overflow: auto;
+}
+.vh80 {
+  height: 80vh;
+  overflow: auto;
+}
 .utility-block {
+  .vh80 {
+    height: 80vh;
+    overflow: auto;
+  }
+  .utility-collapse1 {
+    @include bg-color12;
+    box-sizing: border-box;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    height:80vh;
+    overflow:auto;
+    &.open {
+      .title-block {
+        border-radius: 15px 15px 0px 0px;
+      }
+    }
+    .title-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: -1px;
+      border: none;
+      padding: 22px 35px;
+      background: $background-main-color;
+      @include box-shadow1;
+      border-radius: 15px;
+      span {
+        padding-left: 10px;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+      }
+      .title-box {
+        font-weight: 600;
+        font-size: 14px;
+        color: #28ccab;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &.open {
+          &:after {
+            transform: rotate(-180deg);
+          }
+        }
+        &:after {
+          content: '';
+          background: url(../assets/arrow-down.svg) no-repeat center;
+          width: 24px;
+          height: 24px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          margin: 0;
+          margin-left: 8px;
+          cursor: pointer;
+        }
+      }
+      @media (max-width: 991px) {
+        padding: 14px 10px 14px 20px;
+        h2 {
+          font-size: 21px;
+          span {
+            font-size: 18px;
+          }
+          img {
+            width: 24px;
+          }
+        }
+      }
+      @media (max-width: 375px) {
+        h2 {
+          font-size: 18px;
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
   .utility-collapse {
     @include bg-color12;
     box-sizing: border-box;
@@ -3490,11 +3711,11 @@ select {
 }
 .tx-history-collapse {
   display: block;
-  padding: -10px;
+  padding: 10px;
   text-align: center;
-  background-color: $dark-color;
-  border: 5px solid $background-main-color;
+  background-color: $background-main-color;
   border-radius: 5px;
+  margin-bottom: 20px;
   .date {
     color: $card-title-color;
     font-size: 12px;

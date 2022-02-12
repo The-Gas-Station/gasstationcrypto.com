@@ -63,7 +63,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
         <div className="col col-md-7 col-lg-8  d-md-block container">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
-            <div className="row justify-content-center card-list">
+            <div className="row justify-content-center card-body1">
               <div className="col-lg-3 d-md-block">
                 <p>Select A Network</p>
               </div>
@@ -85,7 +85,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
             </div>
             <div className="white-space" />
-            <div className="row justify-content-center card-list">
+            <div className="row justify-content-center card-body1">
               <div className="col-lg-3  d-md-block">
                 <p>Select Your Asset</p>
               </div>
@@ -98,7 +98,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
             </div>
             <div className="white-space" />
-            {/*<div className="row justify-content-center card-list">
+            {/*<div className="row justify-content-center card-body1">
               <div className="col-lg-3  d-md-block">
                 <p>Recipient</p>
               </div>
@@ -118,7 +118,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
           </div>
           <br />*/}
-            <div className="row justify-content-center card-list">
+            <div className="row justify-content-center card-body1">
               <div className="col-lg-3  d-md-block">
                 <p>Amount</p>
               </div>
@@ -130,19 +130,20 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                     className="form-control"
                     placeholder="Enter An Amount"
                   />
-                  <div className="row justify-content-center">
-                    <button className="bridge-btn">
-                      <span className="text">25%</span>
-                    </button>
-                    <button className="bridge-btn">
-                      <span className="text">50%</span>
-                    </button>
-                    <button className="bridge-btn">
-                      <span className="text">75%</span>
-                    </button>
-                    <button className="bridge-btn">
-                      <span className="text">MAX</span>
-                    </button>
+                  <div className="row">
+                    <div className="bridge-amount col-lg-6">
+                      <span className="subtext-left">0%</span>
+                    </div>
+                    <div className="bridge-amount col-lg-6">
+                      <span className="subtext-right text-green">100%</span>
+                    </div>
+                    <div className="range">
+                      <input
+                        type="range"
+                        className="form-range"
+                        id="customRange1"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="line-break" />
@@ -233,10 +234,12 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                           </div>
                         </div>
                       </MDBCollapse>
-                      <div className="footer">
-                        <button className="apply">
-                          <span className="text">Waive Fees</span>
-                        </button>
+                      <div className="d-flex flex-row justify-content-center footer">
+                        <div className="col-2 apply">
+                          <button className="join-btn">
+                            <span className="text-white1">Waive Fees</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -244,7 +247,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
               </div>
             </div>
             <div className="white-space" />
-            <div className="row justify-content-center card-list">
+            <div className="row justify-content-center card-body1">
               <div className="col-lg-3  d-md-block">
                 <p>Send</p>
               </div>
@@ -273,10 +276,10 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
           </div>
         </div>
-        <div className="col-md-3 col-lg-3  d-md-block container">
+        <div className="col-md-3 col-lg-3  d-md-block">
           <h4 className="title-msg">Transaction History</h4>
-          <div className={`utility-collapse ${isTxHistoryOpen ? 'open' : ''}`}>
-            <div className="card-list">
+          <div className={`utility-collapse  ${isTxHistoryOpen ? 'open' : ''}`}>
+            <div className="card-body1">
               <button className="join-btn">
                 <div
                   className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
@@ -288,11 +291,13 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </button>
             </div>
-            <TxHistorySm
-              isTxHistorySmOpen={isTxHistoryOpen}
-              setIsOpen={setIsTxHistoryOpen}
-              closeTxHistorySm={() => setIsTxHistoryOpen(false)}
-            />
+            <div className="vh63">
+              <TxHistorySm
+                isTxHistorySmOpen={isTxHistoryOpen}
+                setIsOpen={setIsTxHistoryOpen}
+                closeTxHistorySm={() => setIsTxHistoryOpen(false)}
+              />
+            </div>
           </div>
         </div>
       </div>
