@@ -52,6 +52,13 @@ import { ReactComponent as SvgGitbook } from '../assets/gitbook.svg';
 import { ReactComponent as SvgTwitter } from '../assets/twitter.svg';
 import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
+import crystl from '../assets/crystl-crystl.svg';
+import reactjs from '../assets/reactjs-icon.svg';
+import bootstrap from '../assets/getbootstrap-icon.svg';
+import nodejs from '../assets/nodejs-icon.svg';
+import ethersjs from '../assets/ethersjs-logo.svg';
+import apelabs from '../assets/apelabs.png';
+import pss from '../assets/pss.svg';
 import Slider from 'react-slick';
 
 // import FtmToken from '../assets/tokens/ftm.png';
@@ -336,7 +343,7 @@ export const MainLayout = () => {
                     <div className="news">
                       <div className="header">Meme Contest</div>
                       <div className="date">2/01-2/12</div>
-                      <div className="body">
+                      <div className="body-text">
                         <a href="https://discord.gg/vaaZ2mrYaq">
                           Submit your original GAS Meme in Discord!
                         </a>
@@ -345,32 +352,102 @@ export const MainLayout = () => {
                     <div className="news">
                       <div className="header">Fuel Alert</div>
                       <div className="date">2/10</div>
-                      <div className="body">
+                      <div className="body-text">
                         New Fuel Tanks on Moonriver/Avalanche/Cronos!
                       </div>
                     </div>
                     <div className="news">
                       <div className="header">Tax Break</div>
                       <div className="date">2/18/22</div>
-                      <div className="body">movrGAS New Tax is 19%</div>
+                      <div className="body-text">movrGAS New Tax is 19%</div>
                     </div>
                     <div className="news">
                       <div className="header">Tax Break</div>
                       <div className="date">2/18/22</div>
-                      <div className="body">avaxGAS New Tax is 19%</div>
+                      <div className="body-text">avaxGAS New Tax is 19%</div>
+                    </div>
+                    <div className="news">
+                      <div className="header">$10 Daily Giveaway</div>
+                      <div className="date">Every Day in Discord</div>
+                      <div className="body-text">
+                        We're giving away $10 in GAS Every Day of the Year! Join
+                        our Discord to learn more.
+                      </div>
                     </div>
                     <div className="news">
                       <div className="header">Tax Break</div>
                       <div className="date">2/24/22</div>
-                      <div className="body">croGAS New Tax is 19%</div>
+                      <div className="body-text">croGAS New Tax is 19%</div>
                     </div>
                     <div className="news">
                       <div className="date"></div>
                       <div className="header">Follow Us On Twitter</div>
-                      <div className="body">
+                      <div className="body-text">
                         <a href="https://twitter.com/gasstation_cryp">
                           Never Miss An Update!
                         </a>
+                      </div>
+                    </div>
+                    <div className="news">
+                      <div className="header">Built With</div>
+                      <div className="body-flex">
+                        <div className="d-flex flex-row">
+                          <img
+                            src={nodejs}
+                            className="img"
+                            data-mdb-toggle="tooltip"
+                            title="Node.js"
+                          />
+                          <img
+                            src={reactjs}
+                            className="img"
+                            data-mdb-toggle="tooltip"
+                            title="React.js"
+                          />
+                          <img
+                            src={ethersjs}
+                            className="img"
+                            data-mdb-toggle="tooltip"
+                            title="Ethers.js"
+                          />
+                          <img
+                            src={bootstrap}
+                            className="img"
+                            data-mdb-toggle="tooltip"
+                            title="Bootstrap"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="news">
+                      <div className="header">Partners</div>
+                      <div className="body-flex">
+                        <div className="d-flex flex-row">
+                          <a href="https://crystl.finance">
+                            <img
+                              src={crystl}
+                              className="img"
+                              data-mdb-toggle="tooltip"
+                              title="Crystl.Finance"
+                            />
+                          </a>
+                          <a href="https://www.primatesocialsociety.com/">
+                            <img
+                              src={pss}
+                              className="img"
+                              data-mdb-toggle="tooltip"
+                              title="Primate Social Society"
+                            />
+                          </a>
+                          <a href="https://www.apelabs.education/">
+                            <img
+                              src={apelabs}
+                              className="img"
+                              data-mdb-toggle="tooltip"
+                              title="Apelabs DeFi Education"
+                            />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Slider>
