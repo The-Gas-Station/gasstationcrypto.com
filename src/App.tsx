@@ -32,7 +32,7 @@ export const App = () => {
             element={<Navigate to={`/${CHAIN_NAMES[currentChainId]}/nfp`} />}
           />
           <Route
-            path="/utility"
+            path="/utilities"
             element={
               <Navigate to={`/${CHAIN_NAMES[currentChainId]}/utilities`} />
             }
