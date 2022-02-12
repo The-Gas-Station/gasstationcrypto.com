@@ -12,10 +12,11 @@ import { TxHistorySm } from '../components/txHistorysm';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
-  const [showFinished, setShowFinished] = useState(false);
+  const [showGAS, setShowGAS] = useState(false);
+  const [showPatron, setShowPatron] = useState(false);
   const [WaiveFee, setWaiveFee] = useState(false);
   const toggleWaiveFee = () => setWaiveFee(!WaiveFee);
-  const [UseGAS, setUseGAS] = useState(true);
+  const [UseGAS, setUseGAS] = useState(false);
   const [UsePatron, setUsePatron] = useState(false);
 
   const chainData = CHAIN_INFO[chainId];
@@ -174,21 +175,23 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                       <div className="d-flex flex-row justify-content-center">
                         <div className="grid-live-icon">
                           <span
-                            className={showFinished ? '' : 'active'}
+                            className={showGAS ? 'active' : ''}
                             onClick={() => {
-                              setShowFinished(false);
+                              setShowGAS(true);
                               setUseGAS(true);
                               setUsePatron(false);
+                              setShowPatron(false);
                             }}
                           >
                             Use GAS
                           </span>
                           <span
-                            className={showFinished ? 'active' : ''}
+                            className={showPatron ? 'active' : ''}
                             onClick={() => {
-                              setShowFinished(true);
+                              setShowPatron(true);
                               setUsePatron(true);
                               setUseGAS(false);
+                              setShowGAS(false);
                             }}
                           >
                             Use Patron
@@ -215,6 +218,14 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                             </span>
                           </div>
                         </div>
+                        <div className="line-break" />
+                        <div className="d-flex flex-row justify-content-center">
+                          <div className="col-6">
+                            <button className="join-btn">
+                              <span className="text-white1">Waive Fees</span>
+                            </button>
+                          </div>
+                        </div>
                       </MDBCollapse>
                       <MDBCollapse show={UsePatron}>
                         <div className="d-flex flex-row justify-content-center">
@@ -233,14 +244,15 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                             </span>
                           </div>
                         </div>
-                      </MDBCollapse>
-                      <div className="d-flex flex-row justify-content-center footer">
-                        <div className="col-2 apply">
-                          <button className="join-btn">
-                            <span className="text-white1">Waive Fees</span>
-                          </button>
+                        <div className="line-break" />
+                        <div className="d-flex flex-row justify-content-center">
+                          <div className="col-6">
+                            <button className="join-btn">
+                              <span className="text-white1">Waive Fees</span>
+                            </button>
+                          </div>
                         </div>
-                      </div>
+                      </MDBCollapse>
                     </div>
                   </div>
                 </MDBCollapse>
@@ -291,7 +303,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </button>
             </div>
-            <div className="vh63">
+            <div className="vh70">
               <TxHistorySm
                 isTxHistorySmOpen={isTxHistoryOpen}
                 setIsOpen={setIsTxHistoryOpen}
