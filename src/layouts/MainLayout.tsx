@@ -113,6 +113,11 @@ export const MainLayout = () => {
       icon: SvgHome,
     },
     {
+      label: 'Shares',
+      route: '/shares',
+      icon: SvgHome,
+    },
+    {
       label: 'Rewards Hub',
       route: '/hub',
       icon: SvgRewards,
