@@ -17,6 +17,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
   const { readOnlyChainIds } = useConfig();
   const { setCurrentChainId } = useWeb3ConnectionsContext();
   const chainData = CHAIN_INFO[chainId];
+  const [showFinished, setShowFinished] = useState(false);
 
   const switchNetwork = (e: any) => {
     const newChainId: ChainId = parseInt(e.target.value);
@@ -57,41 +58,24 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
         </div>
       </section>
       <div className="d-flex flex-row">
-        <p className="col">
-          <span className="text-white1">Pool Info</span>
-        </p>
-
-        <p className="col">
-          <span className="text-white1">STAKE</span>
-        </p>
-
-        <p className="col">
-          <span className="text-white1">$Available Balance$</span>
-        </p>
-
-        <p className="col">
-          <span className="text-white1">$LIQUIDITY$</span>
-        </p>
-
-        <p className="col">
-          <span className="text-white1">$APR$</span>
-        </p>
-
-        <p className="col">
-          <span className="text-white1">$STAKED$</span>
-        </p>
-
-        <p className="col">
-          <span className="text-white1">$Earned$</span>
-        </p>
-
-        <p className="col">
-          <span className="text-white1">$ACTIONS$</span>
-        </p>
+        <div className="grid-live-icon d-none d-md-inline-block">
+          <span
+            className={showFinished ? '' : 'active'}
+            onClick={() => setShowFinished(false)}
+          >
+            Live
+          </span>
+          <span
+            className={showFinished ? 'active' : ''}
+            onClick={() => setShowFinished(true)}
+          >
+            Finished
+          </span>
+        </div>
       </div>
-      <div className="card-list-row">
-        <div className="d-flex flex-row card-list-row">
-          <div className="col">
+      <div className="expand">
+        <div className="shares-row">
+          <div className="img">
             <p>
               <img
                 src="https://via.placeholder.com/50x50"
@@ -99,57 +83,44 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
               />
             </p>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">STAKE</span>
-              <br />
-              <span className="text-white1">EARN</span>
-            </p>
+          <div className="global">
+            <span className="title">bnb</span>
+            <br />
+            <span className="sub">binance coin</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="green">$Available Balance$</span>
-            </p>
+          <div className="global">
+            <span className="title text-pink">$APR$</span>
+            <br />
+            <span className="sub">$Total Staked$</span>
+            <br />
+            <span className="sub">$Total$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$LIQUIDITY$</span>
-            </p>
+          <div className="local">
+            <span className="title text-green">$EARNED$</span>
+            <br />
+            <span className="sub">$Earned$$$Value$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$APR$</span>
-            </p>
+          <div className="local">
+            <span className="title">$STAKED$</span>
+            <br />
+            <span className="sub">$Value$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$STAKED$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$Earned$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </button>
-            </p>
-          </div>
+
+          <button className="join-btn btn">
+            <div
+              className={` ${isTxHistoryOpen ? 'open' : ''}`}
+              onClick={toggleShow}
+            >
+              <span className=" d-lg-block">
+                {isTxHistoryOpen ? 'Close' : 'Expand'}
+              </span>
+            </div>
+          </button>
         </div>
         <MDBCollapse show={isTxHistoryOpen}>
           <div className="d-flex flex-row justify-content-center">
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={stakedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -163,7 +134,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <div className="col-lg-1" />
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={earnedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -173,14 +144,14 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span className="text-green text-box">$AMOUNT$</span>
                 </div>
               </div>
-              <button className="join-btn">HARVEST</button>
+              <button className="join-btn">STAKE</button>
             </div>
           </div>
         </MDBCollapse>
       </div>
-      <div className="card-list-row">
-        <div className="d-flex flex-row card-list-row">
-          <div className="col">
+      <div className="expand">
+        <div className="shares-row">
+          <div className="img">
             <p>
               <img
                 src="https://via.placeholder.com/50x50"
@@ -188,57 +159,44 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
               />
             </p>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">STAKE</span>
-              <br />
-              <span className="text-white1">EARN</span>
-            </p>
+          <div className="global">
+            <span className="title">bnb</span>
+            <br />
+            <span className="sub">binance coin</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="green">$Available Balance$</span>
-            </p>
+          <div className="global">
+            <span className="title text-pink">$APR$</span>
+            <br />
+            <span className="sub">$Total Staked$</span>
+            <br />
+            <span className="sub">$Total$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$LIQUIDITY$</span>
-            </p>
+          <div className="local">
+            <span className="title text-green">$EARNED$</span>
+            <br />
+            <span className="sub">$Earned$$$Value$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$APR$</span>
-            </p>
+          <div className="local">
+            <span className="title">$STAKED$</span>
+            <br />
+            <span className="sub">$Value$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$STAKED$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$Earned$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </button>
-            </p>
-          </div>
+
+          <button className="join-btn btn">
+            <div
+              className={` ${isTxHistoryOpen ? 'open' : ''}`}
+              onClick={toggleShow}
+            >
+              <span className=" d-lg-block">
+                {isTxHistoryOpen ? 'Close' : 'Expand'}
+              </span>
+            </div>
+          </button>
         </div>
         <MDBCollapse show={isTxHistoryOpen}>
           <div className="d-flex flex-row justify-content-center">
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={stakedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -252,7 +210,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <div className="col-lg-1" />
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={earnedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -262,14 +220,14 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span className="text-green text-box">$AMOUNT$</span>
                 </div>
               </div>
-              <button className="join-btn">HARVEST</button>
+              <button className="join-btn">STAKE</button>
             </div>
           </div>
         </MDBCollapse>
       </div>
-      <div className="card-list-row">
-        <div className="d-flex flex-row card-list-row">
-          <div className="col">
+      <div className="expand">
+        <div className="shares-row">
+          <div className="img">
             <p>
               <img
                 src="https://via.placeholder.com/50x50"
@@ -277,57 +235,44 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
               />
             </p>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">STAKE</span>
-              <br />
-              <span className="text-white1">EARN</span>
-            </p>
+          <div className="global">
+            <span className="title">bnb</span>
+            <br />
+            <span className="sub">binance coin</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="green">$Available Balance$</span>
-            </p>
+          <div className="global">
+            <span className="title text-pink">$APR$</span>
+            <br />
+            <span className="sub">$Total Staked$</span>
+            <br />
+            <span className="sub">$Total$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$LIQUIDITY$</span>
-            </p>
+          <div className="local">
+            <span className="title text-green">$EARNED$</span>
+            <br />
+            <span className="sub">$Earned$$$Value$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$APR$</span>
-            </p>
+          <div className="local">
+            <span className="title">$STAKED$</span>
+            <br />
+            <span className="sub">$Value$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$STAKED$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$Earned$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </button>
-            </p>
-          </div>
+
+          <button className="join-btn btn">
+            <div
+              className={` ${isTxHistoryOpen ? 'open' : ''}`}
+              onClick={toggleShow}
+            >
+              <span className=" d-lg-block">
+                {isTxHistoryOpen ? 'Close' : 'Expand'}
+              </span>
+            </div>
+          </button>
         </div>
         <MDBCollapse show={isTxHistoryOpen}>
           <div className="d-flex flex-row justify-content-center">
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={stakedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -341,7 +286,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <div className="col-lg-1" />
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={earnedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -351,14 +296,14 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span className="text-green text-box">$AMOUNT$</span>
                 </div>
               </div>
-              <button className="join-btn">HARVEST</button>
+              <button className="join-btn">STAKE</button>
             </div>
           </div>
         </MDBCollapse>
       </div>
-      <div className="card-list-row">
-        <div className="d-flex flex-row card-list-row">
-          <div className="col">
+      <div className="expand">
+        <div className="shares-row">
+          <div className="img">
             <p>
               <img
                 src="https://via.placeholder.com/50x50"
@@ -366,57 +311,44 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
               />
             </p>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">STAKE</span>
-              <br />
-              <span className="text-white1">EARN</span>
-            </p>
+          <div className="global">
+            <span className="title">bnb</span>
+            <br />
+            <span className="sub">binance coin</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="green">$Available Balance$</span>
-            </p>
+          <div className="global">
+            <span className="title text-pink">$APR$</span>
+            <br />
+            <span className="sub">$Total Staked$</span>
+            <br />
+            <span className="sub">$Total$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$LIQUIDITY$</span>
-            </p>
+          <div className="local">
+            <span className="title text-green">$EARNED$</span>
+            <br />
+            <span className="sub">$Earned$$$Value$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$APR$</span>
-            </p>
+          <div className="local">
+            <span className="title">$STAKED$</span>
+            <br />
+            <span className="sub">$Value$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$STAKED$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$Earned$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </button>
-            </p>
-          </div>
+
+          <button className="join-btn btn">
+            <div
+              className={` ${isTxHistoryOpen ? 'open' : ''}`}
+              onClick={toggleShow}
+            >
+              <span className=" d-lg-block">
+                {isTxHistoryOpen ? 'Close' : 'Expand'}
+              </span>
+            </div>
+          </button>
         </div>
         <MDBCollapse show={isTxHistoryOpen}>
           <div className="d-flex flex-row justify-content-center">
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={stakedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -430,7 +362,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <div className="col-lg-1" />
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={earnedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -440,14 +372,14 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span className="text-green text-box">$AMOUNT$</span>
                 </div>
               </div>
-              <button className="join-btn">HARVEST</button>
+              <button className="join-btn">STAKE</button>
             </div>
           </div>
         </MDBCollapse>
       </div>
-      <div className="card-list-row">
-        <div className="d-flex flex-row card-list-row">
-          <div className="col">
+      <div className="expand">
+        <div className="shares-row">
+          <div className="img">
             <p>
               <img
                 src="https://via.placeholder.com/50x50"
@@ -455,57 +387,44 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
               />
             </p>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">STAKE</span>
-              <br />
-              <span className="text-white1">EARN</span>
-            </p>
+          <div className="global">
+            <span className="title">bnb</span>
+            <br />
+            <span className="sub">binance coin</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="green">$Available Balance$</span>
-            </p>
+          <div className="global">
+            <span className="title text-pink">$APR$</span>
+            <br />
+            <span className="sub">$Total Staked$</span>
+            <br />
+            <span className="sub">$Total$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$LIQUIDITY$</span>
-            </p>
+          <div className="local">
+            <span className="title text-green">$EARNED$</span>
+            <br />
+            <span className="sub">$Earned$$$Value$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$APR$</span>
-            </p>
+          <div className="local">
+            <span className="title">$STAKED$</span>
+            <br />
+            <span className="sub">$Value$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$STAKED$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$Earned$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </button>
-            </p>
-          </div>
+
+          <button className="join-btn btn">
+            <div
+              className={` ${isTxHistoryOpen ? 'open' : ''}`}
+              onClick={toggleShow}
+            >
+              <span className=" d-lg-block">
+                {isTxHistoryOpen ? 'Close' : 'Expand'}
+              </span>
+            </div>
+          </button>
         </div>
         <MDBCollapse show={isTxHistoryOpen}>
           <div className="d-flex flex-row justify-content-center">
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={stakedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -519,7 +438,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <div className="col-lg-1" />
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={earnedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -529,14 +448,14 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span className="text-green text-box">$AMOUNT$</span>
                 </div>
               </div>
-              <button className="join-btn">HARVEST</button>
+              <button className="join-btn">STAKE</button>
             </div>
           </div>
         </MDBCollapse>
       </div>
-      <div className="card-list-row">
-        <div className="d-flex flex-row card-list-row">
-          <div className="col">
+      <div className="expand">
+        <div className="shares-row">
+          <div className="img">
             <p>
               <img
                 src="https://via.placeholder.com/50x50"
@@ -544,57 +463,44 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
               />
             </p>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">STAKE</span>
-              <br />
-              <span className="text-white1">EARN</span>
-            </p>
+          <div className="global">
+            <span className="title">bnb</span>
+            <br />
+            <span className="sub">binance coin</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="green">$Available Balance$</span>
-            </p>
+          <div className="global">
+            <span className="title text-pink">$APR$</span>
+            <br />
+            <span className="sub">$Total Staked$</span>
+            <br />
+            <span className="sub">$Total$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$LIQUIDITY$</span>
-            </p>
+          <div className="local">
+            <span className="title text-green">$EARNED$</span>
+            <br />
+            <span className="sub">$Earned$$$Value$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$APR$</span>
-            </p>
+          <div className="local">
+            <span className="title">$STAKED$</span>
+            <br />
+            <span className="sub">$Value$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$STAKED$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$Earned$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </button>
-            </p>
-          </div>
+
+          <button className="join-btn btn">
+            <div
+              className={` ${isTxHistoryOpen ? 'open' : ''}`}
+              onClick={toggleShow}
+            >
+              <span className=" d-lg-block">
+                {isTxHistoryOpen ? 'Close' : 'Expand'}
+              </span>
+            </div>
+          </button>
         </div>
         <MDBCollapse show={isTxHistoryOpen}>
           <div className="d-flex flex-row justify-content-center">
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={stakedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -608,7 +514,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <div className="col-lg-1" />
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={earnedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -618,14 +524,14 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span className="text-green text-box">$AMOUNT$</span>
                 </div>
               </div>
-              <button className="join-btn">HARVEST</button>
+              <button className="join-btn">STAKE</button>
             </div>
           </div>
         </MDBCollapse>
       </div>
-      <div className="card-list-row">
-        <div className="d-flex flex-row card-list-row">
-          <div className="col">
+      <div className="expand">
+        <div className="shares-row">
+          <div className="img">
             <p>
               <img
                 src="https://via.placeholder.com/50x50"
@@ -633,57 +539,44 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
               />
             </p>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">STAKE</span>
-              <br />
-              <span className="text-white1">EARN</span>
-            </p>
+          <div className="global">
+            <span className="title">bnb</span>
+            <br />
+            <span className="sub">binance coin</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="green">$Available Balance$</span>
-            </p>
+          <div className="global">
+            <span className="title text-pink">$APR$</span>
+            <br />
+            <span className="sub">$Total Staked$</span>
+            <br />
+            <span className="sub">$Total$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$LIQUIDITY$</span>
-            </p>
+          <div className="local">
+            <span className="title text-green">$EARNED$</span>
+            <br />
+            <span className="sub">$Earned$$$Value$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$APR$</span>
-            </p>
+          <div className="local">
+            <span className="title">$STAKED$</span>
+            <br />
+            <span className="sub">$Value$$$Staked$</span>
           </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$STAKED$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <span className="text-white1">$Earned$</span>
-            </p>
-          </div>
-          <div className="col text">
-            <p>
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </button>
-            </p>
-          </div>
+
+          <button className="join-btn btn">
+            <div
+              className={` ${isTxHistoryOpen ? 'open' : ''}`}
+              onClick={toggleShow}
+            >
+              <span className=" d-lg-block">
+                {isTxHistoryOpen ? 'Close' : 'Expand'}
+              </span>
+            </div>
+          </button>
         </div>
         <MDBCollapse show={isTxHistoryOpen}>
           <div className="d-flex flex-row justify-content-center">
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={stakedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -697,7 +590,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
             <div className="col-lg-1" />
             <div className="col-lg-3">
-              <div className="d-flex flex-row card-list-row">
+              <div className="d-flex flex-row shares-row">
                 <img src={earnedBanner} />
                 <div className="d-flex flex-column">
                   <span className="text-white1 text-box">ASSET</span>
@@ -707,7 +600,7 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span className="text-green text-box">$AMOUNT$</span>
                 </div>
               </div>
-              <button className="join-btn">HARVEST</button>
+              <button className="join-btn">STAKE</button>
             </div>
           </div>
         </MDBCollapse>

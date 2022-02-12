@@ -4091,6 +4091,68 @@ border-radius: 0px 15px 15px 0px;
     padding: 7px;
   }
 }
+.expand {
+  background-color: $dark-bg7;
+  display: block;
+  border-radius: 15px 15px 15px 15px;
+  padding-top: -10px;
+  height: auto;
+}
+.shares-row {
+  background-color: $dark-bg8;
+  @include box-shadow;
+  border: 0.5px solid $dark-bg9;
+  height: auto;
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 12px;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  .btn {
+    display: block;
+    width: 100px;
+    height: auto;
+  }
+  .img {
+    padding: 15px;
+    margin: 2px;
+    width: 100px;
+    height: auto;
+  }
+  .global {
+    display: block;
+    text-align: left;
+    color: $text-light5;
+    padding: 10px;
+    width: 200px;
+    .title {
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .sub {
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+  }
+  .local {
+    display: block;
+    text-align: right;
+    color: $text-light5;
+    padding: 10px;
+    width: 200px;
+    .title {
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .sub {
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+  }
+}
 .card-list-row {
   background-color: $background-main-color;
   @include box-shadow;
