@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MDBCollapse } from 'mdb-react-ui-kit';
 import IframeResizer from 'iframe-resizer-react';
 
 import { useConfig } from '../library/providers/ConfigProvider';
