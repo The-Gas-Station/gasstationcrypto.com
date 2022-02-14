@@ -200,25 +200,22 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                         </div>
                         <br />
                         <MDBCollapse show={UseGAS}>
-                          <div className="d-flex flex-row justify-content-center">
-                            <div className="container1">
-                              <div className="d-flex flex-row justify-content-center">
-                                <div className="d-flex flex-column patron-balance">
-                                  <p className="text-pink">Token Balance</p>
-                                  <p className="text-green">
-                                    700,000,000 $connectedNetwork$GAS
-                                  </p>
-                                </div>
-                                <div className="d-flex flex-column bridge-amount savings">
-                                  <span>
-                                    <span className="text-green">$0.00 </span>
-                                    <span className="strike">$2.22</span>
-                                  </span>
-                                  <span className="big-right text-green">
-                                    You Saved $2.22
-                                  </span>
-                                </div>
-                              </div>
+                          <div className="d-flex flex-row container">
+                            <div className="d-flex flex-column patron-balance">
+                              <p className="text-pink">Token Balance</p>
+                              <p className="text-green">
+                                $connectedNetwork$GAS
+                              </p>
+                            </div>
+                            <div className="d-flex flex-column savings">
+                              <span>Fees:</span>
+                              <span>
+                                <span className="text-green">$0.00 </span>
+                                <span className="strike">$2.22</span>
+                              </span>
+                              <span className="text-green">
+                                You Saved $2.22
+                              </span>
                             </div>
                           </div>
                           <div className="line-break" />
@@ -231,62 +228,59 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                           </div>
                         </MDBCollapse>
                         <MDBCollapse show={UsePatron}>
-                          <div className="d-flex flex-row justify-content-center">
-                            <div className="container1">
-                              <div className="d-flex flex-row justify-content-center">
-                                <div className="d-flex flex-column patron-balance">
-                                  <p className="text-pink">Select A Patron</p>
-                                  <div className="bridge-amount">
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                    <img src="https://via.placeholder.com/25x25" />
-                                  </div>
-                                </div>
-                                <div className="d-flex flex-column bridge-amount savings">
-                                  <img src="https://via.placeholder.com/100x100" />
-                                  <br />
-                                  <span>$PATRON SELECTED NAME$</span>
-                                  <span className="text-pink">
-                                    $COOLDOWN TIMER$
-                                  </span>
-                                  <br />
-                                  <span>Fees:</span>
-                                  <span>
-                                    <span className="text-green">$0.00 </span>
-                                    <span className="strike">$2.22</span>
-                                  </span>
-                                  <span className="big-right text-green">
-                                    You Saved $2.22
-                                  </span>
-                                </div>
+                          <div className="d-flex flex-row container">
+                            <div className="d-flex flex-column patron-balance">
+                              <p className="text-pink">Select A Patron</p>
+                              <div className="bridge-amount">
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
+                                <img src="https://via.placeholder.com/25x25" />
                               </div>
                             </div>
+                            <div className="d-flex flex-column bridge-amount savings">
+                              <img src="https://via.placeholder.com/100x100" />
+                              <br />
+                              <span>$PATRON SELECTED NAME$</span>
+                              <span className="text-pink">
+                                $COOLDOWN TIMER$
+                              </span>
+                              <br />
+                              <span>Fees:</span>
+                              <span>
+                                <span className="text-green">$0.00 </span>
+                                <span className="strike">$2.22</span>
+                              </span>
+                              <span className="big-right text-green">
+                                You Saved $2.22
+                              </span>
+                            </div>
                           </div>
+
                           <div className="line-break" />
                           <div className="d-flex flex-row justify-content-center">
                             <div className="col-6">
@@ -344,7 +338,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                 </div>
               </button>
             </div>
-            <div className="vh70">
+            <div className="vh-100">
               <TxHistorySm
                 isTxHistorySmOpen={isTxHistoryOpen}
                 setIsOpen={setIsTxHistoryOpen}

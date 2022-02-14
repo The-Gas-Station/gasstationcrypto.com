@@ -25,8 +25,8 @@ export const StatsCard = ({ chainId }: { chainId: number }) => {
         </div>
         <br className="white-space" />
         <div className="flex justify-content-center">
-          <MDBTable hover small>
-            <MDBTableBody>
+          <MDBTable hover small className="transaction-history">
+            <MDBTableBody className="transaction-history">
               <tr>
                 <th scope="row">Total Supply</th>
                 <td>100,000,000,000 GAS</td>
