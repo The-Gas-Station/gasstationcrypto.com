@@ -168,7 +168,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                       </span>
                     </div>
                   </div>
-                  <MDBCollapse show={WaiveFee}>
+                  <div className={`collapse ${WaiveFee ? 'show' : ''}`}>
                     <div className="col bridge-amount">
                       <div className=" d-md-inline-block fee-box">
                         <span className="subtext-left">Void Fees</span>
@@ -292,7 +292,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                         </MDBCollapse>
                       </div>
                     </div>
-                  </MDBCollapse>
+                  </div>
                 </div>
               </div>
             </div>
