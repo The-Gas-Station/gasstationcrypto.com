@@ -233,7 +233,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                         <MDBCollapse show={UsePatron}>
                           <div className="d-flex flex-row justify-content-center">
                             <div className="container1">
-                              <div className="d-flex flex-row justify-content-center ">
+                              <div className="d-flex flex-row justify-content-center">
                                 <div className="d-flex flex-column patron-balance">
                                   <p className="text-pink">Select A Patron</p>
                                   <div className="bridge-amount">
