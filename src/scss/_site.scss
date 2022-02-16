@@ -5118,7 +5118,8 @@ select {
   }
 }
 .img-row {
-  @media (min-width: 425px) {
+  flex-wrap: nowrap;
+  @media (max-width: 800px) {
     flex-wrap: wrap;
   }
   img {
@@ -5136,7 +5137,8 @@ select {
 .button1 {
   display: block;
   width: auto;
-  height: 40px;
+  min-height: 40px;
+  max-height: 49px;
   background-color: $seperator-color;
   border: 5px solid $border-bg2;
   margin: 10px;
@@ -5144,4 +5146,7 @@ select {
   font-size: 14px;
   font-weight: 300;
   color: $card-title-color;
+  @media (min-width: 1440px) {
+    height: 40px !important;
+  }
 }

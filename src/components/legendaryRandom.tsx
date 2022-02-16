@@ -1,4 +1,3 @@
-import React from 'react';
 export const legendaryArray = [
   'https://github.com/The-Gas-Station/NFPs/blob/main/NFPs/Polygon/metadata/3/4%20-%20Michael.gif?raw=true',
   'https://github.com/The-Gas-Station/NFPs/blob/main/NFPs/Polygon/metadata/3/6%20-%20Anchorman.gif?raw=true',
