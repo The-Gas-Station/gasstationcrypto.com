@@ -23,12 +23,10 @@ import burn from '../assets/fire.png';
 import holder from '../assets/tokenholder.png';
 import dev from '../assets/dev.png';
 import gas from '../assets/gas.svg';
-import fuel1 from '../assets/fuel1.svg';
-import fuel2 from '../assets/fuel2.svg';
-import fuel3 from '../assets/fuel3.svg';
-import fuel4 from '../assets/fuel4.svg';
-import fuel5 from '../assets/fuel5.svg';
-import fuel6 from '../assets/fuel6.svg';
+import fuel4 from '../assets/shield.svg';
+import fuel5 from '../assets/wlt.svg';
+import fuel6 from '../assets/spew.svg';
+import pump from '../assets/Pump.svg';
 import Slider from 'react-slick';
 import legendaryArray from '../components/legendaryRandom';
 import rareArray from '../components/rareRandom';
@@ -102,27 +100,41 @@ export const HomePage = () => {
   return (
     <>
       <BannerSection />
-      <h5 className="title-3">
-        Welcome! You Are Currently Viewing{' '}
-        <h3 className="title-2">{CHAIN_INFO[currentChainId].name}</h3>
-      </h5>
+
       <div className="flex-row d-flex">
         <div className="flex-column">
           <div className="flex-row d-flex justify-content-center">
+            <h5 className="title-3">
+              Welcome! You Are Currently Viewing{' '}
+              <h1 className="title-2">{CHAIN_INFO[currentChainId].name}</h1>
+            </h5>
+
             <button className="button1">
-              Buy {CHAIN_INFO[currentChainId].gasTokenName}
+              <span className="title-4">
+                Buy {CHAIN_INFO[currentChainId].gasTokenName}
+              </span>
+            </button>
+
+            <button className="button1">
+              <span className="title-5">
+                Chart {CHAIN_INFO[currentChainId].gasTokenName}
+              </span>
             </button>
             <button className="button1">
-              Mint {CHAIN_INFO[currentChainId].name} Patrons
+              <span className="title-4">
+                Stake {CHAIN_INFO[currentChainId].gasTokenName}
+              </span>
+            </button>
+
+            <button className="button1">
+              <span className="title-5">
+                Stats for {CHAIN_INFO[currentChainId].gasTokenName}
+              </span>
             </button>
             <button className="button1">
-              Chart {CHAIN_INFO[currentChainId].gasTokenName}
-            </button>
-            <button className="button1">
-              Stake {CHAIN_INFO[currentChainId].gasTokenName}
-            </button>
-            <button className="button1">
-              Stats for {CHAIN_INFO[currentChainId].gasTokenName}
+              <span className="title-4">
+                Mint {CHAIN_INFO[currentChainId].name} Patrons
+              </span>
             </button>
           </div>
         </div>
@@ -132,7 +144,7 @@ export const HomePage = () => {
           <div className="flex-column">
             <div className="flex-row d-flex flex-wrap">
               <div className="col-lg-4">
-                <h3 className="title-2">
+                <h3 className="title-3">
                   <span>
                     <img src={GASToken} />
                     GAS Tokens
@@ -194,7 +206,7 @@ export const HomePage = () => {
               </div>
 
               <div className="col-lg-4">
-                <h3 className="title-3">
+                <h3 className="title-2">
                   <span>
                     <img src={NFPToken} />
                     Patrons
@@ -262,20 +274,15 @@ export const HomePage = () => {
                     <div className="flex-row d-flex">
                       <div className="flex-column text">
                         <div className="flex-row d-flex ">
-                          <img src={fuel1} className="noborder-img" />
+                          <img src={pump} className="noborder-img" />
                           <div className="flex-column">
                             <h4>
-                              <div className="l title-3">
-                                staking for everyone <img src={fuel1} />
-                              </div>
+                              <div className="l title-3">Fuel Up!</div>
                             </h4>
                             <p>
-                              <img src={fuel1} />
-                              <img src={fuel2} />
-                              <img src={fuel3} />
-                              <img src={fuel4} />
-                              <img src={fuel5} />
-                              <img src={fuel6} />
+                              Head on over to the rewards hub where you will
+                              find fuel tanks (staking pools) to stake your
+                              assets and fuel your tank.
                             </p>
                           </div>
                         </div>
@@ -306,11 +313,6 @@ export const HomePage = () => {
                               TextFiller TextFiller TextFiller TextFiller Text
                             </p>
                           </div>
-                        </div>
-                        <div className="flex-row d-flex">
-                          <img src={fuel2} className="noborder-img" />
-                          <img src={fuel2} className="noborder-img" />
-                          <img src={fuel2} className="noborder-img" />
                         </div>
                       </div>
                     </div>

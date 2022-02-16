@@ -4796,7 +4796,7 @@ select {
   border-radius: 20px;
   .noborder-img {
       background-color: $seperator-color;
-      width: 125px !important;
+      width: 75px !important;
       height: auto;
       border-radius: 0px !important;
       padding: 10px;
@@ -4855,7 +4855,7 @@ select {
           margin: 3px;
           padding: 4px;
           font-size: 15px;
-          font-weight: 600;
+          font-weight: 200;
           color: $card-title-color;
           background-color: $background-main-color;
           border: 0.75px solid $border-bg2;
@@ -4868,7 +4868,7 @@ select {
           margin: 3px;
           padding: 4px;
           font-size: 15px;
-          font-weight: 600;
+          font-weight: 200;
           color: $card-title-color;
           background-color: $background-main-color;
           border: 0.75px solid $border-bg2;
@@ -4882,7 +4882,7 @@ select {
         margin: 2px;
         padding: 3px;
         font-size: 13px;
-        font-weight: 600;
+        font-weight: 200;
         color: $text-green;
         background-color: $background-main-color;
         border: 0.75px solid $border-bg2;
@@ -4953,7 +4953,7 @@ select {
         margin: 7px;
         padding: 4px;
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 200;
         color: $card-title-color;
         background-color: $background-main-color;
         border: 0.75px solid $border-bg2;
@@ -4967,7 +4967,7 @@ select {
         margin: 7px;
         padding: 4px;
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 200;
         color: $card-title-color;
         background-color: $background-main-color;
         border: 0.75px solid $border-bg2;
@@ -4980,7 +4980,7 @@ select {
         margin: 7px;
         padding: 4px;
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 200;
         color: $card-title-color;
         background-color: $background-main-color;
         border: 0.75px solid $border-bg2;
@@ -5024,7 +5024,7 @@ select {
   margin-top: 10px;
   margin-right: 15px;
   padding: 4px;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: capitalize;
   @include text-shadow1;
   span {
@@ -5045,7 +5045,39 @@ select {
   margin-top: 10px;
   margin-right: 5px;
   padding: 4px;
-  font-weight: 600;
+  font-weight: 400;
+  text-transform: capitalize;
+  @include text-shadow;
+  span {
+    display: flex;
+    img {
+      display: block;
+      margin-left: 30px;
+      width: 40px !important;
+      margin-right: 15px;
+    }
+  }
+}
+.title-4 {
+  font-family: $font-family-italic;
+  color: $text-green !important;
+  font-weight: 300;
+  text-transform: capitalize;
+  @include text-shadow1;
+  span {
+    display: flex;
+    img {
+      display: block;
+      margin-left: 30px;
+      width: 40px !important;
+      margin-right: 15px;
+    }
+  }
+}
+.title-5 {
+  font-family: $font-family-italic;
+  color: $card-title-color !important;
+  font-weight: 300;
   text-transform: capitalize;
   @include text-shadow;
   span {
@@ -5103,7 +5135,7 @@ select {
 }
 .button1 {
   display: block;
-  width: 200px;
+  width: auto;
   height: 40px;
   background-color: $seperator-color;
   border: 5px solid $border-bg2;
