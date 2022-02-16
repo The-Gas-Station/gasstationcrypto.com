@@ -1,7 +1,7 @@
 {
   "launchDate": "11 Dec, 2021",
   "display": "Polygon",
-  "tokenImage": "/public/images/tokens/matic.png",
+  "tokenImage": "/public/images/tokens/polygon.svg",
   "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Polygon/",
   "etherLiquidityPair": "evm:0xcd353F79d9FADe311fC3119B841e1f456b54e858",
   "liquidityPairs": [

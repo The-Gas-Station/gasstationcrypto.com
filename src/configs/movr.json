@@ -1,7 +1,7 @@
 {
   "launchDate": "",
   "display": "Moonriver",
-  "tokenImage": "/public/images/tokens/movr.png",
+  "tokenImage": "/public/images/tokens/movr.svg",
   "etherLiquidityPair": "evm:0xe537f70a8b62204832B8Ba91940B77d3f79AEb81",
   "liquidityPairs": [
     {

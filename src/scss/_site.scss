@@ -4568,8 +4568,8 @@ select {
 .card-list-row1 {
   display: flex;
   flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
   background-color: $background-main-color;
   @include box-shadow;
   color: $text-secondary-color;
@@ -4584,10 +4584,7 @@ select {
   padding: 1px;
   margin-top: 1px;
   margin-bottom: 1px;
-  @media (min-width: 300px) {
-    width: auto;
-  }
-  @media (min-width: 700px) {
+  @media (min-width: 767px) {
     width: auto;
   }
   @media (min-width: 1024px) {
@@ -4599,9 +4596,9 @@ select {
   @media (max-width: 1441px) {
     width: 325px;
   }
-  
+
   .left {
-    text-align: left; 
+    text-align: left;
     padding: 1px;
     width: 100%;
   }
@@ -4609,8 +4606,7 @@ select {
     text-align: right;
     padding: 1px;
     width: 100%;
-  
-}
+  }
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -4624,4 +4620,496 @@ select {
     border-radius: 15px;
     height: 100%;
   }
+}
+.news-block {
+  width: auto;
+  height: 100%;
+  padding: auto;
+  background-color: $seperator-color;
+  border: 5px solid $border-bg2;
+  margin: 10px;
+  border-radius: 20px;
+  @media (min-width: 1920px) {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  @media (min-width: 1440px) {
+    .text {
+      width: 100% !important;
+      height: auto;
+      display: block;
+      p {
+        margin: 2px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 400;
+        color: $text-primary-color;
+        background-color: $background-main-color;
+        border: 0.5px solid $border-bg2;
+        border-radius: 10px;
+        line-height: 15px;
+      }
+      span {
+        margin: 2px;
+        padding: 2px;
+        font-size: 11px;
+        font-weight: 300;
+        color: $text-secondary-color;
+        background-color: $background-main-color;
+        border: 0.5px solid $border-bg2;
+        border-radius: 10px;
+        text-align: right;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+      h4 {
+        .r {
+          margin: 3px;
+          padding: 4px;
+          font-size: 15px;
+          font-weight: 600;
+          color: $card-title-color;
+          background-color: $background-main-color;
+          border: 0.75px solid $border-bg2;
+          border-radius: 10px;
+          text-align: right;
+          text-transform: uppercase;
+          line-height: 15px;
+        }
+        .l {
+          margin: 3px;
+          padding: 4px;
+          font-size: 15px;
+          font-weight: 600;
+          color: $card-title-color;
+          background-color: $background-main-color;
+          border: 0.75px solid $border-bg2;
+          border-radius: 10px;
+          text-align: left;
+          text-transform: uppercase;
+          line-height: 15px;
+        }
+      }
+      a {
+        margin: 2px;
+        padding: 3px;
+        font-size: 13px;
+        font-weight: 600;
+        color: $text-green;
+        background-color: $background-main-color;
+        border: 0.75px solid $border-bg2;
+        border-radius: 10px;
+        text-align: right;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+    }
+  }
+
+  img {
+    background-color: $background-main-color;
+    width: 125px !important;
+    height: auto;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: $background-main-color;
+    border: 0.5px solid $border-bg3;
+  }
+  .text {
+    width: auto !important;
+    height: auto;
+    display: block;
+    p {
+      margin: 5px;
+      padding: 2px;
+      font-size: 12px;
+      font-weight: 400;
+      color: $text-primary-color;
+      background-color: $background-main-color;
+      border: 0.5px solid $border-bg2;
+      border-radius: 10px;
+      line-height: 15px;
+    }
+    span {
+      margin: 5px;
+      padding: 2px;
+      font-size: 11px;
+      font-weight: 300;
+      color: $text-secondary-color;
+      background-color: $background-main-color;
+      border: 0.5px solid $border-bg2;
+      border-radius: 10px;
+      text-align: right;
+      text-transform: uppercase;
+      line-height: 15px;
+    }
+    h4 {
+      .r {
+        margin: 7px;
+        padding: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        color: $card-title-color;
+        background-color: $background-main-color;
+        border: 0.75px solid $border-bg2;
+        border-radius: 10px;
+        text-align: right;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+      .l {
+        margin: 7px;
+        padding: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        color: $card-title-color;
+        background-color: $background-main-color;
+        border: 0.75px solid $border-bg2;
+        border-radius: 10px;
+        text-align: left;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+    }
+    a {
+      margin: 4px;
+      padding: 3px;
+      font-size: 13px;
+      font-weight: 600;
+      color: $text-green;
+      background-color: $background-main-color;
+      border: 0.75px solid $border-bg2;
+      border-radius: 10px;
+      text-align: right;
+      text-transform: uppercase;
+      line-height: 15px;
+    }
+  }
+}
+.patron-block {
+  width: auto;
+  height: 100%;
+  padding: auto;
+  background-color: $seperator-color;
+  border: 5px solid $border-bg2;
+  margin: 10px;
+  border-radius: 20px;
+  .noborder-img {
+      background-color: $seperator-color;
+      width: 125px !important;
+      height: auto;
+      border-radius: 0px !important;
+      padding: 10px;
+      border: 0 !important;
+      margin: 5px;
+  }
+  .small-img {
+    img {
+      background-color: $background-main-color;
+      width: 65px !important;
+      height: auto;
+      border-radius: 15px;
+      padding: 3px;
+      background-color: $background-main-color;
+      border: 0.5px solid $border-bg2;
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+  }
+  @media (min-width: 1920px) {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  @media (min-width: 1440px) {
+    .text {
+      width: 100% !important;
+      height: auto;
+      display: block;
+      p {
+        margin: 2px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 400;
+        color: $text-primary-color;
+        background-color: $background-main-color;
+        border: 0.5px solid $border-bg2;
+        border-radius: 10px;
+        line-height: 15px;
+        text-transform: capitalize;
+      }
+      span {
+        margin: 2px;
+        padding: 2px;
+        font-size: 11px;
+        font-weight: 300;
+        color: $text-secondary-color;
+        background-color: $background-main-color;
+        border: 0.5px solid $border-bg2;
+        border-radius: 10px;
+        text-align: right;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+      h4 {
+        .r {
+          margin: 3px;
+          padding: 4px;
+          font-size: 15px;
+          font-weight: 600;
+          color: $card-title-color;
+          background-color: $background-main-color;
+          border: 0.75px solid $border-bg2;
+          border-radius: 10px;
+          text-align: right;
+          text-transform: uppercase;
+          line-height: 15px;
+        }
+        .l {
+          margin: 3px;
+          padding: 4px;
+          font-size: 15px;
+          font-weight: 600;
+          color: $card-title-color;
+          background-color: $background-main-color;
+          border: 0.75px solid $border-bg2;
+          border-radius: 10px;
+          text-align: left;
+          text-transform: uppercase;
+          line-height: 15px;
+        }
+      }
+      a {
+        margin: 2px;
+        padding: 3px;
+        font-size: 13px;
+        font-weight: 600;
+        color: $text-green;
+        background-color: $background-main-color;
+        border: 0.75px solid $border-bg2;
+        border-radius: 10px;
+        text-align: right;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+    }
+  }
+
+  img {
+    background-color: $background-main-color;
+    width: 125px !important;
+    height: auto;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: $background-main-color;
+    border: 0.5px solid $border-bg2;
+    margin: 5px;
+  }
+  .text {
+    width: auto !important;
+    height: auto;
+    display: block;
+    p {
+      margin: 5px;
+      padding: 2px;
+      font-size: 12px;
+      font-weight: 400;
+      color: $text-primary-color;
+      background-color: $background-main-color;
+      border: 0.5px solid $border-bg2;
+      border-radius: 10px;
+      line-height: 15px;
+      img {
+        width: 35px !important;
+        height: auto;
+        border: 0;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    span {
+      margin: 5px;
+      padding: 2px;
+      font-size: 11px;
+      font-weight: 300;
+      color: $text-secondary-color;
+      background-color: $background-main-color;
+      border: 0.5px solid $border-bg2;
+      border-radius: 10px;
+      text-align: right;
+      text-transform: uppercase;
+      line-height: 15px;
+    }
+    h4 {
+      img {
+        width: 35px !important;
+        height: auto;
+        border: 0;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+      }
+      .r {
+        margin: 7px;
+        padding: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        color: $card-title-color;
+        background-color: $background-main-color;
+        border: 0.75px solid $border-bg2;
+        border-radius: 10px;
+        text-align: right;
+        text-transform: uppercase;
+        line-height: 15px;
+        
+      }
+      .c {
+        margin: 7px;
+        padding: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        color: $card-title-color;
+        background-color: $background-main-color;
+        border: 0.75px solid $border-bg2;
+        border-radius: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+      .l {
+        margin: 7px;
+        padding: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        color: $card-title-color;
+        background-color: $background-main-color;
+        border: 0.75px solid $border-bg2;
+        border-radius: 10px;
+        text-align: left;
+        text-transform: uppercase;
+        line-height: 15px;
+      }
+    }
+    a {
+      margin: 4px;
+      padding: 3px;
+      font-size: 13px;
+      font-weight: 600;
+      color: $text-green;
+      background-color: $background-main-color;
+      border: 0.75px solid $border-bg2;
+      border-radius: 10px;
+      text-align: right;
+      text-transform: uppercase;
+      line-height: 15px;
+    }
+  }
+}
+.title-1 {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 4px;
+  font-weight: 600;
+  color: $text-green !important;
+  text-transform: uppercase;
+  @include text-shadow1;
+}
+.title-2 {
+  font-family: $font-family-italic;
+  color: $text-green !important;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 15px;
+  padding: 4px;
+  font-weight: 600;
+  text-transform: capitalize;
+  @include text-shadow1;
+  span {
+    display: flex;
+    img {
+      display: block;
+      margin-left: 30px;
+      width: 40px !important;
+      margin-right: 15px;
+    }
+  }
+}
+.title-3 {
+  font-family: $font-family-italic;
+  color: $card-title-color !important;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 4px;
+  font-weight: 600;
+  text-transform: capitalize;
+  @include text-shadow;
+  span {
+    display: flex;
+    img {
+      display: block;
+      margin-left: 30px;
+      width: 40px !important;
+      margin-right: 15px;
+    }
+  }
+}
+.card-list2 {
+  background-color: $background-main-color;
+  @include box-shadow;
+  color: $text-secondary-color;
+  border: 0.5px solid $dark-color;
+  box-sizing: border-box;
+  font-family: $font-family-default;
+  font-size: 1.125rem;
+  line-height: 200%;
+  letter-spacing: 0.01em;
+  border-radius: 15px;
+  height: 100%;
+  margin: 10px;
+  @media (max-width: 767px) {
+    background-color: $background-main-color;
+    @include box-shadow;
+    color: $text-secondary-color;
+    border: 0.5px solid $dark-color;
+    box-sizing: border-box;
+    font-family: $font-family-default;
+    font-size: 1.125rem;
+    line-height: 200%;
+    letter-spacing: 0.01em;
+    border-radius: 15px;
+    height: 100%;
+  }
+}
+.img-row {
+  @media (min-width: 425px) {
+    flex-wrap: wrap;
+  }
+  img {
+    display: block;
+    width: 75px !important;
+    height: auto;
+    margin: 10px;
+    padding: 2px;
+    @media (min-width: 768px) {
+      width: 55px !important;
+      margin: 5px;
+    }
+  }
+}
+.button1 {
+  display: block;
+  width: 200px;
+  height: 40px;
+  background-color: $seperator-color;
+  border: 5px solid $border-bg2;
+  margin: 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  color: $card-title-color;
 }

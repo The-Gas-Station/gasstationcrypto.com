@@ -7,7 +7,7 @@
     }
   ],
   "display": "Cronos",
-  "tokenImage": "/public/images/tokens/cro-hex.png",
+  "tokenImage": "/public/images/tokens/cro.svg",
   "etherLiquidityPair": "evm:0x637348EaCE7f44C1dF82e15bcb0F968351fB7406",
   "liquidityPairs": [
     {

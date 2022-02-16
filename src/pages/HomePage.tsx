@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
 import numeral from 'numeral';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import ImageRow from '../components/ImageRow';
+import { MDBSwitch } from 'mdb-react-ui-kit';
 
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
@@ -16,14 +19,29 @@ import NetworkCard from '../components/NetworkCard';
 import Gauge from '../assets/Gauge.svg';
 import NFPToken from '../assets/NFPcolor.svg';
 import GASToken from '../assets/GASToken.svg';
-
+import burn from '../assets/fire.png';
+import holder from '../assets/tokenholder.png';
+import dev from '../assets/dev.png';
+import gas from '../assets/gas.svg';
+import fuel1 from '../assets/fuel1.svg';
+import fuel2 from '../assets/fuel2.svg';
+import fuel3 from '../assets/fuel3.svg';
+import fuel4 from '../assets/fuel4.svg';
+import fuel5 from '../assets/fuel5.svg';
+import fuel6 from '../assets/fuel6.svg';
 import Slider from 'react-slick';
-
+import legendaryArray from '../components/legendaryRandom';
+import rareArray from '../components/rareRandom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import { CHAIN_INFO } from '../configs';
 
+function rand(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const legendary = rand(0, legendaryArray.length - 1);
+const rare = rand(0, rareArray.length - 1);
 const settings1 = {
   dots: false,
   arrows: true,
@@ -36,7 +54,12 @@ const settings1 = {
 export const HomePage = () => {
   const { readOnlyChainIds } = useConfig();
   const { currentChainId } = useWeb3ConnectionsContext();
-
+  const [PatronOpen, setPatronOpen] = useState(true);
+  const togglePatronOpen = () => setPatronOpen(!PatronOpen);
+  const [UIOpen, setUI] = useState(true);
+  const toggleUI = () => setUI(!UIOpen);
+  const [FuelOpen, setFuel] = useState(true);
+  const toggleFuel = () => setFuel(!FuelOpen);
   const { isTablet, isMobile } = useWidth();
 
   const combinedTVL = useCombinedTVL();
@@ -79,72 +102,265 @@ export const HomePage = () => {
   return (
     <>
       <BannerSection />
-      <div className="services-block">
-        <div className="row gx-xxl-5 justify-content-around">
-          {sectionList.map((list, i) => {
-            return (
-              <div className="col-md-6 col-xl-4" key={i}>
-                <div className="flex-fill services-item">
-                  <BridgeSection bridgeProps={list} />
-                </div>
-              </div>
-            );
-          })}
+      <h5 className="title-3">
+        Welcome! You Are Currently Viewing{' '}
+        <h3 className="title-2">{CHAIN_INFO[currentChainId].name}</h3>
+      </h5>
+      <div className="flex-row d-flex">
+        <div className="flex-column">
+          <div className="flex-row d-flex justify-content-center">
+            <button className="button1">
+              Buy {CHAIN_INFO[currentChainId].gasTokenName}
+            </button>
+            <button className="button1">
+              Mint {CHAIN_INFO[currentChainId].name} Patrons
+            </button>
+            <button className="button1">
+              Chart {CHAIN_INFO[currentChainId].gasTokenName}
+            </button>
+            <button className="button1">
+              Stake {CHAIN_INFO[currentChainId].gasTokenName}
+            </button>
+            <button className="button1">
+              Stats for {CHAIN_INFO[currentChainId].gasTokenName}
+            </button>
+          </div>
         </div>
       </div>
-      <div className="value-block">
-        <div className="mt-4 row">
-          <div className="col-xl-12">
-            <div className="total-locked-value">
-              <div className="total-locked-title">
-                <h3>Total value Locked</h3>
-                <h5>All Networks</h5>
-              </div>
-              <div className="amount-details">
-                <div className="amount-tvl">
-                  <small>TVL</small>
-                  <p>
-                    {numeral(ethers.utils.formatEther(combinedTVL)).format(
-                      '$0,0',
-                    )}
-                  </p>
-                </div>
-                <div className="amount-market-cap">
-                  <small>USD MARKET CAP</small>
-                  <p>
-                    {numeral(
-                      ethers.utils.formatEther(combinedMarketCap),
-                    ).format('$0,0')}
-                  </p>
-                </div>
-              </div>
-              <div className="all-network-list">
-                {isTablet || isMobile ? (
-                  <div className="value-slider">
-                    <Slider {...settings1}>
-                      {(readOnlyChainIds || []).map((chainId) => {
-                        return (
-                          <NetworkCard
-                            key={`mobile-${chainId}`}
-                            chainId={chainId}
-                          />
-                        );
-                      })}
-                    </Slider>
+      <div className={`collapse ${UIOpen ? 'show' : ''}`}>
+        <div className="d-flex flex-row">
+          <div className="flex-column">
+            <div className="flex-row d-flex flex-wrap">
+              <div className="col-lg-4">
+                <h3 className="title-2">
+                  <span>
+                    <img src={GASToken} />
+                    GAS Tokens
+                  </span>
+                </h3>
+                <div className="flex-row d-flex justify-content-center">
+                  <div className="flex-column d-flex patron-block">
+                    <div className="flex-row d-flex">
+                      <div className="flex-column text">
+                        <div className="flex-row d-flex ">
+                          <div className="flex-column">
+                            <h4>
+                              <div className="r title-2">
+                                what is gas token?
+                              </div>
+                            </h4>
+                            <p>
+                              The GAS Token is a Dividend Paying Token that
+                              grants Static Rewards in the Native Gas per
+                              Blockchain.
+                            </p>
+                          </div>
+                          <img src={gas} />
+                        </div>
+                        <div className="flex-row d-flex ">
+                          <img src={holder} />
+                          <div className="flex-column">
+                            <h4>
+                              <div className="l title-3">
+                                passively earn native ether
+                              </div>
+                            </h4>
+                            <p>
+                              8% Reward in native gas per blockchain! As long as
+                              you hold GAS tokens you will start to earn native
+                              blockchain gas (BNB, MATIC, ETH, etc)!
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex-row d-flex ">
+                          <div className="flex-column">
+                            <h4>
+                              <div className="r title-2">fund development</div>
+                            </h4>
+                            <p>
+                              every transation helps fund underlying liquidities
+                              between GAS tokens and network bridge liquidities.
+                            </p>
+                            <a href="https://gasstationcrypto.gitbook.io/the-crypto-gas-station/information/ecosystem/products/our-tokens/tokenomics">
+                              Learn More!
+                            </a>
+                          </div>
+                          <img src={dev} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                ) : (
-                  (readOnlyChainIds || []).map((chainId) => {
-                    return (
-                      <NetworkCard
-                        key={`desktop-${chainId}`}
-                        chainId={chainId}
-                      />
-                    );
-                  })
-                )}
+                </div>
+              </div>
+
+              <div className="col-lg-4">
+                <h3 className="title-3">
+                  <span>
+                    <img src={NFPToken} />
+                    Patrons
+                  </span>
+                </h3>
+
+                <div className="flex-row d-flex justify-content-center">
+                  <div className="flex-column d-flex patron-block">
+                    <div className="flex-row d-flex">
+                      <div className="flex-column text">
+                        <div className="flex-row d-flex ">
+                          <img src={legendaryArray[legendary]} />
+                          <div className="flex-column">
+                            <h4>
+                              <div className="l title-3">what are patrons?</div>
+                            </h4>
+                            <p>
+                              Patrons are unique one-of-a-kind hand drawn &
+                              script generated NFTs that will help fund the
+                              protocol liquidities.
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex-row d-flex ">
+                          <div className="flex-column">
+                            <h4>
+                              <div className="r title-2">Earn Rewards</div>
+                            </h4>
+                            <p>
+                              Rare & Legendary Patrons have unique rewards to
+                              their owners.
+                            </p>
+                          </div>
+                          <img src={rareArray[rare]} />
+                        </div>
+                        <div className="flex-row d-flex ">
+                          <img src="/images/nfps.gif" />
+                          <div className="flex-column">
+                            <h4>
+                              <div className="l title-3">what are patrons?</div>
+                            </h4>
+                            <p>
+                              Supply is Extremely limited. Filler TextFiller
+                              TextFiller TextFiller TextFiller TextFiller
+                              TextFiller TextFiller TextFiller Text
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-4">
+                <h3 className="title-3">
+                  <span>
+                    <img src={Gauge} />
+                    Fuel Tanks
+                  </span>
+                </h3>
+
+                <div className="flex-row d-flex justify-content-center">
+                  <div className="flex-column d-flex patron-block">
+                    <div className="flex-row d-flex">
+                      <div className="flex-column text">
+                        <div className="flex-row d-flex ">
+                          <img src={fuel1} className="noborder-img" />
+                          <div className="flex-column">
+                            <h4>
+                              <div className="l title-3">
+                                staking for everyone <img src={fuel1} />
+                              </div>
+                            </h4>
+                            <p>
+                              <img src={fuel1} />
+                              <img src={fuel2} />
+                              <img src={fuel3} />
+                              <img src={fuel4} />
+                              <img src={fuel5} />
+                              <img src={fuel6} />
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex-row d-flex ">
+                          <div className="flex-column">
+                            <h4>
+                              <div className="r title-2">
+                                Safe, Secure, Simple.
+                              </div>
+                            </h4>
+                            <p>
+                              Filler TextFiller TextFiller TextFiller TextFiller
+                              TextFiller TextFiller TextFiller TextFiller Text
+                            </p>
+                          </div>
+                          <img src={fuel4} className="noborder-img" />
+                        </div>
+                        <div className="flex-row d-flex ">
+                          <img src={fuel5} className="noborder-img" />
+                          <div className="flex-column">
+                            <h4>
+                              <div className="l title-3">
+                                More of what you love
+                              </div>
+                            </h4>
+                            <p>
+                              Filler TextFiller TextFiller TextFiller TextFiller
+                              TextFiller TextFiller TextFiller TextFiller Text
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex-row d-flex">
+                          <img src={fuel2} className="noborder-img" />
+                          <img src={fuel2} className="noborder-img" />
+                          <img src={fuel2} className="noborder-img" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="d-flex flex-row justify-content-center flex-wrap">
+        <div className="flex-column">
+          <h6 className="title-2">Our Partners</h6>
+          <div className="flex-row flex-wrap d-flex card-list-row">
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+          </div>
+        </div>
+        <div className="flex-column">
+          <h6 className="title-2">Built With</h6>
+          <div className="flex-row flex-wrap d-flex card-list-row">
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+            <img src="https://via.placeholder.com/50x50" />
+          </div>
+        </div>
+
+        <div className="col-lg-12">
+          <div className="flex-row flex-wrap d-flex justify-content-center">
+            <p className="title-2">Copyright 2022</p>
+            <p className="title-3">
+              The Gas Station: #1 Ether Dividend Rewards Protocol
+            </p>
+          </div>
+        </div>
+        <div className="d-flex flex-column justify-content-center flex-wrap card-list2 clickable">
+          <img src={NFPToken} onClick={toggleUI} />
+          <h6>Toggle UI</h6>
         </div>
       </div>
     </>
