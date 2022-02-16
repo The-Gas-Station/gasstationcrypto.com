@@ -1,5 +1,6 @@
 $font-family-default: Work Sans;
 $font-family-italic: Leckerli One;
+
 img {
   max-width: 100%;
   image-rendering: -moz-crisp-edges;
@@ -13,12 +14,15 @@ body {
   @include bg-color;
   scrollbar-width: auto;
   scrollbar-color: $my-theme-primary $background-main-color;
+
   ::-webkit-scrollbar {
     width: 10px;
   }
+
   ::-webkit-scrollbar-track {
     background: $background-main-color;
   }
+
   ::-webkit-scrollbar-thumb {
     background-color: $my-theme-primary;
     border-radius: 10px;
@@ -30,15 +34,18 @@ body {
 .sidenav,
 .sidenav .scrollbar-container {
   min-width: 300px;
+
   &.sidenav-slim-collapsed,
   &.sidenav-slim-collapsed .scrollbar-container,
   &.sidenav-slim-collapsed ul,
   &.is-closed {
     min-width: 85px;
   }
+
   @media (max-width: 575px) {
     min-width: 95% !important;
   }
+
   @media (max-width: 991px) {
     &.sidenav-hidden {
       width: 0;
@@ -46,6 +53,7 @@ body {
     }
   }
 }
+
 // .sidenav-menu{
 //   padding: 0 15px;
 // }
@@ -55,9 +63,11 @@ body {
   height: 75px;
   padding: 0;
 }
+
 .navbar {
   display: block !important;
 }
+
 .sidenav .fixed-bottom {
   hr {
     color: $seperator-color;
@@ -65,6 +75,7 @@ body {
     border-color: $seperator-color;
   }
 }
+
 .list-group-item {
   .text-white {
     color: $text-primary-color !important;
@@ -74,17 +85,20 @@ body {
 .text-primary-color {
   color: $text-primary-color;
 }
+
 .sidenav-item a {
   font-size: 16px;
   font-weight: 600;
   padding: 12px 10px !important;
+
   svg {
-    & > path,
-    & > g path {
+
+    &>path,
+    &>g path {
       fill: $text-secondary-color;
     }
 
-    & > rect {
+    &>rect {
       stroke: $text-secondary-color;
     }
   }
@@ -100,20 +114,19 @@ body {
 
   &:hover,
   &.active {
-    background-image: linear-gradient(
-      to right,
-      $brand-main-color,
-      $background-main-color
-    );
+    background-image: linear-gradient(to right,
+        $brand-main-color,
+        $background-main-color);
     border-radius: 10px;
 
     svg {
-      & > path,
-      & > g path {
+
+      &>path,
+      &>g path {
         fill: $background-main-color;
       }
 
-      & > rect {
+      &>rect {
         stroke: $background-main-color;
       }
     }
@@ -137,13 +150,14 @@ body {
   font-size: 16px;
   border-radius: 100px;
   @include connect-button;
+
   &.not-connected {
     @include connect-button;
     cursor: pointer;
   }
 
   svg {
-    & > path {
+    &>path {
       stroke: $text-primary-color;
     }
   }
@@ -151,8 +165,10 @@ body {
 
 a.mode-switcher {
   color: $text-secondary-color !important;
+
   i {
     color: $text-secondary-color;
+
     path {
       fill: $text-secondary-color;
     }
@@ -166,30 +182,39 @@ a.mode-switcher {
     }
   }
 }
+
 .services-block {
   margin-top: -4rem;
   padding: 0 24px;
+
   .services-item {
     height: 100%;
+
     .card-body {
       padding-bottom: 0;
     }
   }
+
   .date-time {
     color: $text-light5;
   }
+
   @media (max-width: 1199px) {
     padding: 0 12px;
+
     .col-md-6 {
       margin-bottom: 60px;
+
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
+
   @media (max-width: 991px) {
     margin-top: -15px;
   }
+
   @media (max-width: 767px) {
     margin-top: -5px;
   }
@@ -198,6 +223,7 @@ a.mode-switcher {
 .bg-crd {
   .row-flex {
     display: flex;
+
     .container {
       flex-direction: row;
       flex-wrap: nowrap;
@@ -205,13 +231,12 @@ a.mode-switcher {
       gap: 10px;
     }
   }
+
   .card-list-row-inner {
-    background: linear-gradient(
-      83.48deg,
-      #00b098 4.46%,
-      #521a4c 78.43%,
-      #521a4c 100%
-    );
+    background: linear-gradient(83.48deg,
+        #00b098 4.46%,
+        #521a4c 78.43%,
+        #521a4c 100%);
     @include box-shadow;
     border: 0.5px solid $dark-color;
     box-sizing: border-box;
@@ -221,6 +246,7 @@ a.mode-switcher {
     display: flex;
     margin-bottom: 10px;
     border-radius: 10px;
+
     @media (max-width: 767px) {
       background-color: $background-main-color;
       @include box-shadow;
@@ -235,6 +261,7 @@ a.mode-switcher {
       height: 100%;
     }
   }
+
   .card-list-row {
     background-color: $background-main-color;
     @include box-shadow;
@@ -252,6 +279,7 @@ a.mode-switcher {
     border-radius: 15px;
     height: auto;
     display: flex;
+
     @media (max-width: 767px) {
       background-color: $background-main-color;
       @include box-shadow;
@@ -265,6 +293,7 @@ a.mode-switcher {
       border-radius: 15px;
       height: 100%;
     }
+
     .circle-img {
       text-align: center;
       width: 84px;
@@ -280,8 +309,10 @@ a.mode-switcher {
       margin-top: -40px;
       padding: 7px;
     }
+
     padding: 7px;
   }
+
   .text {
     color: $text-primary-color3;
     letter-spacing: 0.01em;
@@ -291,6 +322,7 @@ a.mode-switcher {
     font-size: 18px;
     line-height: 140%;
     text-align: center;
+
     .green {
       font-style: normal;
       font-weight: normal;
@@ -300,6 +332,7 @@ a.mode-switcher {
     }
   }
 }
+
 .card-list {
   background-color: $background-main-color;
   @include box-shadow;
@@ -312,6 +345,7 @@ a.mode-switcher {
   letter-spacing: 0.01em;
   border-radius: 15px;
   height: 100%;
+
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -325,6 +359,7 @@ a.mode-switcher {
     border-radius: 15px;
     height: 100%;
   }
+
   .circle-img {
     text-align: center;
     width: 84px;
@@ -347,14 +382,17 @@ a.mode-switcher {
       border-radius: 50%;
       width: 100%;
       height: 100%;
+
       img {
         width: 40px;
         height: 40px;
       }
     }
+
     @media (min-width: 1499px) {
       width: 100px;
       height: 100px;
+
       .circle-img-bg {
         img {
           width: 50px;
@@ -363,6 +401,7 @@ a.mode-switcher {
       }
     }
   }
+
   .card-list-title {
     font-family: $font-family-default;
     font-size: 36px;
@@ -371,22 +410,27 @@ a.mode-switcher {
     color: $card-title-color;
     @include text-shadow;
   }
+
   .card-footer {
     background-color: transparent !important;
     border: none;
     padding: 30px 24px 24px;
   }
+
   .card-text {
     color: $text-primary-color3;
     letter-spacing: 0.01em;
     margin-bottom: 0;
   }
+
   .card-link {
     font-size: 24px;
+
     @media (max-width: 1399px) {
       font-size: 18px;
     }
   }
+
   .btn-block {
     text-transform: none;
     color: #ffffff;
@@ -395,33 +439,39 @@ a.mode-switcher {
     border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
+
     &.not-connected {
       @include connect-button;
       cursor: pointer;
     }
 
     svg {
-      & > path {
+      &>path {
         stroke: $text-primary-color;
       }
     }
   }
+
   @media (max-width: 991px) {
     .card-body {
       padding: 10px 20px;
     }
+
     .card-list-title {
       font-size: 30px;
     }
+
     .card-text {
       font-size: 16px;
       line-height: 26px;
     }
+
     .card-footer {
       padding: 15px 20px 20px;
     }
   }
 }
+
 .card-body1 {
   background-color: $background-main-color;
   @include box-shadow;
@@ -436,6 +486,7 @@ a.mode-switcher {
   height: 100%;
   padding: 25px;
   margin: 10px;
+
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -449,6 +500,7 @@ a.mode-switcher {
     border-radius: 15px;
     height: 100%;
   }
+
   .circle-img {
     text-align: center;
     width: 84px;
@@ -471,14 +523,17 @@ a.mode-switcher {
       border-radius: 50%;
       width: 100%;
       height: 100%;
+
       img {
         width: 40px;
         height: 40px;
       }
     }
+
     @media (min-width: 1499px) {
       width: 100px;
       height: 100px;
+
       .circle-img-bg {
         img {
           width: 50px;
@@ -487,6 +542,7 @@ a.mode-switcher {
       }
     }
   }
+
   .card-list-title {
     font-family: $font-family-default;
     font-size: 36px;
@@ -495,22 +551,27 @@ a.mode-switcher {
     color: $card-title-color;
     @include text-shadow;
   }
+
   .card-footer {
     background-color: transparent !important;
     border: none;
     padding: 30px 24px 24px;
   }
+
   .card-text {
     color: $text-primary-color3;
     letter-spacing: 0.01em;
     margin-bottom: 0;
   }
+
   .card-link {
     font-size: 24px;
+
     @media (max-width: 1399px) {
       font-size: 18px;
     }
   }
+
   .btn-block {
     text-transform: none;
     color: #ffffff;
@@ -519,36 +580,43 @@ a.mode-switcher {
     border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
+
     &.not-connected {
       @include connect-button;
       cursor: pointer;
     }
 
     svg {
-      & > path {
+      &>path {
         stroke: $text-primary-color;
       }
     }
   }
+
   @media (max-width: 991px) {
     .card-body {
       padding: 10px 20px;
     }
+
     .card-list-title {
       font-size: 30px;
     }
+
     .card-text {
       font-size: 16px;
       line-height: 26px;
     }
+
     .card-footer {
       padding: 15px 20px 20px;
     }
   }
 }
+
 img {
   max-width: 100%;
 }
+
 .banner-section-wrapper {
   background-image: url(./../assets/banner-img.png);
   background-size: 57% 100%;
@@ -556,13 +624,16 @@ img {
   margin: -2px -12px 0;
   background-repeat: no-repeat;
   overflow: hidden;
+
   @media (max-width: 1499px) {
     background-size: 75% 100%;
   }
+
   @media (max-width: 767px) {
     background-image: none;
   }
 }
+
 .banner-section {
   min-height: 524px;
   background: url(../assets/banner-bg.png) no-repeat center;
@@ -573,53 +644,59 @@ img {
   color: $text-secondary-color;
   font-family: $font-family-default;
   padding-left: 8%;
+
   .banner-text {
     h5 {
       font-size: 1.75rem;
       line-height: 130%;
       margin-bottom: 30px;
     }
+
     p {
       font-size: 1.125rem;
       color: #ffffff;
       margin-bottom: 5px;
+
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
+
   .banner-img {
     display: none;
   }
-  @media (max-width: 1499px) {
-  }
+
+  @media (max-width: 1499px) {}
+
   @media (max-width: 1024px) {
     .banner-text {
       padding: 0;
     }
   }
+
   @media (max-width: 767px) {
     min-height: auto;
     padding: 0;
-    background: linear-gradient(
-      86.88deg,
-      #521a4c 71.08%,
-      rgba(82, 26, 76, 0) 94.21%
-    );
+    background: linear-gradient(86.88deg,
+        #521a4c 71.08%,
+        rgba(82, 26, 76, 0) 94.21%);
+
     .banner-text {
       padding: 45px 35px;
-      background: linear-gradient(
-        89.67deg,
-        #1c3c4a 19.76%,
-        rgba(28, 37, 74, 0) 80.98%
-      );
+      background: linear-gradient(89.67deg,
+          #1c3c4a 19.76%,
+          rgba(28, 37, 74, 0) 80.98%);
+
       h5 {
         font-size: 21px;
         margin-bottom: 30px;
       }
+
       p {
         margin-bottom: 0;
         font-size: 18px;
+
         &:last-child {
           font-size: 16px;
         }
@@ -627,8 +704,10 @@ img {
     }
   }
 }
+
 .value-block {
   padding: 0 24px;
+
   @media (max-width: 1199px) {
     padding: 0 12px;
   }
@@ -636,16 +715,19 @@ img {
 
 .total-locked-value {
   padding: 1rem 0;
+
   .total-locked-title {
     display: flex;
     align-items: center;
     border-bottom: 2px solid $border-color-secondary;
     margin-bottom: 1rem;
+
     h3 {
       font-size: calc(28px + (36 - 28) * ((100vw - 320px) / (1920 - 320)));
       font-family: $font-family-default;
       color: $text-green;
     }
+
     h5 {
       font-family: $font-family-italic;
       font-size: calc(24px + (28 - 24) * ((100vw - 320px) / (1920 - 320)));
@@ -654,12 +736,15 @@ img {
       margin-left: 2rem;
       @include text-shadow1;
     }
+
     @media (max-width: 767px) {
       display: block;
+
       h3 {
         font-size: 26px;
         line-height: normal;
       }
+
       h5 {
         font-size: 20px;
         margin: 0 0 15px;
@@ -667,26 +752,31 @@ img {
       }
     }
   }
+
   .amount-details {
     display: flex;
 
     .amount-tvl {
       padding-right: 1rem;
+
       small {
         font-size: 0.75rem;
         color: $text-secondary-color;
         line-height: 1;
       }
+
       p {
         font-size: calc(24px + (36 - 24) * ((100vw - 320px) / (1920 - 320)));
         color: $text-primary-color;
       }
     }
+
     .amount-market-cap {
       @extend .amount-tvl;
       padding-left: 1rem;
       padding-right: 0;
     }
+
     @media (max-width: 991px) {
       .amount-tvl {
         p {
@@ -695,9 +785,11 @@ img {
       }
     }
   }
+
   .all-network-list {
     display: flex;
     justify-content: space-between;
+
     .card {
       border-radius: 8px;
       flex: 1;
@@ -706,6 +798,7 @@ img {
       box-shadow: none;
       position: relative;
       z-index: 1;
+
       &:after {
         content: '';
         position: absolute;
@@ -717,9 +810,11 @@ img {
         @include border-light1;
         z-index: -1;
       }
-      ~ .card {
+
+      ~.card {
         margin-left: 15px;
       }
+
       .card-header {
         @include bg-color8;
         position: relative;
@@ -728,6 +823,7 @@ img {
         padding: 9px 15px;
         font-size: 16px;
         font-weight: 600;
+
         .avatar {
           border-radius: 50%;
           padding-right: 5px;
@@ -736,12 +832,14 @@ img {
           justify-content: center;
           position: relative;
           margin-top: -45px;
+
           img {
             width: 45px;
             height: 45px;
             border-radius: 50%;
             border: 2px solid $dark-bg;
           }
+
           @media (max-width: 1499px) {
             img {
               width: 60px;
@@ -762,56 +860,64 @@ img {
           }
         }
       }
+
       .card-body {
         background: $dark-bg;
         border-radius: 0px 0px 8px 8px;
         padding: 22px 18px 15px;
+
         @media (max-width: 1599px) {
           padding: 15px;
         }
+
         .card-text {
           display: flex;
           flex-direction: column;
           color: $text-primary-color1;
           font-size: 18px;
           min-height: 48px;
+
           small {
             color: $text-secondary-color;
             font-size: 0.75rem;
           }
         }
+
         .comming-soon {
           display: flex;
           padding: 0.5rem;
-          background: linear-gradient(
-            90deg,
-            #28ccab 5.21%,
-            rgba(40, 204, 171, 0) 95.31%
-          );
+          background: linear-gradient(90deg,
+              #28ccab 5.21%,
+              rgba(40, 204, 171, 0) 95.31%);
           color: #ffffff;
           line-height: 1;
           font-size: 0.75rem;
         }
       }
     }
+
     @media (max-width: 1399px) {
       display: flex;
       margin: 0 -7.5px;
       flex-wrap: wrap;
+
       .card {
         display: inline-flex;
         width: 33.33%;
         padding: 0 7.5px;
         margin-top: 40px;
         flex: auto;
-        ~ .card {
+
+        ~.card {
           margin-left: 0;
         }
       }
     }
+
     @media (max-width: 767px) {
       margin: 0;
       display: block;
+
       .card {
         width: 100%;
       }
@@ -826,6 +932,7 @@ img {
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
   margin-bottom: 16px;
+
   .upcoming-title {
     color: $brand-main-color;
     font-family: $font-family-italic;
@@ -836,6 +943,7 @@ img {
     color: $text-green;
     @include text-shadow1;
   }
+
   .list-group {
     .list-group-item {
       background: transparent;
@@ -844,6 +952,7 @@ img {
       line-height: 1.6;
       padding-right: 0.5rem;
       font-family: $font-family-default;
+
       &::before {
         content: '';
         position: absolute;
@@ -853,6 +962,7 @@ img {
         height: 100%;
         width: 2px;
       }
+
       &:after {
         content: '';
         position: absolute;
@@ -872,55 +982,67 @@ img {
 .text-green {
   color: $brand-main-color !important;
 }
+
 .scrollView {
   max-height: calc(100vh - 66px);
   overflow-y: auto;
   background-color: $dark-color;
 }
+
 .logo-block {
   display: flex;
   align-items: center;
 }
+
 .menu-amount-sections {
   display: flex;
   align-items: center;
+
   @media (max-width: 991px) {
     justify-content: space-between;
   }
 }
+
 .menu-icon {
   display: flex;
   align-items: center;
   padding: 0 12px;
   height: 100%;
   z-index: 10;
+
   &.is-closed {
     @media (min-width: 992px) {
-      + .right-content {
+      +.right-content {
         padding-left: 85px;
+
         &:after {
           left: 85px;
         }
       }
     }
   }
+
   @media (min-width: 992px) {
     position: absolute;
     left: 0;
     top: 0;
   }
+
   @media (max-width: 991px) {
     width: auto;
     min-width: auto !important;
   }
 }
+
 .right-content {
   width: 100%;
   position: relative;
   z-index: 1;
   transition: all 0.3s linear 0s;
+
   @media (min-width: 992px) {
     padding-left: 300px;
+
     &:after {
       content: '';
       position: absolute;
@@ -934,31 +1056,40 @@ img {
       transition: all 0.3s linear 0s;
     }
   }
+
   .row {
     margin: 0;
+
     .col-md-10 {
       padding: 0;
     }
+
     .col-md-2 {
       padding: 0;
     }
   }
+
   @media (max-width: 991px) {
     width: auto;
   }
+
   @media (max-width: 575px) {
     width: 100%;
   }
 }
+
 .title-msg {
   color: $card-title-color;
 }
+
 .amount-sections {
   display: flex;
+
   &.amount-sections-scroll {
     // width: 100%;
     display: block;
     position: relative;
+
     .slick-track {
       display: flex;
     }
@@ -967,18 +1098,22 @@ img {
       &:first-child {
         border-left: none;
         padding-left: 15px;
+
         &:after {
           display: none;
         }
       }
     }
+
     &::-webkit-scrollbar {
       width: 5px;
       height: 5px;
     }
+
     &::-webkit-scrollbar-track {
       height: 5px;
     }
+
     &::-webkit-scrollbar-thumb {
       background-color: #1d3d4c;
     }
@@ -990,6 +1125,7 @@ img {
     position: relative;
     z-index: 1;
     height: 75px;
+
     &:before {
       content: '';
       position: absolute;
@@ -1000,6 +1136,7 @@ img {
       z-index: -1;
       background-color: #28ccac;
     }
+
     .amount-col {
       display: block;
       color: $card-title-color;
@@ -1007,22 +1144,26 @@ img {
       justify-content: center;
       min-width: 160px;
       font-size: 14px;
+
       span {
         &.sub-text {
           color: $text-secondary-color;
           font-size: 0.75rem;
           margin-bottom: 0.5rem;
         }
+
         &.amount-text {
           color: $text-light1;
           font-size: 12px;
           margin-bottom: 0.15rem;
           height: flex;
         }
+
         &.text-body {
           color: $text-light1;
           display: flex;
           font-size: 14px;
+
           &:not(:nth-last-of-type(1)) {
             margin-bottom: 0.5rem;
           }
@@ -1031,6 +1172,7 @@ img {
     }
   }
 }
+
 .meta-mask-block {
   min-height: 75px;
   display: flex;
@@ -1038,8 +1180,10 @@ img {
   padding: 0 20px;
   position: relative;
   z-index: 1;
+
   @media (min-width: 992px) {
     border-left: 1px solid #00b39c;
+
     &:after {
       content: '';
       position: absolute;
@@ -1058,19 +1202,23 @@ img {
     align-items: center;
     justify-content: flex-end;
     width: 100%;
+
     .text-right {
       text-align: right;
       padding-right: 10px;
+
       span {
         color: $text-light6;
       }
     }
+
     .text-fantom {
       margin-bottom: 5px;
       font-size: 14px;
       justify-content: flex-end;
     }
   }
+
   .custom-select {
     border: 1px solid #00b39c;
     box-sizing: border-box;
@@ -1082,21 +1230,26 @@ img {
     font-size: 12px;
     margin-top: 8px;
     min-width: 170px;
+
     option {
       color: #000;
     }
+
     @media (max-width: 1799px) {
       min-width: auto;
       max-width: 170px;
     }
   }
+
   @media (max-width: 991px) {
     padding: 0 15px 0 10px;
   }
 }
+
 svg.mr-2 {
   margin-right: 10px;
 }
+
 .justify-content-end {
   justify-content: flex-end;
 }
@@ -1106,16 +1259,19 @@ svg.mr-2 {
   font-weight: 600;
   color: #8a92a6;
   margin: 30px 0 10px;
+
   span {
     margin-left: 24px;
   }
 }
+
 // .carousel-control-prev, .carousel-control-next
 .all-network-list {
   .slide {
     height: 100%;
     padding-bottom: 30px;
   }
+
   .slick-arrow {
     width: 16px;
     height: 16px;
@@ -1125,21 +1281,26 @@ svg.mr-2 {
     display: flex;
     align-items: center;
     justify-content: center;
+
     &:before {
       font-size: 18px;
       color: #28ccab;
     }
   }
+
   .slick-prev {
     margin-left: 10px;
   }
+
   .slick-next {
     margin-right: 10px;
   }
+
   .carousel-control-prev,
   .carousel-control-next {
     top: auto;
     width: auto;
+
     span {
       width: 16px;
       height: 16px;
@@ -1149,36 +1310,48 @@ svg.mr-2 {
       display: flex;
       align-items: center;
       justify-content: center;
+
       &:after {
         font-size: 10px;
         color: #28ccab;
       }
     }
   }
+
   .carousel-control-prev {
     left: auto;
     right: 21px;
   }
 }
+
 .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
   display: none;
 }
 
 .react-horizontal-scrolling-menu--scroll-container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .react-horizontal-scrolling-menu--scroll-container {
   width: 80% !important;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1190,34 +1363,42 @@ select {
   cursor: pointer;
   outline: none;
 }
+
 .rewards-first-block {
   padding: 25px 30px 6px;
   margin: 0 -12px;
   background-color: $dark-bg;
+
   h2 {
     font-size: 28px;
     color: $text-primary-color;
     margin-bottom: 25px;
   }
+
   @media (max-width: 1440px) {
     padding: 15px 30px 3px;
+
     h2 {
       font-size: 21px;
       font-weight: 400;
     }
   }
+
   @media (max-width: 991px) {
     padding: 20px 15px 5px;
     margin: 0 -12px;
   }
+
   .rewards-title-block {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
+
     @media (max-width: 991px) {
       display: block;
     }
+
     .custom-select {
       @include bg-color2;
       border-radius: 30px;
@@ -1229,30 +1410,37 @@ select {
       margin-left: 30px;
     }
   }
+
   .rewards-title {
     display: flex;
     align-items: center;
+
     h2 {
       margin-bottom: 0;
     }
   }
+
   .total-rewards-value {
     .amount-details {
       display: flex;
+
       @media (max-width: 991px) {
         display: block;
       }
     }
+
     .amount-market-cap,
     .amount-tvl {
       text-align: right;
       margin-left: 100px;
+
       small {
         font-size: 12px;
         font-weight: 400;
         color: #28ccab;
         display: block;
       }
+
       p {
         font-size: 18px;
         font-weight: 600;
@@ -1260,22 +1448,27 @@ select {
         margin: 0;
         line-height: normal;
       }
+
       @media (max-width: 1440px) {
         margin-left: 30px;
       }
+
       @media (max-width: 991px) {
         margin: 0 0 10px 0;
+
         &:last-child {
           margin-bottom: 0;
         }
       }
     }
+
     @media (max-width: 991px) {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
   }
+
   .rewards-items {
     .rewards-item {
       background: $dark-color5;
@@ -1286,6 +1479,7 @@ select {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       small {
         font-weight: 500;
         font-size: 12px;
@@ -1293,16 +1487,19 @@ select {
         color: #8a92a6;
         display: block;
       }
+
       p {
         margin: 5px 0 0;
         font-weight: 500;
         font-size: 21px;
         color: $text-primary-color;
         line-height: normal;
+
         @media (max-width: 1399px) {
           font-size: 18px;
         }
       }
+
       .rewards-icon {
         @include box-shadow3;
         border-radius: 100px;
@@ -1315,33 +1512,41 @@ select {
         height: 48px;
         background-color: $dark-bg8;
       }
+
       @media (max-width: 991px) {
         padding: 12px;
+
         p {
           font-size: 16px;
         }
       }
+
       @media (max-width: 575px) {
         flex-wrap: wrap;
         padding-top: 0;
         margin: 15px 0;
+
         .rewards-content {
           order: 2;
           width: 100%;
           margin-top: 8px;
         }
+
         .rewards-icon {
           margin: -15px auto 0;
           order: 1;
+
           img {
             width: 36px;
           }
         }
       }
+
       @media (max-width: 360px) {
         small {
           font-size: 11px;
         }
+
         p {
           font-size: 14px;
         }
@@ -1349,16 +1554,20 @@ select {
     }
   }
 }
+
 .rewards-second-block {
   padding: 20px 18px;
+
   .title-block {
     border-bottom: 1px solid $border-bg2;
     padding-bottom: 15px;
     margin-bottom: 15px;
+
     h2 {
       color: $card-title-color;
       font-size: 36px;
       @include text-shadow;
+
       span {
         font-family: 'Leckerli One';
         color: $text-green;
@@ -1366,19 +1575,23 @@ select {
         font-size: 28px;
       }
     }
+
     p {
       font-size: 16px;
       color: #8a92a6;
       margin-bottom: 0;
     }
   }
+
   @media (max-width: 991px) {
     padding: 15px 0;
   }
+
   @media (max-width: 767px) {
     .title-block {
       h2 {
         font-size: 30px;
+
         span {
           font-size: 20px;
         }
@@ -1386,17 +1599,21 @@ select {
     }
   }
 }
+
 .text-green {
   color: #28ccab !important;
 }
+
 .text-pink {
   color: #ff6691 !important;
 }
+
 .rewards-table {
   .table {
     background-color: transparent;
     position: relative;
     z-index: 1;
+
     tr {
       @include box-shadow1;
       background: $background-main-color;
@@ -1407,30 +1624,37 @@ select {
       // align-items: center;
       // justify-content: space-between;
       margin-bottom: 1px;
+
       td {
         vertical-align: middle;
         border: none;
         padding: 15px 7.5px;
+
         &.desktop-view {
           display: table-cell !important;
         }
+
         @media (max-width: 575px) {
           &.desktop-view {
             display: none !important;
           }
         }
+
         &:first-child {
           border-radius: 10px 0 0 10px;
           padding-left: 20px;
           min-width: 300px;
+
           @media (max-width: 1199px) {
             min-width: 300px;
           }
         }
+
         &:last-child {
           border-radius: 0 10px 10px 0;
           padding-right: 20px;
         }
+
         // @media (max-width:1499px) {
         //   min-width: 200px;
         // }
@@ -1441,34 +1665,41 @@ select {
           display: flex;
           align-items: center;
           margin-bottom: 5px;
+
           &:last-child {
             margin: 5px 0 0;
           }
         }
+
         p {
           margin-bottom: 0;
           font-weight: 500;
           font-size: 18px;
           line-height: normal;
           color: $text-light2;
+
           @media (max-width: 1440px) {
             font-size: 15px;
           }
         }
+
         @media (max-width: 1199px) {
           min-width: 140px;
         }
       }
     }
   }
+
   .rewards-table-title {
     display: flex;
     align-items: center;
+
     .title-img {
       flex: none;
       margin-right: 30px;
       width: 48px;
     }
+
     .title {
       h3 {
         font-weight: 500;
@@ -1476,6 +1707,7 @@ select {
         color: $text-light2;
         margin-bottom: 2px;
       }
+
       p {
         font-size: 12px;
         color: #8a92a6;
@@ -1483,6 +1715,7 @@ select {
         max-width: 300px;
       }
     }
+
     @media (max-width: 1440px) {
       .title {
         h3 {
@@ -1491,8 +1724,10 @@ select {
       }
     }
   }
+
   .action-btn-dropdown {
     &.open {
+
       // .action-dropdown {
       //   opacity: 1;
       //   visibility: visible;
@@ -1503,6 +1738,7 @@ select {
         }
       }
     }
+
     .title-box {
       display: flex;
       align-items: center;
@@ -1511,14 +1747,17 @@ select {
       font-weight: 600;
       font-size: 14px;
       min-width: 85px;
+
       span {
         color: #13b497;
       }
+
       &.open {
         &:after {
           transform: rotate(-180deg);
         }
       }
+
       &:after {
         content: '';
         background: url(../assets/arrow-down.svg) no-repeat center;
@@ -1534,39 +1773,48 @@ select {
       }
     }
   }
+
   @media (max-width: 575px) {
     .table {
       tr {
         margin-bottom: 2px;
+
         td {
           min-width: auto;
           padding: 10px 5px;
+
           &:first-child {
             min-width: auto;
             padding-left: 10px;
           }
+
           &:last-child {
             padding-right: 10px;
           }
+
           p {
             font-size: 14px;
           }
         }
       }
     }
+
     .action-btn-dropdown {
       .title-box {
         min-width: auto;
+
         &::after {
           margin-left: 0;
         }
       }
     }
+
     .rewards-table-title {
       .title-img {
         margin-right: 10px;
         width: 36px;
       }
+
       .title {
         h3 {
           font-size: 14px;
@@ -1575,15 +1823,18 @@ select {
     }
   }
 }
+
 .action-dropdown-box {
   box-shadow: none !important;
   border: none !important;
   background-color: transparent !important;
+
   th {
     padding: 0 !important;
     border: none !important;
   }
 }
+
 .action-dropdown {
   // position: absolute;
   // width: 100%;
@@ -1597,6 +1848,7 @@ select {
   box-sizing: border-box;
   border-radius: 0 0 15px 15px;
   padding: 50px 35px 35px;
+
   // margin-top: -25px;
   .action-title {
     margin-bottom: 20px;
@@ -1604,51 +1856,63 @@ select {
     font-size: 14px;
     color: #8a92a6;
   }
+
   .action-item {
     background: $dark-color3;
     border: 2px solid $dark-color4;
     @include box-shadow2;
     border-radius: 15px;
     padding: 15px 20px;
+
     span {
       font-size: 12px;
       display: block;
       padding-bottom: 10px;
+
       &:last-child {
         padding-bottom: 0;
       }
     }
+
     &.recent-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
     .action-content {
       width: 50%;
+
       &:last-child {
         span {
           color: #a0aab6;
         }
       }
+
       span {
         display: block;
         padding-bottom: 4px;
+
         &:last-child {
           padding-bottom: 0;
         }
       }
+
       .text-decoration-underline {
         display: inline-block;
       }
+
       p {
         font-weight: 600;
         font-size: 21px;
         line-height: normal;
       }
+
       @media (max-width: 1399px) {
         span {
           font-size: 12px;
         }
+
         p {
           font-size: 16px;
           margin-bottom: 5px;
@@ -1656,39 +1920,49 @@ select {
       }
     }
   }
+
   .mobile-apy-content {
     .apy-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-bottom: 5px;
+
       &:last-child {
         padding-bottom: 0;
       }
+
       span {
         color: #a0aab6;
         font-size: 12px;
       }
+
       p {
         margin: 0 0 0 5px;
       }
     }
   }
+
   @media (max-width: 767px) {
     padding: 40px 20px 15px;
+
     .action-item {
       margin-bottom: 10px;
     }
   }
+
   @media (max-width: 575px) {
     padding: 40px 15px 20px;
+
     .action-title {
       margin-bottom: 8px;
     }
+
     .action-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       .join-btn {
         width: auto;
         min-width: 115px;
@@ -1696,32 +1970,40 @@ select {
     }
   }
 }
+
 .title-grid-list {
   margin-bottom: 13px;
+
   .grid-block {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
   }
+
   .mobile-filter {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+
     .filter-title {
       font-size: 14px;
       color: #8a92a6;
+
       svg {
         margin-right: 13px;
       }
     }
+
     span {
       font-size: 12px;
       color: #28ccab;
     }
   }
+
   .grid-list-icon {
     display: flex;
     align-items: center;
+
     span {
       width: 24px;
       height: 24px;
@@ -1731,24 +2013,29 @@ select {
       align-items: center;
       justify-content: center;
       cursor: pointer;
+
       &.active {
         background-color: $dark-bg;
         @include border2;
+
         svg {
           path {
             fill: #28ccab;
           }
         }
       }
-      ~ span {
+
+      ~span {
         margin-left: 7px;
       }
     }
   }
+
   .sort-search-block {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
     span {
       font-weight: normal;
       font-size: 12px;
@@ -1756,6 +2043,7 @@ select {
       text-transform: uppercase;
       display: block;
     }
+
     .custom-select {
       background-color: $background-main-color;
       @include border-light;
@@ -1767,16 +2055,20 @@ select {
       min-height: 40px;
       min-width: 170px;
       background-image: url(../assets/arrow-down-white.svg) !important;
+
       @media (max-width: 1399px) {
         font-size: 13px;
         min-width: 140px;
       }
     }
+
     .search-item {
       margin-left: 28px;
+
       .custom-select {
         min-width: 210px;
       }
+
       @media (max-width: 1399px) {
         .custom-select {
           min-width: 140px;
@@ -1784,18 +2076,22 @@ select {
       }
     }
   }
+
   .grid-switch-icon {
     margin: 0 24px;
+
     .form-check-label {
       color: #8a92a6;
       font-weight: normal;
       font-size: 16px;
     }
   }
+
   .grid-live-icon {
     background: $dark-color2;
     border-radius: 15px;
     display: inline-block;
+
     span {
       color: $text-light3;
       font-weight: normal;
@@ -1809,9 +2105,11 @@ select {
       justify-content: center;
       min-width: 85px;
       cursor: pointer;
+
       @media (max-width: 1399px) {
         font-size: 14px;
       }
+
       &.active {
         @include box-shadow1;
         border: none !important;
@@ -1820,35 +2118,42 @@ select {
       }
     }
   }
+
   @media (min-width: 768px) {
     .sort-search-wrapper {
       display: block;
       height: auto !important;
     }
   }
+
   @media (max-width: 1199px) {
     .grid-live-icon {
       margin-top: 5px;
       margin-bottom: 5px;
     }
   }
+
   @media (max-width: 767px) {
     .grid-block {
       display: block;
     }
+
     .sort-search-block {
       display: block;
       @include bg-color1;
       box-sizing: border-box;
       border-radius: 0px 0px 12px 12px;
       padding: 20px 15px;
+
       .custom-select {
         min-width: 100% !important;
         background-position: 97% center;
       }
+
       .search-item {
         margin: 20px 0 0 0;
       }
+
       .filter-btn {
         @include join-button;
         box-sizing: border-box;
@@ -1860,17 +2165,21 @@ select {
         width: 100%;
         margin-top: 30px;
       }
+
       .inner-mobile-soft {
         justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
         margin-bottom: 10px;
+
         .grid-switch-icon {
           margin: 0 10px 0 0;
+
           .form-check-label {
             font-size: 14px;
           }
         }
+
         .grid-live-icon {
           span {
             display: inline-flex;
@@ -1883,6 +2192,7 @@ select {
     }
   }
 }
+
 .form-switch {
   .form-check-input {
     height: 20px;
@@ -1890,12 +2200,14 @@ select {
     border: 1px solid $dark-color2 !important;
     box-sizing: border-box;
     border-radius: 50px;
+
     &:checked[type='checkbox'] {
       &:after {
         margin-top: 1px;
         background-color: $secondary-color;
       }
     }
+
     &:after {
       width: 16px !important;
       height: 16px !important;
@@ -1904,20 +2216,24 @@ select {
     }
   }
 }
+
 .nfp-card {
   margin-top: -80px;
   z-index: 1;
   position: relative;
   padding: 0 20px;
+
   @media (max-width: 767px) {
     padding: 0 8px;
   }
 }
+
 .page-background {
   position: relative;
   background-image: url(../assets/NonFungible/background.png);
   padding: 30px 0 100px 30px;
   margin: 0 -12px;
+
   .page-banner-top-title {
     display: flex;
     align-items: center;
@@ -1930,10 +2246,12 @@ select {
       display: flex;
       align-items: center;
       margin-bottom: 0;
+
       img {
         margin-right: 20px;
       }
     }
+
     select {
       background-color: $dark-color1;
       border: 1px solid $background-main-color;
@@ -1943,33 +2261,37 @@ select {
       font-size: 13px;
     }
   }
+
   .nfp-banner-center-text {
     max-width: 900px;
-    background: linear-gradient(
-      90.44deg,
-      #151824 0.76%,
-      rgba(21, 24, 36, 0) 98.45%
-    );
+    background: linear-gradient(90.44deg,
+        #151824 0.76%,
+        rgba(21, 24, 36, 0) 98.45%);
     padding: 30px;
     border-radius: 15px;
+
     h4 {
       font-size: 27px;
       font-weight: 500;
       color: #fff;
     }
+
     p {
       font-size: 21px;
       font-weight: 400;
       color: #fff;
     }
+
     .mint-nfps-btn {
       h5 {
         text-shadow: 0px 2px 5px #ee2f60, 0px -2px 2px rgba(0, 0, 0, 0.95);
         font-size: 28px;
         color: #fdb5ca;
       }
+
       .arrow-with-select-type {
         margin-left: 15px;
+
         select {
           margin-left: 20px;
           @include bg-color3;
@@ -1983,38 +2305,45 @@ select {
       }
     }
   }
+
   @media (max-width: 767px) {
     padding: 20px 20px 100px;
+
     .page-banner-top-title {
       h3 {
         font-size: 20px;
         margin-right: 0;
       }
     }
+
     .nfp-banner-center-text {
-      background: linear-gradient(
-        90.44deg,
-        #151824 12.65%,
-        rgba(21, 24, 36, 0.3) 95.35%
-      );
+      background: linear-gradient(90.44deg,
+          #151824 12.65%,
+          rgba(21, 24, 36, 0.3) 95.35%);
       padding: 24px;
+
       h4 {
         font-size: 20px;
       }
+
       p {
         font-size: 16px;
       }
+
       .mint-nfps-btn {
         h5 {
           font-size: 24px;
         }
+
         .arrow-with-select-type {
           margin-left: 0;
           display: flex;
           align-items: center;
-          > img {
+
+          >img {
             width: 36px;
           }
+
           select {
             max-width: 235px;
             width: 100%;
@@ -2025,13 +2354,16 @@ select {
       }
     }
   }
+
   @media (max-width: 575px) {
     .page-banner-top-title {
       display: block;
       text-align: center;
+
       h3 {
         margin-bottom: 10px;
         text-align: left;
+
         img {
           margin-right: 13px;
         }
@@ -2039,21 +2371,22 @@ select {
     }
   }
 }
+
 .img-size {
   max-width: 50px;
   max-height: 50px;
 }
+
 .page-background-shares {
   position: relative;
   padding: 10px;
   height: auto;
   margin-bottom: 20px;
-  background: linear-gradient(
-    83.48deg,
-    #00b098 4.46%,
-    #521a4c 78.43%,
-    #521a4c 100%
-  );
+  background: linear-gradient(83.48deg,
+      #00b098 4.46%,
+      #521a4c 78.43%,
+      #521a4c 100%);
+
   .page-banner-top-title {
     display: flex;
     align-items: center;
@@ -2066,10 +2399,12 @@ select {
       display: flex;
       align-items: center;
       margin-bottom: 0;
+
       img {
         margin-right: 20px;
       }
     }
+
     select {
       background-color: $dark-color1;
       border: 1px solid $background-main-color;
@@ -2079,56 +2414,63 @@ select {
       font-size: 13px;
     }
   }
+
   .banner-center {
     max-width: 900px;
-    background: linear-gradient(
-      90.44deg,
-      #151824 0.76%,
-      rgba(21, 24, 36, 0) 98.45%
-    );
+    background: linear-gradient(90.44deg,
+        #151824 0.76%,
+        rgba(21, 24, 36, 0) 98.45%);
     padding: 5px;
     border-radius: 15px;
+
     h4 {
       font-size: 27px;
       font-weight: 500;
       color: $card-title-color;
     }
+
     p {
       font-size: 21px;
       font-weight: 400;
       color: $text-primary-color1;
     }
   }
+
   @media (max-width: 767px) {
     padding: 20px 20px 100px;
+
     .page-banner-top-title {
       h3 {
         font-size: 20px;
         margin-right: 0;
       }
     }
+
     .nfp-banner-center-text {
-      background: linear-gradient(
-        90.44deg,
-        #151824 12.65%,
-        rgba(21, 24, 36, 0.3) 95.35%
-      );
+      background: linear-gradient(90.44deg,
+          #151824 12.65%,
+          rgba(21, 24, 36, 0.3) 95.35%);
       padding: 24px;
+
       h4 {
         font-size: 20px;
       }
+
       p {
         font-size: 16px;
       }
     }
   }
+
   @media (max-width: 575px) {
     .page-banner-top-title {
       display: block;
       text-align: center;
+
       h3 {
         margin-bottom: 10px;
         text-align: left;
+
         img {
           margin-right: 13px;
         }
@@ -2136,29 +2478,34 @@ select {
     }
   }
 }
+
 .tooltip {
   display: block;
   width: 100px;
   height: 100px;
   cursor: pointer;
 }
+
 .dropdown {
   border: 2px solid $background-main-color;
   box-sizing: border-box;
   margin-bottom: 18px;
   width: 100%;
   align-items: center;
+
   img {
     width: 50px;
     height: 50px;
     justify-content: center;
     margin-left: 5px;
   }
+
   .item-2 {
     background: $border-bg3;
     box-sizing: border-box;
     border-radius: 0px 15px 15px 0px;
   }
+
   .item-1 {
     @include bg-color13;
     border: none !important;
@@ -2172,24 +2519,26 @@ select {
     background-position: 96% center;
   }
 }
+
 .page-background-bridge {
   position: relative;
   height: auto;
   margin: 0 -12px;
   margin-bottom: 20px;
-  background: linear-gradient(
-    83.48deg,
-    #00b098 4.46%,
-    #521a4c 78.43%,
-    #521a4c 100%
-  );
+  background: linear-gradient(83.48deg,
+      #00b098 4.46%,
+      #521a4c 78.43%,
+      #521a4c 100%);
+
   .bridge-banner-img {
     background-image: url(../assets/bridge-banner.png);
     mix-blend-mode: multiply;
     height: fit-content;
   }
+
   .isolate {
     isolation: isolate;
+
     .page-banner-top-title {
       display: flex;
       align-items: center;
@@ -2203,10 +2552,12 @@ select {
         display: flex;
         align-items: center;
         margin-bottom: 0;
+
         img {
           margin-right: 20px;
         }
       }
+
       select {
         background-color: $dark-color1;
         border: 1px solid $background-main-color;
@@ -2217,57 +2568,64 @@ select {
       }
     }
   }
+
   .banner-center {
     max-width: 900px;
-    background: linear-gradient(
-      90.44deg,
-      #151824 0.76%,
-      rgba(21, 24, 36, 0) 98.45%
-    );
+    background: linear-gradient(90.44deg,
+        #151824 0.76%,
+        rgba(21, 24, 36, 0) 98.45%);
     margin-left: 10px;
     padding: 5px;
     border-radius: 15px;
+
     h4 {
       font-size: 27px;
       font-weight: 500;
       color: $card-title-color;
     }
+
     p {
       font-size: 21px;
       font-weight: 400;
       color: $text-primary-color1;
     }
   }
+
   @media (max-width: 767px) {
     padding: 20px 20px 100px;
+
     .page-banner-top-title {
       h3 {
         font-size: 20px;
         margin-right: 0;
       }
     }
+
     .nfp-banner-center-text {
-      background: linear-gradient(
-        90.44deg,
-        #151824 12.65%,
-        rgba(21, 24, 36, 0.3) 95.35%
-      );
+      background: linear-gradient(90.44deg,
+          #151824 12.65%,
+          rgba(21, 24, 36, 0.3) 95.35%);
       padding: 24px;
+
       h4 {
         font-size: 20px;
       }
+
       p {
         font-size: 16px;
       }
     }
   }
+
   @media (max-width: 575px) {
     .page-banner-top-title {
       display: block;
       text-align: center;
+
       h3 {
         margin-bottom: 10px;
         text-align: left;
+
         img {
           margin-right: 13px;
         }
@@ -2275,6 +2633,7 @@ select {
     }
   }
 }
+
 .card-box {
   background-color: $background-main-color;
   @include box-shadow;
@@ -2284,11 +2643,13 @@ select {
   border-radius: 15px;
   padding: 25px;
   margin-bottom: 20px;
+
   .card-top-title-price {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+
     .left {
       h3 {
         color: #fdb5ca;
@@ -2296,6 +2657,7 @@ select {
         margin: 0;
         font-size: 36px;
       }
+
       h5 {
         font-size: 28px;
         line-height: 25px;
@@ -2304,19 +2666,23 @@ select {
         font-family: Leckerli One;
       }
     }
+
     .right {
       .numbers-price {
         text-align: right;
+
         h4 {
           color: #ff6691;
           font-size: 24px;
           font-weight: 400;
           margin: 0;
+
           span {
             color: $text-primary-color;
           }
         }
       }
+
       p {
         margin: 0;
         font-size: 14px;
@@ -2325,41 +2691,47 @@ select {
       }
     }
   }
+
   .image-box {
     padding: 0 20px;
-    > img {
+
+    >img {
       width: 100%;
     }
+
     .price-block {
       position: relative;
       margin-top: 20px;
+
       img {
         position: absolute;
         right: 0;
         top: 0;
       }
     }
+
     .price-block h2 {
       color: #28ccab;
       font-size: 24px;
       margin: 0;
+
       small {
         font-size: 14px;
         font-weight: 400;
       }
     }
+
     .price-block small {
       color: #a0aab6;
       font-size: 14px;
     }
   }
+
   .drow-line {
-    background: linear-gradient(
-      90deg,
-      rgba(40, 204, 171, 0) 0%,
-      #28ccab 49.52%,
-      rgba(40, 204, 171, 0) 99.04%
-    );
+    background: linear-gradient(90deg,
+        rgba(40, 204, 171, 0) 0%,
+        #28ccab 49.52%,
+        rgba(40, 204, 171, 0) 99.04%);
     height: 2px;
     display: block;
     width: 100%;
@@ -2367,14 +2739,17 @@ select {
     margin-top: 10px;
     margin-bottom: 20px;
   }
+
   .desc {
     color: $text-primary-color1;
     font-size: 14px;
   }
+
   .btn-blocks {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .custom-btn {
       @include join-button;
       color: #ffffff;
@@ -2383,6 +2758,7 @@ select {
       outline: none;
       font-size: 14px;
     }
+
     .custom-btn-2 {
       color: #fff;
       padding: 10px 10px;
@@ -2396,19 +2772,23 @@ select {
       font-size: 12px;
       text-align: left;
       color: #28ccab;
+
       img {
         width: 25px;
         margin-right: 10px;
       }
     }
+
     @media (max-width: 1399px) {
       .custom-btn {
         padding: 10px 5px;
       }
     }
   }
+
   @media (min-width: 992px) and (max-width: 1199px) {
     padding: 15px;
+
     .card-top-title-price {
       .right {
         p {
@@ -2416,6 +2796,7 @@ select {
         }
       }
     }
+
     .image-box {
       .price-block {
         small {
@@ -2423,11 +2804,14 @@ select {
         }
       }
     }
+
     .btn-blocks {
       display: block;
+
       .custom-btn {
         width: 100%;
       }
+
       .custom-btn-2 {
         width: 100%;
         margin-top: 10px;
@@ -2437,16 +2821,19 @@ select {
       }
     }
   }
+
   @media (max-width: 1499px) {
     .card-top-title-price {
       .left {
         h3 {
           font-size: 22px;
         }
+
         h5 {
           font-size: 18px;
         }
       }
+
       .right {
         .numbers-price {
           h4 {
@@ -2454,59 +2841,73 @@ select {
           }
         }
       }
+
       p {
         font-size: 12px;
       }
     }
   }
+
   @media (max-width: 991px) {
     padding: 15px;
   }
+
   @media (max-width: 767px) {
     padding: 25px;
+
     .card-top-title-price {
       .right {
         .numbers-price {
           h4 {
             font-size: 18px;
           }
+
           p {
             font-size: 12px;
           }
         }
       }
     }
+
     .drow-line {
       margin: 15px 0 8px;
     }
+
     .image-box {
       padding: 0 0;
       display: flex;
       align-items: center;
-      > img {
+
+      >img {
         max-width: 128px;
         width: 100%;
         flex: none;
       }
+
       .price-block {
         margin: 0 0 0 15px;
+
         img {
           display: block;
           position: relative;
           top: auto;
           right: auto;
         }
+
         small {
           margin-bottom: 10px;
           display: block;
         }
       }
     }
+
     .btn-blocks {
       display: block;
+
       .custom-btn {
         width: 100%;
       }
+
       .custom-btn-2 {
         width: 100%;
         margin-top: 20px;
@@ -2517,10 +2918,12 @@ select {
     }
   }
 }
+
 .collection-list {
   margin-top: 50px;
   padding: 0 20px;
   margin-bottom: 60px;
+
   @media (min-width: 992px) {
     .col-xs-12 {
       width: 20%;
@@ -2530,15 +2933,18 @@ select {
   .title-main {
     border-bottom: 1px solid $border-bg2;
     margin-bottom: 30px;
+
     h5 {
       text-shadow: 0px 2px 5px #ee2f60, 0px -2px 2px rgba(0, 0, 0, 0.95);
       font-size: 36px;
       color: #fdb5ca;
     }
+
     p {
       color: #8a92a6;
     }
   }
+
   .card-items {
     background: $background-main-color;
     border: 0.5px solid $dark-color;
@@ -2546,27 +2952,34 @@ select {
     @include box-shadow;
     border-radius: 15px;
     margin-bottom: 20px;
-    > img {
+
+    >img {
       width: 100%;
     }
+
     .card-item-details {
       padding: 15px;
       position: relative;
+
       h2 {
         font-size: 21px;
         color: $text-light2;
         margin: 0;
       }
+
       small {
         color: $text-light2;
         font-size: 21px;
       }
+
       img {
         position: absolute;
         right: 15px;
         top: 15px;
       }
+
       @media (max-width: 1499px) {
+
         small,
         h2 {
           font-size: 16px;
@@ -2574,12 +2987,15 @@ select {
       }
     }
   }
+
   @media (max-width: 767px) {
     margin-top: 10px;
     padding: 0 5px;
     margin-bottom: 30px;
+
     .row {
       margin: 0 -4px;
+
       .col-4 {
         padding: 0 4px;
       }
@@ -2589,26 +3005,33 @@ select {
       h5 {
         font-size: 30px;
       }
+
       p {
         font-size: 14px;
       }
     }
+
     .card-items {
       margin-bottom: 10px;
+
       .card-item-details {
         padding: 8px;
+
         h2 {
           font-size: 13px;
         }
+
         small {
           font-size: 13px;
         }
+
         img {
           right: 8px;
         }
       }
     }
   }
+
   @media (max-width: 360px) {
     .card-items {
       .card-item-details {
@@ -2619,15 +3042,18 @@ select {
     }
   }
 }
+
 .text-white1 {
   color: $text-light2;
 }
+
 .rewards-grid-block {
   .rewards-grid-item {
     @include box-shadow1;
     background: $background-main-color;
     border-radius: 15px;
     margin-bottom: 25px;
+
     .card-sub-header {
       @include box-shadow5;
       border-radius: 15px 15px 0px 0px;
@@ -2635,45 +3061,55 @@ select {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       .card-left-text {
         padding-right: 5px;
         min-width: 0;
       }
+
       .card-right-img {
         flex: none;
       }
+
       h2 {
         color: $text-light2;
         font-weight: 600;
         font-size: 18px;
         margin-bottom: 3px;
       }
+
       p {
         font-weight: 500;
         font-size: 15px;
         color: #a0aec0;
         margin-bottom: 0;
+
         span {
           font-size: 12px;
         }
       }
     }
+
     .card-body-content {
       padding: 20px;
+
       .title {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 15px;
+
         span {
           font-size: 18px;
           font-weight: 500;
           color: #a0aab6;
+
           &:last-child {
             color: $text-light;
           }
         }
       }
+
       .reward-money {
         .reward-list {
           @include bg-color7;
@@ -2681,32 +3117,39 @@ select {
           padding: 15px;
           margin-bottom: 20px;
         }
+
         h5 {
           font-weight: 600;
           font-size: 12px;
           color: $text-light;
           margin-bottom: 10px;
+
           span {
             color: #28ccab;
             padding-right: 5px;
           }
         }
+
         .reward-item {
           display: flex;
           align-items: flex-start;
           margin-bottom: 10px;
+
           &:last-child {
             margin-bottom: 0;
           }
+
           img {
             width: 24px;
             flex: none;
           }
+
           p {
             margin: 0 0 0 10px;
             font-size: 18px;
             font-weight: 500;
             color: #28ccab;
+
             span {
               color: #a0aec0;
               font-size: 13px;
@@ -2714,11 +3157,13 @@ select {
             }
           }
         }
+
         .reward-content {
           display: flex;
           align-items: center;
           justify-content: space-between;
           flex-wrap: wrap;
+
           .join-btn {
             padding: 5px 12px;
             min-width: 100px;
@@ -2726,6 +3171,7 @@ select {
             width: auto;
           }
         }
+
         .harvest-btn {
           @include bg-color6;
           border-radius: 15px;
@@ -2741,9 +3187,11 @@ select {
           margin-left: 5px;
           margin-top: 10px;
         }
+
         .reward-stake-block {
           margin-bottom: 30px;
         }
+
         .reward-stake-item {
           display: flex;
           align-items: center;
@@ -2752,6 +3200,7 @@ select {
           .reward-plus-minus {
             display: inline-flex;
             align-items: center;
+
             span {
               border: 1px solid #28ccab;
               box-sizing: border-box;
@@ -2767,13 +3216,16 @@ select {
             }
           }
         }
+
         .action-item {
           margin-bottom: 30px;
+
           span {
             font-size: 12px;
             display: block;
             color: $text-light;
           }
+
           .join-btn {
             @include join-button;
             box-sizing: border-box;
@@ -2788,12 +3240,14 @@ select {
             width: 100%;
           }
         }
+
         .grid-dropdown-title {
           font-weight: 600;
           font-size: 14px;
           line-height: 16px;
           color: #13b497;
           text-align: center;
+
           &.open {
             span {
               &:after {
@@ -2801,11 +3255,13 @@ select {
               }
             }
           }
+
           span {
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: space-between;
+
             &:after {
               content: '';
               background: url(../assets/arrow-down.svg) no-repeat center;
@@ -2821,10 +3277,12 @@ select {
             }
           }
         }
+
         .grid-dropdown-wrapper {
           .grid-dropdown {
             margin-top: 16px;
           }
+
           .apy-content {
             display: flex;
             align-items: center;
@@ -2833,9 +3291,11 @@ select {
             border-radius: 15px;
             padding: 5px 10px;
             margin-bottom: 8px;
+
             &:last-child {
               margin-bottom: 0;
             }
+
             span {
               font-weight: 500;
               font-size: 14px;
@@ -2844,11 +3304,13 @@ select {
               display: flex;
               align-items: center;
             }
+
             p {
               margin-bottom: 0;
               color: $text-primary-color2;
               font-weight: 500;
               font-size: 16px;
+
               @media (min-width: 1499px) {
                 font-size: 18px;
               }
@@ -2859,38 +3321,46 @@ select {
     }
   }
 }
+
 //stack-modal
 .stack-modal {
   .modal-content {
     background-color: $dark-color5;
   }
+
   .modal-header {
     @include box-shadow5;
     border: none;
   }
+
   .btn-close {
     background: url(../assets/close.svg) center/1em auto no-repeat;
     background-size: 21px;
   }
+
   .title {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+
     h5 {
       font-weight: 500;
       font-size: 18px;
       color: $text-light2;
       margin-bottom: 0;
+
       img {
         margin-right: 7px;
       }
     }
+
     p {
       font-size: 12px;
       color: #a0aec0;
       text-align: right;
       margin-bottom: 0;
+
       span {
         font-weight: 500;
         font-size: 14px;
@@ -2899,6 +3369,7 @@ select {
       }
     }
   }
+
   .modal-body {
     padding: 25px;
   }
@@ -2911,6 +3382,7 @@ select {
       margin-bottom: 3px;
       display: block;
     }
+
     .form-control {
       display: block;
       @include bg-color4;
@@ -2918,10 +3390,12 @@ select {
       min-height: 40px;
       font-size: 18px;
       text-align: right;
+
       &::placeholder {
         color: $text-light2;
       }
     }
+
     span {
       font-size: 14px;
       line-height: 16px;
@@ -2935,23 +3409,28 @@ select {
   .join-btn {
     margin-top: 40px;
   }
+
   @media (min-width: 576px) {
     .modal-dialog {
       max-width: 362px;
     }
   }
 }
+
 .stake-progress-block {
   .stake-progress {
     padding-bottom: 14px;
+
     .rangebar-line {
       position: relative;
       z-index: 1;
     }
   }
+
   .range-thumb {
     margin-top: 12px;
     text-align: center;
+
     .range-thumb-icon {
       background: #28ccab;
       border: 1px solid #3ffcd6;
@@ -2965,6 +3444,7 @@ select {
       align-items: center;
       justify-content: center;
     }
+
     .price-count {
       color: #a0aec0;
       font-weight: normal;
@@ -2975,11 +3455,13 @@ select {
     }
   }
 }
+
 .stake-prices {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 15px;
+
   span {
     font-weight: 600;
     font-size: 12px;
@@ -2995,6 +3477,7 @@ select {
     cursor: pointer;
   }
 }
+
 .join-btn {
   @include join-button;
   box-sizing: border-box;
@@ -3008,6 +3491,7 @@ select {
   justify-content: center;
   width: 100%;
 }
+
 .text-box {
   padding: 5px;
   margin: 5px;
@@ -3017,6 +3501,7 @@ select {
   border: 1px solid #000;
   border-radius: 20px;
 }
+
 .select {
   border: 3px solid #28ccac;
   @include bg-color13;
@@ -3029,6 +3514,7 @@ select {
   background-position: 96% center;
   margin-bottom: 18px;
 }
+
 .bridge-btn {
   margin-top: 5px;
   margin-left: 2.5px;
@@ -3043,6 +3529,7 @@ select {
   text-align: center;
   align-items: center;
   justify-content: center;
+
   .text {
     font-weight: 600;
     font-size: 12px;
@@ -3053,44 +3540,52 @@ select {
     padding-bottom: 20px;
   }
 }
+
 .line-break {
   margin-top: 10px;
   margin-bottom: 10px;
   border-bottom: 3px solid #28ccac;
 }
+
 .vert-break {
   margin-right: 10px;
   border-right: 3px solid #28ccac;
 }
+
 .bridge-amount {
   display: block;
   font-size: 16px;
   line-height: 14px;
   align-items: center;
+
   .text-left {
     display: block;
     text-align: left;
     color: $text-primary-color;
     font-weight: 600;
   }
+
   .text-right {
     display: block;
     text-align: right;
     color: $text-primary-color;
     font-weight: 600;
   }
+
   .subtext-left {
     display: block;
     color: $text-secondary-color;
     font-weight: 400;
     text-align: left;
   }
+
   .subtext-right {
     display: block;
     color: $text-secondary-color;
     font-weight: 400;
     text-align: right;
   }
+
   .output-box {
     border-radius: 6px;
     border: 2px solid $border-color-secondary;
@@ -3105,6 +3600,7 @@ select {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
     height: auto;
   }
+
   .fee-box {
     border-radius: 6px;
     margin: 3px;
@@ -3120,12 +3616,14 @@ select {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
     height: auto;
     margin-bottom: 10px;
+
     .grid-live-icon {
       background: $dark-color2;
       border-radius: 15px;
       display: flex;
       vertical-align: middle;
       justify-content: center;
+
       span {
         color: $text-light3;
         font-weight: normal;
@@ -3134,9 +3632,11 @@ select {
         text-align: center;
         border-radius: 15px;
         cursor: pointer;
+
         @media (max-width: 1399px) {
           font-size: 14px;
         }
+
         &.active {
           @include box-shadow1;
           border: none !important;
@@ -3145,16 +3645,19 @@ select {
         }
       }
     }
+
     .footer {
       display: flex;
       vertical-align: bottom;
       justify-content: center;
       margin-top: 12px;
+
       .apply {
         box-sizing: border-box;
         cursor: pointer;
         position: absolute;
         bottom: 2%;
+
         .text {
           font-weight: 600;
           font-size: 12px;
@@ -3166,6 +3669,7 @@ select {
         }
       }
     }
+
     .btn {
       display: flex;
       align-items: center;
@@ -3173,6 +3677,7 @@ select {
       background-color: $background-main-color;
       width: 100%;
       cursor: default;
+
       .active {
         @include join-button;
         border-radius: 26px;
@@ -3186,6 +3691,7 @@ select {
         align-items: center;
         justify-content: center;
       }
+
       .inactive {
         background-color: $seperator-color;
         color: gray;
@@ -3198,6 +3704,7 @@ select {
         justify-content: center;
       }
     }
+
     .big-left {
       display: block;
       font-size: 18px;
@@ -3208,6 +3715,7 @@ select {
       margin-top: 2px;
       margin-bottom: 2px;
     }
+
     .big-right {
       display: block;
       text-align: right;
@@ -3217,10 +3725,12 @@ select {
       font-weight: 600;
       margin-top: 2px;
       margin-bottom: 2px;
+
       .strike {
         text-decoration: line-through;
       }
     }
+
     .small-left {
       display: block;
       color: $text-secondary-color;
@@ -3231,6 +3741,7 @@ select {
       margin-top: 2px;
       margin-bottom: 2px;
     }
+
     .small-right {
       display: block;
       color: $text-secondary-color;
@@ -3243,26 +3754,31 @@ select {
     }
   }
 }
+
 .white-space {
   display: block;
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 // utility-wrapper
 .utility-wrapper {
   &.rewards-first-block {
     padding: 25px 30px;
   }
+
   @media (max-width: 991px) {
     &.rewards-first-block {
       padding: 15px;
     }
   }
 }
+
 .dexscreener-embed {
   display: block !important;
   width: 1400px !important;
+
   iframe {
     width: 1400px !important;
     height: 100% !important;
@@ -3271,23 +3787,28 @@ select {
     border: 0;
   }
 }
+
 .vh40 {
   height: 40vh;
   overflow: auto;
 }
+
 .vh63 {
   height: 63vh;
   overflow: auto;
 }
+
 .vh80 {
   height: 80vh;
   overflow: auto;
 }
+
 .utility-block {
   .vh80 {
     height: 80vh;
     overflow: auto;
   }
+
   .utility-collapse1 {
     @include bg-color12;
     box-sizing: border-box;
@@ -3295,11 +3816,13 @@ select {
     margin-bottom: 15px;
     height: 80vh;
     overflow: auto;
+
     &.open {
       .title-block {
         border-radius: 15px 15px 0px 0px;
       }
     }
+
     .title-block {
       display: flex;
       align-items: center;
@@ -3310,13 +3833,16 @@ select {
       background: $background-main-color;
       @include box-shadow1;
       border-radius: 15px;
+
       span {
         padding-left: 10px;
       }
+
       h2 {
         display: flex;
         align-items: center;
       }
+
       .title-box {
         font-weight: 600;
         font-size: 14px;
@@ -3324,11 +3850,13 @@ select {
         display: flex;
         align-items: center;
         cursor: pointer;
+
         &.open {
           &:after {
             transform: rotate(-180deg);
           }
         }
+
         &:after {
           content: '';
           background: url(../assets/arrow-down.svg) no-repeat center;
@@ -3343,21 +3871,27 @@ select {
           cursor: pointer;
         }
       }
+
       @media (max-width: 991px) {
         padding: 14px 10px 14px 20px;
+
         h2 {
           font-size: 21px;
+
           span {
             font-size: 18px;
           }
+
           img {
             width: 24px;
           }
         }
       }
+
       @media (max-width: 375px) {
         h2 {
           font-size: 18px;
+
           span {
             font-size: 16px;
           }
@@ -3365,16 +3899,19 @@ select {
       }
     }
   }
+
   .utility-collapse {
     @include bg-color12;
     box-sizing: border-box;
     border-radius: 15px;
     margin-bottom: 15px;
+
     &.open {
       .title-block {
         border-radius: 15px 15px 0px 0px;
       }
     }
+
     .title-block {
       display: flex;
       align-items: center;
@@ -3385,13 +3922,16 @@ select {
       background: $background-main-color;
       @include box-shadow1;
       border-radius: 15px;
+
       span {
         padding-left: 10px;
       }
+
       h2 {
         display: flex;
         align-items: center;
       }
+
       .title-box {
         font-weight: 600;
         font-size: 14px;
@@ -3399,11 +3939,13 @@ select {
         display: flex;
         align-items: center;
         cursor: pointer;
+
         &.open {
           &:after {
             transform: rotate(-180deg);
           }
         }
+
         &:after {
           content: '';
           background: url(../assets/arrow-down.svg) no-repeat center;
@@ -3418,21 +3960,27 @@ select {
           cursor: pointer;
         }
       }
+
       @media (max-width: 991px) {
         padding: 14px 10px 14px 20px;
+
         h2 {
           font-size: 21px;
+
           span {
             font-size: 18px;
           }
+
           img {
             width: 24px;
           }
         }
       }
+
       @media (max-width: 375px) {
         h2 {
           font-size: 18px;
+
           span {
             font-size: 16px;
           }
@@ -3440,8 +3988,10 @@ select {
       }
     }
   }
+
   .inner-content {
     padding: 30px 45px;
+
     .read-more {
       font-weight: 600;
       font-size: 12px;
@@ -3450,6 +4000,7 @@ select {
       border-bottom: 1px solid $border-bg2;
       margin-bottom: 25px;
       padding-bottom: 15px;
+
       &:after {
         content: '';
         position: absolute;
@@ -3459,19 +4010,23 @@ select {
         @include bg-color14;
         height: 50px;
       }
+
       img {
         margin-left: 5px;
       }
     }
+
     .dec-text {
       font-weight: normal;
       font-size: 18px;
       color: $text-light6;
     }
+
     .convert-block {
       .convert-inner {
         position: relative;
       }
+
       .custom-select {
         border-radius: 15px;
 
@@ -3486,6 +4041,7 @@ select {
         background-position: 96% center;
         margin-bottom: 18px;
       }
+
       .custom-select1 {
         border-radius: 15px;
 
@@ -3500,6 +4056,7 @@ select {
         background-position: 96% center;
         margin-bottom: 18px;
       }
+
       .two-title span,
       .top-title {
         font-weight: 600;
@@ -3509,6 +4066,7 @@ select {
         display: flex;
         align-items: center;
         color: $text-primary-color2;
+
         b {
           font-family: 'Leckerli One';
           color: $text-green;
@@ -3516,6 +4074,7 @@ select {
           font-size: 28px;
           margin-right: 15px;
         }
+
         @media (max-width: 1440px) {
           b {
             font-size: 20px;
@@ -3523,6 +4082,7 @@ select {
         }
       }
     }
+
     .mining-block {
       text-align: center;
       border-radius: 15px;
@@ -3530,6 +4090,7 @@ select {
       background-color: $dark-color;
       padding: 15px;
       margin-bottom: 15px;
+
       .title {
         font-weight: 600;
         font-size: 12px;
@@ -3538,14 +4099,17 @@ select {
         display: block;
         color: $text-light2;
       }
+
       .plus-minus-block {
         display: flex;
         align-items: center;
         justify-content: center;
+
         span {
           width: 100%;
           min-height: 48px;
         }
+
         .plus-minus-icon {
           @include box-shadow1;
           border-radius: 15px;
@@ -3558,6 +4122,7 @@ select {
           justify-content: center;
           cursor: pointer;
         }
+
         .count-text {
           background-color: $dark-bg11;
           @include border3;
@@ -3571,6 +4136,7 @@ select {
           color: $text-light5;
         }
       }
+
       .cost-title {
         font-size: 16px;
         font-weight: 400;
@@ -3579,6 +4145,7 @@ select {
         display: flex;
         align-items: center;
         justify-content: center;
+
         span {
           font-size: 12px;
           font-weight: 600;
@@ -3588,6 +4155,7 @@ select {
         }
       }
     }
+
     .project-list {
       @include bg-color7;
       background-color: $dark-color;
@@ -3596,19 +4164,23 @@ select {
       display: flex;
       align-items: center;
       margin-top: 20px;
+
       .project-item {
         width: 100%;
+
         &:nth-child(even) {
           padding: 0 15px;
           margin: 0 15px;
           border-right: 1px solid #f394af;
           border-left: 1px solid #f394af;
         }
+
         h3 {
           font-weight: bold;
           font-size: 16px;
           color: #28ccab;
           margin-bottom: 0;
+
           span {
             text-transform: uppercase;
             color: $text-light8;
@@ -3619,8 +4191,10 @@ select {
           }
         }
       }
+
       @media (min-width: 992px) and (max-width: 1199px) {
         flex-wrap: wrap;
+
         .project-item {
           &:nth-child(even) {
             padding: 15px 0;
@@ -3632,6 +4206,7 @@ select {
         }
       }
     }
+
     .token-inner {
       .input-form-control {
         label {
@@ -3641,11 +4216,13 @@ select {
           margin-bottom: 3px;
           display: block;
         }
+
         .custom-select {
           min-height: 40px;
           @include border3;
           color: #a0aab6;
         }
+
         .form-control {
           display: block;
           @include bg-color4;
@@ -3653,10 +4230,12 @@ select {
           min-height: 40px;
           font-size: 18px;
           text-align: right;
+
           &::placeholder {
             color: $text-light2;
           }
         }
+
         span {
           font-size: 14px;
           line-height: 16px;
@@ -3666,19 +4245,23 @@ select {
           padding-top: 3px;
         }
       }
+
       .lock-stake-block {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-top: 15px;
+
         .stake-progress-block {
           width: 80%;
+
           .stake-prices {
             span {
               margin: 0 4px;
             }
           }
         }
+
         .lock-icon {
           border: 1px solid #28ccab;
           filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
@@ -3690,18 +4273,22 @@ select {
           margin-left: 20px;
           text-align: center;
           max-width: 90px;
+
           img {
             display: block;
             margin: auto;
             margin-bottom: 10px;
           }
         }
+
         @media (max-width: 1199px) {
           flex-wrap: wrap;
           display: block;
+
           .stake-progress-block {
             width: 100%;
           }
+
           .lock-icon {
             margin: 15px 0 0 0;
             max-width: 100%;
@@ -3709,10 +4296,12 @@ select {
         }
       }
     }
+
     .uplode-block {
-      > label {
+      >label {
         width: 100%;
       }
+
       .uplode-img-block {
         text-align: center;
         @include border3;
@@ -3726,16 +4315,19 @@ select {
         align-items: center;
         justify-content: center;
       }
+
       .img-uplode-title {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-top: 12px;
+
         span {
           font-weight: normal;
           font-size: 16px;
           color: #a0aab6;
         }
+
         p {
           color: #28ccab;
           font-weight: normal;
@@ -3745,6 +4337,7 @@ select {
         }
       }
     }
+
     .tab-list {
       .grid-list-icon {
         border: 1px solid $dark-color4;
@@ -3754,6 +4347,7 @@ select {
         justify-content: center;
         align-items: center;
         margin-bottom: 35px;
+
         span {
           width: 50%;
           font-weight: normal;
@@ -3765,13 +4359,16 @@ select {
           display: flex;
           align-items: center;
           justify-content: center;
+
           @media (max-width: 767px) {
             font-size: 14px;
           }
+
           &.active {
             @include box-shadow6;
             border-radius: 15px;
             color: #28ccab;
+
             svg {
               * {
                 fill: #28ccab;
@@ -3782,6 +4379,7 @@ select {
       }
     }
   }
+
   .or-btn {
     font-weight: 600;
     font-size: 12px;
@@ -3790,18 +4388,22 @@ select {
     position: absolute;
     top: 13px;
     right: -30px;
+
     @media (max-width: 991px) {
       right: -22px;
     }
   }
+
   .two-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+
     span {
       margin: 0 !important;
     }
+
     p {
       font-weight: 500;
       font-size: 12px;
@@ -3809,15 +4411,19 @@ select {
       margin: 0 0 0 5px;
     }
   }
+
   @media (max-width: 991px) {
     .inner-content {
       padding: 20px;
+
       .token-inner {
         .lock-stake-block {
           .stake-progress-block {
             margin-bottom: 40px;
+
             .stake-prices {
               justify-content: center;
+
               span {
                 margin: 0 8px;
               }
@@ -3825,6 +4431,7 @@ select {
           }
         }
       }
+
       .dec-text {
         font-size: 16px;
         margin-bottom: 10px;
@@ -3832,18 +4439,22 @@ select {
         overflow-y: auto;
         position: relative;
       }
+
       .project-list {
         margin-bottom: 15px;
         padding: 12px;
+
         .project-item {
           h3 {
             font-size: 12px;
+
             span {
               font-size: 10px;
             }
           }
         }
       }
+
       .uplode-block {
         .uplode-img-block {
           p {
@@ -3851,21 +4462,26 @@ select {
             font-size: 14px;
           }
         }
+
         .img-uplode-title {
+
           p,
           span {
             font-size: 14px;
           }
         }
       }
+
       .mining-block {
         margin-bottom: 25px;
         padding: 13px 15px;
+
         .plus-minus-block {
           .plus-minus-icon {
             min-width: 72px;
             width: auto;
           }
+
           .count-text {
             margin: 0 7px;
           }
@@ -3873,31 +4489,38 @@ select {
       }
     }
   }
+
   @media (max-width: 575px) {
     .two-title {
       display: block;
+
       p {
         text-align: right;
       }
     }
   }
 }
+
 .back-btn {
   @include back-button;
 }
+
 .connect-btn {
   @include connect-button;
 }
 
 .desktop-view {
   display: none !important;
+
   @media (min-width: 576px) {
     display: block !important;
   }
 }
+
 .columnContainer {
   width: 100%;
   display: flex;
+
   .leftside {
     width: 50%;
     padding: 10px;
@@ -3905,6 +4528,7 @@ select {
     margin: 0 auto;
     text-align: center;
   }
+
   .rightside {
     width: 50%;
     padding: 10px;
@@ -3913,11 +4537,13 @@ select {
     text-align: center;
   }
 }
+
 .grid-live-icon {
   background: $dark-color2;
   border-radius: 15px;
   display: inline-block;
   max-width: fit-content;
+
   span {
     color: $text-light3;
     font-weight: normal;
@@ -3930,9 +4556,11 @@ select {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
     @media (max-width: 1399px) {
       font-size: 14px;
     }
+
     &.active {
       @include box-shadow1;
       border: none !important;
@@ -3941,6 +4569,7 @@ select {
     }
   }
 }
+
 .form-control {
   display: block;
   @include bg-color4;
@@ -3949,16 +4578,19 @@ select {
   margin-bottom: 5px;
   font-size: 18px;
   text-align: right;
+
   &::placeholder {
     color: $text-light2;
   }
 }
+
 .tx-history {
   color: $card-title-color;
   cursor: pointer;
   padding: 2px;
   margin: 2px;
 }
+
 .tx-history-collapse {
   display: block;
   padding: 10px;
@@ -3966,10 +4598,12 @@ select {
   background-color: $background-main-color;
   border-radius: 5px;
   margin-bottom: 20px;
+
   .date {
     color: $card-title-color;
     font-size: 12px;
   }
+
   .box {
     background: $border-bg3;
     display: flex;
@@ -3980,10 +4614,12 @@ select {
     padding: 20px;
     justify-content: center;
     text-align: center;
+
     .items {
       margin: 3px;
       padding: 3px;
     }
+
     .left {
       display: block;
       width: 50%;
@@ -3992,6 +4628,7 @@ select {
       margin: 0 auto;
       text-align: left;
     }
+
     .right {
       display: block;
       width: 50%;
@@ -4002,6 +4639,7 @@ select {
     }
   }
 }
+
 .waiveFee {
   font-weight: 600;
   font-size: 16px;
@@ -4014,31 +4652,37 @@ select {
   display: flex;
   margin-bottom: 20px;
 }
+
 .row-flex {
   display: flex;
+
   .small {
     flex-basis: 100px;
     flex-grow: 0;
     flex-shrink: 0;
   }
+
   .container {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 10px;
   }
+
   .container-sm {
     flex-direction: row;
     padding: 5px;
     align-items: baseline;
     overflow-y: auto;
     overflow-x: hidden;
+
     .item {
       text-align: right;
       margin: 5px;
       font-size: 12px;
     }
   }
+
   .container-sm-200 {
     flex-direction: row;
     padding: 5px;
@@ -4048,13 +4692,12 @@ select {
     overflow-x: hidden;
   }
 }
+
 .card-list-row-inner {
-  background: linear-gradient(
-    83.48deg,
-    #00b098 4.46%,
-    #521a4c 78.43%,
-    #521a4c 100%
-  );
+  background: linear-gradient(83.48deg,
+      #00b098 4.46%,
+      #521a4c 78.43%,
+      #521a4c 100%);
   @include box-shadow;
   border: 0.5px solid $dark-color;
   box-sizing: border-box;
@@ -4064,6 +4707,7 @@ select {
   display: flex;
   margin-bottom: 10px;
   border-radius: 10px;
+
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -4078,12 +4722,14 @@ select {
     height: 100%;
   }
 }
+
 .clean-collapse {
   font-size: 1.125rem;
   line-height: 75%;
   letter-spacing: 0.01em;
   border-radius: 15px;
   height: auto;
+
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -4097,6 +4743,7 @@ select {
     border-radius: 15px;
     height: 100%;
   }
+
   .circle-img {
     text-align: center;
     width: 84px;
@@ -4111,6 +4758,7 @@ select {
     padding: 7px;
   }
 }
+
 .expand {
   background-color: $dark-bg7;
   display: block;
@@ -4118,6 +4766,7 @@ select {
   padding-top: -10px;
   height: auto;
 }
+
 .shares-row {
   background-color: $dark-bg8;
   @include box-shadow;
@@ -4131,42 +4780,50 @@ select {
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+
   .btn {
     display: block;
     width: 100px;
     height: auto;
   }
+
   .img {
     padding: 15px;
     margin: 2px;
     width: 100px;
     height: auto;
   }
+
   .global {
     display: block;
     text-align: left;
     color: $text-light5;
     padding: 10px;
     width: 200px;
+
     .title {
       font-size: 16px;
       text-transform: uppercase;
     }
+
     .sub {
       font-size: 14px;
       text-transform: capitalize;
     }
   }
+
   .local {
     display: block;
     text-align: right;
     color: $text-light5;
     padding: 10px;
     width: 200px;
+
     .title {
       font-size: 16px;
       text-transform: uppercase;
     }
+
     .sub {
       font-size: 14px;
       text-transform: capitalize;
@@ -4186,6 +4843,7 @@ select {
   letter-spacing: 0.01em;
   border-radius: 15px;
   height: auto;
+
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -4199,6 +4857,7 @@ select {
     border-radius: 15px;
     height: 100%;
   }
+
   .circle-img {
     text-align: center;
     width: 84px;
@@ -4212,6 +4871,7 @@ select {
     margin: auto;
     padding: 7px;
   }
+
   .text {
     color: $text-primary-color3;
     letter-spacing: 0.01em;
@@ -4221,6 +4881,7 @@ select {
     font-size: 18px;
     line-height: 140%;
     text-align: center;
+
     .green {
       font-style: normal;
       font-weight: normal;
@@ -4230,11 +4891,13 @@ select {
     }
   }
 }
+
 .flex-col-stats {
   flex-flow: column wrap;
   display: flex;
   flex-wrap: wrap;
 }
+
 .trade-view {
   color: $background-main-color;
   padding: 35px;
@@ -4242,6 +4905,7 @@ select {
   margin: 10px;
   border-radius: 15px;
 }
+
 .box1 {
   display: block;
   color: $background-main-color;
@@ -4249,6 +4913,7 @@ select {
   margin: 5px;
   padding: 2px;
   justify-content: center;
+
   @media (max-width: 843px) {
     display: block;
     color: $background-main-color;
@@ -4256,6 +4921,7 @@ select {
     margin: 5px;
     padding: 2px;
     justify-content: center;
+
     .body {
       display: block;
       min-height: 20vh;
@@ -4264,11 +4930,13 @@ select {
       text-align: center;
       padding: 5px;
       @include box-shadow;
+
       .flex {
         display: flex;
         width: 100%;
         flex-flow: row wrap;
       }
+
       img {
         display: block;
         height: 50px;
@@ -4281,6 +4949,7 @@ select {
         border-radius: 12px;
         cursor: pointer;
       }
+
       span {
         font-size: 12px;
         font-weight: 400;
@@ -4290,17 +4959,20 @@ select {
         padding-top: 5px;
         padding-right: 12px;
       }
+
       p {
         font-size: 12.5px;
         font-weight: 500;
         color: $text-green;
       }
+
       h4 {
         font-size: 14px;
         font-weight: 600;
         color: $card-title-color;
       }
     }
+
     .header {
       display: flex;
       line-height: 20px;
@@ -4314,6 +4986,7 @@ select {
       padding-right: 20px;
       justify-content: center;
       padding-bottom: 20px;
+
       span {
         font-size: 20px;
         font-weight: 600;
@@ -4322,6 +4995,7 @@ select {
         border-bottom: $my-theme-primary;
         text-transform: uppercase;
       }
+
       img {
         display: block;
         height: 36px;
@@ -4329,6 +5003,7 @@ select {
       }
     }
   }
+
   select {
     @include bg-color13;
     border: none !important;
@@ -4341,6 +5016,7 @@ select {
     background-image: url(../assets/arrow-down-white.svg) !important;
     background-position: 96% center;
   }
+
   .footer {
     display: block;
     max-height: 12vh;
@@ -4349,6 +5025,7 @@ select {
     @include box-shadow;
     border-radius: 0px 0px 15px 15px;
   }
+
   .body {
     display: block;
     min-height: 30vh;
@@ -4357,24 +5034,29 @@ select {
     text-align: right;
     padding: 15px;
     @include box-shadow;
+
     tr {
       background-color: $seperator-color;
+
       th {
         color: $text-green;
         background-color: $background-main-color;
         @include box-shadow;
       }
+
       td {
         color: $card-title-color;
         background-color: $background-main-color;
         @include box-shadow;
       }
     }
+
     .flex {
       display: flex;
       width: 100%;
       flex-flow: row wrap;
     }
+
     img {
       display: block;
       height: 50px;
@@ -4387,6 +5069,7 @@ select {
       border-radius: 12px;
       cursor: pointer;
     }
+
     span {
       font-size: 16px;
       font-weight: 400;
@@ -4396,17 +5079,20 @@ select {
       padding-top: 15px;
       padding-right: 30px;
     }
+
     p {
       font-size: 18px;
       font-weight: 500;
       color: $text-green;
     }
+
     h4 {
       font-size: 22px;
       font-weight: 600;
       color: $card-title-color;
     }
   }
+
   .header {
     display: flex;
     line-height: 36px;
@@ -4420,6 +5106,7 @@ select {
     padding-right: 20px;
     justify-content: center;
     padding-bottom: 20px;
+
     span {
       font-size: 36px;
       font-weight: 600;
@@ -4428,6 +5115,7 @@ select {
       border-bottom: $my-theme-primary;
       text-transform: uppercase;
     }
+
     img {
       display: block;
       height: 36px;
@@ -4435,6 +5123,7 @@ select {
     }
   }
 }
+
 .stat-box {
   background-color: $background-main-color;
   @include box-shadow;
@@ -4455,12 +5144,14 @@ select {
   display: block;
   min-width: 200px;
   max-width: 300px;
+
   @media (min-width: 843px) {
     min-width: 100px;
     max-width: 200px;
     font-size: 12px !important;
   }
 }
+
 .savings {
   display: flex;
   flex-direction: column;
@@ -4469,6 +5160,7 @@ select {
   border-radius: 2px;
   padding: 10px;
   flex-wrap: wrap;
+
   img {
     width: 100px !important;
     height: 100px !important;
@@ -4476,17 +5168,20 @@ select {
     border: 1.5px solid $brand-main-color;
     padding: 1px;
   }
+
   span {
     text-align: center;
     font-size: 16px;
     color: white;
     padding: 3px;
     margin: 1px;
+
     .strike {
       text-decoration: line-through;
     }
   }
 }
+
 .patron-balance {
   display: flex;
   margin: 10px;
@@ -4495,6 +5190,7 @@ select {
   border-radius: 2px;
   padding: 10px;
   flex-wrap: wrap;
+
   img {
     flex-wrap: wrap;
     width: 35px !important;
@@ -4506,12 +5202,14 @@ select {
     flex-basis: calc(15% - 45px);
   }
 }
+
 .container1 {
   display: block;
   width: 650px;
   height: auto;
   flex-wrap: wrap;
 }
+
 .history {
   display: block;
   min-width: 200px;
@@ -4521,6 +5219,7 @@ select {
   background-color: $background-main-color;
   @include box-shadow;
   border-radius: 15px;
+
   span {
     font-size: 14px;
     color: $text-light1;
@@ -4528,11 +5227,13 @@ select {
     padding: 3px;
     color: #f38cae;
   }
+
   img {
     padding: 10px;
     margin: 2px;
     border-radius: 100%;
   }
+
   p {
     font-size: 13.5px;
     color: $my-theme-primary;
@@ -4540,26 +5241,32 @@ select {
     padding: 3px;
   }
 }
+
 .vh-100 {
   height: 100vh;
   overflow: auto;
 }
+
 .linebr-sm {
   padding: 1px;
   margin: 0.5px;
 }
+
 .clickable {
   cursor: pointer;
   display: block;
   width: fit-content;
   height: auto;
 }
+
 .stat-table {
   display: block;
   width: auto;
+
   .r {
     text-align: right;
   }
+
   .l {
     text-align: left;
   }
@@ -4584,15 +5291,19 @@ select {
   padding: 1px;
   margin-top: 1px;
   margin-bottom: 1px;
+
   @media (min-width: 767px) {
     width: auto;
   }
+
   @media (min-width: 1024px) {
     width: 250px;
   }
+
   @media (min-width: 1440px) {
     width: 300px;
   }
+
   @media (max-width: 1441px) {
     width: 325px;
   }
@@ -4602,11 +5313,13 @@ select {
     padding: 1px;
     width: 100%;
   }
+
   .right {
     text-align: right;
     padding: 1px;
     width: 100%;
   }
+
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -4621,6 +5334,7 @@ select {
     height: 100%;
   }
 }
+
 .news-block {
   width: auto;
   height: 100%;
@@ -4629,15 +5343,18 @@ select {
   border: 5px solid $border-bg2;
   margin: 10px;
   border-radius: 20px;
+
   @media (min-width: 1920px) {
     display: flex;
     flex-wrap: nowrap;
   }
+
   @media (min-width: 1440px) {
     .text {
       width: 100% !important;
       height: auto;
       display: block;
+
       p {
         margin: 2px;
         padding: 2px;
@@ -4649,6 +5366,7 @@ select {
         border-radius: 10px;
         line-height: 15px;
       }
+
       span {
         margin: 2px;
         padding: 2px;
@@ -4662,6 +5380,7 @@ select {
         text-transform: uppercase;
         line-height: 15px;
       }
+
       h4 {
         .r {
           margin: 3px;
@@ -4676,6 +5395,7 @@ select {
           text-transform: uppercase;
           line-height: 15px;
         }
+
         .l {
           margin: 3px;
           padding: 4px;
@@ -4690,6 +5410,7 @@ select {
           line-height: 15px;
         }
       }
+
       a {
         margin: 2px;
         padding: 3px;
@@ -4715,10 +5436,12 @@ select {
     background-color: $background-main-color;
     border: 0.5px solid $border-bg3;
   }
+
   .text {
     width: auto !important;
     height: auto;
     display: block;
+
     p {
       margin: 5px;
       padding: 2px;
@@ -4730,6 +5453,7 @@ select {
       border-radius: 10px;
       line-height: 15px;
     }
+
     span {
       margin: 5px;
       padding: 2px;
@@ -4743,6 +5467,7 @@ select {
       text-transform: uppercase;
       line-height: 15px;
     }
+
     h4 {
       .r {
         margin: 7px;
@@ -4757,6 +5482,7 @@ select {
         text-transform: uppercase;
         line-height: 15px;
       }
+
       .l {
         margin: 7px;
         padding: 4px;
@@ -4771,6 +5497,7 @@ select {
         line-height: 15px;
       }
     }
+
     a {
       margin: 4px;
       padding: 3px;
@@ -4786,6 +5513,7 @@ select {
     }
   }
 }
+
 .patron-block {
   width: auto;
   height: 100%;
@@ -4794,15 +5522,17 @@ select {
   border: 5px solid $border-bg2;
   margin: 10px;
   border-radius: 20px;
+
   .noborder-img {
-      background-color: $seperator-color;
-      width: 75px !important;
-      height: auto;
-      border-radius: 0px !important;
-      padding: 10px;
-      border: 0 !important;
-      margin: 5px;
+    background-color: $seperator-color;
+    width: 75px !important;
+    height: auto;
+    border-radius: 0px !important;
+    padding: 10px;
+    border: 0 !important;
+    margin: 5px;
   }
+
   .small-img {
     img {
       background-color: $background-main-color;
@@ -4816,15 +5546,18 @@ select {
       margin-right: 2px;
     }
   }
+
   @media (min-width: 1920px) {
     display: flex;
     flex-wrap: nowrap;
   }
+
   @media (min-width: 1440px) {
     .text {
       width: 100% !important;
       height: auto;
       display: block;
+
       p {
         margin: 2px;
         padding: 2px;
@@ -4837,6 +5570,7 @@ select {
         line-height: 15px;
         text-transform: capitalize;
       }
+
       span {
         margin: 2px;
         padding: 2px;
@@ -4850,6 +5584,7 @@ select {
         text-transform: uppercase;
         line-height: 15px;
       }
+
       h4 {
         .r {
           margin: 3px;
@@ -4864,6 +5599,7 @@ select {
           text-transform: uppercase;
           line-height: 15px;
         }
+
         .l {
           margin: 3px;
           padding: 4px;
@@ -4878,6 +5614,7 @@ select {
           line-height: 15px;
         }
       }
+
       a {
         margin: 2px;
         padding: 3px;
@@ -4904,10 +5641,12 @@ select {
     border: 0.5px solid $border-bg2;
     margin: 5px;
   }
+
   .text {
     width: auto !important;
     height: auto;
     display: block;
+
     p {
       margin: 5px;
       padding: 2px;
@@ -4918,6 +5657,7 @@ select {
       border: 0.5px solid $border-bg2;
       border-radius: 10px;
       line-height: 15px;
+
       img {
         width: 35px !important;
         height: auto;
@@ -4927,6 +5667,7 @@ select {
         padding: 0;
       }
     }
+
     span {
       margin: 5px;
       padding: 2px;
@@ -4940,6 +5681,7 @@ select {
       text-transform: uppercase;
       line-height: 15px;
     }
+
     h4 {
       img {
         width: 35px !important;
@@ -4949,6 +5691,7 @@ select {
         margin: 0;
         padding: 0;
       }
+
       .r {
         margin: 7px;
         padding: 4px;
@@ -4961,8 +5704,8 @@ select {
         text-align: right;
         text-transform: uppercase;
         line-height: 15px;
-        
       }
+
       .c {
         margin: 7px;
         padding: 4px;
@@ -4976,6 +5719,7 @@ select {
         text-transform: uppercase;
         line-height: 15px;
       }
+
       .l {
         margin: 7px;
         padding: 4px;
@@ -4990,6 +5734,7 @@ select {
         line-height: 15px;
       }
     }
+
     a {
       margin: 4px;
       padding: 3px;
@@ -5005,6 +5750,7 @@ select {
     }
   }
 }
+
 .title-1 {
   margin-left: 20px;
   margin-bottom: 10px;
@@ -5016,6 +5762,7 @@ select {
   text-transform: uppercase;
   @include text-shadow1;
 }
+
 .title-2 {
   font-family: $font-family-italic;
   color: $text-green !important;
@@ -5027,8 +5774,10 @@ select {
   font-weight: 400;
   text-transform: capitalize;
   @include text-shadow1;
+
   span {
     display: flex;
+
     img {
       display: block;
       margin-left: 30px;
@@ -5037,6 +5786,7 @@ select {
     }
   }
 }
+
 .title-3 {
   font-family: $font-family-italic;
   color: $card-title-color !important;
@@ -5048,8 +5798,10 @@ select {
   font-weight: 400;
   text-transform: capitalize;
   @include text-shadow;
+
   span {
     display: flex;
+
     img {
       display: block;
       margin-left: 30px;
@@ -5058,14 +5810,17 @@ select {
     }
   }
 }
+
 .title-4 {
   font-family: $font-family-italic;
   color: $text-green !important;
   font-weight: 300;
   text-transform: capitalize;
   @include text-shadow1;
+
   span {
     display: flex;
+
     img {
       display: block;
       margin-left: 30px;
@@ -5074,14 +5829,17 @@ select {
     }
   }
 }
+
 .title-5 {
   font-family: $font-family-italic;
   color: $card-title-color !important;
   font-weight: 300;
   text-transform: capitalize;
   @include text-shadow;
+
   span {
     display: flex;
+
     img {
       display: block;
       margin-left: 30px;
@@ -5090,6 +5848,7 @@ select {
     }
   }
 }
+
 .card-list2 {
   background-color: $background-main-color;
   @include box-shadow;
@@ -5103,6 +5862,7 @@ select {
   border-radius: 15px;
   height: 100%;
   margin: 10px;
+
   @media (max-width: 767px) {
     background-color: $background-main-color;
     @include box-shadow;
@@ -5117,23 +5877,28 @@ select {
     height: 100%;
   }
 }
+
 .img-row {
   flex-wrap: nowrap;
+
   @media (max-width: 800px) {
     flex-wrap: wrap;
   }
+
   img {
     display: block;
     width: 75px !important;
     height: auto;
     margin: 10px;
     padding: 2px;
+
     @media (min-width: 768px) {
       width: 55px !important;
       margin: 5px;
     }
   }
 }
+
 .button1 {
   display: block;
   width: auto;
@@ -5146,7 +5911,256 @@ select {
   font-size: 14px;
   font-weight: 300;
   color: $card-title-color;
+
   @media (min-width: 1440px) {
     height: 40px !important;
   }
+}
+
+.ppp-card {
+  background-color: $background-main-color;
+  @include box-shadow;
+  color: $text-secondary-color;
+  border: 0.5px solid $border-bg2;
+  box-sizing: border-box;
+  font-family: $font-family-default;
+  font-size: 1.125rem;
+  line-height: 200%;
+  letter-spacing: 0.01em;
+  border-radius: 15px;
+  height: 100%;
+  margin: 10px;
+
+  @media (max-width: 767px) {
+    background-color: $background-main-color;
+    @include box-shadow;
+    color: $text-secondary-color;
+    border: 0.5px solid $dark-color;
+    box-sizing: border-box;
+    font-family: $font-family-default;
+    font-size: 1.125rem;
+    line-height: 200%;
+    letter-spacing: 0.01em;
+    border-radius: 15px;
+    height: 100%;
+  }
+.harvest {
+  display: block;
+  background-color: $dark-bg;
+  padding: 8px;
+  margin: 12px;
+  border-radius: 13px;
+  border: 3px solid $border-bg2;
+  @include box-shadow2;
+  .amt {
+    display: block;
+    text-align: left;
+    font-weight: 500;
+font-size: 18px;
+line-height: 140%;
+color: $text-green;
+  }
+  .value {
+    display: block;
+    text-align: left;
+    font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+color: $text-secondary-color;
+  }
+  img {
+    display: block;
+    width: 24px;
+height: 24px;
+margin: 8px;
+border-radius: 100%;
+  }
+  p {
+    font-size: 13px !important;
+    .amt1 {
+      color: $text-light !important;
+      text-transform: uppercase !important;
+    }
+  .earned {
+    color: #FDBF16 !important;
+    text-transform: uppercase !important;
+  }
+}
+}
+  input {
+    padding-left: 33px;
+    padding-right: 33px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #151824;
+  }
+
+  .body {
+    display: block;
+    width: 100%;
+.sm-dark {
+  display: block;
+      color: $text-secondary-color;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 12px;
+      text-align: left;
+      padding: 5px;
+      margin: 4px;
+}
+.green-l {
+  display: block;
+  font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+text-transform: uppercase;
+color: #28CCAB;
+font-size: 12px;
+      line-height: 12px;
+      text-align: left;
+      padding: 5px;
+      margin: 4px;
+}
+.green-r {
+  display: block;
+  font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+text-transform: uppercase;
+color: #28CCAB;
+font-size: 12px;
+      line-height: 12px;
+      text-align: right;
+      padding: 5px;
+      margin: 4px;
+}
+.sm-light {
+  display: block;
+      font-weight: 500;
+      font-size: 20px;
+      font-size: 12px;
+      line-height: 12px;
+      text-align: right;
+      padding: 5px;
+      margin: 4px;
+      color: $text-light1;
+}
+    .dark {
+      display: block;
+      color: $text-secondary-color;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+      padding: 5px;
+      margin: 4px;
+    }
+
+    .light {
+      display: block;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 140%;
+      color: $text-light1;
+      text-align: right;
+      padding: 5px;
+      margin: 4px;
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+    text-align: right;
+
+    button{
+      margin-right: 10px;
+      margin-top: 5px;
+      margin-bottom: 2px;
+    }
+  }
+.foot {
+  color: $text-light;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 0.25px;
+  text-align: center;
+  display: block;
+}
+  .header {
+    background-color: $seperator-color;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    display: flex;
+    @include box-shadow2;
+    border: 0.75px solid $border-bg2;
+    padding: 5px;
+    img {
+      display: block;
+      width: 65px;
+      height: 65px;
+      border-radius: 100%;
+      background-color: #521a4c;
+      padding: 4px;
+      border: 0.5px solid #fdbf16;
+      margin: 3px 3px 3px 25%;
+    }
+
+    h3 {
+      color: $card-title-color;
+      @include text-shadow;
+      font-weight: 200;
+      font-size: 20px;
+      line-height: 140%;
+      padding: 5px;
+      margin: 3px;
+    }
+
+    p {
+      color: #fdbf16;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 140%;
+      padding: 2px;
+      margin: 4px 0px 10px 10px;
+
+      span {
+        color: #8a92a6;
+        font-size: 12.25px;
+      }
+    }
+  }
+}
+.join-btn1 {
+  @include join-button;
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-weight: 300;
+  font-size: 12px;
+  color: #ffffff;
+  max-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  margin-left: 20px;
+}
+.join-btn2 {
+  @include join-button;
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-weight: 300;
+  font-size: 18px;
+  color: #ffffff;
+  height: 50px;
+  display: block;
+  
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  width: 100%;
 }

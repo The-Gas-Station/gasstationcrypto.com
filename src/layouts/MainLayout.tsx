@@ -118,6 +118,11 @@ export const MainLayout = () => {
       icon: SvgHome,
     },
     {
+      label: 'Launch Pad',
+      route: '/launchpad',
+      icon: SvgHome,
+    },
+    {
       label: 'Stats',
       route: '/stats',
       icon: SvgHome,

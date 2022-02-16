@@ -17,6 +17,7 @@ import BridgePage from './pages/BridgePage';
 import SharesPage from './pages/SharesPage';
 import TradePage from './pages/TradePage';
 import StatsPage from './pages/StatsPage';
+import LaunchPadPage from './pages/LaunchPadPage';
 
 export const App = () => {
   const { currentChainId } = useWeb3ConnectionsContext();
@@ -56,6 +57,12 @@ export const App = () => {
             path="/stats"
             element={<Navigate to={`/${CHAIN_NAMES[currentChainId]}/stats`} />}
           />
+          <Route
+            path="/launchpad"
+            element={
+              <Navigate to={`/${CHAIN_NAMES[currentChainId]}/launchpad`} />
+            }
+          />
           <Route path="/:chain">
             <Route path="hub" element={<RewardsHubPage />} />
             <Route path="bridge" element={<BridgePage />} />
@@ -64,6 +71,7 @@ export const App = () => {
             <Route path="shares" element={<SharesPage />} />
             <Route path="trade" element={<TradePage />} />
             <Route path="stats" element={<StatsPage />} />
+            <Route path="launchpad" element={<LaunchPadPage />} />
           </Route>
         </Route>
       </Routes>
