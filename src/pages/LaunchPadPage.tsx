@@ -23,7 +23,7 @@ export const LaunchPadPage = () => {
     return <></>;
   }
 
-  return <LaunchPadChainPage key={chainId} chainId={chainId} />;
+  return <LaunchPadChainPage />;
 };
 
 export default LaunchPadPage;

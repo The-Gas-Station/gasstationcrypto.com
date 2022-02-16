@@ -1,8 +1,7 @@
 import React from 'react';
 import PppCard from '../components/pppCard';
-import { ChainId } from '../library/constants/chains';
 
-export const LaunchPadChainPage = ({ chainId }: { chainId: ChainId }) => {
+export const LaunchPadChainPage = () => {
   return (
     <>
       <div className="flex-row d-flex">
