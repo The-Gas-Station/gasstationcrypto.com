@@ -1,5 +1,6 @@
 {
   "launchDate": "11 Dec, 2021",
+  "lookupLiquidityPairs": [],
   "display": "Binance Smart Chain",
   "tokenImage": "/public/images/tokens/bnb.png",
   "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Binance%20Smart%20Chain/",
@@ -138,9 +139,20 @@
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/avax.png"
+    },
+    {
+      "name": "LP Dual Fuel #3",
+      "address": "evm:0x3c25257Fdb6cD7e86D18D63eD86ec88E2658Da23",
+      "type": "DoubleV2",
+      "stakeSymbol": "bscGAS-BNB Ape LP",
+      "stakeIcon": "/public/images/tokens/ape-lp.svg",
+      "rewardSymbols": [
+        "bscGAS"
+      ],
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/bnb.svg"
     }
   ],
-  "lookupLiquidityPairs": [],
   "nfpAddress": "evm:0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b",
   "chainId": 56
 }
