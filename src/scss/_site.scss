@@ -5944,50 +5944,66 @@ select {
     border-radius: 15px;
     height: 100%;
   }
-.harvest {
-  display: block;
-  background-color: $dark-bg;
-  padding: 8px;
-  margin: 12px;
-  border-radius: 13px;
-  border: 3px solid $border-bg2;
-  @include box-shadow2;
-  .amt {
+
+  .harvest {
     display: block;
-    text-align: left;
-    font-weight: 500;
-font-size: 18px;
-line-height: 140%;
-color: $text-green;
-  }
-  .value {
-    display: block;
-    text-align: left;
-    font-style: normal;
-font-weight: normal;
-font-size: 12px;
-line-height: 14px;
-color: $text-secondary-color;
-  }
-  img {
-    display: block;
-    width: 24px;
-height: 24px;
-margin: 8px;
-border-radius: 100%;
-  }
-  p {
-    font-size: 13px !important;
-    .amt1 {
-      color: $text-light !important;
-      text-transform: uppercase !important;
+    background-color: $dark-bg;
+    padding: 8px;
+    margin: 12px;
+    border-radius: 13px;
+    border: 3px solid $border-bg2;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
+    box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
+
+    &:hover {
+      -webkit-box-shadow: 0px 0px 7px 5px rgba(253, 191, 22, 0.67);
+      -moz-box-shadow: 0px 0px 7px 5px rgba(253, 191, 22, 0.67);
+      box-shadow: 0px 0px 7px 5px rgba(253, 191, 22, 0.67);
     }
-  .earned {
-    color: #FDBF16 !important;
-    text-transform: uppercase !important;
+
+    .amt {
+      display: block;
+      text-align: left;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 140%;
+      color: $text-green;
+    }
+
+    .value {
+      display: block;
+      text-align: left;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      color: $text-secondary-color;
+    }
+
+    img {
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin: 8px;
+      border-radius: 100%;
+    }
+
+    p {
+      font-size: 13px !important;
+
+      .amt1 {
+        color: $text-light !important;
+        text-transform: uppercase !important;
+      }
+
+      .earned {
+        color: #FDBF16 !important;
+        text-transform: uppercase !important;
+      }
+    }
   }
-}
-}
+
   input {
     padding-left: 33px;
     padding-right: 33px;
@@ -5999,8 +6015,9 @@ border-radius: 100%;
   .body {
     display: block;
     width: 100%;
-.sm-dark {
-  display: block;
+
+    .sm-dark {
+      display: block;
       color: $text-secondary-color;
       font-weight: 300;
       font-size: 12px;
@@ -6008,35 +6025,38 @@ border-radius: 100%;
       text-align: left;
       padding: 5px;
       margin: 4px;
-}
-.green-l {
-  display: block;
-  font-weight: 500;
-font-size: 12px;
-line-height: 14px;
-text-transform: uppercase;
-color: #28CCAB;
-font-size: 12px;
+    }
+
+    .green-l {
+      display: block;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      color: #28CCAB;
+      font-size: 12px;
       line-height: 12px;
       text-align: left;
       padding: 5px;
       margin: 4px;
-}
-.green-r {
-  display: block;
-  font-weight: 500;
-font-size: 12px;
-line-height: 14px;
-text-transform: uppercase;
-color: #28CCAB;
-font-size: 12px;
+    }
+
+    .green-r {
+      display: block;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      color: #28CCAB;
+      font-size: 12px;
       line-height: 12px;
       text-align: right;
       padding: 5px;
       margin: 4px;
-}
-.sm-light {
-  display: block;
+    }
+
+    .sm-light {
+      display: block;
       font-weight: 500;
       font-size: 20px;
       font-size: 12px;
@@ -6045,7 +6065,8 @@ font-size: 12px;
       padding: 5px;
       margin: 4px;
       color: $text-light1;
-}
+    }
+
     .dark {
       display: block;
       color: $text-secondary-color;
@@ -6075,21 +6096,23 @@ font-size: 12px;
     height: auto;
     text-align: right;
 
-    button{
+    button {
       margin-right: 10px;
       margin-top: 5px;
       margin-bottom: 2px;
     }
   }
-.foot {
-  color: $text-light;
-  font-size: 12px;
-  font-weight: 400;
-  text-transform: capitalize;
-  margin: 0.25px;
-  text-align: center;
-  display: block;
-}
+
+  .foot {
+    color: $text-light;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 0.25px;
+    text-align: center;
+    display: block;
+  }
+
   .header {
     background-color: $seperator-color;
     width: 100%;
@@ -6098,6 +6121,7 @@ font-size: 12px;
     @include box-shadow2;
     border: 0.75px solid $border-bg2;
     padding: 5px;
+
     img {
       display: block;
       width: 65px;
@@ -6105,8 +6129,16 @@ font-size: 12px;
       border-radius: 100%;
       background-color: #521a4c;
       padding: 4px;
-      border: 0.5px solid #fdbf16;
       margin: 3px 3px 3px 25%;
+      -webkit-box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
+      -moz-box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
+      box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
+
+      &:hover {
+        -webkit-box-shadow: 0px 0px 7px 5px rgba(253, 191, 22, 0.67);
+        -moz-box-shadow: 0px 0px 7px 5px rgba(253, 191, 22, 0.67);
+        box-shadow: 0px 0px 7px 5px rgba(253, 191, 22, 0.67);
+      }
     }
 
     h3 {
@@ -6127,6 +6159,12 @@ font-size: 12px;
       padding: 2px;
       margin: 4px 0px 10px 10px;
 
+      &:hover {
+        -webkit-text-shadow: 0px 0px 20px rgba(253, 191, 22, 0.67);
+        -moz-text-shadow: 0px 0px 20px rgba(253, 191, 22, 0.67);
+        text-shadow: 0px 0px 20px rgba(253, 191, 22, 0.67);
+      }
+
       span {
         color: #8a92a6;
         font-size: 12.25px;
@@ -6134,6 +6172,7 @@ font-size: 12px;
     }
   }
 }
+
 .join-btn1 {
   @include join-button;
   box-sizing: border-box;
@@ -6148,6 +6187,7 @@ font-size: 12px;
   width: auto;
   margin-left: 20px;
 }
+
 .join-btn2 {
   @include join-button;
   box-sizing: border-box;
@@ -6157,10 +6197,101 @@ font-size: 12px;
   color: #ffffff;
   height: 50px;
   display: block;
-  
+
   margin-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 5px;
   width: 100%;
 }
+@function multiple-box-shadow ($n) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+
+  @for $i from 2 through $n {
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+  }
+
+  @return unquote($value);
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-2000px);
+  }
+}
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big: multiple-box-shadow(100);
+.galaxy {
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow: hidden;
+  .stars3 {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+    animation: animStar 150s linear infinite;
+  
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 2000px;
+      width: 3px;
+      height: 3px;
+      background: transparent;
+      box-shadow: $shadows-big;
+    }
+  }
+.stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation: animStar 100s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+  }
+}
+  .stars {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+    animation: animStar 50s linear infinite;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 2000px;
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow: $shadows-small;
+    }
+  }
+
+  img {
+    display: block;
+    width: 300px;
+    height: auto;
+  }
+}
+
+
+
+
+
+
+
+;

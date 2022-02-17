@@ -17,7 +17,7 @@ import apelabsicon from '../assets/apelabs.png';
 import crystlicon from '../assets/crystl.svg';
 import ethersicon from '../assets/ethers.svg';
 import pump from '../assets/Pump.svg';
-
+import dawa from '../assets/dawa.svg';
 import legendaryArray from '../components/legendaryRandom';
 import rareArray from '../components/rareRandom';
 
@@ -255,6 +255,7 @@ export const HomePage = () => {
           <div className="flex-row flex-wrap d-flex img-row">
             <img src={pssicon} />
             <img src={crystlicon} />
+            <img src={dawa} />
             <img src={apelabsicon} />
           </div>
         </div>

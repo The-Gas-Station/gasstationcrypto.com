@@ -1,11 +1,13 @@
 import React from 'react';
 import PppCard from '../components/pppCard';
+import rocket from '../assets/rocket.svg';
 
 export const LaunchPadChainPage = () => {
   return (
     <>
-      <div className="flex-row d-flex">
-        <img src="https://via.placeholder.com/150x150" />
+      <div className="flex-row d-flex galaxy">
+        <div className="stars stars2 stars3"></div>
+        <img src={rocket} />
         <h1>Project Propultion Pad</h1>
       </div>
       <div className="flex-row d-flex">
