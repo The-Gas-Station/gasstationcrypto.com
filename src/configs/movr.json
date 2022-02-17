@@ -62,6 +62,18 @@
         "USDC"
       ],
       "reward0Icon": "/public/images/tokens/usdc.png"
+    },
+    {
+      "name": "LP Dual Fuel #2",
+      "address": "evm:0xa967Bd84D8DFC7001B41b5320b49D75C8320A2bf",
+      "type": "DoubleV2",
+      "stakeSymbol": "movrGAS-MOVR SLP",
+      "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
+      "rewardSymbols": [
+        "movrGAS"
+      ],
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/movr-blue-circle.svg"
     }
   ],
   "chainId": 1285
