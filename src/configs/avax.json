@@ -57,6 +57,18 @@
         "USDC.e"
       ],
       "reward0Icon": "/public/images/tokens/usdc.png"
+    },
+    {
+      "name": "LP Dual Fuel #2",
+      "address": "evm:0x34C1fEfe2b79ed89fF8C832B074E497D58113e58",
+      "type": "DoubleV2",
+      "stakeSymbol": "avaxGAS-AVAX LP",
+      "stakeIcon": "/public/images/tokens/logo.bc60f78d.png",
+      "rewardSymbols": [
+        "avaxGAS"
+      ],
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/avax.png"
     }
   ],
   "chainId": 43114
