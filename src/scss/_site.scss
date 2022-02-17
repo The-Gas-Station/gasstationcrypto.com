@@ -92,13 +92,12 @@ body {
   padding: 12px 10px !important;
 
   svg {
-
-    &>path,
-    &>g path {
+    & > path,
+    & > g path {
       fill: $text-secondary-color;
     }
 
-    &>rect {
+    & > rect {
       stroke: $text-secondary-color;
     }
   }
@@ -114,19 +113,20 @@ body {
 
   &:hover,
   &.active {
-    background-image: linear-gradient(to right,
-        $brand-main-color,
-        $background-main-color);
+    background-image: linear-gradient(
+      to right,
+      $brand-main-color,
+      $background-main-color
+    );
     border-radius: 10px;
 
     svg {
-
-      &>path,
-      &>g path {
+      & > path,
+      & > g path {
         fill: $background-main-color;
       }
 
-      &>rect {
+      & > rect {
         stroke: $background-main-color;
       }
     }
@@ -157,7 +157,7 @@ body {
   }
 
   svg {
-    &>path {
+    & > path {
       stroke: $text-primary-color;
     }
   }
@@ -233,10 +233,12 @@ a.mode-switcher {
   }
 
   .card-list-row-inner {
-    background: linear-gradient(83.48deg,
-        #00b098 4.46%,
-        #521a4c 78.43%,
-        #521a4c 100%);
+    background: linear-gradient(
+      83.48deg,
+      #00b098 4.46%,
+      #521a4c 78.43%,
+      #521a4c 100%
+    );
     @include box-shadow;
     border: 0.5px solid $dark-color;
     box-sizing: border-box;
@@ -446,7 +448,7 @@ a.mode-switcher {
     }
 
     svg {
-      &>path {
+      & > path {
         stroke: $text-primary-color;
       }
     }
@@ -587,7 +589,7 @@ a.mode-switcher {
     }
 
     svg {
-      &>path {
+      & > path {
         stroke: $text-primary-color;
       }
     }
@@ -667,7 +669,8 @@ img {
     display: none;
   }
 
-  @media (max-width: 1499px) {}
+  @media (max-width: 1499px) {
+  }
 
   @media (max-width: 1024px) {
     .banner-text {
@@ -678,15 +681,19 @@ img {
   @media (max-width: 767px) {
     min-height: auto;
     padding: 0;
-    background: linear-gradient(86.88deg,
-        #521a4c 71.08%,
-        rgba(82, 26, 76, 0) 94.21%);
+    background: linear-gradient(
+      86.88deg,
+      #521a4c 71.08%,
+      rgba(82, 26, 76, 0) 94.21%
+    );
 
     .banner-text {
       padding: 45px 35px;
-      background: linear-gradient(89.67deg,
-          #1c3c4a 19.76%,
-          rgba(28, 37, 74, 0) 80.98%);
+      background: linear-gradient(
+        89.67deg,
+        #1c3c4a 19.76%,
+        rgba(28, 37, 74, 0) 80.98%
+      );
 
       h5 {
         font-size: 21px;
@@ -811,7 +818,7 @@ img {
         z-index: -1;
       }
 
-      ~.card {
+      ~ .card {
         margin-left: 15px;
       }
 
@@ -886,9 +893,11 @@ img {
         .comming-soon {
           display: flex;
           padding: 0.5rem;
-          background: linear-gradient(90deg,
-              #28ccab 5.21%,
-              rgba(40, 204, 171, 0) 95.31%);
+          background: linear-gradient(
+            90deg,
+            #28ccab 5.21%,
+            rgba(40, 204, 171, 0) 95.31%
+          );
           color: #ffffff;
           line-height: 1;
           font-size: 0.75rem;
@@ -908,7 +917,7 @@ img {
         margin-top: 40px;
         flex: auto;
 
-        ~.card {
+        ~ .card {
           margin-left: 0;
         }
       }
@@ -1012,7 +1021,7 @@ img {
 
   &.is-closed {
     @media (min-width: 992px) {
-      +.right-content {
+      + .right-content {
         padding-left: 85px;
 
         &:after {
@@ -1727,7 +1736,6 @@ select {
 
   .action-btn-dropdown {
     &.open {
-
       // .action-dropdown {
       //   opacity: 1;
       //   visibility: visible;
@@ -2025,7 +2033,7 @@ select {
         }
       }
 
-      ~span {
+      ~ span {
         margin-left: 7px;
       }
     }
@@ -2264,9 +2272,11 @@ select {
 
   .nfp-banner-center-text {
     max-width: 900px;
-    background: linear-gradient(90.44deg,
-        #151824 0.76%,
-        rgba(21, 24, 36, 0) 98.45%);
+    background: linear-gradient(
+      90.44deg,
+      #151824 0.76%,
+      rgba(21, 24, 36, 0) 98.45%
+    );
     padding: 30px;
     border-radius: 15px;
 
@@ -2317,9 +2327,11 @@ select {
     }
 
     .nfp-banner-center-text {
-      background: linear-gradient(90.44deg,
-          #151824 12.65%,
-          rgba(21, 24, 36, 0.3) 95.35%);
+      background: linear-gradient(
+        90.44deg,
+        #151824 12.65%,
+        rgba(21, 24, 36, 0.3) 95.35%
+      );
       padding: 24px;
 
       h4 {
@@ -2340,7 +2352,7 @@ select {
           display: flex;
           align-items: center;
 
-          >img {
+          > img {
             width: 36px;
           }
 
@@ -2382,10 +2394,12 @@ select {
   padding: 10px;
   height: auto;
   margin-bottom: 20px;
-  background: linear-gradient(83.48deg,
-      #00b098 4.46%,
-      #521a4c 78.43%,
-      #521a4c 100%);
+  background: linear-gradient(
+    83.48deg,
+    #00b098 4.46%,
+    #521a4c 78.43%,
+    #521a4c 100%
+  );
 
   .page-banner-top-title {
     display: flex;
@@ -2417,9 +2431,11 @@ select {
 
   .banner-center {
     max-width: 900px;
-    background: linear-gradient(90.44deg,
-        #151824 0.76%,
-        rgba(21, 24, 36, 0) 98.45%);
+    background: linear-gradient(
+      90.44deg,
+      #151824 0.76%,
+      rgba(21, 24, 36, 0) 98.45%
+    );
     padding: 5px;
     border-radius: 15px;
 
@@ -2447,9 +2463,11 @@ select {
     }
 
     .nfp-banner-center-text {
-      background: linear-gradient(90.44deg,
-          #151824 12.65%,
-          rgba(21, 24, 36, 0.3) 95.35%);
+      background: linear-gradient(
+        90.44deg,
+        #151824 12.65%,
+        rgba(21, 24, 36, 0.3) 95.35%
+      );
       padding: 24px;
 
       h4 {
@@ -2525,10 +2543,12 @@ select {
   height: auto;
   margin: 0 -12px;
   margin-bottom: 20px;
-  background: linear-gradient(83.48deg,
-      #00b098 4.46%,
-      #521a4c 78.43%,
-      #521a4c 100%);
+  background: linear-gradient(
+    83.48deg,
+    #00b098 4.46%,
+    #521a4c 78.43%,
+    #521a4c 100%
+  );
 
   .bridge-banner-img {
     background-image: url(../assets/bridge-banner.png);
@@ -2571,9 +2591,11 @@ select {
 
   .banner-center {
     max-width: 900px;
-    background: linear-gradient(90.44deg,
-        #151824 0.76%,
-        rgba(21, 24, 36, 0) 98.45%);
+    background: linear-gradient(
+      90.44deg,
+      #151824 0.76%,
+      rgba(21, 24, 36, 0) 98.45%
+    );
     margin-left: 10px;
     padding: 5px;
     border-radius: 15px;
@@ -2602,9 +2624,11 @@ select {
     }
 
     .nfp-banner-center-text {
-      background: linear-gradient(90.44deg,
-          #151824 12.65%,
-          rgba(21, 24, 36, 0.3) 95.35%);
+      background: linear-gradient(
+        90.44deg,
+        #151824 12.65%,
+        rgba(21, 24, 36, 0.3) 95.35%
+      );
       padding: 24px;
 
       h4 {
@@ -2695,7 +2719,7 @@ select {
   .image-box {
     padding: 0 20px;
 
-    >img {
+    > img {
       width: 100%;
     }
 
@@ -2728,10 +2752,12 @@ select {
   }
 
   .drow-line {
-    background: linear-gradient(90deg,
-        rgba(40, 204, 171, 0) 0%,
-        #28ccab 49.52%,
-        rgba(40, 204, 171, 0) 99.04%);
+    background: linear-gradient(
+      90deg,
+      rgba(40, 204, 171, 0) 0%,
+      #28ccab 49.52%,
+      rgba(40, 204, 171, 0) 99.04%
+    );
     height: 2px;
     display: block;
     width: 100%;
@@ -2878,7 +2904,7 @@ select {
       display: flex;
       align-items: center;
 
-      >img {
+      > img {
         max-width: 128px;
         width: 100%;
         flex: none;
@@ -2953,7 +2979,7 @@ select {
     border-radius: 15px;
     margin-bottom: 20px;
 
-    >img {
+    > img {
       width: 100%;
     }
 
@@ -2979,7 +3005,6 @@ select {
       }
 
       @media (max-width: 1499px) {
-
         small,
         h2 {
           font-size: 16px;
@@ -4298,7 +4323,7 @@ select {
     }
 
     .uplode-block {
-      >label {
+      > label {
         width: 100%;
       }
 
@@ -4464,7 +4489,6 @@ select {
         }
 
         .img-uplode-title {
-
           p,
           span {
             font-size: 14px;
@@ -4694,10 +4718,12 @@ select {
 }
 
 .card-list-row-inner {
-  background: linear-gradient(83.48deg,
-      #00b098 4.46%,
-      #521a4c 78.43%,
-      #521a4c 100%);
+  background: linear-gradient(
+    83.48deg,
+    #00b098 4.46%,
+    #521a4c 78.43%,
+    #521a4c 100%
+  );
   @include box-shadow;
   border: 0.5px solid $dark-color;
   box-sizing: border-box;
@@ -5944,7 +5970,63 @@ select {
     border-radius: 15px;
     height: 100%;
   }
-
+  .selection-row {
+    display: flex;
+    background: $dark-bg11;
+    justify-content: space-around;
+    border: 0.5px solid $border-bg2;
+    padding-top: 1.5px;
+    padding-bottom: 1.5px;
+    @include box-shadow1;
+    .item {
+      display: block;
+      width: auto;
+      p {
+        margin-top: 23px;
+        font-size: 14px;
+        color: $text-secondary-color;
+        line-height: 120%;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      img {
+        display: none;
+      }
+      .active {
+        border-radius: 15px;
+        @include box-shadow2;
+        padding: 3px;
+        background: $dark-bg7;
+        p {
+          margin-top: 3px;
+          font-size: 14px;
+          color: #28ccab;
+          line-height: 120%;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+        img {
+          display: block;
+          width: 15px;
+          color: #28ccab;
+          margin: auto;
+        }
+      }
+      .inactive {
+        p {
+          margin-top: 23px;
+          font-size: 14px;
+          color: $text-secondary-color;
+          line-height: 120%;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+        img {
+          display: none;
+        }
+      }
+    }
+  }
   .harvest {
     display: block;
     background-color: $dark-bg;
@@ -5969,6 +6051,7 @@ select {
       font-size: 18px;
       line-height: 140%;
       color: $text-green;
+      margin-left: 5px;
     }
 
     .value {
@@ -5979,13 +6062,13 @@ select {
       font-size: 12px;
       line-height: 14px;
       color: $text-secondary-color;
+      margin-left: 5px;
     }
 
     img {
       display: block;
-      width: 24px;
-      height: 24px;
-      margin: 8px;
+      width: auto;
+      height: auto;
       border-radius: 100%;
     }
 
@@ -5998,7 +6081,7 @@ select {
       }
 
       .earned {
-        color: #FDBF16 !important;
+        color: #fdbf16 !important;
         text-transform: uppercase !important;
       }
     }
@@ -6013,9 +6096,11 @@ select {
   }
 
   .body {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
     width: 100%;
-
     .sm-dark {
       display: block;
       color: $text-secondary-color;
@@ -6025,32 +6110,17 @@ select {
       text-align: left;
       padding: 5px;
       margin: 4px;
+      text-transform: uppercase;
     }
-
-    .green-l {
+    .green {
       display: block;
       font-weight: 500;
       font-size: 12px;
       line-height: 14px;
       text-transform: uppercase;
-      color: #28CCAB;
+      color: #28ccab;
       font-size: 12px;
       line-height: 12px;
-      text-align: left;
-      padding: 5px;
-      margin: 4px;
-    }
-
-    .green-r {
-      display: block;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 14px;
-      text-transform: uppercase;
-      color: #28CCAB;
-      font-size: 12px;
-      line-height: 12px;
-      text-align: right;
       padding: 5px;
       margin: 4px;
     }
@@ -6065,13 +6135,14 @@ select {
       padding: 5px;
       margin: 4px;
       color: $text-light1;
+      text-transform: uppercase;
     }
 
     .dark {
       display: block;
       color: $text-secondary-color;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 20px;
       line-height: 16px;
       text-align: left;
       padding: 5px;
@@ -6082,7 +6153,7 @@ select {
       display: block;
       font-weight: 500;
       font-size: 20px;
-      line-height: 140%;
+      line-height: 16px;
       color: $text-light1;
       text-align: right;
       padding: 5px;
@@ -6129,7 +6200,7 @@ select {
       border-radius: 100%;
       background-color: #521a4c;
       padding: 4px;
-      margin: 3px 3px 3px 25%;
+      margin: auto;
       -webkit-box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
       -moz-box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
       box-shadow: 0px 0px 3px 1px rgba(253, 191, 22, 0.67);
@@ -6145,19 +6216,33 @@ select {
       color: $card-title-color;
       @include text-shadow;
       font-weight: 200;
-      font-size: 20px;
-      line-height: 140%;
-      padding: 5px;
+      font-size: 22px;
+      line-height: 110%;
+      padding: 2px;
       margin: 3px;
     }
-
-    p {
-      color: #fdbf16;
-      font-weight: 600;
-      font-size: 12px;
+    .asset {
+      font-size: 16px;
       line-height: 140%;
       padding: 2px;
-      margin: 4px 0px 10px 10px;
+      text-transform: uppercase;
+      
+    }
+    .stake {
+      color: $text-light;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 140%;
+      padding: 2px;
+      text-transform: uppercase;
+    }
+    .earn {
+      color: #fdbf16;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 140%;
+      padding: 2px;
+      text-transform: uppercase;
 
       &:hover {
         -webkit-text-shadow: 0px 0px 20px rgba(253, 191, 22, 0.67);
@@ -6204,7 +6289,7 @@ select {
   margin-top: 5px;
   width: 100%;
 }
-@function multiple-box-shadow ($n) {
+@function multiple-box-shadow($n) {
   $value: '#{random(2000)}px #{random(2000)}px #FFF';
 
   @for $i from 2 through $n {
@@ -6227,7 +6312,7 @@ $shadows-small: multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
 .galaxy {
-  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   .stars3 {
     width: 3px;
@@ -6235,9 +6320,9 @@ $shadows-big: multiple-box-shadow(100);
     background: transparent;
     box-shadow: $shadows-big;
     animation: animStar 150s linear infinite;
-  
+
     &:after {
-      content: " ";
+      content: ' ';
       position: absolute;
       top: 2000px;
       width: 3px;
@@ -6246,23 +6331,23 @@ $shadows-big: multiple-box-shadow(100);
       box-shadow: $shadows-big;
     }
   }
-.stars2 {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: $shadows-medium;
-  animation: animStar 100s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
+  .stars2 {
     width: 2px;
     height: 2px;
     background: transparent;
     box-shadow: $shadows-medium;
+    animation: animStar 100s linear infinite;
+
+    &:after {
+      content: ' ';
+      position: absolute;
+      top: 2000px;
+      width: 2px;
+      height: 2px;
+      background: transparent;
+      box-shadow: $shadows-medium;
+    }
   }
-}
   .stars {
     width: 1px;
     height: 1px;
@@ -6271,7 +6356,7 @@ $shadows-big: multiple-box-shadow(100);
     animation: animStar 50s linear infinite;
 
     &:after {
-      content: " ";
+      content: ' ';
       position: absolute;
       top: 2000px;
       width: 1px;
@@ -6287,11 +6372,3 @@ $shadows-big: multiple-box-shadow(100);
     height: auto;
   }
 }
-
-
-
-
-
-
-
-;

@@ -1,102 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
+import arrow from '../assets/arrow-down.svg';
+import Staking from '../components/pppcard/Staking';
+type myState = {showComponent: boolean};
 
-class PppCard extends React.Component {
+class PppCard extends React.Component<Staking, myState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      showComponent: false,
+    };
+    this._onButtonClick = this._onButtonClick.bind(this);
+  }
+  _onButtonClick() {
+    this.setState({
+      showComponent: true,
+    });
+  }
   render() {
+    const [showStaking, setShowStaking] = useState(false);
+    const [showDetails, setShowDetails] = useState(false);
+    const [showMetrics, setShowMetrics] = useState(false);
+    const [_Staking, setShowStakingComponent] = useState(true);
+    const toggleStaking = () => {
+      setShowStaking(!showStaking);
+      setShowStakingComponent(!_Staking);
+    };
+    const toggleDetails = () => {
+      setShowDetails(!showDetails);
+    };
+    const toggleMetrics = () => {
+      setShowMetrics(!showMetrics);
+    };
     return (
       <div className="col-lg-3 ppp-card">
         <div className="flex-column ">
           <div className="header">
             <div className="flex-column ">
               <h3>New Project</h3>
-              <p>Earn $NEW / Stake $OLD</p>
+              <div className="flex-row d-flex flex-wrap">
+                <div className="earn">earn</div>
+                <div className="asset">$new</div>
+                <div className="asset"> / </div>
+                <div className="stake">stake</div>
+                <div className="asset">$old</div>
+              </div>
             </div>
             <img src="https://via.placeholder.com/80x60" />
           </div>
-          <div className="info">
-            <button className="join-btn1">More Info</button>
-          </div>
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="body">
-                <p className="dark">Raise Cap ($OLD)</p>
+          <div className="selection-row">
+            <div className="item">
+              <div
+                className={showStaking ? 'active' : 'inactive'}
+                onClick={() => {
+                  toggleStaking();
+                  setShowDetails(false);
+                  setShowMetrics(false);
+                  this._onButtonClick;
+                }}
+              >
+                <p>staking</p>
+                <img src={arrow} />
               </div>
             </div>
-            <div className="col-lg-6">
-              <div className="body">
-                <h6 className="light">$200,000</h6>
+            <div className="item">
+              <div
+                className={showDetails ? 'active' : 'inactive'}
+                onClick={() => {
+                  toggleDetails();
+                  setShowMetrics(false);
+                  setShowStaking(false);
+                }}
+              >
+                <p>fund details</p>
+                <img src={arrow} />
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="body">
-                <p className="dark">Opened: 1/22/22</p>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="body">
-                <h6 className="light">1%</h6>
-              </div>
-            </div>
-          </div>
-          <div className="range">
-            <input type="range" className="form-range" id="customRange1" />
-          </div>
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="body">
-                <p className="sm-dark">500 BUSD</p>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="body">
-                <h6 className="sm-light">2,500 / 1,000,000 $NEW</h6>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="body">
-                <p className="green-l">1 BUSD = 5 $NEW</p>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="body">
-                <h6 className="green-r">1 $NEW = 0.2 BUSD</h6>
+            <div className="item">
+              <div
+                className={showMetrics ? 'active' : 'inactive'}
+                onClick={() => {
+                  toggleMetrics();
+                  setShowDetails(false);
+                  setShowStaking(false);
+                }}
+              >
+                <p>metrics</p>
+                <img src={arrow} />
               </div>
             </div>
           </div>
-          <div className="flex-column">
-            <div className="harvest">
-              <div className="flex-row d-flex">
-                <p>
-                  <span className="earned">Earned </span>{' '}
-                  <span className="amt1">$NEW</span>
-                </p>
-              </div>
-              <div className="flex-column">
-                <div className="flex-row d-flex justify-content-center">
-                  <div className="col-lg-2">
-                    <img src="https://via.placeholder.com/50x50" />
-                  </div>
-                  <div className="flex-column">
-                    <h6 className="amt">0.00</h6>
-                    <p className="value">$0.00 USD</p>
-                  </div>
-                  <div className="col-lg-2" />
-                  <div className="flex-column">
-                    <button className="join-btn1">Harvest</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex-row d-flex justify-content-center">
-            <p className="foot">Commit Funds</p>
-          </div>
-          <div className="flex-row d-flex justify-content-center">
-            <button className="join-btn2">Enable</button>
-          </div>
+          {this.state.showComponent ? <Staking /> : null}
         </div>
       </div>
     );
