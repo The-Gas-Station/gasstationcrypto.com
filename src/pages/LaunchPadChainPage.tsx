@@ -32,7 +32,7 @@ export const LaunchPadChainPage = () => {
         <button className="button1">Yo</button>
       </div>
       <div className="flex-row d-flex flex-wrap justify-content-center">
-        <PppCard myState={false}   />
+        <PppCard />
       </div>
     </>
   );
