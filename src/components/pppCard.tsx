@@ -1,22 +1,14 @@
 import React, { Component, useState } from 'react';
 import arrow from '../assets/arrow-down.svg';
 import Staking from '../components/pppcard/Staking';
-type myState = {showComponent: boolean};
+type myState = { showComponent: boolean };
 
 class PppCard extends Component {
   constructor(props: any) {
     super(props);
-    this.state = {
-      showComponent: false,
-    };
-    this._onButtonClick = this._onButtonClick.bind(this);
-  }
-  _onButtonClick() {
-    this.setState({
-      showComponent: true,
-    });
   }
   render() {
+    const [showComponent, setShowComponent] = useState(false);
     const [showStaking, setShowStaking] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
     const [showMetrics, setShowMetrics] = useState(false);
@@ -55,7 +47,7 @@ class PppCard extends Component {
                   toggleStaking();
                   setShowDetails(false);
                   setShowMetrics(false);
-                  this._onButtonClick;
+                  setShowComponent(true);
                 }}
               >
                 <p>staking</p>
@@ -89,7 +81,7 @@ class PppCard extends Component {
               </div>
             </div>
           </div>
-          {this.state.showComponent ? <Staking /> : null}
+          {showComponent ? <Staking /> : null}
         </div>
       </div>
     );
