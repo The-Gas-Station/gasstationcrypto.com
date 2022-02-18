@@ -1,9 +1,3 @@
-import discord from '../pppcard/assets/discord.svg';
-import twitter from '../pppcard/assets/twitter.svg';
-import reddit from '../pppcard/assets/reddit.svg';
-import web from '../pppcard/assets/web.svg';
-import telegram from '../pppcard/assets/telegram.svg';
-
 const Metrics = () => {
   return (
     <div>

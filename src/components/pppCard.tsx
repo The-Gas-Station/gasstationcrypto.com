@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import { useState } from 'react';
 import arrow from '../assets/arrow-down.svg';
 import Staking from '../components/pppcard/Staking';
 import Details from '../components/pppcard/Details';
