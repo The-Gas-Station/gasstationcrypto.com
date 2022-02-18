@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import arrow from '../assets/arrow-down.svg';
 import Staking from '../components/pppcard/Staking';
+import Details from '../components/pppcard/Details';
+import Metrics from '../components/pppcard/Metrics';
 
 const PppCard = () => {
   const [showStaking, setShowStaking] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails, setShowDetails] = useState(true);
   const [showMetrics, setShowMetrics] = useState(false);
   const toggleStaking = () => {
     setShowStaking(!showStaking);
@@ -15,6 +17,7 @@ const PppCard = () => {
   const toggleMetrics = () => {
     setShowMetrics(!showMetrics);
   };
+
   return (
     <div className="col-lg-3 ppp-card">
       <div className="flex-column ">
@@ -72,7 +75,9 @@ const PppCard = () => {
             </div>
           </div>
         </div>
-        <Staking />
+        {showStaking ? <Staking /> : null}
+        {showDetails ? <Details /> : null}
+        {showMetrics ? <Metrics /> : null}
       </div>
     </div>
   );

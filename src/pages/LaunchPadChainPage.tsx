@@ -33,6 +33,9 @@ export const LaunchPadChainPage = () => {
       </div>
       <div className="flex-row d-flex flex-wrap justify-content-center">
         <PppCard />
+        <PppCard />
+        <PppCard />
+        <PppCard />
       </div>
     </>
   );
