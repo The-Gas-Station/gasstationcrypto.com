@@ -322,16 +322,18 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
         </div>
         <div className="col-lg-6">
           <h4 className="title-2">Transaction History</h4>
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
-          <BridgeTransactionHistory />
+          <div className="vh-100">
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+          </div>
         </div>
       </div>
     </>
