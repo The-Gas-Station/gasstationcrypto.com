@@ -1,11 +1,20 @@
+import { useState } from 'react';
 import PppCard from '../components/pppCard';
 import rocket from '../assets/rocket.svg';
 import headerlogo from '../assets/ppp.svg';
 import listing0 from '../components/launchpadComponents/listing/listing0';
+import TermsConditions from '../components/launchpadComponents/TermsConditions';
 
 export const LaunchPadChainPage = () => {
+  const [showConditions, setShowConditions] = useState(true);
   return (
     <>
+      <TermsConditions
+        showConditions={showConditions}
+        setIsOpen={true}
+        closeConditions={() => setShowConditions(false)}
+      />
+
       <div className="flex-row d-flex galaxy">
         <div className="stars stars2 stars3"></div>
         <img src={rocket} />
