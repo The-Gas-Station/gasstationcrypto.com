@@ -8,10 +8,9 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 import { BridgeTxModal } from '../components/bridgeTx';
-import { TxHistorySm } from '../components/txHistorysm';
+import BridgeTransactionHistory from '../components/BridgeTransactionHistory';
 import asset from '../assets/usdc.png';
 import network from '../assets/ftm.png';
-import TxHistory from '../components/txHistory';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
@@ -23,8 +22,6 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const [UsePatron, setUsePatron] = useState(false);
 
   const chainData = CHAIN_INFO[chainId];
-  const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
-  const toggleShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
   const [isBridgeTxOpen, setIsBridgeTxOpen] = useState(false);
 
   const { readOnlyChainIds } = useConfig();
@@ -68,7 +65,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
       </section>
       <div className="row justify-content-center row-flex">
         <div className="col-lg-6">
-          <h4 className="title-msg">Bridge Tokens</h4>
+          <h4 className="title-3">Bridge Tokens</h4>
           <div className="convert-grid-block">
             <div className="d-flex flex-column justify-content-center card-body1">
               <h4 className="text-green">Select A Network</h4>
@@ -324,7 +321,17 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
           </div>
         </div>
         <div className="col-lg-6">
-          <TxHistory />
+          <h4 className="title-2">Transaction History</h4>
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
+          <BridgeTransactionHistory />
         </div>
       </div>
     </>
