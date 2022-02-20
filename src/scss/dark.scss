@@ -1,7 +1,11 @@
 @import './mdb/mdb.pro.scss';
+@import '../../public/fonts/Audiowide.scss';
 
 $my-theme-primary: #00b49c; // theme primary color, change this value to customize theme
 $my-theme-secondary: #00b49c; // theme secondary color, change this value to customize theme
+
+$gold: #fdbf16;
+$header-font: 'Audiowide';
 
 $my-dark-theme: mdb-dark-theme(
   $my-theme-primary,

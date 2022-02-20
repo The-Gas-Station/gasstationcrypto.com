@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import arrow from '../assets/arrow-down.svg';
-import Staking from '../components/pppcard/Staking';
-import Details from '../components/pppcard/Details';
-import Metrics from '../components/pppcard/Metrics';
+import Staking from './launchpadComponents/pppcard/Staking';
+import Details from './launchpadComponents/pppcard/Details';
+import Metrics from './launchpadComponents/pppcard/Metrics';
 
-const PppCard = () => {
+type useProp = { stakingProps: any; titleProps: any };
+const PppCard = ({ titleProps, stakingProps }: useProp) => {
+  const { stake, earn } = titleProps;
   const [showStaking, setShowStaking] = useState(false);
   const [showDetails, setShowDetails] = useState(true);
   const [showMetrics, setShowMetrics] = useState(false);
@@ -26,15 +28,15 @@ const PppCard = () => {
             <h3>New Project</h3>
             <div className="flex-row d-flex flex-wrap">
               <div className="earn">earn</div>
-              <div className="asset">$new</div>
+              <div className="asset">{earn}</div>
               <div className="asset"> / </div>
               <div className="stake">stake</div>
-              <div className="asset">$old</div>
+              <div className="asset">{stake}</div>
             </div>
           </div>
           <img src="https://via.placeholder.com/80x60" />
         </div>
-        <div className="selection-row">
+        <div className="selection-row-inner">
           <div className="item">
             <div
               className={showStaking ? 'active' : 'inactive'}
@@ -75,7 +77,7 @@ const PppCard = () => {
             </div>
           </div>
         </div>
-        {showStaking ? <Staking /> : null}
+        {showStaking ? <Staking stakingProps={stakingProps} /> : null}
         {showDetails ? <Details /> : null}
         {showMetrics ? <Metrics /> : null}
       </div>

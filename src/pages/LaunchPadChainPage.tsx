@@ -1,6 +1,7 @@
-import React from 'react';
 import PppCard from '../components/pppCard';
 import rocket from '../assets/rocket.svg';
+import headerlogo from '../assets/ppp.svg';
+import listing0 from '../components/launchpadComponents/listing/listing0';
 
 export const LaunchPadChainPage = () => {
   return (
@@ -8,34 +9,15 @@ export const LaunchPadChainPage = () => {
       <div className="flex-row d-flex galaxy">
         <div className="stars stars2 stars3"></div>
         <img src={rocket} />
-        <h1>Project Propultion Pad</h1>
+        <img src={headerlogo} className="title" />
       </div>
-      <div className="flex-row d-flex">
-        <div className="col-lg-6">
-          <div className="flex-row d-flex">
-            <h2>CrowdFunding</h2>
-            <h3>Support New Projects</h3>
-          </div>
-          <p>
-            The Gas Station launchpad is the destination IDO for projects to
-            fuel up for launch
-          </p>
-        </div>
-        <div className="col-lg-3" />
-        <div className="col-lg-3">
-          <button className="button1">+ Apply as a Project</button>
-        </div>
-      </div>
-      <div className="flex-row d-flex">
-        <button className="button1">Yo</button>
-        <button className="button1">Yo</button>
-        <button className="button1">Yo</button>
+      <div className="selection-row">
+        <h2 className="title-2">CrowdFunding</h2>
+        <h4 className="title-3">Support New Projects</h4>
+        <button className="button2">+ Apply as a Project</button>
       </div>
       <div className="flex-row d-flex flex-wrap justify-content-center">
-        <PppCard />
-        <PppCard />
-        <PppCard />
-        <PppCard />
+        <PppCard stakingProps={listing0} titleProps={listing0} />
       </div>
     </>
   );

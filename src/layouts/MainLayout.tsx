@@ -151,7 +151,7 @@ export const MainLayout = () => {
           </i>
         </>
       ),
-      route: '/utility',
+      route: '/utilities',
       icon: SvgUtility,
     },
   ];

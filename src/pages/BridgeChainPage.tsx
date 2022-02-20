@@ -38,31 +38,30 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   return (
     <>
       <section className="page-background-bridge">
-        <div className="bridge-banner-img">
-          <div className="isolate">
-            <div className="page-banner-top-title">
-              <h3>
-                <img
-                  src={chainData.tokenImage.replace('/public/', '/')}
-                  alt="#"
-                  className="img-size"
-                />{' '}
-                {CHAIN_NAMES[chainId]} Bridge
-              </h3>
-              <select onChange={switchNetwork}>
-                <option>Switch Network</option>
-                {(readOnlyChainIds || []).map((_chainId) => {
-                  return (
-                    _chainId != chainId &&
-                    CHAIN_INFO[_chainId].launched && (
-                      <option key={`switch-chain-${_chainId}`} value={_chainId}>
-                        {CHAIN_NAMES[_chainId]}
-                      </option>
-                    )
-                  );
-                })}
-              </select>
-            </div>
+        <div className="bridge-banner-img" />
+        <div className="isolate">
+          <div className="page-banner-top-title">
+            <h3>
+              <img
+                src={chainData.tokenImage.replace('/public/', '/')}
+                alt="#"
+                className="img-size"
+              />{' '}
+              {CHAIN_NAMES[chainId]} Bridge
+            </h3>
+            <select onChange={switchNetwork}>
+              <option>Switch Network</option>
+              {(readOnlyChainIds || []).map((_chainId) => {
+                return (
+                  _chainId != chainId &&
+                  CHAIN_INFO[_chainId].launched && (
+                    <option key={`switch-chain-${_chainId}`} value={_chainId}>
+                      {CHAIN_NAMES[_chainId]}
+                    </option>
+                  )
+                );
+              })}
+            </select>
           </div>
         </div>
       </section>
