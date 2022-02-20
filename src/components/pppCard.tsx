@@ -4,7 +4,10 @@ import Staking from './launchpadComponents/pppcard/Staking';
 import Details from './launchpadComponents/pppcard/Details';
 import Metrics from './launchpadComponents/pppcard/Metrics';
 
-type useProp = { stakingProps: any; titleProps: any };
+type useProp = {
+  stakingProps: Record<string, string>;
+  titleProps: Record<string, string>;
+};
 const PppCard = ({ titleProps, stakingProps }: useProp) => {
   const { stake, earn } = titleProps;
   const [showStaking, setShowStaking] = useState(false);

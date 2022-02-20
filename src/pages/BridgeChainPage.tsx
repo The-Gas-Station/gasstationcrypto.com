@@ -11,6 +11,7 @@ import { BridgeTxModal } from '../components/bridgeTx';
 import { TxHistorySm } from '../components/txHistorysm';
 import asset from '../assets/usdc.png';
 import network from '../assets/ftm.png';
+import TxHistory from '../components/txHistory';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
         </div>
       </section>
       <div className="row justify-content-center row-flex">
-        <div className="col col-md-7 col-lg-8  d-md-block container">
+        <div className="col-lg-6">
           <h4 className="title-msg">Bridge Tokens</h4>
           <div className="convert-grid-block">
             <div className="d-flex flex-column justify-content-center card-body1">
@@ -322,29 +323,8 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
           </div>
         </div>
-        <div className="col-md-3 col-lg-3  d-md-block">
-          <h4 className="title-msg">Transaction History</h4>
-          <div className={`utility-collapse  ${isTxHistoryOpen ? 'open' : ''}`}>
-            <div className="card-body1">
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Hide History' : 'Show History'}
-                  </span>
-                </div>
-              </button>
-            </div>
-            <div className="vh-100">
-              <TxHistorySm
-                isTxHistorySmOpen={isTxHistoryOpen}
-                setIsOpen={setIsTxHistoryOpen}
-                closeTxHistorySm={() => setIsTxHistoryOpen(false)}
-              />
-            </div>
-          </div>
+        <div className="col-lg-6">
+          <TxHistory />
         </div>
       </div>
     </>

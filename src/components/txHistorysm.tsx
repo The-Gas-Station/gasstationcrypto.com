@@ -1,128 +1,20 @@
-import React, { useState } from 'react';
-import { MDBCollapse } from 'mdb-react-ui-kit';
-import { TxHistory } from '../components/txHistory';
+import arrowdown from '../assets/arrow-down.svg';
 
-type collapseOpen = {
-  isTxHistorySmOpen: boolean;
-  setIsOpen: any;
-  closeTxHistorySm: any;
-};
-
-export const TxHistorySm = ({ isTxHistorySmOpen }: collapseOpen) => {
-  const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
-  const toggleShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
+export const TxHistorySm = () => {
   return (
-    <MDBCollapse show={isTxHistorySmOpen}>
-      <div className="flex-column history">
-        <div className="d-flex flex-row justify-content-center">
-          <img src="https://via.placeholder.com/100x100" />
-          <div className="d-flex flex-column">
-            <span>$date$</span>
-            <span>$Ammount of Asset$</span>
-            <p>$Status$</p>
-            <button className="join-btn" onClick={toggleShow}>
-              Details
-            </button>
+    <div className="tx-card">
+      <div className="head">
+        <div className="leftside">
+          <div className="date">11/21/22</div>
+          <div className="id">
+            ID:<span>connected address</span>
           </div>
         </div>
-        <TxHistory
-          isTxHistoryOpen={isTxHistoryOpen}
-          setIsOpen={setIsTxHistoryOpen}
-          closeTxHistory={() => setIsTxHistoryOpen(false)}
-        />
-      </div>
-
-      <div className="flex-column history">
-        <div className="d-flex flex-row justify-content-center">
-          <img src="https://via.placeholder.com/100x100" />
-          <div className="d-flex flex-column">
-            <span>$date$</span>
-            <span>$Ammount of Asset$</span>
-            <p>$Status$</p>
-            <button className="join-btn" onClick={toggleShow}>
-              Details
-            </button>
-          </div>
+        <div className="rightside">
+          <div className="complete" /> Complete <img src={arrowdown} />
         </div>
-        <TxHistory
-          isTxHistoryOpen={isTxHistoryOpen}
-          setIsOpen={setIsTxHistoryOpen}
-          closeTxHistory={() => setIsTxHistoryOpen(false)}
-        />
       </div>
-      <div className="flex-column history">
-        <div className="d-flex flex-row justify-content-center">
-          <img src="https://via.placeholder.com/100x100" />
-          <div className="d-flex flex-column">
-            <span>$date$</span>
-            <span>$Ammount of Asset$</span>
-            <p>$Status$</p>
-            <button className="join-btn" onClick={toggleShow}>
-              Details
-            </button>
-          </div>
-        </div>
-        <TxHistory
-          isTxHistoryOpen={isTxHistoryOpen}
-          setIsOpen={setIsTxHistoryOpen}
-          closeTxHistory={() => setIsTxHistoryOpen(false)}
-        />
-      </div>
-      <div className="flex-column history">
-        <div className="d-flex flex-row justify-content-center">
-          <img src="https://via.placeholder.com/100x100" />
-          <div className="d-flex flex-column">
-            <span>$date$</span>
-            <span>$Ammount of Asset$</span>
-            <p>$Status$</p>
-            <button className="join-btn" onClick={toggleShow}>
-              Details
-            </button>
-          </div>
-        </div>
-        <TxHistory
-          isTxHistoryOpen={isTxHistoryOpen}
-          setIsOpen={setIsTxHistoryOpen}
-          closeTxHistory={() => setIsTxHistoryOpen(false)}
-        />
-      </div>
-      <div className="flex-column history">
-        <div className="d-flex flex-row justify-content-center">
-          <img src="https://via.placeholder.com/100x100" />
-          <div className="d-flex flex-column">
-            <span>$date$</span>
-            <span>$Ammount of Asset$</span>
-            <p>$Status$</p>
-            <button className="join-btn" onClick={toggleShow}>
-              Details
-            </button>
-          </div>
-        </div>
-        <TxHistory
-          isTxHistoryOpen={isTxHistoryOpen}
-          setIsOpen={setIsTxHistoryOpen}
-          closeTxHistory={() => setIsTxHistoryOpen(false)}
-        />
-      </div>
-      <div className="flex-column history">
-        <div className="d-flex flex-row justify-content-center">
-          <img src="https://via.placeholder.com/100x100" />
-          <div className="d-flex flex-column">
-            <span>$date$</span>
-            <span>$Ammount of Asset$</span>
-            <p>$Status$</p>
-            <button className="join-btn" onClick={toggleShow}>
-              Details
-            </button>
-          </div>
-        </div>
-        <TxHistory
-          isTxHistoryOpen={isTxHistoryOpen}
-          setIsOpen={setIsTxHistoryOpen}
-          closeTxHistory={() => setIsTxHistoryOpen(false)}
-        />
-      </div>
-    </MDBCollapse>
+    </div>
   );
 };
 
