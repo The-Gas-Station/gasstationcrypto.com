@@ -23,7 +23,6 @@ export const BridgeTransactionHistory = () => {
           />
         </div>
       </div>
-
       {showExpanded ? <BridgeTransactionExpanded /> : null}
     </div>
   );

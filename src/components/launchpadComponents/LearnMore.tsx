@@ -1,8 +1,11 @@
+import { BiRocket } from 'react-icons/bi';
 export const LearnMore = () => {
   return (
     <div className="flex-row d-flex justify-content-center">
       <div className="patron-block">
-        <div className="r title-3">what is the project propulsion pad?</div>
+        <div className="r title-3">
+          what is the project propulsion pad? <BiRocket />
+        </div>
         <div className="text">
           <p>
             The GAS Token is a Dividend Paying Token that grants Static Rewards
