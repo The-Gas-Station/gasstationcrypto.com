@@ -1,5 +1,6 @@
 {
   "launchDate": "",
+  "lookupLiquidityPairs": [],
   "display": "Moonriver",
   "tokenImage": "/public/images/tokens/movr.png",
   "etherLiquidityPair": "evm:0xe537f70a8b62204832B8Ba91940B77d3f79AEb81",
@@ -31,6 +32,16 @@
       "stakeSymbol": "movrGAS-MOVR SLP"
     },
     {
+      "name": "LP Dual Fuel #2",
+      "address": "evm:0xa967Bd84D8DFC7001B41b5320b49D75C8320A2bf",
+      "type": "DoubleV2",
+      "stakeSymbol": "movrGAS-MOVR SLP",
+      "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
+      "rewardSymbols": ["movrGAS"],
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/movr-blue-circle.svg"
+    },
+    {
       "name": "movrGAS Maximizer",
       "address": "evm:0xbcD71f70560a6380c02e7f9EfB7388D2e257FdF8",
       "type": "SingleV3",
@@ -50,6 +61,15 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "Stable Up",
+      "address": "evm:0xf6c2Aa24a31F097E89Fe887a2572b227C03e2764",
+      "type": "SingleV3",
+      "stakeSymbol": "movrGAS",
+      "stakeIcon": "/public/images/tokens/gas.png",
+      "rewardSymbols": ["USDC"],
+      "reward0Icon": "/public/images/tokens/usdc.png"
     }
   ],
   "chainId": 1285

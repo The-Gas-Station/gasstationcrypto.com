@@ -1,5 +1,6 @@
 {
   "launchDate": "11 Dec, 2021",
+  "lookupLiquidityPairs": [],
   "display": "Binance Smart Chain",
   "tokenImage": "/public/images/tokens/bnb.png",
   "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Binance%20Smart%20Chain/",
@@ -28,6 +29,25 @@
       "type": "DoubleV2",
       "stakeSymbol": "bscGAS-BNB Ape LP",
       "stakeIcon": "/public/images/tokens/ape-lp.svg",
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/bnb.svg"
+    },
+    {
+      "name": "Dual Fuel (APE-LP)",
+      "address": "evm:0xB1B058236C20A808Bd2277DB4C0D092468e6b626",
+      "type": "DoubleV1",
+      "stakeIcon": "/public/images/tokens/ape-lp.svg",
+      "reward0Icon": "/public/images/tokens/usdc.png",
+      "reward1Icon": "/public/images/tokens/gas.svg",
+      "stakeSymbol": "bscGAS-BNB Ape LP"
+    },
+    {
+      "name": "LP Dual Fuel #3",
+      "address": "evm:0x3c25257Fdb6cD7e86D18D63eD86ec88E2658Da23",
+      "type": "DoubleV2",
+      "stakeSymbol": "bscGAS-BNB Ape LP",
+      "stakeIcon": "/public/images/tokens/ape-lp.svg",
+      "rewardSymbols": ["bscGAS"],
       "reward0Icon": "/public/images/tokens/gas.svg",
       "reward1Icon": "/public/images/tokens/bnb.svg"
     },
@@ -65,15 +85,6 @@
       "type": "SingleV1",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
-    },
-    {
-      "name": "Dual Fuel (APE-LP)",
-      "address": "evm:0xB1B058236C20A808Bd2277DB4C0D092468e6b626",
-      "type": "DoubleV1",
-      "stakeIcon": "/public/images/tokens/ape-lp.svg",
-      "reward0Icon": "/public/images/tokens/usdc.png",
-      "reward1Icon": "/public/images/tokens/gas.svg",
-      "stakeSymbol": "bscGAS-BNB Ape LP"
     },
     {
       "name": "GAS MAXIMIZER",
@@ -119,28 +130,13 @@
       "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
     },
     {
-      "name": "movrGAS Presale Mining",
-      "address": "evm:0x5de675C272E0Ae84Db6fC5b4BC325E1384515b27",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
-    },
-    {
       "name": "avaxGAS Presale Mining",
       "address": "evm:0x578bc18FAF02d589d336778FDb88232F84d1DF73",
       "type": "SingleV2",
       "stakeIcon": "/public/images/tokens/gas.svg",
       "reward0Icon": "/public/images/tokens/avax.png"
-    },
-    {
-      "name": "avaxGAS Presale Mining",
-      "address": "evm:0x6fa82b60693e83FAd3B042671FEEd0590B44c7CE",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/avax.png"
     }
   ],
-  "lookupLiquidityPairs": [],
   "nfpAddress": "evm:0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b",
   "chainId": 56
 }

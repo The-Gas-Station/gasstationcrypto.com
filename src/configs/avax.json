@@ -27,6 +27,16 @@
       "reward1Icon": "/public/images/tokens/avax.png"
     },
     {
+      "name": "LP Dual Fuel #2",
+      "address": "evm:0x34C1fEfe2b79ed89fF8C832B074E497D58113e58",
+      "type": "DoubleV2",
+      "stakeSymbol": "avaxGAS-AVAX LP",
+      "stakeIcon": "/public/images/tokens/logo.bc60f78d.png",
+      "rewardSymbols": ["avaxGAS"],
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/avax.png"
+    },
+    {
       "name": "avaxGAS Maximizer",
       "address": "evm:0x35CA22Ad35855Ff4355BA1C1052e73b78612B336",
       "type": "SingleV3",
@@ -46,6 +56,15 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/usdc.png",
       "reward0Icon": "/public/images/tokens/gas.svg"
+    },
+    {
+      "name": "Stable Up",
+      "address": "evm:0xDEc73bb666986a7Fc3a5c7bcaF4b636da9b9b029",
+      "type": "SingleV3",
+      "stakeSymbol": "avaxGAS",
+      "stakeIcon": "/public/images/tokens/gas.png",
+      "rewardSymbols": ["USDC.e"],
+      "reward0Icon": "/public/images/tokens/usdc.png"
     }
   ],
   "chainId": 43114

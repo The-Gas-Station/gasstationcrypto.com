@@ -1,5 +1,11 @@
 {
   "launchDate": "",
+  "lookupLiquidityPairs": [
+    {
+      "name": "crystl LP",
+      "address": "evm:0xDF06013797083E077aA1347D74bD7c7cDfeF7856"
+    }
+  ],
   "display": "Cronos",
   "tokenImage": "/public/images/tokens/cro-hex.png",
   "etherLiquidityPair": "evm:0x637348EaCE7f44C1dF82e15bcb0F968351fB7406",
@@ -53,12 +59,17 @@
       "type": "SingleV3",
       "stakeIcon": "/public/images/tokens/gas.svg",
       "reward0Icon": "https://www.polycrystal.finance/images/pools/crystl-crystl.svg"
-    }
-  ],
-  "lookupLiquidityPairs": [
+    },
     {
-      "name": "crystl LP",
-      "address": "evm:0xDF06013797083E077aA1347D74bD7c7cDfeF7856"
+      "name": "Stable Up",
+      "address": "evm:0xD97068DC3464052C5FDD9881D253cefFbe8845FB",
+      "type": "SingleV3",
+      "stakeSymbol": "croGAS",
+      "stakeIcon": "/public/images/tokens/gas.png",
+      "reward0Icon": "/public/images/tokens/usdc.png",
+      "rewardSymbols": [
+        "USDC"
+      ]
     }
   ],
   "chainId": 25

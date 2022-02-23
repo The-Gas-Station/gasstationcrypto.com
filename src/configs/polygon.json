@@ -110,41 +110,6 @@
       "stakeIcon": "/public/images/tokens/ape-lp.svg",
       "reward0Icon": "/public/images/tokens/cro-circle.svg",
       "stakeSymbol": "polyGAS-MATIC Ape LP"
-    },
-    {
-      "name": "croGAS Presale Mining",
-      "address": "evm:0xF20C0b4c39c3189439E247EAcDF6C6455d450C92",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/cro-circle.svg"
-    },
-    {
-      "name": "movrGAS Presale Mining",
-      "address": "evm:0x8D14D67B4E9e8A8A5F26A6050944E13084CDb833",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/gas.svg",
-      "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
-    },
-    {
-      "name": "movrGAS Presale Mining",
-      "address": "evm:0x10263dA81903318e6DB39719fbFF8Df139f9b25D",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
-    },
-    {
-      "name": "avaxGAS Presale Mining",
-      "address": "evm:0xbB91090dD1b4d9F0ABffC13d31B65e25083f2eA1",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/gas.svg",
-      "reward0Icon": "/public/images/tokens/avax.png"
-    },
-    {
-      "name": "avaxGAS Presale Mining",
-      "address": "evm:0x3476f23B0482B24bCc45e96C45FDfC37beA53bB7",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/avax.png"
     }
   ],
   "lookupLiquidityPairs": [],
