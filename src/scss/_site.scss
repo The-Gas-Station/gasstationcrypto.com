@@ -7175,6 +7175,36 @@ $shadows-big: multiple-box-shadow(100);
     margin: 3px;
   }
 }
+.darkrow1 {
+  padding: 3px;
+  margin-bottom: 1px;
+  display: flex;
+  background-color: $dark-bg11;
+  border-bottom: 3px solid $border-bg2;
+  align-items: center;
+  border-radius: 0px 0px 15px 15px;
+  .wallet {
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 12px;
+    color: $text-secondary-color;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 100;
+    cursor: pointer;
+    color: $text-green;
+    padding: 2px;
+    margin: 3px;
+  }
+  span {
+    font-size: 14px;
+    font-weight: 100;
+    color: $text-secondary-color;
+    padding: 2px;
+    margin: 3px;
+  }
+}
 .newprojectblock {
   .btn-row {
     display: flex;
@@ -7277,8 +7307,8 @@ $shadows-big: multiple-box-shadow(100);
   border: 3px solid $border-bg2;
   border-radius: 15px;
   @include box-shadow1;
-  min-width: 150px;
-  max-width: 400px;
+  min-width: 300px;
+  max-width: 350px;
   height: auto;
   margin: 5px;
   .slippageSettings {
@@ -7295,38 +7325,38 @@ $shadows-big: multiple-box-shadow(100);
       @include box-shadow1;
       .bigbutton1 {
         display: block;
-        width:38% ;
+        width: 38%;
         border-radius: 3px;
         max-height: 20px;
         margin-left: 5px;
-    color: $text-light1;
-    font-size: 18px;
-    font-weight: 300;
-    text-align: center;
-    background: transparent;
-    border: 1px solid $border-bg2;
-    cursor: pointer;
-    input {
-      display: block;
+        color: $text-light1;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+        background: transparent;
+        border: 1px solid $border-bg2;
+        cursor: pointer;
+        input {
+          display: block;
 
-      width: 100%;
-      background: transparent;
-      color: $text-light;
-      font-size: 15px;
-      height: 100%;
-      border: none !important;
-      border-radius: none !important;
-      text-align: right;
-      
-    }::placeholder {
-      color: $text-light;
-      opacity: 0.4;
-    }
-    &:hover {
-      -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-      -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-      box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-    }
+          width: 100%;
+          background: transparent;
+          color: $text-light;
+          font-size: 15px;
+          height: 100%;
+          border: none !important;
+          border-radius: none !important;
+          text-align: right;
+        }
+        ::placeholder {
+          color: $text-light;
+          opacity: 0.4;
+        }
+        &:hover {
+          -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+          -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+          box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+        }
       }
       .btn-row {
         display: flex;
@@ -7338,34 +7368,34 @@ $shadows-big: multiple-box-shadow(100);
           width: 38%;
           border-radius: 3px;
           max-height: 20px;
-      color: $text-light1;
-      font-size: 18px;
-      font-weight: 300;
-      text-align: center;
-      background: transparent;
-      border: 1px solid $border-bg2;
-      cursor: pointer;
-      input {
-        display: block;
+          color: $text-light1;
+          font-size: 18px;
+          font-weight: 300;
+          text-align: center;
+          background: transparent;
+          border: 1px solid $border-bg2;
+          cursor: pointer;
+          input {
+            display: block;
 
-        width: 65%;
-        background: transparent;
-        color: $text-light;
-        font-size: 15px;
-        height: 100%;
-        border: none !important;
-        border-radius: none !important;
-        text-align: right;
-        
-      }::placeholder {
-        color: $text-light;
-        opacity: 0.4;
-      }
-      &:hover {
-        -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-        -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-        box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-      }
+            width: 65%;
+            background: transparent;
+            color: $text-light;
+            font-size: 15px;
+            height: 100%;
+            border: none !important;
+            border-radius: none !important;
+            text-align: right;
+          }
+          ::placeholder {
+            color: $text-light;
+            opacity: 0.4;
+          }
+          &:hover {
+            -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+            -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+            box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+          }
         }
         .smbutton {
           display: block;
@@ -7373,28 +7403,26 @@ $shadows-big: multiple-box-shadow(100);
           margin: 1px;
           max-height: 20px;
           border-radius: 3px;
-      color: $text-light1;
-      font-size: 11px;
-      font-weight: 100;
-      text-align: center;
-      background: transparent;
-      border: 1px solid $border-bg2;
-      cursor: pointer;
-      &:hover {
-        -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-        -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-        box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
-      }
+          color: $text-light1;
+          font-size: 11px;
+          font-weight: 100;
+          text-align: center;
+          background: transparent;
+          border: 1px solid $border-bg2;
+          cursor: pointer;
+          &:hover {
+            -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+            -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+            box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
+          }
         }
       }
       p {
         color: $text-green;
-        
       }
       span {
         color: $text-light3;
         font-size: 13px;
-        
       }
     }
   }
@@ -7461,7 +7489,8 @@ $shadows-big: multiple-box-shadow(100);
       display: flex;
       justify-content: center;
       align-items: center;
-      
+      border: 2px solid $border-bg2;
+
       margin: 5px;
       border-radius: 15px;
       &:hover {
@@ -7472,16 +7501,13 @@ $shadows-big: multiple-box-shadow(100);
       input {
         display: block;
 
-        width: 65%;
+        width: 60%;
         background: transparent;
         color: $text-secondary-color;
         font-size: 15px;
         height: 34px;
         border-radius: 15px 0px 0px 15px;
-        border-left: 2px solid $border-bg2;
-        border-top: 2px solid $border-bg2;
-        border-bottom: 2px solid $border-bg2;
-        border-right: none !important;
+        border: none !important;
         &:hover {
           -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
           -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
@@ -7492,15 +7518,12 @@ $shadows-big: multiple-box-shadow(100);
         display: flex;
         justify-content: space-around;
         align-items: center;
-
-        width: 35%;
+        width: 40%;
         height: 34px;
         border-radius: 0px 15px 15px 0px;
         background: transparent;
-        border-right: 2px solid $border-bg2;
-        border-top: 2px solid $border-bg2;
-        border-bottom: 2px solid $border-bg2;
-        border-left: none !important;
+        margin: none;
+        border: none !important;
         &:hover {
           -webkit-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
           -moz-box-shadow: 0px 0px 3px 2px rgba(253, 191, 22, 0.67);
@@ -7521,4 +7544,57 @@ $shadows-big: multiple-box-shadow(100);
       }
     }
   }
+}
+
+.chartcard {
+  display: flex;
+  background: $dark-bg11;
+  border: 3px solid $border-bg2;
+  border-radius: 15px;
+  @include box-shadow1;
+  min-width: 350px;
+  padding: 10px;
+
+  margin: 5px;
+  
+  @media (max-width: 1280px) {
+    height: 50vh;
+    width: 80vw;
+  }
+  
+  @media (max-width: 1440px) {
+    height: 80vh;
+    width: 3vw;
+  }
+  @media (max-width: 1691px) {
+    height: 80vh;
+    width: 60vw;
+  }
+  @media (max-width: 1900px) {
+    height: 80vh;
+    width: 62vw;
+  }
+ 
+  @media (min-width: 1901px) {
+    height: 80vh;
+    width: 65vw;
+  }
+}
+.desktop-mobile-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.styled-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: $dark-bg11;
+  border: 3px solid $border-bg2;
+  border-radius: 15px;
+  width: 50%;
 }

@@ -9,6 +9,8 @@ export const SwapCard = () => {
   const [showSlippageSettings, setShowSlippageSettings] = useState(false);
   const toggleSlippageSettings = () =>
     setShowSlippageSettings(!showSlippageSettings);
+  const [showPriceImpact, setShowPriceImpact] = useState(false);
+
   return (
     <>
       <div className="swapcard">
@@ -17,7 +19,11 @@ export const SwapCard = () => {
             From <img src="https://via.placeholder.com/40x40" />
           </h4>
           <div className="swaprowinner">
-            <input type="text" />
+            <input
+              type="text"
+              onInput={() => setShowPriceImpact(true)}
+              onKeyDown={() => setShowPriceImpact(false)}
+            />
             <button>
               <img src="https://via.placeholder.com/15x15" />
               <p>CRO</p>{' '}
@@ -28,9 +34,8 @@ export const SwapCard = () => {
           </div>
         </div>
         <div className="flex-row d-flex justify-content-center text-green">
-          <IoArrowDown />
+          <IoArrowDown className="clickable" />
         </div>
-
         <div className="swaprow">
           <h4 className="title-7">
             To <img src="https://via.placeholder.com/40x40" />
@@ -46,6 +51,13 @@ export const SwapCard = () => {
             </button>
           </div>
         </div>
+        {showPriceImpact ? (
+          <div className="priceImpact">
+            <div className="l">Price Impact:</div>
+            <div className="r">$$$</div>
+            <IoInformationCircleOutline className="img" />
+          </div>
+        ) : null}
         <div className="slippage">
           <div className="l">Slippage Tolerance</div>
           <div className="r" onClick={() => toggleSlippageSettings()}>
