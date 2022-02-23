@@ -108,6 +108,31 @@ export const MainLayout = () => {
       icon: SvgHome,
     },
     {
+      label: 'Bridge',
+      route: '/bridge',
+      icon: SvgHome,
+    },
+    {
+      label: 'Trade',
+      route: '/trade',
+      icon: SvgHome,
+    },
+    {
+      label: 'Launch Pad',
+      route: '/launchpad',
+      icon: SvgHome,
+    },
+    {
+      label: 'Stats',
+      route: '/stats',
+      icon: SvgHome,
+    },
+    {
+      label: 'Shares',
+      route: '/shares',
+      icon: SvgHome,
+    },
+    {
       label: 'Rewards Hub',
       route: '/hub',
       icon: SvgRewards,
@@ -126,7 +151,7 @@ export const MainLayout = () => {
           </i>
         </>
       ),
-      route: '/utility',
+      route: '/utilities',
       icon: SvgUtility,
     },
   ];
@@ -166,10 +191,10 @@ export const MainLayout = () => {
 
   const settings = {
     dots: false,
-    arrows: false,
+    arrows: true,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
+    speed: 20000,
+    autoplaySpeed: 20000,
     cssEase: 'ease-out',
     infinite: true,
     variableWidth: true,

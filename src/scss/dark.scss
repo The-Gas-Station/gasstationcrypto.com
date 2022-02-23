@@ -1,7 +1,11 @@
 @import './mdb/mdb.pro.scss';
 
+
 $my-theme-primary: #00b49c; // theme primary color, change this value to customize theme
 $my-theme-secondary: #00b49c; // theme secondary color, change this value to customize theme
+
+$gold: #fdbf16;
+
 
 $my-dark-theme: mdb-dark-theme(
   $my-theme-primary,
@@ -16,7 +20,7 @@ $text-primary-color: #ffffff;
 $text-secondary-color: #8a92a6;
 $text-primary-color1: #c3c6d4;
 $text-primary-color2: #f1f3f5;
-$seperator-color: #2c4863;
+$seperator-color: #1D2232;
 $dark-bg: #050a0e;
 $card-title-color: #fdb5ca;
 $dark-color: #151824;

@@ -4,4 +4,5 @@ declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     // extends React's HTMLAttributes
   }
+  interface Component<P = {}, S = {}> extends ComponentLifecycle<P, S> { }
 }

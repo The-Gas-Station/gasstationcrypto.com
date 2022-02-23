@@ -2,7 +2,7 @@
   "launchDate": "11 Dec, 2021",
   "lookupLiquidityPairs": [],
   "display": "Fantom Opera Network",
-  "tokenImage": "/public/images/tokens/ftm.png",
+  "tokenImage": "/public/images/tokens/fantom.svg",
   "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Fantom/",
   "etherLiquidityPair": "evm:0x2b4C76d0dc16BE1C31D4C1DC53bF9B45987Fc75c",
   "liquidityPairs": [

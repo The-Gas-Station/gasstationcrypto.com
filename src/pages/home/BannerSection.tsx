@@ -2,11 +2,14 @@ import React from 'react';
 import BannerImg from '../../assets/banner-img.png';
 import HigestAPR from './HighestAPR';
 import TotalRewardsUSD from './TotalRewardsUSD';
+import { useConfig } from '../../library/providers/ConfigProvider';
+import ImageRow from '../../components/ImageRow';
 
 import { useWeb3ConnectionsContext } from '../../library/providers/Web3ConnectionsProvider';
 
 const BannerSection = () => {
   const { currentChainId } = useWeb3ConnectionsContext();
+  const { readOnlyChainIds } = useConfig();
 
   return (
     <div className={`banner-section-wrapper`}>
@@ -20,6 +23,13 @@ const BannerSection = () => {
             <h3 className="text-green">Fuel Your Tank Today!</h3>
             <TotalRewardsUSD />
             <HigestAPR key={currentChainId} chainId={currentChainId} />
+            <div className="d-flex flex-row img-row">
+              {(readOnlyChainIds || []).map((chainId) => {
+                return (
+                  <ImageRow key={`desktop-${chainId}`} chainId={chainId} />
+                );
+              })}
+            </div>
           </div>
           <div className="banner-img d-block d-md-none">
             <img src={BannerImg} alt="" />

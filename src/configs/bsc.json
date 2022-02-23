@@ -1,7 +1,7 @@
 {
   "launchDate": "11 Dec, 2021",
   "display": "Binance Smart Chain",
-  "tokenImage": "/public/images/tokens/bnb.png",
+  "tokenImage": "/public/images/tokens/bnb.svg",
   "nfpGitHubBaseURL": "https://raw.githubusercontent.com/The-Gas-Station/NFPs/main/NFPs/Binance%20Smart%20Chain/",
   "etherLiquidityPair": "evm:0xd00302278693E5084e2B06A996d1D14aE3467fE6",
   "liquidityPairs": [
@@ -15,7 +15,7 @@
     }
   ],
   "gasTokenName": "bscGAS",
-  "name": "bsc",
+  "name": "binance smart chain",
   "etherCoingeckoId": "wbnb",
   "buyAddress": "https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x6fabfe7946b23da23ad51dc45167cc2cfd0ce70e",
   "launched": true,
