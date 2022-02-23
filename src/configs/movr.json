@@ -32,6 +32,16 @@
       "stakeSymbol": "movrGAS-MOVR SLP"
     },
     {
+      "name": "LP Dual Fuel #2",
+      "address": "evm:0xa967Bd84D8DFC7001B41b5320b49D75C8320A2bf",
+      "type": "DoubleV2",
+      "stakeSymbol": "movrGAS-MOVR SLP",
+      "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
+      "rewardSymbols": ["movrGAS"],
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/movr-blue-circle.svg"
+    },
+    {
       "name": "movrGAS Maximizer",
       "address": "evm:0xbcD71f70560a6380c02e7f9EfB7388D2e257FdF8",
       "type": "SingleV3",
@@ -58,22 +68,8 @@
       "type": "SingleV3",
       "stakeSymbol": "movrGAS",
       "stakeIcon": "/public/images/tokens/gas.png",
-      "rewardSymbols": [
-        "USDC"
-      ],
+      "rewardSymbols": ["USDC"],
       "reward0Icon": "/public/images/tokens/usdc.png"
-    },
-    {
-      "name": "LP Dual Fuel #2",
-      "address": "evm:0xa967Bd84D8DFC7001B41b5320b49D75C8320A2bf",
-      "type": "DoubleV2",
-      "stakeSymbol": "movrGAS-MOVR SLP",
-      "stakeIcon": "/public/images/tokens/solarbeamlogo.png",
-      "rewardSymbols": [
-        "movrGAS"
-      ],
-      "reward0Icon": "/public/images/tokens/gas.svg",
-      "reward1Icon": "/public/images/tokens/movr-blue-circle.svg"
     }
   ],
   "chainId": 1285

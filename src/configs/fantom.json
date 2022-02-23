@@ -81,34 +81,6 @@
       "reward0Icon": "/public/images/tokens/cro-circle.svg",
       "stakeSymbol": "",
       "rewardSymbols": []
-    },
-    {
-      "name": "movrGAS Presale Mining",
-      "address": "evm:0xC066069E7706f88452bd6675698e44993fB92062",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/gas.svg",
-      "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
-    },
-    {
-      "name": "movrGAS Presale Mining",
-      "address": "evm:0x64e0a00bDACC2671cE8A651420F10d9b8dE37ACA",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/movr-blue-circle.svg"
-    },
-    {
-      "name": "avaxGAS Presale Mining",
-      "address": "evm:0xf6c2Aa24a31F097E89Fe887a2572b227C03e2764",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/gas.svg",
-      "reward0Icon": "/public/images/tokens/avax.png"
-    },
-    {
-      "name": "avaxGAS Presale Mining",
-      "address": "evm:0x400083aD19B9D77F1753bCf4103C587fb7379C81",
-      "type": "SingleV2",
-      "stakeIcon": "/public/images/tokens/usdc.png",
-      "reward0Icon": "/public/images/tokens/avax.png"
     }
   ],
   "nfpAddress": "evm:0xC2fa4a36Cf90f54aE70C6e89CEE6C13E865552F2",
