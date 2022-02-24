@@ -70,7 +70,6 @@ export const BridgeTransactionExpanded = () => {
           </span>
           <p>4/4 Complete</p>
         </div>
-
         <div className="item">
           <a href="https://www.google.com">
             <p>
