@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import arrowdown from '../assets/arrow-down.svg';
+import { IoArrowUp, IoArrowDown } from 'react-icons/io5';
+
 import BridgeTransactionExpanded from './BridgeTransactionExpanded';
 export const BridgeTransactionHistory = () => {
   const [showExpanded, setShowExpanded] = useState(false);
@@ -15,12 +16,23 @@ export const BridgeTransactionHistory = () => {
         </div>
         <div className="rightside">
           Complete{' '}
-          <img
-            src={arrowdown}
-            onClick={() => {
-              toggleExpanded();
-            }}
-          />
+          {showExpanded ? (
+            <IoArrowUp
+              className="text-green clickable"
+              style={{ width: '30px', height: '30px', margin: '3px' }}
+              onClick={() => {
+                toggleExpanded();
+              }}
+            />
+          ) : (
+            <IoArrowDown
+              className="text-green clickable"
+              style={{ width: '30px', height: '30px', margin: '3px' }}
+              onClick={() => {
+                toggleExpanded();
+              }}
+            />
+          )}
         </div>
       </div>
       {showExpanded ? <BridgeTransactionExpanded /> : null}

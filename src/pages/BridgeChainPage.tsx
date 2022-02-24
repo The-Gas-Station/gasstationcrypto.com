@@ -8,7 +8,7 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 import { BridgeTxModal } from '../components/bridgeTx';
-import BridgeTransactionHistory from '../components/BridgeTransactionHistory';
+import BridgeTransactionHistory from '../components/bridgeComponents/BridgeTransactionHistory';
 import asset from '../assets/usdc.png';
 import network from '../assets/ftm.png';
 
