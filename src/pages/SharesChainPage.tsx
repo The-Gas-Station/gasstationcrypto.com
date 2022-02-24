@@ -88,7 +88,22 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
           </span>
         </div>
       </div>
-      {showRowView ? <SharesRow /> : <SharesCard />}
+      {showRowView ? (
+        <div className="col-lg-12">
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+          <SharesRow />
+        </div>
+      ) : (
+        <SharesCard />
+      )}
     </>
   );
 };

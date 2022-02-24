@@ -1,6 +1,5 @@
 import { MDBModal } from 'mdb-react-ui-kit';
 import Staking from '../launchpadComponents/pppcard/Staking';
-import { listing0 } from '../launchpadComponents/listing/listing0';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import discord from '../launchpadComponents/pppcard/assets/discord.svg';
 import twitter from '../launchpadComponents/pppcard/assets/twitter.svg';

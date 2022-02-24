@@ -5,7 +5,7 @@ import { ChartChoice } from '../chartComponents/ChartChoice';
 
 export const ChartBlock = () => {
   const [showHistory, setShowHistory] = useState(true);
-  const [showNoHistory, setShowNoHistory] = useState(false);
+  const [showNoHistory] = useState(false);
 
   const getInitialState = () => {
     const value = ChartChoice.bscGAS;
