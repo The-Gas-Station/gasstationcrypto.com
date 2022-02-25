@@ -53,6 +53,8 @@ import { ReactComponent as SvgTwitter } from '../assets/twitter.svg';
 import { ReactComponent as SvgDiscord } from '../assets/discord.svg';
 import { ReactComponent as SvgTelegram } from '../assets/telegram.svg';
 import Slider from 'react-slick';
+import { GiArchBridge as SvgBridge } from 'react-icons/gi';
+import { GiMoneyStack as SvgShares } from 'react-icons/gi';
 
 // import FtmToken from '../assets/tokens/ftm.png';
 // import Slider from 'react-slick';
@@ -108,34 +110,19 @@ export const MainLayout = () => {
       icon: SvgHome,
     },
     {
+      label: 'Rewards Hub',
+      route: '/hub',
+      icon: SvgRewards,
+    },
+    {
       label: 'Bridge',
       route: '/bridge',
-      icon: SvgHome,
-    },
-    {
-      label: 'Trade',
-      route: '/trade',
-      icon: SvgHome,
-    },
-    {
-      label: 'Launch Pad',
-      route: '/launchpad',
-      icon: SvgHome,
-    },
-    {
-      label: 'Stats',
-      route: '/stats',
-      icon: SvgHome,
+      icon: SvgBridge,
     },
     {
       label: 'Shares',
       route: '/shares',
-      icon: SvgHome,
-    },
-    {
-      label: 'Rewards Hub',
-      route: '/hub',
-      icon: SvgRewards,
+      icon: SvgShares,
     },
     {
       label: 'Non Fungible Patrons',
@@ -191,7 +178,7 @@ export const MainLayout = () => {
 
   const settings = {
     dots: false,
-    arrows: true,
+    arrows: false,
     autoplay: true,
     speed: 20000,
     autoplaySpeed: 20000,
