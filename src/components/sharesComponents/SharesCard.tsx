@@ -1,5 +1,9 @@
 import { BsBoxArrowUpRight } from 'react-icons/bs';
+import SharesStakeModal from './SharesStakeModal';
+import { useState } from 'react';
+
 export const SharesCard = () => {
+  const [showStakeModal, setShowStakeModal] = useState(false);
   return (
     <>
       <div className="sharesCard">
@@ -69,8 +73,14 @@ export const SharesCard = () => {
             </p>
           </div>
         </div>
-        <button>Stake</button>
+        <button onClick={() => setShowStakeModal(true)}>Stake</button>
       </div>
+      {showStakeModal ? (
+        <SharesStakeModal
+          showStakeModal={() => setShowStakeModal(true)}
+          closeStakeModal={() => setShowStakeModal(false)}
+        />
+      ) : null}
     </>
   );
 };
