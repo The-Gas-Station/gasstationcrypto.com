@@ -102,7 +102,15 @@ export const SharesChainPage = ({ chainId }: { chainId: ChainId }) => {
           <SharesRow />
         </div>
       ) : (
-        <SharesCard />
+        <div className="flex-row d-flex flex-wrap justify-content-center">
+          <SharesCard />
+          <SharesCard />
+          <SharesCard />
+          <SharesCard />
+          <SharesCard />
+          <SharesCard />
+          <SharesCard />
+        </div>
       )}
     </>
   );

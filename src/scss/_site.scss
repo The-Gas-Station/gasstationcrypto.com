@@ -7718,3 +7718,151 @@ $shadows-big: multiple-box-shadow(100);
 
   @include box-shadow5;
 }
+.sharesCard {
+  display: block;
+  margin: 10px;
+
+  min-width: 350px;
+  max-width: 19.5%;
+
+  .bottomtext {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 3px !important;
+    margin-right: 3px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    color: $text-green;
+    font-size: 12px;
+  }
+  .body {
+    background: $dark-bg11;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3px;
+    width: 100%;
+    border-left: 3px solid $border-bg2;
+    border-right: 3px solid $border-bg2;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    @include box-shadow5;
+    .flexrow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin: 3px;
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        background: $border-bg2;
+        border-radius: 15px;
+        padding: 5px;
+        margin: 2px;
+        font-size: 14px;
+        border: 1.5px solid $border-bg3;
+
+        .innerflex {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width: 100%;
+          padding: 0;
+          line-height: 14px;
+          p {
+            display: flex;
+            text-align: left;
+            margin-right: auto !important;
+            padding: 0px !important;
+            color: $text-primary-color;
+            justify-content: flex-start;
+          }
+          span {
+            display: flex;
+            margin-left: auto !important;
+            text-align: right;
+            padding: 0px !important;
+            color: $text-primary-color;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+    button {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      border: 2px solid $border-bg2;
+      color: $text-primary-color;
+    }
+  }
+  .title {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+    font-size: 14px;
+    line-height: 14px;
+    background: $dark-bg11;
+    border: 3px solid $border-bg2;
+    border-bottom: 1px solid $border-bg2;
+    margin-bottom: 0 !important;
+    margin: 3px;
+    border-top: 5px solid $border-bg2 !important;
+    border-radius: 15px 15px 0px 0px;
+    width: 100%;
+    color: #fdbf16;
+    text-transform: uppercase;
+    font-weight: 300;
+    @include box-shadow5;
+    .stake {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+      margin-left: 3px;
+      justify-content: space-around;
+      img {
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin: 3px;
+        border-radius: 100%;
+      }
+    }
+    .earn {
+      display: flex;
+      flex-direction: column;
+      margin-left: auto;
+      align-items: flex-end;
+      justify-content: space-around;
+      padding: 4px;
+      margin-right: 3px;
+      p {
+        display: block;
+        margin: 0.25px !important;
+        padding: 0px !important;
+        color: $text-primary-color;
+      }
+    }
+  }
+  button {
+    display: block;
+    width: 100%;
+    background: $dark-bg11;
+    border: 3px solid $border-bg2;
+    border-bottom: 5px solid $border-bg2 !important;
+    margin-top: 0 !important;
+    margin: 3px;
+    border-top: 1px solid $border-bg2 !important;
+    border-radius: 0px 0px 15px 15px;
+    width: 100%;
+    color: #fdbf16;
+    text-transform: uppercase;
+    font-weight: 300;
+    @include box-shadow5;
+  }
+}
