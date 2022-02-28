@@ -3,6 +3,7 @@ import { RiArrowDownSFill, RiArrowUpSFill } from 'react-icons/ri';
 
 import InlineSharesRowCardStaked from './inlineSharesRowCardStaked';
 import InlineSharesRowCardEarned from './inlineSharesRowCardEarned';
+
 export const SharesRow = () => {
   const [showExpand, setShowExpand] = useState(false);
   const toggleExpand = () => setShowExpand(!showExpand);

@@ -32,6 +32,7 @@
     "react-drag-drop-files": "^2.2.1",
     "react-draggable": "^4.4.4",
     "react-icons": "^4.3.1",
+    "react-loading": "^2.0.3",
     "react-range": "^1.8.12",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
