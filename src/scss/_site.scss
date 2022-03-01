@@ -14,15 +14,12 @@ body {
   @include bg-color;
   scrollbar-width: auto;
   scrollbar-color: $my-theme-primary $background-main-color;
-
   ::-webkit-scrollbar {
     width: 10px;
   }
-
   ::-webkit-scrollbar-track {
     background: $background-main-color;
   }
-
   ::-webkit-scrollbar-thumb {
     background-color: $my-theme-primary;
     border-radius: 10px;
@@ -7975,5 +7972,69 @@ $shadows-big: multiple-box-shadow(100);
       padding: 15px;
     }
   }
+  }
+}
+.news {
+  display: block;
+  width: fit-content;
+  height: 75px;
+  border-left: 3px solid $text-green;
+  padding: 5px;
+  margin-bottom: 2px;
+  .header {
+    display: block;
+    font-size: 100%;
+    width: 100%;
+    color: $card-title-color;
+    padding: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    height: 15px;
+    font-size: 13px;
+  }
+  .body-text {
+    display: block;
+    min-width: 120px;
+    max-width: 350px;
+    height: 35px;
+    padding: 2px;
+    margin-top: 2px;
+    color: $text-light;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    .img {
+      width: 50px;
+      height: auto;
+      padding: 2%;
+    }
+  }
+  .body-flex {
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 2px;
+    margin-top: 2px;
+    color: $text-light;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    .img {
+      width: 50px;
+      height: auto;
+      padding: 2%;
+    }
+  }
+  .date {
+    display: block;
+    width: 100%;
+    height: 12px;
+    padding: 2px;
+    margin-top: 2px;
+    color: $text-primary-color3;
+    font-size: 11px;
+    text-align: center;
   }
 }
