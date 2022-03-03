@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
-
+import { Textfit } from 'react-textfit';
 import { MDBCollapse } from 'mdb-react-ui-kit';
 
 import numeral from 'numeral';
@@ -108,7 +108,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
         <div className="rewards-grid-item">
           <div className="card-sub-header">
             <div className="card-left-text">
-              <h2>{pool.name}</h2>
+              <Textfit mode="single">
+                <h2>{pool.name}</h2>
+              </Textfit>
               <p>
                 <span style={{ color: `#28CCAB` }}>EARN</span>{' '}
                 {pool.rewardSymbols && pool.rewardSymbols[0]
@@ -126,10 +128,12 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                   <></>
                 )}
               </p>
-              <p>
-                <span className="text-white1">STAKE</span>{' '}
-                {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
-              </p>
+              <Textfit mode="single">
+                <p>
+                  <span className="text-white1">STAKE</span>{' '}
+                  {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
+                </p>
+              </Textfit>
             </div>
             <div className="card-right-img">
               <img
@@ -162,6 +166,11 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                 <div className="reward-content">
                   <div className="reward-items">
                     <div className="reward-item">
+                      <p>
+                        {pool.rewardSymbols && pool.rewardSymbols[0]
+                          ? pool.rewardSymbols[0]
+                          : pool.rewardTokens[0].symbol}
+                      </p>
                       <img
                         src={pool?.reward0Icon.replace('/public/', '/')}
                         alt=""
@@ -172,9 +181,6 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                             pool.rewardTokens[0].pendingRewards,
                           ),
                         ).format('0,0.00')}{' '}
-                        {pool.rewardSymbols && pool.rewardSymbols[0]
-                          ? pool.rewardSymbols[0]
-                          : pool.rewardTokens[0].symbol}
                         <br />
                         <span>
                           ~
@@ -189,6 +195,11 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                     {pool.type == PoolType.DoubleV1 ||
                     pool.type == PoolType.DoubleV2 ? (
                       <div className="reward-item">
+                        <p>
+                          {pool.rewardSymbols && pool.rewardSymbols[1]
+                            ? pool.rewardSymbols[1]
+                            : pool.rewardTokens[1].symbol}
+                        </p>
                         <img
                           src={pool?.reward1Icon.replace('/public/', '/')}
                           alt=""
@@ -199,9 +210,6 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                               pool.rewardTokens[1].pendingRewards,
                             ),
                           ).format('0,0.00')}{' '}
-                          {pool.rewardSymbols && pool.rewardSymbols[1]
-                            ? pool.rewardSymbols[1]
-                            : pool.rewardTokens[1].symbol}
                           <br />{' '}
                           <span>
                             ~
@@ -230,7 +238,6 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                   )}
                 </div>
               </div>
-
               {!account ? (
                 <div className="action-item">
                   <button className="join-btn" onClick={connect}>
@@ -246,7 +253,6 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
               ) : (
                 <></>
               )}
-
               {(!isStaked || !isApproved) && (
                 <>
                   {!isFinished && account && chainId == connectedChainId && (
@@ -274,69 +280,70 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                 <div className="reward-stake-block">
                   <h5>STAKED</h5>
                   <div className="reward-stake-item">
-                    <div className="reward-item mb-0">
-                      <img
-                        src={pool?.stakeIcon.replace('/public/', '/')}
-                        alt=""
-                        style={{ maxHeight: 45 }}
-                      />
-                      <p>
-                        {numeral(
-                          ethers.utils.formatEther(pool.stakeToken.staked),
-                        ).format('0,0.00')}{' '}
-                        {pool.stakeSymbol
-                          ? pool.stakeSymbol
-                          : pool.stakeToken.symbol}
-                        <br />{' '}
-                        <span>
-                          ~
+                    <div className="reward-items">
+                      <div className="stake-item mb-0">
+                        <p>
                           {numeral(
-                            ethers.utils.formatEther(pool.stakeToken.stakedUSD),
-                          ).format('$0,0.00')}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="reward-plus-minus">
-                      <button
-                        onClick={
-                          isFinished
-                            ? withdrawAll
-                            : () => showStakeModal(pool, false)
-                        }
-                        disabled={!account || chainId != connectedChainId}
-                      >
-                        <svg
-                          width="14"
-                          height="4"
-                          viewBox="0 0 14 4"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+                            ethers.utils.formatEther(pool.stakeToken.staked),
+                          ).format('0,0.00')}{' '}
+                          {pool.stakeSymbol
+                            ? pool.stakeSymbol
+                            : pool.stakeToken.symbol}
+                          <br />{' '}
+                          <span>
+                            ~
+                            {numeral(
+                              ethers.utils.formatEther(
+                                pool.stakeToken.stakedUSD,
+                              ),
+                            ).format('$0,0.00')}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="reward-plus-minus">
+                        <button
+                          onClick={
+                            isFinished
+                              ? withdrawAll
+                              : () => showStakeModal(pool, false)
+                          }
+                          disabled={!account || chainId != connectedChainId}
                         >
-                          <path
-                            d="M13 0.5H1C0.447812 0.5 0 0.947812 0 1.5V2.5C0 3.05219 0.447812 3.5 1 3.5H13C13.5522 3.5 14 3.05219 14 2.5V1.5C14 0.947812 13.5522 0.5 13 0.5Z"
-                            fill="#28CCAB"
-                          />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={() => showStakeModal(pool, true)}
-                        disabled={
-                          !account || chainId != connectedChainId || isFinished
-                        }
-                      >
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 14 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+                          <svg
+                            width="14"
+                            height="4"
+                            viewBox="0 0 14 4"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M13 0.5H1C0.447812 0.5 0 0.947812 0 1.5V2.5C0 3.05219 0.447812 3.5 1 3.5H13C13.5522 3.5 14 3.05219 14 2.5V1.5C14 0.947812 13.5522 0.5 13 0.5Z"
+                              fill="#28CCAB"
+                            />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => showStakeModal(pool, true)}
+                          disabled={
+                            !account ||
+                            chainId != connectedChainId ||
+                            isFinished
+                          }
                         >
-                          <path
-                            d="M13 5.5H8.5V1C8.5 0.447812 8.05219 0 7.5 0H6.5C5.94781 0 5.5 0.447812 5.5 1V5.5H1C0.447812 5.5 0 5.94781 0 6.5V7.5C0 8.05219 0.447812 8.5 1 8.5H5.5V13C5.5 13.5522 5.94781 14 6.5 14H7.5C8.05219 14 8.5 13.5522 8.5 13V8.5H13C13.5522 8.5 14 8.05219 14 7.5V6.5C14 5.94781 13.5522 5.5 13 5.5Z"
-                            fill="#28CCAB"
-                          />
-                        </svg>
-                      </button>
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M13 5.5H8.5V1C8.5 0.447812 8.05219 0 7.5 0H6.5C5.94781 0 5.5 0.447812 5.5 1V5.5H1C0.447812 5.5 0 5.94781 0 6.5V7.5C0 8.05219 0.447812 8.5 1 8.5H5.5V13C5.5 13.5522 5.94781 14 6.5 14H7.5C8.05219 14 8.5 13.5522 8.5 13V8.5H13C13.5522 8.5 14 8.05219 14 7.5V6.5C14 5.94781 13.5522 5.5 13 5.5Z"
+                              fill="#28CCAB"
+                            />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

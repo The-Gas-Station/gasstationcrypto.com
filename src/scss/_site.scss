@@ -2174,13 +2174,16 @@ select {
       padding: 16px 20px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       .card-left-text {
-        padding-right: 5px;
-        min-width: 0;
+        width: fit-content;
+        margin-right: auto;
+        font-size: 14px !important;
       }
       .card-right-img {
-        flex: none;
+        display: block;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        margin-left: auto;
       }
       h2 {
         color: $text-light2;
@@ -2231,33 +2234,74 @@ select {
             padding-right: 5px;
           }
         }
-        .reward-item {
+        .reward-items {
           display: flex;
-          align-items: flex-start;
-          margin-bottom: 10px;
-          &:last-child {
-            margin-bottom: 0;
-          }
-          img {
-            width: 24px;
-            flex: none;
-          }
-          p {
-            margin: 0 0 0 10px;
-            font-size: 18px;
-            font-weight: 500;
-            color: #28ccab;
-            span {
-              color: #a0aec0;
-              font-size: 13px;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+
+          .reward-item {
+            display: flex;
+            min-width: 45%;
+            flex-direction: column;
+            height: inherit;
+            align-items: center;
+            margin: auto;
+            justify-content: center;
+
+            img {
+              width: 30px;
               display: block;
+            }
+            p {
+              display: block;
+              text-align: center;
+              margin: 0px;
+              width: 100%;
+              font-size: 14.5px !important;
+              font-weight: 500;
+              color: #28ccab;
+              span {
+                color: #a0aec0;
+                font-size: 13px;
+                display: block;
+              }
+            }
+          }
+          .stake-item {
+            display: flex;
+            min-width: 45%;
+            flex-direction: column;
+            height: inherit;
+            align-items: flex-start;
+            margin: auto;
+            justify-content: flex-start;
+
+            img {
+              width: 30px;
+              display: block;
+            }
+            p {
+              display: block;
+              text-align: left;
+              margin: 0px;
+              width: 100%;
+              font-size: 14.5px !important;
+              font-weight: 500;
+              color: #28ccab;
+              span {
+                color: #a0aec0;
+                font-size: 13px;
+                display: block;
+              }
             }
           }
         }
         .reward-content {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
           flex-wrap: wrap;
           .join-btn {
             padding: 5px 12px;
