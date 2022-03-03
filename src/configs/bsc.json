@@ -138,5 +138,19 @@
     }
   ],
   "nfpAddress": "evm:0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b",
+  "bridgeAddress": "evm:0xF23b700E739F8416d62735D67F8D7F5748816dAa",
+  "bridgeChainId": 1,
+  "bridgeTokens": {
+    "usdc": {
+      "name": "USDC",
+      "address": "evm:0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "icon": "/public/images/tokens/usdc.png"
+    },
+    "mock": {
+      "name": "TOKEN",
+      "address": "evm:0x50A7b06ddeD3BFbd9574533D116e61DA9E23E407",
+      "icon": "/public/images/tokens/usdc.png"
+    }
+  },
   "chainId": 56
 }

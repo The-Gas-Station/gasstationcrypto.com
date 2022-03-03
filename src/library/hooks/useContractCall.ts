@@ -32,6 +32,7 @@ export interface ContractCall {
   address: string;
   method: string;
   args: any[];
+  catch?: (e: any) => void;
 }
 
 export function useContractCall(
@@ -61,9 +62,17 @@ export function useContractCalls(
           }
           return undefined;
         }
-        return call && result
-          ? (call.abi.decodeFunctionResult(call.method, result) as any[])
-          : undefined;
+        try {
+          return call && result
+            ? (call.abi.decodeFunctionResult(call.method, result) as any[])
+            : undefined;
+        } catch (e: any) {
+          if (call && call.catch) {
+            call.catch(e);
+          } else {
+            throw e;
+          }
+        }
       }),
     [results],
   );

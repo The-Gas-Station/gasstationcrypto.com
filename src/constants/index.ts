@@ -6,6 +6,7 @@ import PoolSingleV1 from './abi/PoolSingleV1.json';
 import PoolSingleV2 from './abi/PoolSingleV2.json';
 import PoolSingleV3 from './abi/PoolSingleV3.json';
 import NFP from './abi/NFP.json';
+import Bridge from './abi/Bridge.json';
 
 const GASTokenInterface = new Interface(GASToken);
 
@@ -34,3 +35,7 @@ export { PoolSingleV3, PoolSingleV3Interface };
 const NFPInterface = new Interface(NFP);
 
 export { NFP, NFPInterface };
+
+const BridgeInterface = new Interface(Bridge);
+
+export { Bridge, BridgeInterface };

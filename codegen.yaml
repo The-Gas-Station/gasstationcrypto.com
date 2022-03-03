@@ -1,0 +1,13 @@
+schema: https://2zq24407b2.execute-api.us-west-2.amazonaws.com/graphql
+documents: './src/**/*.graphql'
+generates:
+  ./src/graphql/generated.ts:
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true

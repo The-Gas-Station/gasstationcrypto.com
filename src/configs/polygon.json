@@ -114,5 +114,19 @@
   ],
   "lookupLiquidityPairs": [],
   "nfpAddress": "evm:0x1a0b4e0facd171d5e5ce3d1cda30624ead73a06b",
+  "bridgeAddress": "evm:0x21468d7a066882307C8b46738Bf6BA39BbcE1607",
+  "bridgeChainId": 2,
+  "bridgeTokens": {
+    "usdc": {
+      "name": "USDC",
+      "address": "evm:0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "icon": "/public/images/tokens/usdc.png"
+    },
+    "mock": {
+      "name": "TOKEN",
+      "address": "evm:0x1225D3282050f9939a5a72E7e6712de6d318Bbd7",
+      "icon": "/public/images/tokens/usdc.png"
+    }
+  },
   "chainId": 137
 }

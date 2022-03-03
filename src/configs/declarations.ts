@@ -1,3 +1,5 @@
+import { ChainId } from '../library/constants/chains';
+
 export enum PoolType {
   SingleV1 = 'SingleV1',
   SingleV2 = 'SingleV2',
@@ -35,7 +37,7 @@ export type ChainInfo = {
   tokenImage: string;
   launched: boolean;
   launchDate?: string;
-  chainId: number;
+  chainId: ChainId;
   etherCoingeckoId?: string;
   etherLiquidityPair?: string;
   gasTokenName: string;
@@ -50,4 +52,10 @@ export type ChainInfo = {
   nfpGitHubBaseURL?: string;
   buyAddress?: string;
   chartAddress?: string;
+  bridgeAddress?: string;
+  bridgeChainId?: number;
+  bridgeTokens?: {
+    usdc?: { name: string; address: string; icon: string };
+    mock?: { name: string; address: string; icon: string };
+  };
 };

@@ -1,0 +1,7 @@
+query tokenPrice($chainId: Int!, $token: String) {
+  tokenPrice(chainId: $chainId, token: $token) {
+    tokenAddress
+    tokenPrice
+    decimals
+  }
+}

@@ -1,0 +1,8 @@
+query tokenPriceSig($chainId: Int!, $token: String) {
+  tokenPriceSig(chainId: $chainId, token: $token) {
+    tokenAddress
+    tokenPrice
+    validUntil
+    sig
+  }
+}

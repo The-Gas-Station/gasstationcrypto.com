@@ -3,18 +3,32 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+} from '@apollo/react-hooks';
+
 import DAppProvider from './library/providers/DAppProvider';
 import { AppConfig } from './configs';
 
 const App = React.lazy(() => import('./App'));
 
+const client = new ApolloClient({
+  uri: 'https://2zq24407b2.execute-api.us-west-2.amazonaws.com/graphql',
+  credentials: 'include',
+  cache: new InMemoryCache(),
+});
+
 ReactDOM.render(
   <React.StrictMode>
-    <DAppProvider config={AppConfig}>
-      <React.Suspense fallback={<>...</>}>
-        <App />
-      </React.Suspense>
-    </DAppProvider>
+    <ApolloProvider client={client}>
+      <DAppProvider config={AppConfig}>
+        <React.Suspense fallback={<>...</>}>
+          <App />
+        </React.Suspense>
+      </DAppProvider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

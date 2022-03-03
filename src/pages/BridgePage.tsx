@@ -19,7 +19,7 @@ export const BridgePage = () => {
   const { currentChainId } = useWeb3ConnectionsContext();
 
   if (!chainId) {
-    navigate(`/${CHAIN_NAMES[currentChainId]}/hub`);
+    navigate(`/${CHAIN_NAMES[currentChainId]}/bridge`);
     return <></>;
   }
 
