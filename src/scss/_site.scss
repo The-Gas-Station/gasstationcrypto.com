@@ -3384,112 +3384,69 @@ select {
     flex-wrap: nowrap;
   }
   .img {
-    display: flex;
-    justify-content: center;
-    width: fit-content;
+    display: block;
+    width: calc(8% - 10px);
     margin: auto;
-    @media (min-width: 1000px) {
-      max-width: 8%;
-    }
   }
   .title {
-    display: flex;
+    display: block;
     margin: auto;
-    flex-direction: column;
     text-align: left;
-    align-items: center;
-    justify-content: flex-start;
-    width: fit-content;
-    p {
+    width: 20%;
+    h3 {
       display: block;
-      text-align: left;
-      width: 100%;
+      width: auto;
+      height: auto;
+      font-size: 15px;
+      color: $text-light;
+    }
+    p {
       font-size: 12px;
-      line-height: 0;
       span {
         all: unset;
-        
       }
-    }
-    @media (min-width: 1000px) {
-      min-width: 10%;
-      max-width: 12.5%;
     }
   }
   .earned {
-    display: flex;
+    display: block;
+    font-size: 12px;
     margin: auto;
-    flex-direction: column;
     text-align: left;
-    align-items: center;
-    justify-content: flex-start;
-    width: fit-content;
-    @media (min-width: 1000px) {
-      max-width: 15%;
-    }
+    width: 17.5%;
   }
   .apr {
     display: flex;
     margin: auto;
+    font-size: 14px;
     flex-direction: column;
     text-align: left;
     align-items: center;
     justify-content: flex-start;
-    width: fit-content;
-    @media (min-width: 1000px) {
-      max-width: 5%;
-    }
+    width: 7%;
   }
   .staked {
-    display: flex;
+    font-size: 12px;
     margin: auto;
-    flex-direction: column;
-    text-align: left;
-    align-items: center;
+    text-align: right;
     justify-content: flex-start;
-    width: fit-content;
-    @media (min-width: 1000px) {
-      min-width: 15%;
-      max-width: 30%;
-    }
+    width: 22%;
   }
   .timer {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+    text-align: right;
     margin: auto;
-    align-items: center;
-    justify-content: flex-start;
-    width: fit-content;
-    @media (min-width: 1000px) {
-      min-width: 5%;
-      max-width: 10%;
-    }
+    font-size: 12px;
+    width: 10%;
   }
   .fees {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+    text-align: right;
     margin: auto;
-    width: fit-content;
-    align-items: center;
-    justify-content: flex-start;
-    @media (min-width: 1000px) {
-      min-width: 5%;
-      max-width: 8%;
-    }
+    font-size: 12px;
+    width: 10%;
   }
   .expand {
-    display: flex;
-    width: fit-content;
-    flex-direction: column;
-    text-align: left;
+    text-align: right;
     margin: auto;
-    align-items: center;
-    justify-content: flex-start;
-    @media (min-width: 1000px) {
-      min-width: 5%;
-      max-width: 8%;
-    }
+    font-size: 12px;
+    width: 5%;
   }
 }
