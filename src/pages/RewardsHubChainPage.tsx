@@ -45,8 +45,8 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const pools = usePools(chainId);
 
   const [isFilterShow, setIsFilterShow] = useState(false);
-  //   const [isCardGrid, setIsCardGrid] = useState(false);
-  const isCardGrid = true;
+  const [isCardGrid, setIsCardGrid] = useState(false);
+
   const [showOnlyStaked, setShowOnlyStaked] = useState(false);
   const [showFinished, setShowFinished] = useState(false);
   const toggleFilter = () => {
@@ -248,7 +248,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                     {isFilterShow ? 'HIDE' : 'SHOW'}
                   </span>
                 </div>
-                {/* <div className="grid-list-icon d-none d-md-flex">
+                <div className="grid-list-icon d-none d-md-flex">
                   <span
                     className={isCardGrid ? '' : 'active'}
                     onClick={() => setIsCardGrid(false)}
@@ -315,7 +315,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                       />
                     </svg>
                   </span>
-                </div> */}
+                </div>
                 <div className="grid-switch-icon d-none d-md-block">
                   <MDBSwitch
                     id="flexSwitchCheckDefault"

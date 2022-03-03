@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 
 import { MDBCollapse, MDBTooltip } from 'mdb-react-ui-kit';
+import { Textfit } from 'react-textfit';
 
 import numeral from 'numeral';
 
@@ -51,15 +52,29 @@ export const HubCard = ({
             </div>
             <div className="title">
               <h3>{pool.name}</h3>
-              <p className="d-none d-sm-block">
-                Stake {pool.stakeToken.symbol}
-                <br /> Earn {pool.rewardTokens[0].symbol}
+              <p>
+                <span style={{ color: `#28CCAB` }}>EARN</span>{' '}
+                {pool.rewardSymbols && pool.rewardSymbols[0]
+                  ? pool.rewardSymbols[0]
+                  : pool.rewardTokens[0].symbol}
                 {pool.rewardTokens[1] ? (
-                  <> + {pool.rewardTokens[1].symbol}</>
+                  <>
+                    {pool.rewardSymbols && pool.rewardSymbols[1] ? (
+                      <> + {pool.rewardSymbols[1]}</>
+                    ) : (
+                      <> + {pool.rewardTokens[1].symbol}</>
+                    )}
+                  </>
                 ) : (
                   <></>
                 )}
               </p>
+              <Textfit mode="single">
+                <p>
+                  <span className="text-white1">STAKE</span>{' '}
+                  {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
+                </p>
+              </Textfit>
             </div>
           </div>
         </td>
@@ -76,7 +91,7 @@ export const HubCard = ({
               <MDBTooltip
                 tag="a"
                 wrapperProps={{ href: '#' }}
-                title="Hi! I'm a tooltip!"
+                title={'Rewards Earned From Staking ' + pool.stakeToken.symbol}
               >
                 {' '}
                 <img src={QuestionIcon} alt="" className="ms-1" />
@@ -100,7 +115,7 @@ export const HubCard = ({
         </td>
         <td>
           <div className="apy-content">
-            <span>APY</span>
+            <span>APR</span>
             <p>{numeral(pool.apr).format('0.00%')}</p>
           </div>
         </td>
@@ -111,7 +126,7 @@ export const HubCard = ({
               {numeral(
                 ethers.utils.formatEther(pool.stakeToken.totalStaked),
               ).format('0,0.00')}{' '}
-              {pool.stakeToken.symbol}
+              {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
             </p>
             <span>
               {numeral(
@@ -121,23 +136,21 @@ export const HubCard = ({
           </div>
         </td>
         <td className="desktop-view">
-          <div className="apy-content">
+          <div className="apy-content d-flex justify-content-between">
             <span>
               {(
                 pool.usesBlocks
-                  ? pool.end < currentBlock
-                  : pool.end * 1000 < Date.now()
+                  ? pool.end > currentBlock
+                  : pool.end * 1000 > Date.now()
               )
                 ? (
                     pool.usesBlocks
                       ? currentBlock < pool.start
-                      : Date.now() < pool.end * 1000
+                      : Date.now() < pool.start * 1000
                   )
                   ? 'Starts in'
                   : 'Ends in'
                 : ''}{' '}
-            </span>
-            <p>
               {pool.usesBlocks && (
                 <a
                   href={getExplorerCountdownLink(
@@ -147,26 +160,38 @@ export const HubCard = ({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={StopwatchIcon} alt="" className="me-1" />
+                  <img src={StopwatchIcon} alt="" className="ms-1" />
                 </a>
               )}
+            </span>
+            <p>
               {(
                 pool.usesBlocks
                   ? pool.end > currentBlock
                   : pool.end * 1000 > Date.now()
-              )
-                ? pool.usesBlocks
-                  ? numeral(
+              ) ? (
+                pool.usesBlocks ? (
+                  <>
+                    {numeral(
                       currentBlock < pool.start
                         ? pool.start - currentBlock
                         : pool.end - currentBlock,
-                    ).format('0,0') + ' blocks'
-                  : numeral(
+                    ).format('0,0')}
+                    <small> blocks</small>
+                  </>
+                ) : (
+                  <>
+                    {numeral(
                       Date.now() < pool.start * 1000
                         ? (pool.start * 1000 - Date.now()) / 1000
                         : (pool.end * 1000 - Date.now()) / 1000,
-                    ).format('0,0') + ' seconds'
-                : 'FINISHED'}
+                    ).format('0,0')}
+                    <small> seconds</small>
+                  </>
+                )
+              ) : (
+                'FINISHED'
+              )}{' '}
             </p>
           </div>
         </td>
@@ -289,13 +314,13 @@ export const HubCard = ({
                 </div>
                 <div className="col-md-4">
                   <div className="action-item">
-                    <span className="pb-0 pb-sm-2">PRESALE MINING</span>
+                    <span className="pb-0 pb-sm-2">Harvest</span>
                     <button className="join-btn">Join</button>
                   </div>
                 </div>
                 <div className="col-md-4">
                   <div className="action-item">
-                    <span className="pb-0 pb-sm-2">PRESALE MINING</span>
+                    <span className="pb-0 pb-sm-2">Stake</span>
                     <button className="join-btn">Enable</button>
                   </div>
                 </div>
