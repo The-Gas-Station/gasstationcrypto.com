@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ethers } from 'ethers';
 import RowViewExpanded from './RowViewExpand';
 import { MDBTooltip } from 'mdb-react-ui-kit';
@@ -8,7 +8,6 @@ import numeral from 'numeral';
 import { useBlockNumber } from '../library/providers/BlockNumberProvider';
 import { getExplorerCountdownLink } from '../library/helpers/chains';
 
-import GasIcon from '../assets/gas.svg';
 import QuestionIcon from '../assets/icons-question.svg';
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
 

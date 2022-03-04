@@ -127,18 +127,16 @@ export const RowViewExpand = ({
       ) : (
         <></>
       )}
-      <div className="button">
-        Harvest
-        {account && chainId == connectedChainId && hasHarvest ? (
+
+      {account && chainId == connectedChainId && hasHarvest ? (
+        <div className="button">
           <button className="join-btn" onClick={harvest} disabled={harvesting}>
             {harvesting ? 'Harvesting...' : 'Harvest'}
           </button>
-        ) : (
-          <div className="harvest-btn">Harvest</div>
-        )}
-      </div>
+        </div>
+      ) : null}
+
       <div className="button">
-        Stake
         {!account ? (
           <div className="action-item">
             <button className="join-btn" onClick={connect}>
@@ -174,8 +172,6 @@ export const RowViewExpand = ({
             )}
           </>
         )}
-      </div>
-      <div className="isStaked">
         {isStaked && (
           <>
             <h5>STAKED</h5>
