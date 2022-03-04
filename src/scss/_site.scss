@@ -3380,19 +3380,39 @@ select {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  @media (min-width: 1000px) {
-    flex-wrap: nowrap;
-  }
   .img {
-    display: block;
-    width: calc(8% - 10px);
+    display: flex;
+    justify-content: center;
     margin: auto;
+    width: 50px;
+    height: 50px;
+    padding: 0px !important;
+    
+    img {
+      display: block;
+      all: unset;
+      max-width: 48px;
+      max-height: 48px;
+    }
   }
   .title {
     display: block;
     margin: auto;
     text-align: left;
-    width: 20%;
+    @media (min-width: 200px) {
+      width: 83%;
+      padding: 0px;
+    }
+    @media (min-width: 670px) {
+      width: 210px;
+      padding: 0px;
+    }
+    @media (min-width: 1000px) {
+      width: 22%; 
+    }
+    @media (min-width: 1200px) {
+      width: 17%;
+    }
     h3 {
       display: block;
       width: auto;
@@ -3412,41 +3432,203 @@ select {
     font-size: 12px;
     margin: auto;
     text-align: left;
-    width: 17.5%;
+    @media (min-width: 200px) {
+      width: 30%;
+      padding: 0px;
+    }
+    @media (min-width: 670px) {
+      width: 189px;
+      padding: 0px;
+    }
+    @media (min-width: 1000px) {
+      width: 27%;
+    }
+    @media (min-width: 1200px) {
+      width: 17%;
+    }
   }
   .apr {
-    display: flex;
     margin: auto;
     font-size: 14px;
     flex-direction: column;
-    text-align: left;
     align-items: center;
     justify-content: flex-start;
-    width: 7%;
+    text-align: center;
+    @media (min-width: 200px) {
+      width: 30%;
+      padding: 0px;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (min-width: 1000px) {
+      width: 130px;
+    }
+    
   }
   .staked {
     font-size: 12px;
     margin: auto;
-    text-align: right;
     justify-content: flex-start;
-    width: 22%;
+    @media (min-width: 200px) {
+      width: 30%;
+      padding: 0px;
+      text-align: left;
+    }
+    @media (min-width: 670px) {
+      width: 250px;
+      padding: 0px;
+    }
+    
+    @media (min-width: 1000px) {
+      width: 18%;
+    text-align: right;
+
+    }
+    @media (min-width: 1200px) {
+      width: 18%;
+    text-align: right;
+
+    }
   }
   .timer {
     text-align: right;
     margin: auto;
     font-size: 12px;
-    width: 10%;
+    @media (min-width: 200px) {
+    text-align: right;
+    width: fit-content;
+    padding: 0px;
+    }
+    @media (min-width: 670px) {
+      width: 30%;
+      padding: 0px;
+    }
+    @media (min-width: 1000px) {
+      width: 12%;
+    }
+    @media (min-width: 1200px) {
+      width: 130px;
+    }
   }
   .fees {
+    display: block;
     text-align: right;
     margin: auto;
     font-size: 12px;
-    width: 10%;
+    @media (min-width: 200px) {
+      width: 30%
+    }
+    @media (min-width: 670px) {
+      width: 17%;
+    }
+    @media (min-width: 1000px) {
+      width: 10%;
+    }
+    @media (min-width: 1200px) {
+      width: 130px;
+    }
+    
   }
   .expand {
     text-align: right;
     margin: auto;
     font-size: 12px;
-    width: 5%;
+    @media (min-width: 200px) {
+      padding: 0px;
+      text-align: left;
+      width: 30%;
+    }
+    @media (min-width: 670px) {
+      width: 11%;
+    }
+    @media (min-width: 1000px) {
+      width: 10%;
+    }
+    @media (min-width: 1200px) {
+      width: 5%;
+    }
+  }
+}
+$text-pink: #ff6691;
+.rowViewExpand {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $dark-color3;
+  padding: 5px;
+  margin: 3px;
+  .earned {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    height: inherit;
+    width: 15%;
+    margin: auto;
+    background-color: $dark-color4;
+    border-radius: 15px;
+    border: 1px solid $border-bg2;
+    @include box-shadow;
+    @media (min-width: 1000px) {
+      width: 15%;
+    }
+    span {
+      text-align: center;
+      display: block;
+      font-size: 14px;
+      color: $text-pink; margin: 0px;
+    }
+    p {
+      text-align: center;
+      display: block;
+      font-size: 12px;
+      color: $text-light;
+      margin: 0px;
+    }
+  }
+  .button {
+    display: block;
+    text-align: center;
+    color: $text-pink;
+    width: 15%;
+    height: inherit;
+    padding: 3px;
+    margin: auto;
+    background-color: $dark-color4;
+    border-radius: 15px;
+    border: 1px solid $border-bg2;
+    @include box-shadow;
+  }
+  .isStaked {
+    display: block;
+    text-align: center;
+    color: $text-pink;
+    width: 15%;
+    height: inherit;
+    padding: 3px;
+    margin: auto;
+    background-color: $dark-color4;
+    border-radius: 15px;
+    border: 1px solid $border-bg2;
+    @include box-shadow; 
+    .reward-plus-minus {
+      display: inline-flex;
+      align-items: center;
+      span {
+        border: 1px solid #28ccab;
+        box-sizing: border-box;
+        border-radius: 15px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
+        cursor: pointer;
+        margin: 0 2px;
+      }
+    }
   }
 }

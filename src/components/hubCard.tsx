@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
-
-import { MDBCollapse, MDBTooltip } from 'mdb-react-ui-kit';
-import { Textfit } from 'react-textfit';
+import RowViewExpanded from './RowViewExpand';
+import { MDBTooltip } from 'mdb-react-ui-kit';
 
 import numeral from 'numeral';
 
@@ -46,7 +45,7 @@ export const HubCard = ({
     <>
       <div className="rowviewStaking">
         <div className="img">
-          <img src={GasIcon} alt="" />
+          <img src={pool?.stakeIcon.replace('/public/', '/')} alt="" />
         </div>
         <div className="title">
           <h3>{pool.name}</h3>
@@ -67,12 +66,11 @@ export const HubCard = ({
               <></>
             )}
           </p>
-          <Textfit mode="single">
-            <p>
-              <span className="text-white1">STAKE</span>{' '}
-              {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
-            </p>
-          </Textfit>
+
+          <p>
+            <span className="text-white1">STAKE</span>{' '}
+            {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
+          </p>
         </div>
 
         <div className="earned">
@@ -207,184 +205,17 @@ export const HubCard = ({
             className={`title-box ${showShow ? 'open' : ''}`}
             onClick={toggleShow}
           >
-            <span className="d-none d-sm-block mt-0">
-              {showShow ? 'Hide' : 'Details'}
-            </span>
+            <span className="">{showShow ? 'Hide' : 'Details'}</span>
           </div>
         </div>
-
-        <MDBCollapse className="action-dropdown-inner" show={showShow}>
-          <div className="action-dropdown">
-            <p className="d-block d-sm-none mb-2" style={{ color: `#8A92A6` }}>
-              Stake BNB-bscGAS ApeLP Earn USDC +bscGAS
-            </p>
-            {/* <p className="action-title">
-                Add Token to BCS Mainnet wallet
-                <img
-                  src={Metamask}
-                  alt=""
-                  className="ms-2"
-                  style={{ maxWidth: `16px` }}
-                />
-              </p> */}
-            <div className="row">
-              <div className="col-md-4">
-                <div className="action-item recent-item">
-                  <div className="action-content">
-                    <span className="text-pink">
-                      RECENT {pool.rewardTokens[0].symbol} EARNED
-                    </span>
-                    <p>
-                      {numeral(
-                        ethers.utils.formatEther(
-                          pool.rewardTokens[0].pendingRewards,
-                        ),
-                      ).format('0,0.00')}{' '}
-                      {pool.rewardTokens[0].symbol}
-                    </p>
-                    <span>
-                      ~
-                      {numeral(
-                        ethers.utils.formatEther(
-                          pool.rewardTokens[0].pendingRewardsUSD,
-                        ),
-                      ).format('$0,0.00')}
-                    </span>
-                  </div>
-                  <div className="action-content">
-                    {pool.rewardTokens[1] ? (
-                      <>
-                        <span className="text-pink">
-                          RECENT {pool.rewardTokens[1].symbol} EARNED
-                        </span>
-                        <p>
-                          {' '}
-                          {numeral(
-                            ethers.utils.formatEther(
-                              pool.rewardTokens[1].pendingRewards,
-                            ),
-                          ).format('0,0.00')}{' '}
-                          {pool.rewardTokens[1].symbol}
-                        </p>
-                        <span>
-                          ~
-                          {numeral(
-                            ethers.utils.formatEther(
-                              pool.rewardTokens[1].pendingRewardsUSD,
-                            ),
-                          ).format('$0,0.00')}
-                        </span>
-                      </>
-                    ) : (
-                      <></>
-                    )}
-                    {/* <span>
-                        0.1%{' '}
-                        <div className="text-decoration-underline">
-                          unstaking fee
-                        </div>{' '}
-                        until
-                      </span>
-                      <span>2d : 22h : 11m</span>
-                      <span>
-                        <div className="text-decoration-underline">
-                          Performance Fee
-                        </div>{' '}
-                        5%
-                      </span> */}
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="action-item">
-                  <span className="pb-0 pb-sm-2">Harvest</span>
-                  <button className="join-btn">Join</button>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="action-item">
-                  <span className="pb-0 pb-sm-2">Stake</span>
-                  <button className="join-btn">Enable</button>
-                </div>
-              </div>
-            </div>
-            <div className="d-block d-sm-none mobile-apy-content">
-              <div className="apy-content">
-                <span>Total Staked</span>
-                <p>
-                  {numeral(
-                    ethers.utils.formatEther(pool.stakeToken.totalStaked),
-                  ).format('0,0.00')}{' '}
-                  {pool.stakeToken.symbol}
-                </p>
-              </div>
-              <div className="apy-content">
-                <span>
-                  {(
-                    pool.usesBlocks
-                      ? pool.end > currentBlock
-                      : pool.end * 1000 > Date.now()
-                  )
-                    ? (
-                        pool.usesBlocks
-                          ? currentBlock < pool.start
-                          : Date.now() < pool.end * 1000
-                      )
-                      ? 'Starts in'
-                      : 'Ends in'
-                    : ''}{' '}
-                  {pool.usesBlocks && (
-                    <a
-                      href={getExplorerCountdownLink(
-                        chainId,
-                        currentBlock < pool.start ? pool.start : pool.end,
-                      )}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img src={StopwatchIcon} alt="" className="ms-1" />
-                    </a>
-                  )}
-                </span>
-                <p>
-                  {(
-                    pool.usesBlocks
-                      ? pool.end > currentBlock
-                      : pool.end * 1000 > Date.now()
-                  )
-                    ? pool.usesBlocks
-                      ? numeral(
-                          currentBlock < pool.start
-                            ? pool.start - currentBlock
-                            : pool.end - currentBlock,
-                        ).format('0,0') + ' blocks'
-                      : numeral(
-                          Date.now() < pool.start * 1000
-                            ? (pool.start * 1000 - Date.now()) / 1000
-                            : (pool.end * 1000 - Date.now()) / 1000,
-                        ).format('0,0') + ' seconds'
-                    : 'FINISHED'}
-                </p>
-              </div>
-              <div className="apy-content">
-                <span>
-                  {pool.depositBurnFee > 0 && pool.depositFee > 0
-                    ? 'Burn/Deposit'
-                    : pool.depositBurnFee > 0
-                    ? 'Burn'
-                    : 'Deposit'}{' '}
-                  Fee
-                </span>
-                <p>
-                  {numeral(
-                    (pool.depositBurnFee + pool.depositFee) / 10000.0,
-                  ).format('0.00%')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </MDBCollapse>
       </div>
+      {showShow ? (
+        <RowViewExpanded
+          chainId={chainId}
+          pool={pool}
+          showStakeModal={showShow}
+        />
+      ) : null}
     </>
   );
 };
