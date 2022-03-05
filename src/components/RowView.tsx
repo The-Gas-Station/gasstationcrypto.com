@@ -12,27 +12,18 @@ import QuestionIcon from '../assets/icons-question.svg';
 import StopwatchIcon from '../assets/icon-stopwatch.svg';
 
 import { PoolResult } from '../hooks/Pools';
-// import Metamask from '../assets/wallets/metamask.png';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
-export const HubCard = ({
+export const RowView = ({
   chainId,
   pool,
+  showStakeModal,
 }: {
+  showStakeModal: any;
   chainId: number;
   pool: PoolResult;
 }) => {
   const currentBlock = useBlockNumber(chainId) ?? 0;
-
-  //   const [harvesting, setHarvesting] = useState(false);
-  //   const _harvest = pool.useHarvestAction(pool);
-
-  //   const harvest = () => {
-  //     setHarvesting(true);
-  //     _harvest().finally(() => setHarvesting(false));
-  //   };
-
-  //   const hasHarvest = pool.rewardTokens[0].pendingRewards.gt(0);
-  //   const isStaked = pool.stakeToken.staked.gt(0);
 
   const [showShow, setShowShow] = useState(false);
 
@@ -200,23 +191,27 @@ export const HubCard = ({
         </div>
 
         <div className="expand">
-          <div
-            className={`title-box ${showShow ? 'open' : ''}`}
-            onClick={toggleShow}
-          >
-            <span className="">{showShow ? 'Hide' : 'Details'}</span>
-          </div>
+          {showShow ? (
+            <div onClick={() => toggleShow()}>
+              Close <IoIosArrowUp />
+            </div>
+          ) : (
+            <div onClick={() => toggleShow()}>
+              Expand <IoIosArrowDown />
+            </div>
+          )}
         </div>
       </div>
+
       {showShow ? (
         <RowViewExpanded
           chainId={chainId}
           pool={pool}
-          showStakeModal={showShow}
+          showStakeModal={showStakeModal}
         />
       ) : null}
     </>
   );
 };
 
-export default HubCard;
+export default RowView;

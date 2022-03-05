@@ -21,7 +21,7 @@ import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
 import useGASTokenRewardsInfo from '../hooks/useGASTokenRewardsInfo';
 import usePools from '../hooks/usePools';
 
-import HubCard from '../components/hubCard';
+import RowView from '../components/RowView';
 import GridHubCard from '../components/GridhubCard';
 import StackModal from '../components/stakeModal';
 import GasIcon from '../assets/gas.svg';
@@ -404,10 +404,11 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
             <MDBTable responsive="xl">
               <MDBTableBody>
                 {(filteredPools ?? []).map((pool) => (
-                  <HubCard
+                  <RowView
                     key={`table-${pool.address}`}
                     chainId={chainId}
                     pool={pool}
+                    showStakeModal={showStakeModal}
                   />
                 ))}
               </MDBTableBody>
