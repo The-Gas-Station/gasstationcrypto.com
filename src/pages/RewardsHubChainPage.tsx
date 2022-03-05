@@ -248,7 +248,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                     {isFilterShow ? 'HIDE' : 'SHOW'}
                   </span>
                 </div>
-                <div className="grid-list-icon d-none d-md-flex">
+                <div className="grid-list-icon d-md-flex">
                   <span
                     className={isCardGrid ? '' : 'active'}
                     onClick={() => setIsCardGrid(false)}
