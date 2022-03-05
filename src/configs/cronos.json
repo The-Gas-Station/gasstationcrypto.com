@@ -33,6 +33,15 @@
       "stakeSymbol": "croGAS-WCRO CroDex LP"
     },
     {
+      "name": "croGAS LP Dual Fuel #2",
+      "address": "evm:0x27D9E258f100747e38Df224FF9a462C217463299",
+      "type": "DoubleV2",
+      "stakeSymbol": "croGAS-WCRO CroDex LP",
+      "stakeIcon": "/public/images/tokens/cro-circle.svg",
+      "reward0Icon": "/public/images/tokens/gas.svg",
+      "reward1Icon": "/public/images/tokens/cro-circle.svg"
+    },
+    {
       "name": "croGAS Maximizer",
       "address": "evm:0x6ce1b9E2a8a80dA21Ed1463ccAC770c83bD621Cb",
       "type": "SingleV3",

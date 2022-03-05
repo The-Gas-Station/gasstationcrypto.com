@@ -21,7 +21,7 @@ import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
 import useGASTokenRewardsInfo from '../hooks/useGASTokenRewardsInfo';
 import usePools from '../hooks/usePools';
 
-import HubCard from '../components/hubCard';
+import RowView from '../components/RowView';
 import GridHubCard from '../components/GridhubCard';
 import StackModal from '../components/stakeModal';
 import GasIcon from '../assets/gas.svg';
@@ -45,8 +45,8 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
   const pools = usePools(chainId);
 
   const [isFilterShow, setIsFilterShow] = useState(false);
-  //   const [isCardGrid, setIsCardGrid] = useState(false);
-  const isCardGrid = true;
+  const [isCardGrid, setIsCardGrid] = useState(false);
+
   const [showOnlyStaked, setShowOnlyStaked] = useState(false);
   const [showFinished, setShowFinished] = useState(false);
   const toggleFilter = () => {
@@ -248,7 +248,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                     {isFilterShow ? 'HIDE' : 'SHOW'}
                   </span>
                 </div>
-                {/* <div className="grid-list-icon d-none d-md-flex">
+                <div className="grid-list-icon d-md-flex">
                   <span
                     className={isCardGrid ? '' : 'active'}
                     onClick={() => setIsCardGrid(false)}
@@ -315,7 +315,7 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                       />
                     </svg>
                   </span>
-                </div> */}
+                </div>
                 <div className="grid-switch-icon d-none d-md-block">
                   <MDBSwitch
                     id="flexSwitchCheckDefault"
@@ -404,10 +404,11 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
             <MDBTable responsive="xl">
               <MDBTableBody>
                 {(filteredPools ?? []).map((pool) => (
-                  <HubCard
+                  <RowView
                     key={`table-${pool.address}`}
                     chainId={chainId}
                     pool={pool}
+                    showStakeModal={showStakeModal}
                   />
                 ))}
               </MDBTableBody>
