@@ -3387,7 +3387,7 @@ select {
     width: 50px;
     height: 50px;
     padding: 0px !important;
-    
+
     img {
       display: block;
       all: unset;
@@ -3408,7 +3408,7 @@ select {
       padding: 0px;
     }
     @media (min-width: 1000px) {
-      width: 22%; 
+      width: 22%;
     }
     @media (min-width: 1200px) {
       width: 17%;
@@ -3422,6 +3422,7 @@ select {
     }
     p {
       font-size: 12px;
+      margin: 0;
       span {
         all: unset;
       }
@@ -3464,7 +3465,6 @@ select {
     @media (min-width: 1000px) {
       width: 130px;
     }
-    
   }
   .staked {
     font-size: 12px;
@@ -3479,16 +3479,14 @@ select {
       width: 250px;
       padding: 0px;
     }
-    
+
     @media (min-width: 1000px) {
       width: 18%;
-    text-align: right;
-
+      text-align: right;
     }
     @media (min-width: 1200px) {
       width: 18%;
-    text-align: right;
-
+      text-align: right;
     }
   }
   .timer {
@@ -3496,9 +3494,9 @@ select {
     margin: auto;
     font-size: 12px;
     @media (min-width: 200px) {
-    text-align: right;
-    width: fit-content;
-    padding: 0px;
+      text-align: right;
+      width: fit-content;
+      padding: 0px;
     }
     @media (min-width: 670px) {
       width: 30%;
@@ -3517,7 +3515,7 @@ select {
     margin: auto;
     font-size: 12px;
     @media (min-width: 200px) {
-      width: 30%
+      width: 30%;
     }
     @media (min-width: 670px) {
       width: 17%;
@@ -3528,7 +3526,6 @@ select {
     @media (min-width: 1200px) {
       width: 130px;
     }
-    
   }
   .expand {
     text-align: center;
@@ -3559,49 +3556,128 @@ $text-pink: #ff6691;
   height: fit-content;
   justify-content: space-around;
   align-items: center;
-  background-color: $dark-color3;
+  background-color: $dark-color1;
   padding: 5px;
-  margin: 3px;
+  margin-bottom: 5px;
+  border-radius: 0px 0px 15px 15px;
   .earned {
     display: flex;
-    flex-direction: column;
-    padding: 3px;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: center;
     height: inherit;
-    width: 23%;
+    width: auto;
     margin: auto;
-    background-color: $dark-color4;
+    @include bg-color7;
     border-radius: 15px;
     border: 1px solid $border-bg2;
-    @include box-shadow;
-    @media (min-width: 1000px) {
-      width: 17%;
+    @include box-shadow1;
+    .reward-plus-minus {
+      display: flex;
+      padding: 10px;
+      margin: auto;
+      width: auto;
+      margin: auto;
+      filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
+      
+      button {
+        display: block;
+        width: 35px;
+        height: 35px;
+      }
+    
     }
-    span {
-      text-align: center;
-      display: block;
-      font-size: 14px;
-      color: $text-pink; margin: 0px;
-    }
-    p {
-      text-align: center;
-      display: block;
-      font-size: 12px;
-      color: $text-light;
-      margin: 0px;
+    .innerbtn {
+      display: flex;
+      justify-content: center;
+      width: 140px;
+      padding: 5px;
+      margin: auto;
+    button {
+      width: 100px;
+      padding: 5px;
+      margin: auto;
     }
   }
-  .button {
-    display: block;
+    h5 {
+      display: block;
+      width: 100%;
+      font-size: 16.5px;
+      text-align: center;
+      padding: 2px;
+      margin: auto;
+      color: $text-green;
+    }
+    .content {
+      margin: auto;
+      display: flex;
+      min-width: 200px;
+      align-items: center;
+      
+      img {
+        margin: auto;
+        padding: auto;
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+      .inner {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 5px;
+        span {
+          text-align: left;
+          display: block;
+          font-size: 14px;
+          color: $text-pink;
+          margin: 0px;
+        }
+        p {
+          text-align: left;
+          display: block;
+          font-size: 12px;
+          color: $text-light;
+          margin: 0px;
+        }
+      }
+    }
+  }
+  .block {
+    display: flex;
+    align-items: center;
     text-align: center;
     color: $text-pink;
-    width: 20%;
+    width: fit-content;
     height: inherit;
-    padding: 3px;
+    padding: 10px;
     margin: auto;
     background-color: $dark-color4;
     border-radius: 15px;
     border: 1px solid $border-bg2;
     @include box-shadow;
+
+    .text {
+      padding: 10px;
+      p {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+        text-align: left;
+        color: $text-light;
+      }
+      h5 {
+        display: block;
+        width: 100%;
+        font-size: 16.5px;
+        text-align: left;
+      }
+    }
   }
-  
+}
+.pushRight {
+  margin-left: auto;
 }
