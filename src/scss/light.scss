@@ -1,7 +1,11 @@
 @import './mdb/mdb.pro.scss';
 
+
 $my-theme-primary: #9c27b0; // theme primary color, change this value to customize theme
 $my-theme-secondary: #00b49c; // theme secondary color, change this value to customize theme
+
+$gold: #fdbf16;
+
 
 $my-light-theme: mdb-light-theme(
   $my-theme-primary,

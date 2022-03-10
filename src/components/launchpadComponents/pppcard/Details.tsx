@@ -1,9 +1,13 @@
-import discord from '../pppcard/assets/discord.svg';
-import twitter from '../pppcard/assets/twitter.svg';
-import reddit from '../pppcard/assets/reddit.svg';
-import web from '../pppcard/assets/web.svg';
-import telegram from '../pppcard/assets/telegram.svg';
-
+import discord from './assets/discord.svg';
+import twitter from './assets/twitter.svg';
+import reddit from './assets/reddit.svg';
+import web from './assets/web.svg';
+import telegram from './assets/telegram.svg';
+import {
+  IoInformationCircleOutline,
+  IoCalendar,
+  IoLockClosed,
+} from 'react-icons/io5';
 const Details = () => {
   return (
     <div>
@@ -26,7 +30,9 @@ const Details = () => {
       </div>
       <div className="break" />
       <div className="token-info">
-        <p className="sm-dark">Token Info</p>
+        <p className="sm-dark">
+          Token Info <IoInformationCircleOutline />
+        </p>
         <div className="price">
           <p className="green">1 new</p>
           <p className="white">=</p>
@@ -39,7 +45,9 @@ const Details = () => {
       </div>
       <div className="columns">
         <div className="item">
-          <p className="sm-dark">Raise Start</p>
+          <p className="sm-dark">
+            Raise Start <IoCalendar />
+          </p>
           <p className="white">8 Feb 2022 11:00 am - 16:00 pm UTC</p>
         </div>
         <div className="item">
@@ -48,7 +56,9 @@ const Details = () => {
         </div>
       </div>
       <div className="token-info">
-        <p className="sm-dark">Vesting</p>
+        <p className="sm-dark">
+          Vesting <IoLockClosed />
+        </p>
         <div className="vesting">
           <p className="white">
             10% TGE unlock, 90% linear block-by-block unlock for 5 months

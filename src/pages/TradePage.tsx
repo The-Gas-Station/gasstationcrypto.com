@@ -23,7 +23,7 @@ export const TradePage = () => {
     return <></>;
   }
 
-  return <TradeChainPage key={chainId} chainId={chainId} />;
+  return <TradeChainPage />;
 };
 
 export default TradePage;

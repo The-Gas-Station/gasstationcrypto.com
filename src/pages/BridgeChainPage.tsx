@@ -8,7 +8,7 @@ import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsP
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
 import { BridgeTxModal } from '../components/bridgeTx';
-import { TxHistorySm } from '../components/txHistorysm';
+import BridgeTransactionHistory from '../components/bridgeComponents/BridgeTransactionHistory';
 import asset from '../assets/usdc.png';
 import network from '../assets/ftm.png';
 
@@ -22,8 +22,6 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const [UsePatron, setUsePatron] = useState(false);
 
   const chainData = CHAIN_INFO[chainId];
-  const [isTxHistoryOpen, setIsTxHistoryOpen] = useState(false);
-  const toggleShow = () => setIsTxHistoryOpen(!isTxHistoryOpen);
   const [isBridgeTxOpen, setIsBridgeTxOpen] = useState(false);
 
   const { readOnlyChainIds } = useConfig();
@@ -38,37 +36,36 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   return (
     <>
       <section className="page-background-bridge">
-        <div className="bridge-banner-img">
-          <div className="isolate">
-            <div className="page-banner-top-title">
-              <h3>
-                <img
-                  src={chainData.tokenImage.replace('/public/', '/')}
-                  alt="#"
-                  className="img-size"
-                />{' '}
-                {CHAIN_NAMES[chainId]} Bridge
-              </h3>
-              <select onChange={switchNetwork}>
-                <option>Switch Network</option>
-                {(readOnlyChainIds || []).map((_chainId) => {
-                  return (
-                    _chainId != chainId &&
-                    CHAIN_INFO[_chainId].launched && (
-                      <option key={`switch-chain-${_chainId}`} value={_chainId}>
-                        {CHAIN_NAMES[_chainId]}
-                      </option>
-                    )
-                  );
-                })}
-              </select>
-            </div>
+        <div className="bridge-banner-img" />
+        <div className="isolate">
+          <div className="page-banner-top-title">
+            <h3>
+              <img
+                src={chainData.tokenImage.replace('/public/', '/')}
+                alt="#"
+                className="img-size"
+              />{' '}
+              {CHAIN_NAMES[chainId]} Bridge
+            </h3>
+            <select onChange={switchNetwork}>
+              <option>Switch Network</option>
+              {(readOnlyChainIds || []).map((_chainId) => {
+                return (
+                  _chainId != chainId &&
+                  CHAIN_INFO[_chainId].launched && (
+                    <option key={`switch-chain-${_chainId}`} value={_chainId}>
+                      {CHAIN_NAMES[_chainId]}
+                    </option>
+                  )
+                );
+              })}
+            </select>
           </div>
         </div>
       </section>
       <div className="row justify-content-center row-flex">
-        <div className="col col-md-7 col-lg-8  d-md-block container">
-          <h4 className="title-msg">Bridge Tokens</h4>
+        <div className="col-lg-6">
+          <h4 className="title-3">Bridge Tokens</h4>
           <div className="convert-grid-block">
             <div className="d-flex flex-column justify-content-center card-body1">
               <h4 className="text-green">Select A Network</h4>
@@ -323,28 +320,19 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
             </div>
           </div>
         </div>
-        <div className="col-md-3 col-lg-3  d-md-block">
-          <h4 className="title-msg">Transaction History</h4>
-          <div className={`utility-collapse  ${isTxHistoryOpen ? 'open' : ''}`}>
-            <div className="card-body1">
-              <button className="join-btn">
-                <div
-                  className={`title-box ${isTxHistoryOpen ? 'open' : ''}`}
-                  onClick={toggleShow}
-                >
-                  <span className=" d-lg-block">
-                    {isTxHistoryOpen ? 'Hide History' : 'Show History'}
-                  </span>
-                </div>
-              </button>
-            </div>
-            <div className="vh-100">
-              <TxHistorySm
-                isTxHistorySmOpen={isTxHistoryOpen}
-                setIsOpen={setIsTxHistoryOpen}
-                closeTxHistorySm={() => setIsTxHistoryOpen(false)}
-              />
-            </div>
+        <div className="col-lg-6">
+          <h4 className="title-2">Transaction History</h4>
+          <div className="vh-100">
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
+            <BridgeTransactionHistory />
           </div>
         </div>
       </div>
