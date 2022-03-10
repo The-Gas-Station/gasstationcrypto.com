@@ -136,7 +136,6 @@ export const InformationContent = ({
               patronAddress={Bsc.nfpAddress.replace('evm:', '')}
               tokenName={Bsc.gasTokenName}
               tokenHref={Bsc.scanLink}
-              lpHref={''}
               patronHref={Bsc.nfpScanLink}
               tokenLock={Bsc.teamLock.replace('evm:', '')}
             />
@@ -149,7 +148,6 @@ export const InformationContent = ({
               patronAddress={Poly.nfpAddress.replace('evm:', '')}
               tokenName={Poly.gasTokenName}
               tokenHref={Poly.scanLink}
-              lpHref={''}
               patronHref={Poly.nfpScanLink}
               tokenLock={Poly.teamLock.replace('evm:', '')}
             />
@@ -162,7 +160,6 @@ export const InformationContent = ({
               patronAddress={Ftm.nfpAddress.replace('evm:', '')}
               tokenName={Ftm.gasTokenName}
               tokenHref={Ftm.scanLink}
-              lpHref={''}
               patronHref={Ftm.nfpScanLink}
               tokenLock={Ftm.teamLock.replace('evm:', '')}
             />
@@ -175,7 +172,6 @@ export const InformationContent = ({
               patronAddress={''}
               tokenName={Avax.gasTokenName}
               tokenHref={Avax.scanLink}
-              lpHref={''}
               patronHref={''}
               tokenLock={Avax.teamLock.replace('evm:', '')}
             />
@@ -188,7 +184,6 @@ export const InformationContent = ({
               patronAddress={''}
               tokenName={Movr.gasTokenName}
               tokenHref={Movr.scanLink}
-              lpHref={''}
               patronHref={''}
               tokenLock={Movr.teamLock.replace('evm:', '')}
             />
@@ -201,7 +196,6 @@ export const InformationContent = ({
               patronAddress={''}
               tokenName={Cro.gasTokenName}
               tokenHref={Cro.scanLink}
-              lpHref={''}
               patronHref={''}
               tokenLock={Cro.teamLock.replace('evm:', '')}
             />

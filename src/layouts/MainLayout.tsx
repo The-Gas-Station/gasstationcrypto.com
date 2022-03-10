@@ -115,11 +115,6 @@ export const MainLayout = () => {
       icon: SvgHome,
     },
     {
-      label: 'Info',
-      route: '/information',
-      icon: SvgHome,
-    },
-    {
       label: 'Rewards Hub',
       route: '/hub',
       icon: SvgRewards,
@@ -141,14 +136,14 @@ export const MainLayout = () => {
       route: '/utility',
       icon: SvgUtility,
     },
+    {
+      label: 'Documents',
+      route: '/information',
+      icon: SvgGitbook,
+    },
   ];
 
   const socialLinks = [
-    {
-      label: 'Gitbook',
-      route: 'https://gasstationcrypto.gitbook.io/the-crypto-gas-station/',
-      icon: SvgGitbook,
-    },
     {
       label: 'Twitter',
       route: 'https://twitter.com/GasStation_cryp',

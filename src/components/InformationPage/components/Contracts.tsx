@@ -8,7 +8,6 @@ type ContractProps = {
   patronAddress: string;
   tokenName: string;
   tokenHref: string;
-  lpHref: string;
   patronHref: string;
   tokenLock: string;
 };
@@ -21,7 +20,6 @@ export const Contracts = ({
   patronAddress,
   tokenName,
   tokenHref,
-  lpHref,
   patronHref,
   tokenLock,
 }: ContractProps) => {
@@ -37,7 +35,7 @@ export const Contracts = ({
         <span>Contract Address:</span>
         <a href={tokenHref}>{contractAddress}</a>
         <span>LP Address:</span>
-        <a href={lpHref}>{lpAddress}</a>
+        <a>{lpAddress}</a>
         {patronTrue ? (
           <>
             <span>Patrons:</span>
