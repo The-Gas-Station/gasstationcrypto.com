@@ -19,6 +19,7 @@
   "etherCoingeckoId": "wmatic",
   "buyAddress": "https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x840B5FC8C6deE2b1140174a3ABdC215190426CCf",
   "launched": true,
+  "patronLaunced": true,
   "gasTokenAddress": "evm:0x840b5fc8c6dee2b1140174a3abdc215190426ccf",
   "chartAddress": "https://dex.guru/token/0x840b5fc8c6dee2b1140174a3abdc215190426ccf-polygon",
   "pools": [
@@ -114,5 +115,8 @@
   ],
   "lookupLiquidityPairs": [],
   "nfpAddress": "evm:0x1a0b4e0facd171d5e5ce3d1cda30624ead73a06b",
-  "chainId": 137
+  "chainId": 137,
+  "teamLock": "evm:0x26efB100a88428D6879888F4C8EcC24d7aBb05dB",
+  "scanLink": "https://polygonscan.com/address/0x840b5fc8c6dee2b1140174a3abdc215190426ccf#code",
+  "nfpScanLink": "https://polygonscan.com/token/0x1a0b4e0facd171d5e5ce3d1cda30624ead73a06b#writeContract"
 }

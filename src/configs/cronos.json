@@ -21,6 +21,7 @@
   "buyAddress": "https://swap.crodex.app/#/swap?outputCurrency=0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
   "launched": true,
   "gasTokenAddress": "evm:0x2c7B96bDDa46104521d40AD3dCf80F9015051c31",
+  "patronLaunced": false,
   "chartAddress": "https://dexscreener.com/cronos/0x769a41224008f257980e7717e5d47cb012096f42",
   "pools": [
     {
@@ -81,5 +82,8 @@
       ]
     }
   ],
-  "chainId": 25
+  "chainId": 25,
+  "teamLock": "evm:0x8D172A7e2226c0C9686E33149fcD195B5680687A",
+  "scanLink": "https://cronos.org/explorer/address/0x2c7B96bDDa46104521d40AD3dCf80F9015051c31/write-contract",
+  "nfpScanLink": ""
 }

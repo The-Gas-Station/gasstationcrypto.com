@@ -20,6 +20,7 @@
   "etherCoingeckoId": "wbnb",
   "buyAddress": "https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x6fabfe7946b23da23ad51dc45167cc2cfd0ce70e",
   "launched": true,
+  "patronLaunced": true,
   "gasTokenAddress": "evm:0x6fabfe7946b23da23ad51dc45167cc2cfd0ce70e",
   "chartAddress": "https://poocoin.app/tokens/0x6fAbfe7946b23da23aD51Dc45167cc2CFd0ce70e",
   "pools": [
@@ -138,5 +139,8 @@
     }
   ],
   "nfpAddress": "evm:0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b",
-  "chainId": 56
+  "chainId": 56,
+  "teamLock": "evm:0x70488845fadA6d412D636Ad6aA04823d6D8C7E04",
+  "scanLink": "https://bscscan.com/address/0x6fAbfe7946b23da23aD51Dc45167cc2CFd0ce70e#code",
+  "nfpScanLink": "https://bscscan.com/address/0x9a05c9a97ec5a2ce1fa435ef372d2767993a5e7b#writeContract"
 }
