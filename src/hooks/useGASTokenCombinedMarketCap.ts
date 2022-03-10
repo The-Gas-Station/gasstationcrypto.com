@@ -5,16 +5,14 @@ import { useConfig } from '../library/providers/ConfigProvider';
 import useGASTokenMarketCap from './useGASTokenMarketCap';
 
 export function useGASTokenCombinedMarketCap(): BigNumber {
-  const { readOnlyChainIds } = useConfig();
+  const { readOnlyChainIds = [] } = useConfig();
 
   const marketCaps: BigNumber[] = [];
 
-  if (readOnlyChainIds) {
-    for (const chainId of readOnlyChainIds) {
-      const marketCap = useGASTokenMarketCap(chainId);
+  for (const chainId of readOnlyChainIds) {
+    const marketCap = useGASTokenMarketCap(chainId);
 
-      marketCaps.push(marketCap);
-    }
+    marketCaps.push(marketCap);
   }
 
   return useMemo(() => {
@@ -22,7 +20,7 @@ export function useGASTokenCombinedMarketCap(): BigNumber {
       (prev, marketCap) => prev.add(marketCap),
       BigNumber.from(0),
     );
-  }, [...marketCaps]);
+  }, [...marketCaps, ...readOnlyChainIds]);
 }
 
 export default useGASTokenCombinedMarketCap;
