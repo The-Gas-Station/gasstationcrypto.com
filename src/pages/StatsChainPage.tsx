@@ -17,8 +17,8 @@ export const StatsChainPage = ({ chainId }: { chainId: ChainId }) => {
   const { readOnlyChainIds } = useConfig();
   const { setCurrentChainId } = useWeb3ConnectionsContext();
   const combinedTVL = useCombinedTVL();
-  const totalValueBurned = useTotalValueBurned();
-  const combinedMarketCap = useGASTokenCombinedMarketCap();
+  //const totalValueBurned = useTotalValueBurned();
+  //const combinedMarketCap = useGASTokenCombinedMarketCap();
   const switchNetwork = (e: any) => {
     const newChainId: ChainId = parseInt(e.target.value);
     setCurrentChainId(newChainId);
@@ -84,7 +84,7 @@ export const StatsChainPage = ({ chainId }: { chainId: ChainId }) => {
                 <div className="amount-tvl">
                   <small>Total Value Burned</small>
                   <p>
-                    {numeral(ethers.utils.formatEther(totalValueBurned)).format(
+                    {numeral(ethers.utils.formatEther(combinedTVL)).format(
                       '$0,0',
                     )}
                   </p>
@@ -92,17 +92,17 @@ export const StatsChainPage = ({ chainId }: { chainId: ChainId }) => {
                 <div className="amount-tvl">
                   <small>USD MARKET CAP</small>
                   <p>
-                    {numeral(
-                      ethers.utils.formatEther(combinedMarketCap),
-                    ).format('$0,0')}
+                    {numeral(ethers.utils.formatEther(combinedTVL)).format(
+                      '$0,0',
+                    )}
                   </p>
                 </div>
                 <div className="amount-tvl">
                   <small>Total Liquidity</small>
                   <p>
-                    {numeral(
-                      ethers.utils.formatEther(combinedMarketCap),
-                    ).format('$0,0')}
+                    {numeral(ethers.utils.formatEther(combinedTVL)).format(
+                      '$0,0',
+                    )}
                   </p>
                 </div>
               </div>
