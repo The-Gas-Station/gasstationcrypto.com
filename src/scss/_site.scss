@@ -4296,6 +4296,14 @@ $text-pink: #ff6691;
   height: 100%;
   display: flex;
   width: auto;
+  @media (min-width: 300px) {
+    display: flex;
+    flex-direction: row;
+  }
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 
   .beforeExpand {
     background-color: $background-main-color;
@@ -4324,6 +4332,9 @@ $text-pink: #ff6691;
     }
 
     @media (min-width: 300px) {
+      width: auto;
+    }
+    @media (min-width: 768px) {
       width: 50px;
     }
   }
@@ -4521,4 +4532,33 @@ $text-pink: #ff6691;
     font-size: 13.5px;
     color: $text-light1;
   }
+}
+.InformationPageView {
+  @media (min-width: 300px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+.MobileExpandButton {
+  @media (min-width: 300px) {
+    display: block;
+    border-radius: 15px;
+    color: $text-light1;
+    font-size: 16px;
+    background-color: $dark-bg2;
+    border: 3px solid $border-bg2;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+   }
+   @media (min-width: 768px) {
+     display: none !important;
+   }
 }

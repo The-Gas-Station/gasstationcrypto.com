@@ -28,7 +28,7 @@ export const InformationPage = () => {
   };
   return (
     <>
-      <div className="flex-row d-flex">
+      <div className="InformationPageView">
         <Navigation
           isExpanded={isExpanded}
           toggleExpand={() => toggleExpand()}
