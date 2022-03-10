@@ -1,3 +1,15 @@
+import GasToken from '../../assets/gascoin.svg';
+import Bridge from '../../assets/bridge.svg';
+import BulkSend from '../../assets/send.svg';
+import FuelTank from '../../assets/fuel.svg';
+import NFP from '../../assets/nfpface.svg';
+import Locker from '../../assets/safe.svg';
+import Shares from '../../assets/shares.svg';
+import Warn from '../../assets/warning.svg';
+import Contract from '../../assets/code.svg';
+import Aboutus from '../../assets/group.svg';
+import Fuelcan from '../../assets/fuelcan.svg';
+
 import { useState } from 'react';
 type NavigationProps = {
   isExpanded: boolean;
@@ -34,65 +46,64 @@ export const Navigation = ({
         className="MobileExpandButton"
         onClick={() => setShowMobileExpand(!showMobileExpand)}
       >
-        Expand
+        {showMobileExpand ? 'Hide Menu' : 'Expand Menu'}
       </div>
-      {showMobileExpand ? (
-        <>
-          <div className="NavigationColumn ">
-            <div className={isExpanded ? 'afterExpand' : 'beforeExpand'}>
-              <div className="content" onClick={() => toggleExpand()}>
-                <p>Welcome to The Gas Station</p>
-                <img src="https://via.placeholder.com/50x50"></img>
-              </div>
-              <br />
 
-              <div className="content" onClick={() => aboutus()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>About us</p>
-              </div>
+      <div className={showMobileExpand ? 'MobileExpand' : 'NoExpand'}>
+        <div className="NavigationColumn ">
+          <div className={isExpanded ? 'afterExpand' : 'beforeExpand'}>
+            <div className="content" onClick={() => toggleExpand()}>
+              <p>Welcome to The Gas Station</p>
+              <img src={Fuelcan} />
+            </div>
+            <br />
 
-              <div className="content" onClick={() => disclosures()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Disclosures</p>
-              </div>
-              <br />
-              <h1>Information</h1>
-              <div className="content" onClick={() => contracts()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Contract Addresses</p>
-              </div>
-              <div className="content" onClick={() => tokenomics()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Tokenomics</p>
-              </div>
-              <div className="content" onClick={() => nfp()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Non-Fungible Patrons</p>
-              </div>
-              <div className="content" onClick={() => fueltanks()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Fuel Tanks</p>
-              </div>
-              <div className="content" onClick={() => bridge()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Bridge</p>
-              </div>
-              <div className="content" onClick={() => shares()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Shares</p>
-              </div>
-              <div className="content" onClick={() => locker()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Locker</p>
-              </div>
-              <div className="content" onClick={() => bulksend()}>
-                <img src="https://via.placeholder.com/50x50"></img>
-                <p>Bulksend</p>
-              </div>
+            <div className="content" onClick={() => aboutus()}>
+              <img src={Aboutus} />
+              <p>About us</p>
+            </div>
+
+            <div className="content" onClick={() => disclosures()}>
+              <img src={Warn} />
+              <p>Disclosures</p>
+            </div>
+            <br />
+            <h1>Information</h1>
+            <div className="content" onClick={() => contracts()}>
+              <img src={Contract} />
+              <p>Contract Addresses</p>
+            </div>
+            <div className="content" onClick={() => tokenomics()}>
+              <img src={GasToken}></img>
+              <p>Tokenomics</p>
+            </div>
+            <div className="content" onClick={() => nfp()}>
+              <img src={NFP} />
+              <p>Non-Fungible Patrons</p>
+            </div>
+            <div className="content" onClick={() => fueltanks()}>
+              <img src={FuelTank} />
+              <p>Fuel Tanks</p>
+            </div>
+            <div className="content" onClick={() => bridge()}>
+              <img src={Bridge} />
+              <p>Bridge</p>
+            </div>
+            <div className="content" onClick={() => shares()}>
+              <img src={Shares} />
+              <p>Shares</p>
+            </div>
+            <div className="content" onClick={() => locker()}>
+              <img src={Locker} />
+              <p>Locker</p>
+            </div>
+            <div className="content" onClick={() => bulksend()}>
+              <img src={BulkSend} />
+              <p>Bulksend</p>
             </div>
           </div>
-        </>
-      ) : null}
+        </div>
+      </div>
     </>
   );
 };

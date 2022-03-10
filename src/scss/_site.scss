@@ -4296,10 +4296,13 @@ $text-pink: #ff6691;
   height: 100%;
   display: flex;
   width: auto;
+  margin-top: 15px;
+
   @media (min-width: 300px) {
     display: flex;
     flex-direction: row;
   }
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -4318,6 +4321,7 @@ $text-pink: #ff6691;
       display: flex;
       justify-content: flex-end;
       width: 100%;
+      margin-top: 2px;
 
       p {
         display: none;
@@ -4328,12 +4332,21 @@ $text-pink: #ff6691;
         display: block;
         width: 50px;
         height: auto;
+        background-color: $border-bg2;
+        border: 1px solid;
+
+        &:hover {
+          background-color: $text-green;
+          border: 1px solid $text-pink;
+          transform: translateY(-2px)
+        }
       }
     }
 
     @media (min-width: 300px) {
       width: auto;
     }
+
     @media (min-width: 768px) {
       width: 50px;
     }
@@ -4345,11 +4358,18 @@ $text-pink: #ff6691;
     overflow-y: auto;
     overflow-x: hidden;
 
+    h1 {
+      display: block;
+      width: 100%;
+      font-size: 20px;
+      color: $text-green;
+    }
+
     .content {
       background-color: $dark-color5;
       border: 2px solid $border-bg2;
       @include box-shadow1;
-      
+
       margin: auto;
       cursor: pointer;
       display: flex;
@@ -4358,10 +4378,18 @@ $text-pink: #ff6691;
       align-items: center;
       padding: 5px;
 
+      &:hover {
+        
+        border: 1px solid $text-pink;
+        transform: translateY(-2px);
+      }
+
       p {
         font-size: 16px;
         color: $text-light;
         margin: auto;
+
+        
       }
 
       img {
@@ -4503,11 +4531,13 @@ $text-pink: #ff6691;
   @include box-shadow1;
   margin-bottom: 10px;
   margin-top: 10px;
-.networkTitle {
-  display: block;
-  font-size: 21px;
-  color: $text-light8;
-}
+
+  .networkTitle {
+    display: block;
+    font-size: 21px;
+    color: $text-light8;
+  }
+
   h1 {
     font-size: 20px;
     color: $text-pink;
@@ -4533,6 +4563,7 @@ $text-pink: #ff6691;
     color: $text-light1;
   }
 }
+
 .InformationPageView {
   @media (min-width: 300px) {
     display: flex;
@@ -4540,12 +4571,14 @@ $text-pink: #ff6691;
     align-items: center;
     justify-content: center;
   }
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
   }
 }
+
 .MobileExpandButton {
   @media (min-width: 300px) {
     display: block;
@@ -4557,8 +4590,26 @@ $text-pink: #ff6691;
     margin: auto;
     width: 50%;
     text-align: center;
-   }
-   @media (min-width: 768px) {
-     display: none !important;
-   }
+    cursor: pointer;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.MobileExpand {
+  display: block;
+}
+
+.NoExpand {
+  @media (min-width: 300px) {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
