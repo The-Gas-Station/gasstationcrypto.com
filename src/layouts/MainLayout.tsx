@@ -136,14 +136,14 @@ export const MainLayout = () => {
       route: '/utility',
       icon: SvgUtility,
     },
+    {
+      label: 'Documents',
+      route: '/information',
+      icon: SvgGitbook,
+    },
   ];
 
   const socialLinks = [
-    {
-      label: 'Gitbook',
-      route: 'https://gasstationcrypto.gitbook.io/the-crypto-gas-station/',
-      icon: SvgGitbook,
-    },
     {
       label: 'Twitter',
       route: 'https://twitter.com/GasStation_cryp',
