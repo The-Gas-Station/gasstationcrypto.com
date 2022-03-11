@@ -39,22 +39,28 @@ export const InformationContent = ({
             <div className="InformationSubtitle"></div>
             <div className="InformationBody">
               <p>
-                The Gas Station is aiming to become the leading profit-sharing
-                platform amongst all protocols in the Decentralized Finance
-                (DeFi) Space.
+                <span>
+                  The Gas Station is aiming to become the leading profit-sharing
+                  platform amongst all protocols in the Decentralized Finance
+                  (DeFi) Space.
+                </span>
               </p>
               <p>
-                Our hyper-deflationary dividend token(s) reward Ether (gas) to
-                our token holders, and allow them to access services such as
-                Fueling (Staking) and Bridging (tax-free). Non-Fungible Patrons
-                are the collectable assets that help generate a large portion of
-                funding into the ecosystem, and allow the collector to earn
-                interest on their collectable for years to come.
+                <span>
+                  Our hyper-deflationary dividend token rewards Ether (gas)
+                </span>{' '}
+                to our token holders, and allow them to access services such as
+                Fueling (Staking) and Bridging (tax-free).{' '}
+                <span>Non-Fungible Patrons</span> are the collectable assets
+                that help generate a large portion of funding into the
+                ecosystem, and allow the collector to earn interest on their
+                collectable for years to come.
               </p>
               <p>
-                The Gas Station puts 100% of all the development tax back into
-                the ecosystem allowing investors to make astonishing returns no
-                matter what stage they decide to enter the playing field.
+                <span>The Gas Station puts 100%</span> of all the development
+                tax back into the ecosystem allowing investors to make
+                astonishing returns no matter what stage they decide to enter
+                the playing field.
               </p>
             </div>
           </>
@@ -207,30 +213,36 @@ export const InformationContent = ({
             <div className="InformationSubtitle"></div>
             <div className="InformationBody">
               <p>
-                The GAS Token is a dividend paying token that offers static
-                rewards in the native gas per blockchain.
+                The <span>GAS Token</span> is a{' '}
+                <span>dividend paying token</span> that offers{' '}
+                <span>static rewards</span> in the{' '}
+                <span>native gas per blockchain</span>.
               </p>
-              <p>
-                You will receive GAS Tokens as well as an equal 1:1 balance of
-                GAS_Dividend_Tracker. DO NOT SEND THIS AWAY! YOU WILL NOT
-                RECIEVE STATIC REWARDS!
-              </p>
-              <p>
-                8% Reward in native gas per blockchain! As long as you hold GAS
-                tokens you will start to earn native blockchain gas (BNB, MATIC,
-                ETH, etc)
-              </p>
-              <p>
-                4% Tax to underlying Liquidity. This ensures that the funds are
-                always there for when you want to exit, as well as reducing the
-                price impact upon volume. Along with this the liquidity is
-                burned forever, so no one can remove GAS from the market.
-              </p>
-              <p>
-                4% Tax to Developer, this is to ensure our cross-chain bridge
-                has enough liquidity. Note: during the Genesis phase the
-                Developer tax is 8% reducing 1% every 3-4 weeks.
-              </p>
+              <ul>
+                <li>
+                  You will receive GAS Tokens as well as an equal 1:1 balance of
+                  GAS_Dividend_Tracker. DO NOT SEND THIS AWAY! YOU WILL NOT
+                  RECIEVE STATIC REWARDS!
+                </li>
+                <li>
+                  8% Reward in native gas per blockchain! As long as you hold
+                  GAS tokens you will start to earn native blockchain gas (BNB,
+                  MATIC, ETH, etc)
+                </li>
+                <li>
+                  4% Tax to underlying Liquidity. This ensures that the funds
+                  are always there for when you want to exit, as well as
+                  reducing the price impact upon volume. Along with this the
+                  liquidity is burned forever, so no one can remove GAS from the
+                  market.
+                </li>
+                <li>
+                  4% Tax to Developer, this is to ensure our cross-chain bridge
+                  has enough liquidity. Note: during the Genesis phase the
+                  Developer tax is 8% reducing 1% every 3-4 weeks.
+                </li>
+              </ul>
+
               <p>
                 Static Rewards in Gas (Native to the Blockchain). These rewards
                 are payed out on a maximum of 1hr timeframe, automatically by
@@ -245,47 +257,55 @@ export const InformationContent = ({
           <>
             <div className="InformationTitle">Non-Fungible Patrons</div>
             <div className="InformationSubtitle">
-              Patrons will be unique one-of-a-kind hand drawn & script generated
-              NFTs that will help fund the bridge liquidities and have unique
-              rewards to their owners.
+              Patrons are a unique one-of-a-kind hand drawn & script generated
+              NFTs that help fund the bridge liquidities and have unique rewards
+              to their owners.
             </div>
             <div className="InformationBody">
               <h1>Common Mint (500)</h1>
-              <span>
-                When held in the owners wallet they may use the cross-chain USDC
-                Bridge at NO COST (transaction tax)
-              </span>
-              <span>
-                Price Floor increases $25 every 125 minted starting at $25
-              </span>
+              <ul>
+                <li>
+                  When held in the owners wallet they may use the cross-chain
+                  USDC Bridge at NO COST (transaction tax)
+                </li>
+                <li>
+                  Price Floor increases $25 every 125 minted starting at $25
+                </li>
+              </ul>
+
               <h1>Rare Mint (38)</h1>
-              <span>
-                When held in the owners wallet they may use the cross-chain USDC
-                Bridge at NO COST (transaction tax)
-              </span>
-              <span>
-                Rare Patrons can be staked in a rewards pool that is directly
-                linked to a portion of the bridge tax accumulation. Rare Patrons
-                earn an average of $46.8 Shares of USDC Per $1,000,000 USDC
-                Taxed Transfer Volume.
-              </span>
-              <span>
-                Price Floor Increases $39 every 1 minted starting at $250
-              </span>
+              <ul>
+                <li>
+                  When held in the owners wallet they may use the cross-chain
+                  USDC Bridge at NO COST (transaction tax)
+                </li>
+                <li>
+                  Rare Patrons can be staked in a rewards pool that is directly
+                  linked to a portion of the bridge tax accumulation. Rare
+                  Patrons earn an average of $46.8 Shares of USDC Per $1,000,000
+                  USDC Taxed Transfer Volume.
+                </li>
+                <li>
+                  Price Floor Increases $39 every 1 minted starting at $250
+                </li>
+              </ul>
+
               <h1>Legendary Mint (12)</h1>
-              <span>
-                When held in the owners wallet they may use the cross-chain USDC
-                Bridge at NO COST (transaction tax)
-              </span>
-              <span>
-                Legendary Patrons can be staked in a rewards pool that is
-                directly linked to a portion of the bridge tax accumulation.
-                Legendary Patrons earn an average of $288.6 Shares of USDC Per
-                $1,000,000 USDC Taxed Transfer Volume.
-              </span>
-              <span>
-                Price Floor Increases $375 every 1 minted starting at $750
-              </span>
+              <ul>
+                <li>
+                  When held in the owners wallet they may use the cross-chain
+                  USDC Bridge at NO COST (transaction tax)
+                </li>
+                <li>
+                  Legendary Patrons can be staked in a rewards pool that is
+                  directly linked to a portion of the bridge tax accumulation.
+                  Legendary Patrons earn an average of $288.6 Shares of USDC Per
+                  $1,000,000 USDC Taxed Transfer Volume.
+                </li>
+                <li>
+                  Price Floor Increases $375 every 1 minted starting at $750
+                </li>
+              </ul>
             </div>
           </>
         ) : null}
@@ -297,16 +317,18 @@ export const InformationContent = ({
               users to Fuel Up!
             </div>
             <div className="InformationBody">
-              <span>
-                NOTE: STAKING GAS TOKENS TO FUEL TANKS WILL VOID ALL STATIC GAS
-                REWARDS
-              </span>
               <p>
-                Fuel Tanks (otherwise popularly known as Staking Pools) allow
-                users to Fuel Up! Fueling up does not allow you to gain static
-                gas rewards that you otherwise would when holding the GAS token
-                in your wallet. When deployed; we will run a constant of 4 Fuel
-                Tanks:
+                <span>
+                  NOTE: STAKING GAS TOKENS TO FUEL TANKS WILL VOID ALL STATIC
+                  GAS REWARDS
+                </span>
+              </p>
+              <p>
+                <span>Fuel Tanks</span> (otherwise popularly known as Staking
+                Pools) allow users to Fuel Up! Fueling up does not allow you to
+                gain static gas rewards that you otherwise would when holding
+                the GAS token in your wallet. When deployed; we will run a
+                constant of 4 Fuel Tanks:
               </p>
               <h3>Liquidity Provider (LP) “Dual Fuel” Fuel Tanks</h3>
               <span>
@@ -331,41 +353,50 @@ export const InformationContent = ({
             <div className="InformationSubtitle">Were going everywhere!</div>
             <div className="InformationBody">
               <p>
-                Were building a bridge to go to every Blockchain. For this we
-                need a lot of liquidity. At inception of our GAS Token the
-                Developer Tax will be 8%, reducing by 1% every 3-4 weeks, down
-                to 4%. This is to help gather the funds for the bridge.
+                <span>Were building a bridge</span> to go to every Blockchain.
+                For this we need a lot of liquidity. At inception of our GAS
+                Token the Developer Tax will be 8%, reducing by 1% every 3-4
+                weeks, down to 4%. This is to help gather the funds for the
+                bridge.
               </p>
               <p>
                 The bridge will be built for use for stable coins (USDC, USDT,
-                DAI) If you are a holder of $500 VALUE in GAS tokens on the
-                blockchain you are migrating from (eg: bscGAS holders using the
-                BSC {'>'} Other Network Bridge); OR a Holder of Non-Fungible
-                Patrons (of any rarity), you will not be charged a fee.
+                DAI) If you are a holder of $500 VALUE in{' '}
+                <span>GAS tokens</span> on the blockchain you are migrating from
+                (eg: bscGAS holders using the BSC {'>'} Other Network Bridge);
+                OR a Holder of <span>Non-Fungible Patrons</span> (of any
+                rarity), you will not be charged a fee.
               </p>
               <p>
                 The bridge will have a sliding scale fee. 0.5% {'>'} 0.175% Here
                 is how it will look;
               </p>
-              <span>
-                0.5% FEE: $25-$2500 Transfer Value = $0.12c-$12.50 in Fees
-              </span>
-              <span>
-                0.4% FEE $2,501-$10,000 Transfer Value = $10-$40 in Fees
-              </span>
-              <span>
-                0.3% FEE $10,001-$50,000 Transfer Value = $30-$150 in Fees
-              </span>
-              <span>
-                0.2% FEE $50,001-$100,000 Transfer Value = $100-$200 in Fees
-              </span>
-              <span>
-                0.175% FEE $100,001-$250,000 Transfer Value = $175.00-$437.50 in
-                Fees
-              </span>
+              <ul>
+                <li>
+                  0.5% FEE: $25-$2500 Transfer Value = $0.12c-$12.50 in Fees
+                </li>
+                <li>
+                  0.4% FEE $2,501-$10,000 Transfer Value = $10-$40 in Fees
+                </li>
+                <li>
+                  0.3% FEE $10,001-$50,000 Transfer Value = $30-$150 in Fees
+                </li>
+                <li>
+                  0.2% FEE $50,001-$100,000 Transfer Value = $100-$200 in Fees
+                </li>
+                <li>
+                  0.175% FEE $100,001-$250,000 Transfer Value = $175.00-$437.50
+                  in Fees
+                </li>
+              </ul>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
               <p>
-                100% of all fees generated will be used to fund token holders,
-                non-fungible patron rewards, and fuel tanks.
+                <span>100%</span> of all fees generated will be used to fund
+                token holders, non-fungible patron rewards, and fuel tanks.
               </p>
             </div>
           </>
@@ -383,11 +414,11 @@ export const InformationContent = ({
               </p>
               <p>
                 Our plan is to offer this service on every evm-based blockchain
-                at a fraction of any competitor; and use these funds to buy the
-                respective GAS token per blockchain (triggering a reward cycle
-                for holders), and send these tokens to the burn pit (allowing a
-                lasting increase in token value + increased reward
-                distribution).
+                at a <span>fraction of any competitor</span>; and use these
+                funds to buy the respective GAS token per blockchain (triggering
+                a reward cycle for holders), and send these tokens to the burn
+                pit (allowing a lasting increase in token value + increased
+                reward distribution).
               </p>
               <h1>How They Work:</h1>
               <p>
@@ -416,11 +447,11 @@ export const InformationContent = ({
               </p>
               <p>
                 Our plan is to offer this service on every evm-based blockchain
-                at a fraction of any competitor; and use these funds to buy the
-                respective GAS token per blockchain (triggering a reward cycle
-                for holders), and send these tokens to the burn pit (allowing a
-                lasting increase in token value + increased reward
-                distribution).
+                at a <span>fraction of any competitor</span>; and use these
+                funds to buy the respective GAS token per blockchain (triggering
+                a reward cycle for holders), and send these tokens to the burn
+                pit (allowing a lasting increase in token value + increased
+                reward distribution).
               </p>
               <h1>How They Work:</h1>
               <p>
@@ -441,10 +472,10 @@ export const InformationContent = ({
             </div>
             <div className="InformationBody">
               <p>
-                Shares are conversions of single assets that directly add to
-                bridge liquidity, allowing for anyone to provide to the
-                liquidity pool for the network, and in return they receive
-                Shares.
+                <span>Shares</span> are conversions of single assets that
+                directly add to bridge liquidity, allowing for anyone to provide
+                to the liquidity pool for the network, and in return they
+                receive Shares.
               </p>
               <p>
                 Shares represent an individual’s amount of assets in the
@@ -452,12 +483,13 @@ export const InformationContent = ({
                 will take a 0.2% fee in the process.
               </p>
               <p>
-                Share Holders directly earns 8% of all bridge transactions back
-                in Shares; and being a Share Holder to one specific liquidity
-                pool does not restrict the Share Holder to rewards only from the
-                underlying pool. This will incentivize being a Share Holder for
-                lower traffic bridges. Rewarding in Shares allows for a positive
-                cycle of liquidity being added to the bridge.
+                Share Holders directly earns{' '}
+                <span>8% of all bridge transactions</span> back in Shares; and
+                being a Share Holder to one specific liquidity pool does not
+                restrict the Share Holder to rewards only from the underlying
+                pool. This will incentivize being a Share Holder for lower
+                traffic bridges. Rewarding in Shares allows for a positive cycle
+                of liquidity being added to the bridge.
               </p>
               <p>
                 Shares will allow for The Gas Station to greatly increase the
@@ -472,17 +504,19 @@ export const InformationContent = ({
                 Shares of USDC.
               </p>
               <p>
-                * IMPORTANT: During early stages of Bridge Launches the
-                Liquidity Pools are small. This can lead to a delay in
+                <span>Important**</span> During early stages of Bridge Launches
+                the Liquidity Pools are small. This can lead to a delay in
                 converting Shares back to Assets; someone bridges to the network
                 you provided Assets on and you cannot convert your Shares back
                 for the time being. Your assets are never lost, they are just
-                delayed, the assets taken out by the bridging user was
-                supplemented on another network. Usually, liquidity pools
-                rebalance quickly, so it should only be a short delay for users
-                whose assets are stuck in Shares. In the event of Shares being
-                unconvertable for up to 24hrs please contact the development
-                team.
+                delayed, the assets taken out by user was supplemented on
+                another network. Usually, liquidity pools rebalance quickly, so
+                it should only be a short delay for users whose assets are stuck
+                in Shares.{' '}
+                <span>
+                  In the event of Shares being unconvertable for up to 24hrs
+                  please contact the development team.
+                </span>
               </p>
             </div>
           </>

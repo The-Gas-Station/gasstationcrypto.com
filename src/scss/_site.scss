@@ -4445,7 +4445,14 @@ $text-pink: #ff6691;
       height: 150px;
       margin: auto;
     }
-
+ul {
+  li {
+    list-style: square;
+    color: $text-light1;
+    font-size: 16px;
+    color: $text-green;
+  }
+}
     h3 {
       display: block;
       width: 100%;
@@ -4473,7 +4480,6 @@ $text-pink: #ff6691;
     }
 
     p {
-      display: flex;
       min-width: 100px;
       font-size: 16px;
       color: $text-light1;
@@ -4481,6 +4487,12 @@ $text-pink: #ff6691;
       width: 100%;
       text-indent: 7px;
       margin-bottom: 2px;
+      span {
+        color: $text-pink;
+        font-weight: 600;
+        font-size: 18px;
+        text-transform: capitalize;
+      }
 
 
       img {
