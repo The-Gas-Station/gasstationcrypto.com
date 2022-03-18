@@ -26,7 +26,7 @@ import shortenString from '../library/helpers/shortenString';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
-import WalletModal from '../components/walletModal';
+import WalletModal from '../components/Global/walletModal';
 
 import useGASTokenPrice from '../hooks/useGASTokenPrice';
 

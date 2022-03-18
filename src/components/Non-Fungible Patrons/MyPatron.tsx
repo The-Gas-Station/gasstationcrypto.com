@@ -11,7 +11,7 @@ export const MyPatron = () => {
         <div key={i} className="col-4 col-sm-4 col-md-4 col-lg-3">
           <div className="card-items">
             <FlipCard
-              children0={<img src={metadata.} />}
+              children0={<img src={''} />}
               stats={
                 <Stats
                   stat0={'auu'}

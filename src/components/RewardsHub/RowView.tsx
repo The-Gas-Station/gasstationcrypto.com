@@ -5,13 +5,13 @@ import { MDBTooltip } from 'mdb-react-ui-kit';
 
 import numeral from 'numeral';
 
-import { useBlockNumber } from '../library/providers/BlockNumberProvider';
-import { getExplorerCountdownLink } from '../library/helpers/chains';
+import { useBlockNumber } from '../../library/providers/BlockNumberProvider';
+import { getExplorerCountdownLink } from '../../library/helpers/chains';
 
-import QuestionIcon from '../assets/icons-question.svg';
-import StopwatchIcon from '../assets/icon-stopwatch.svg';
+import QuestionIcon from '../../assets/icons-question.svg';
+import StopwatchIcon from '../../assets/icon-stopwatch.svg';
 
-import { PoolResult } from '../hooks/Pools';
+import { PoolResult } from '../../hooks/Pools';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 export const RowView = ({

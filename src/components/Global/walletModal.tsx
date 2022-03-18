@@ -11,8 +11,8 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 
-import { ConnectorNames } from '../library/providers/Web3ConnectionsProvider';
-import useEthers from '../library/hooks/useEthers';
+import { ConnectorNames } from '../../library/providers/Web3ConnectionsProvider';
+import useEthers from '../../library/hooks/useEthers';
 
 import { UnsupportedChainIdError } from '@web3-react/core';
 import {
@@ -23,10 +23,10 @@ import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } fro
 import {} from '@web3-react/abstract-connector';
 
 // import { ReactComponent as SvgSearch } from '../assets/search.svg';
-import Metamask from '../assets/wallets/metamask.png';
-import WalletConnect from '../assets/wallets/wallet-connect.png';
-import WalletLink from '../assets/wallets/wallet-link.png';
-import DeFiConnect from '../assets/wallets/defi-connect.svg';
+import Metamask from '../../assets/wallets/metamask.png';
+import WalletConnect from '../../assets/wallets/wallet-connect.png';
+import WalletLink from '../../assets/wallets/wallet-link.png';
+import DeFiConnect from '../../assets/wallets/defi-connect.svg';
 
 type modalOpen = {
   isWalletModalOpen: boolean;

@@ -11,13 +11,13 @@ import {
 } from 'mdb-react-ui-kit';
 import numeral from 'numeral';
 
-import useTokenPrice from '../hooks/useTokenPrice';
+import useTokenPrice from '../../hooks/useTokenPrice';
 
-import DoubleArrow from '../assets/double-arrow.svg';
+import DoubleArrow from '../../assets/double-arrow.svg';
 import { Range, getTrackBackground } from 'react-range';
-import { useDarkMode } from '../library/hooks/useDarkMode';
+import { useDarkMode } from '../../library/hooks/useDarkMode';
 
-import { PoolResult } from '../hooks/Pools';
+import { PoolResult } from '../../hooks/Pools';
 
 type modalOpen = {
   isStakeModalOpen: boolean;
