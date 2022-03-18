@@ -104,7 +104,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
 
   return (
     <>
-      <div className="RewardsCard">
+      <div className="RewardsCardView">
         <div className="cardHead">
           <div>
             <title>{pool.name}</title>
