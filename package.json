@@ -36,6 +36,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-slick": "^0.28.1",
+    "react-spring": "^9.4.3",
     "react-textfit": "^1.1.1",
     "sass": "^1.48.0",
     "slick-carousel": "^1.8.1",

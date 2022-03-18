@@ -2440,6 +2440,7 @@ select {
     @include box-shadow;
     border-radius: 15px;
     margin-bottom: 20px;
+    will-change: transform, opacity;
 
     >img {
       width: 100%;
@@ -4379,7 +4380,7 @@ $text-pink: #ff6691;
       padding: 5px;
 
       &:hover {
-        
+
         border: 1px solid $text-pink;
         transform: translateY(-2px);
       }
@@ -4389,7 +4390,7 @@ $text-pink: #ff6691;
         color: $text-light;
         margin: auto;
 
-        
+
       }
 
       img {
@@ -4445,14 +4446,16 @@ $text-pink: #ff6691;
       height: 150px;
       margin: auto;
     }
-ul {
-  li {
-    list-style: square;
-    color: $text-light1;
-    font-size: 16px;
-    color: $text-green;
-  }
-}
+
+    ul {
+      li {
+        list-style: square;
+        color: $text-light1;
+        font-size: 16px;
+        color: $text-green;
+      }
+    }
+
     h3 {
       display: block;
       width: 100%;
@@ -4487,6 +4490,7 @@ ul {
       width: 100%;
       text-indent: 7px;
       margin-bottom: 2px;
+
       span {
         color: $text-pink;
         font-weight: 600;
@@ -4623,5 +4627,26 @@ ul {
 
   @media (min-width: 768px) {
     display: block;
+  }
+}
+
+.NFPStatsBlock {
+  display: flex;
+  width: 100% !important;
+  flex-wrap: wrap;
+  color: $dark-bg;
+
+  span {
+    width: 50%;
+    font-size: 15px;
+    color: $text-light1;
+    text-align: center;
+  }
+
+  p {
+    width: 50%;
+    font-size: 16px;
+    color: $text-green;
+    text-align: center;
   }
 }
