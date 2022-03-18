@@ -150,7 +150,9 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
             </span>
           </title>
           <div className="rewardsBlock">
-            <span>Earned Rewards</span>
+            <title>
+              <span>Earned Rewards</span>
+            </title>
             <FlexRowC>
               <div className="reward">
                 <p>

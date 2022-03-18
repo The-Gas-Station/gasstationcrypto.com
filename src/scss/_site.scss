@@ -14,6 +14,26 @@ $lg: 18px;
 $xl: 20px;
 $xxl: 22px;
 
+@mixin responsive-img {
+  @media (min-width: $mobile) {
+    img {
+      width: 50px !important;
+      height: 50px !important;
+    }
+  }
+  @media (min-width: $laptop) {
+    img {
+      width: 50px !important;
+      height: 50px !important;
+    }
+  }
+  @media (min-width: $wide) {
+    img {
+      width: 100px !important;
+      height: 100px !important;
+    }
+  }
+}
 @mixin responsive-fonts {
   @media (min-width: $mobile) {
     title {
@@ -42,13 +62,24 @@ $xxl: 22px;
   }
   @media (min-width: $laptop) {
     title {
-      font-size: $xxl !important;
+      font-size: $xl !important;
     }
     p {
       font-size: $sm !important;
     }
     span {
       font-size: $sm !important;
+    }
+    @media (min-width: $wide) {
+      title {
+        font-size: $xxl !important;
+      }
+      p {
+        font-size: $md !important;
+      }
+      span {
+        font-size: $md !important;
+      }
     }
   }
 }
@@ -66,7 +97,7 @@ $xxl: 22px;
     width: 325px;
   }
   @media (min-width: $laptop) {
-    min-width: 285px;
+    min-width: 285px !important;
     width: 21.5%;
     max-width: 21.5%;
   }
@@ -147,9 +178,7 @@ body {
   }
 }
 
-// .sidenav-menu{
-//   padding: 0 15px;
-// }
+
 .sidenav,
 .navbar {
   background-color: $background-main-color;
@@ -2623,6 +2652,7 @@ title {
 .RewardsCard {
   @include responsive-card;
   @include responsive-fonts;
+  @include responsive-img;
   @include box-shadow1;
   background-color: $main;
   border-radius: 15px;
@@ -2649,14 +2679,18 @@ title {
         font-size: $md;
         display: flex;
         span {
+          
           color: $text-green;
-          text-transform: capitalize;
+          text-transform: uppercase;
           cursor: unset;
         }
       }
     }
     img {
+      transform: translateY(-35px) translateX(8px);
       width: 60px;
+      border: 3px solid $main;
+      border-radius: 100%;
       height: 60px;
       margin-left: auto;
       margin-right: 10px;
@@ -2725,6 +2759,7 @@ title {
         width: 100%;
         span {
           color: $text-green;
+          cursor: unset !important;
         }
         p {
           color: $text-light;
