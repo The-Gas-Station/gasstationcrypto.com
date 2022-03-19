@@ -345,7 +345,7 @@ export const RowView = ({
                     </button>
                   </div>
                 ) : (
-                  <div className="reward-plus-minus">
+                  <div className="buttons">
                     <button
                       onClick={
                         isFinished
