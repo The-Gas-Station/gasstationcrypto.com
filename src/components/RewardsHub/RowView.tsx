@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import { MDBTooltip } from 'mdb-react-ui-kit';
 
 import numeral from 'numeral';
 
 import { useBlockNumber } from '../../library/providers/BlockNumberProvider';
 import { getExplorerCountdownLink } from '../../library/helpers/chains';
-
-import QuestionIcon from '../../assets/icons-question.svg';
-import StopwatchIcon from '../../assets/icon-stopwatch.svg';
+import Plus from '../../assets/svg/plus.svg';
+import Minus from '../../assets/svg/minus.svg';
 
 import { PoolResult } from '../../hooks/Pools';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 import useEthers from '../../library/hooks/useEthers';
 
@@ -36,10 +33,10 @@ export const RowView = ({
 }) => {
   const currentBlock = useBlockNumber(chainId) ?? 0;
 
-  const [showShow, setShowShow] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const toggleShow = () => {
-    setShowShow(!showShow);
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
   };
   const { setIsWalletModalOpen } = useLayoutContext();
 
@@ -106,14 +103,12 @@ export const RowView = ({
   };
   return (
     <>
-      <div className="RewardsRowView">
-        <div className="img">
-          <img src={pool?.stakeIcon.replace('/public/', '/')} alt="" />
-        </div>
-        <div className="title">
-          <h3>{pool.name}</h3>
+      <div className="RewardsRowViewNew">
+        <img src={pool?.stakeIcon.replace('/public/', '/')} alt="" />
+        <div className="content">
+          <span>{pool.name}</span>
           <p>
-            <span style={{ color: `#28CCAB` }}>EARN</span>{' '}
+            EARN{' '}
             {pool.rewardSymbols && pool.rewardSymbols[0]
               ? pool.rewardSymbols[0]
               : pool.rewardTokens[0].symbol}
@@ -129,65 +124,37 @@ export const RowView = ({
               <></>
             )}
           </p>
-
           <p>
-            <span className="text-white1">STAKE</span>{' '}
-            {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
+            STAKE {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
           </p>
-        </div>
-
-        <div className="earned">
           <span>
-            {pool.rewardTokens[0].symbol}
-            {pool.rewardTokens[1] ? (
-              <> + {pool.rewardTokens[1].symbol}</>
-            ) : (
-              <></>
-            )}{' '}
-            Earned
-            <MDBTooltip
-              tag="a"
-              wrapperProps={{ href: '#' }}
-              title={'Rewards Earned From Staking ' + pool.stakeToken.symbol}
-            >
-              {' '}
-              <img src={QuestionIcon} alt="" className="ms-1" />
-            </MDBTooltip>
-          </span>
-          <p className="text-green">
+            Total Staked:{' '}
             {numeral(
-              ethers.utils.formatEther(pool.rewardTokens[0].pendingRewards),
+              ethers.utils.formatEther(pool.stakeToken.totalStaked),
             ).format('0,0.00')}{' '}
-            {pool.rewardTokens[0].symbol}
-          </p>
+            {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
+          </span>
           <span>
-            ~
             {numeral(
-              ethers.utils.formatEther(pool.rewardTokens[0].pendingRewardsUSD),
+              ethers.utils.formatEther(pool.stakeToken.totalStakedUSD),
             ).format('$0,0.00')}
           </span>
         </div>
+        <div className="content">
+          <span>APR: {numeral(pool.apr).format('0.00%')}</span>
+          <p>
+            {numeral((pool.depositBurnFee + pool.depositFee) / 10000.0).format(
+              '0.00%',
+            )}{' '}
+            {pool.depositBurnFee > 0 && pool.depositFee > 0
+              ? 'Burn/Deposit'
+              : pool.depositBurnFee > 0
+              ? 'Burn'
+              : 'Deposit'}{' '}
+            Fee
+          </p>
 
-        <div className="apr">
-          <span>APR</span>
-          <p>{numeral(pool.apr).format('0.00%')}</p>
-        </div>
-
-        <div className="timer">
-          <span>
-            {(
-              pool.usesBlocks
-                ? pool.end > currentBlock
-                : pool.end * 1000 > Date.now()
-            )
-              ? (
-                  pool.usesBlocks
-                    ? currentBlock < pool.start
-                    : Date.now() < pool.start * 1000
-                )
-                ? 'Starts in'
-                : 'Ends in'
-              : ''}{' '}
+          <p>
             {pool.usesBlocks && (
               <a
                 href={getExplorerCountdownLink(
@@ -197,71 +164,72 @@ export const RowView = ({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={StopwatchIcon} alt="" className="ms-1" />
+                {(
+                  pool.usesBlocks
+                    ? pool.end > currentBlock
+                    : pool.end * 1000 > Date.now()
+                )
+                  ? (
+                      pool.usesBlocks
+                        ? currentBlock < pool.start
+                        : Date.now() < pool.start * 1000
+                    )
+                    ? 'Starts in'
+                    : 'Ends in'
+                  : ''}{' '}
+                {(
+                  pool.usesBlocks
+                    ? pool.end > currentBlock
+                    : pool.end * 1000 > Date.now()
+                ) ? (
+                  pool.usesBlocks ? (
+                    <>
+                      {numeral(
+                        currentBlock < pool.start
+                          ? pool.start - currentBlock
+                          : pool.end - currentBlock,
+                      ).format('0,0')}
+                      <small> blocks</small>
+                    </>
+                  ) : (
+                    <>
+                      {numeral(
+                        Date.now() < pool.start * 1000
+                          ? (pool.start * 1000 - Date.now()) / 1000
+                          : (pool.end * 1000 - Date.now()) / 1000,
+                      ).format('0,0')}
+                      <small> seconds</small>
+                    </>
+                  )
+                ) : (
+                  'FINISHED'
+                )}
               </a>
             )}
-          </span>
-          <p>
-            {(
-              pool.usesBlocks
-                ? pool.end > currentBlock
-                : pool.end * 1000 > Date.now()
-            ) ? (
-              pool.usesBlocks ? (
-                <>
-                  {numeral(
-                    currentBlock < pool.start
-                      ? pool.start - currentBlock
-                      : pool.end - currentBlock,
-                  ).format('0,0')}
-                  <small> blocks</small>
-                </>
-              ) : (
-                <>
-                  {numeral(
-                    Date.now() < pool.start * 1000
-                      ? (pool.start * 1000 - Date.now()) / 1000
-                      : (pool.end * 1000 - Date.now()) / 1000,
-                  ).format('0,0')}
-                  <small> seconds</small>
-                </>
-              )
-            ) : (
-              'FINISHED'
-            )}{' '}
           </p>
-        </div>
-
-        <div className="fees">
-          <span>
-            {pool.depositBurnFee > 0 && pool.depositFee > 0
-              ? 'Burn/Deposit'
-              : pool.depositBurnFee > 0
-              ? 'Burn'
-              : 'Deposit'}{' '}
-            Fee
-          </span>
-          <p>
-            {numeral((pool.depositBurnFee + pool.depositFee) / 10000.0).format(
-              '0.00%',
-            )}
-          </p>
-        </div>
-
-        <div className="expand">
-          {showShow ? (
-            <div onClick={() => toggleShow()}>
-              Close <IoIosArrowUp />
-            </div>
-          ) : (
-            <div onClick={() => toggleShow()}>
-              Expand <IoIosArrowDown />
-            </div>
+          {isStaked && (
+            <>
+              <span>
+                My Stake:{' '}
+                {numeral(
+                  ethers.utils.formatEther(pool.stakeToken.staked),
+                ).format('0,0.00')}{' '}
+                {pool.stakeSymbol ? pool.stakeSymbol : pool.stakeToken.symbol}
+              </span>
+              <span>
+                ~{' '}
+                {numeral(
+                  ethers.utils.formatEther(pool.stakeToken.stakedUSD),
+                ).format('$0,0.00')}
+              </span>
+            </>
           )}
         </div>
+        <button onClick={() => toggleExpand()}>
+          {isExpanded ? 'Close' : 'Expand'}
+        </button>
       </div>
-
-      {showShow ? (
+      {isExpanded ? (
         <div className="RewardsRowViewExpand">
           <div className="earned">
             <div className="content">
@@ -345,8 +313,6 @@ export const RowView = ({
             )}
             {isStaked && (
               <>
-                <h5>STAKED</h5>
-
                 <div className="content">
                   <div className="inner">
                     <p>
@@ -388,18 +354,7 @@ export const RowView = ({
                       }
                       disabled={!account || chainId != connectedChainId}
                     >
-                      <svg
-                        width="14"
-                        height="4"
-                        viewBox="0 0 14 4"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M13 0.5H1C0.447812 0.5 0 0.947812 0 1.5V2.5C0 3.05219 0.447812 3.5 1 3.5H13C13.5522 3.5 14 3.05219 14 2.5V1.5C14 0.947812 13.5522 0.5 13 0.5Z"
-                          fill="#28CCAB"
-                        />
-                      </svg>
+                      <img src={Plus} />
                     </button>
                     <button
                       onClick={() => showStakeModal(pool, true)}
@@ -407,18 +362,7 @@ export const RowView = ({
                         !account || chainId != connectedChainId || isFinished
                       }
                     >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M13 5.5H8.5V1C8.5 0.447812 8.05219 0 7.5 0H6.5C5.94781 0 5.5 0.447812 5.5 1V5.5H1C0.447812 5.5 0 5.94781 0 6.5V7.5C0 8.05219 0.447812 8.5 1 8.5H5.5V13C5.5 13.5522 5.94781 14 6.5 14H7.5C8.05219 14 8.5 13.5522 8.5 13V8.5H13C13.5522 8.5 14 8.05219 14 7.5V6.5C14 5.94781 13.5522 5.5 13 5.5Z"
-                          fill="#28CCAB"
-                        />
-                      </svg>
+                      <img src={Minus} />
                     </button>
                   </div>
                 )}

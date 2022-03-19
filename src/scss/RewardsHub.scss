@@ -1,495 +1,343 @@
 .RewardsCardView {
-    @include responsive-card;
-    @include responsive-fonts;
-    @include responsive-img;
-    @include box-shadow1;
-    background-color: $main;
-    border-radius: 15px;
-    margin: 15px 10px;
-    .cardHead {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      border-radius: 15px 15px 0px 0px;
-      background-color: $secondary;
-      div {
-        display: block;
-        color: $text-light;
-        margin-right: auto;
-        title {
-          padding: 3px;
-          display: flex;
-          font-size: $xxl;
-          text-indent: 10px !important;
-        }
-        p {
-          text-indent: 12px;
-          font-size: $md;
-          display: flex;
-          span {
-            
-            color: $text-green;
-            text-transform: uppercase;
-            cursor: unset;
-          }
-        }
+  @include responsive-card;
+  @include responsive-fonts;
+  @include responsive-img;
+  @include box-shadow1;
+  background-color: $main;
+  border-radius: 15px;
+  margin: 15px 10px;
+  .cardHead {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: $secondary;
+    div {
+      display: block;
+      color: $text-light;
+      margin-right: auto;
+      title {
+        padding: 3px;
+        display: flex;
+        font-size: $xxl;
+        text-indent: 10px !important;
       }
-      img {
-        width: 60px;
-        border-radius: 100%;
-        height: 60px;
-        margin-left: auto;
-        margin-right: 10px;
+      p {
+        text-indent: 12px;
+        font-size: $md;
+        display: flex;
+        span {
+          color: $text-green;
+          text-transform: uppercase;
+          cursor: unset;
+        }
       }
     }
-    .cardBody {
-      width: 80%;
-      title {
-        display: flex;
-        font-size: $lg;
-        p {
-          color: $text-light1;
-          margin-right: auto;
-        }
-        span {
-          color: $text-light;
-          margin-left: auto;
-          cursor: unset;
-          text-align: right;
-        }
+    img {
+      width: 60px;
+      border-radius: 100%;
+      height: 60px;
+      margin-left: auto;
+      margin-right: 10px;
+    }
+  }
+  .cardBody {
+    width: 80%;
+    title {
+      display: flex;
+      font-size: $lg;
+      p {
+        color: $text-light1;
+        margin-right: auto;
       }
-      .rewardsBlock {
-        background-color: $inner;
-        width: 80%;
-        text-align: center;
-        padding: 10px;
-        border-radius: 15px;
+      span {
+        color: $text-light;
+        margin-left: auto;
+        cursor: unset;
+        text-align: right;
+      }
+    }
+    .rewardsBlock {
+      background-color: $inner;
+      width: 80%;
+      text-align: center;
+      padding: 10px;
+      border-radius: 15px;
+      border: 3px solid $secondary;
+      margin: auto auto;
+      justify-content: center;
+      align-items: center;
+      margin: auto auto;
+      button {
+        width: 100%;
         border: 3px solid $secondary;
-        margin: auto auto;
+        text-align: center;
+        border-radius: 20px;
+      }
+      .reward {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: auto auto;
-        button {
-          width: 100%;
-          border: 3px solid $secondary;
-          text-align: center;
-          border-radius: 20px;
-        }
-        .reward {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          font-size: $md;
-          margin: 10px 10px;
-          p {
-            color: $text-green;
-            margin-bottom: 1px;
-          }
-          span {
-            color: $text-light1;
-            cursor: unset;
-          }
-          img {
-            width: 30px;
-            height: 30px;
-            margin: auto auto;
-          }
-        }
-  
-        title {
-          text-transform: uppercase;
-          display: flex;
-          justify-content: space-between;
-          font-size: $md;
-          width: 100%;
-          span {
-            color: $text-green;
-            cursor: unset !important;
-          }
-          p {
-            color: $text-light;
-          }
-        }
-      }
-      button {
-        width: 80%;
-        @include join-button;
-        margin-top: 20px;
-        border-radius: 20px;
-        margin-bottom: 10px;
-      }
-      div {
-        span {
-          display: block;
-          width: 100%;
-          text-align: center;
+        font-size: $md;
+        margin: 10px 10px;
+        p {
           color: $text-green;
-          cursor: pointer;
+          margin-bottom: 1px;
         }
-      }
-    }
-  }
-  .RewardsRowView {
-    display: flex;
-    width: 100;
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;
-    background-color: $background-main-color;
-    border-radius: 5px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    @include box-shadow1;
-  
-    @media (min-width: 1px) {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  
-    .img {
-      display: flex;
-      justify-content: center;
-      margin: auto;
-      width: 50px;
-      height: 50px;
-      padding: 0px !important;
-  
-      img {
-        display: block;
-        all: unset;
-        max-width: 48px;
-        max-height: 48px;
-      }
-    }
-  
-    .title {
-      display: block;
-      margin: auto;
-      text-align: left;
-  
-      @media (min-width: 200px) {
-        width: 83%;
-        padding: 0px;
-      }
-  
-      @media (min-width: 670px) {
-        width: 210px;
-        padding: 0px;
-      }
-  
-      @media (min-width: 1000px) {
-        width: 22%;
-      }
-  
-      @media (min-width: 1200px) {
-        width: 17%;
-      }
-  
-      h3 {
-        display: block;
-        width: auto;
-        height: auto;
-        font-size: 15px;
-        color: $text-light;
-      }
-  
-      p {
-        font-size: 12px;
-        margin: 0;
-  
         span {
-          all: unset;
+          color: $text-light1;
+          cursor: unset;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+          margin: auto auto;
+        }
+      }
+
+      title {
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        font-size: $md;
+        width: 100%;
+        span {
+          color: $text-green;
+          cursor: unset !important;
+        }
+        p {
+          color: $text-light;
         }
       }
     }
-  
-    .earned {
-      display: block;
-      font-size: 12px;
-      margin: auto;
-      text-align: left;
-  
-      @media (min-width: 200px) {
-        width: 30%;
-        padding: 0px;
-      }
-  
-      @media (min-width: 670px) {
-        width: 189px;
-        padding: 0px;
-      }
-  
-      @media (min-width: 1000px) {
-        width: 27%;
-      }
-  
-      @media (min-width: 1200px) {
-        width: 17%;
-      }
+    button {
+      width: 80%;
+      @include join-button;
+      margin-top: 20px;
+      border-radius: 20px;
+      margin-bottom: 10px;
     }
-  
-    .apr {
-      margin: auto;
-      font-size: 14px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-  
-      @media (min-width: 200px) {
-        width: 30%;
-        padding: 0px;
-        text-align: left;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-  
-      @media (min-width: 1000px) {
-        width: 130px;
-      }
-    }
-  
-    .staked {
-      font-size: 12px;
-      margin: auto;
-      justify-content: flex-start;
-  
-      @media (min-width: 200px) {
-        width: 30%;
-        padding: 0px;
-        text-align: left;
-      }
-  
-      @media (min-width: 670px) {
-        width: 250px;
-        padding: 0px;
-      }
-  
-      @media (min-width: 1000px) {
-        width: 18%;
-        text-align: right;
-      }
-  
-      @media (min-width: 1200px) {
-        width: 18%;
-        text-align: right;
-      }
-    }
-  
-    .timer {
-      text-align: right;
-      margin: auto;
-      font-size: 12px;
-  
-      @media (min-width: 200px) {
-        text-align: right;
-        width: fit-content;
-        padding: 0px;
-      }
-  
-      @media (min-width: 670px) {
-        width: 30%;
-        padding: 0px;
-      }
-  
-      @media (min-width: 1000px) {
-        width: 12%;
-      }
-  
-      @media (min-width: 1200px) {
-        width: 130px;
-      }
-    }
-  
-    .fees {
-      display: block;
-      text-align: right;
-      margin: auto;
-      font-size: 12px;
-  
-      @media (min-width: 200px) {
-        width: 30%;
-      }
-  
-      @media (min-width: 670px) {
-        width: 17%;
-      }
-  
-      @media (min-width: 1000px) {
-        width: 10%;
-      }
-  
-      @media (min-width: 1200px) {
-        width: 130px;
-      }
-    }
-  
-    .expand {
-      text-align: center;
-      margin: auto;
-      font-size: 12px;
-      color: $text-green;
-      cursor: pointer;
-  
-      @media (min-width: 200px) {
-        padding: 0px;
-        text-align: left;
-        width: 30%;
-      }
-  
-      @media (min-width: 670px) {
-        width: 11%;
-      }
-  
-      @media (min-width: 1000px) {
-        width: 10%;
-      }
-  
-      @media (min-width: 1200px) {
-        width: 5%;
+    div {
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: $text-green;
+        cursor: pointer;
       }
     }
   }
-  
-  
-  .RewardsRowViewExpand {
+}
+.RewardsRowViewNew {
+  display: flex;
+  background-color: $background-main-color;
+  @include box-shadow1;
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin: 8px auto;
+  align-items: center;
+  justify-content: center;
+  button {
+    margin: auto auto;
+    padding: 10px;
+    @include join-button;
+    border-radius: 15px;
+    @media (min-width: 300px) {
+      font-size: 12px;
+      width: fit-content;
+    }
+    @media (min-width: 768px) {
+      width: 10%;
+font-size: 14px;
+    }
+  }
+  img {
+    width: 10%;
+    height: auto;
+    padding: 10px;
+    margin: auto auto;
+    border-radius: 100%;
+  }
+  .content {
+    width: 40%;
+    display: block;
+    text-align: left;
+    margin: auto auto;
+    padding: 10px;
+
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 14px;
+      font-size: 14px;
+      color: $text-light;
+      a {
+        margin: 0;
+        padding: 0;
+        color: $text-light !important;
+        font-size: 14px;
+        text-decoration: underline !important;
+        display: inline-block;
+        img {
+          display: inherit;
+          width: 40px;
+          height: 40px;
+          line-height: 14px;
+        }
+      }
+    }
+    span {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      line-height: 14px;
+      font-size: 14px;
+      color: $text-green;
+    }
+  }
+}
+
+.RewardsRowViewExpand {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $dark-color1;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 0px 0px 15px 15px;
+  transform: translateY(-10px);
+  .earned {
     display: flex;
-    width: 100%;
-    height: fit-content;
+    flex-direction: row;
     justify-content: space-around;
+    padding: 10px;
     align-items: center;
-    background-color: $dark-color1;
-    padding: 5px;
-    margin-bottom: 5px;
-    border-radius: 0px 0px 15px 15px;
-  
-    .earned {
+    height: inherit;
+    width: auto;
+    margin: auto;
+    @include bg-color7;
+    border-radius: 15px;
+    border: 1px solid $border-bg2;
+    @include box-shadow1;
+
+    .reward-plus-minus {
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
       padding: 10px;
-      align-items: center;
-      height: inherit;
+      margin: auto;
       width: auto;
       margin: auto;
-      @include bg-color7;
-      border-radius: 15px;
-      border: 1px solid $border-bg2;
-      @include box-shadow1;
-  
-      .reward-plus-minus {
-        display: flex;
-        padding: 10px;
-        margin: auto;
-        width: auto;
-        margin: auto;
-        filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
-  
-        button {
-          display: block;
-          width: 35px;
-          height: 35px;
-        }
+      filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.4));
+
+      button {
+        display: block;
+        width: 35px;
+        height: 35px;
       }
-  
-      .innerbtn {
-        display: flex;
-        justify-content: center;
-        width: 140px;
+    }
+
+    .innerbtn {
+      display: flex;
+      justify-content: center;
+      width: 140px;
+      padding: 5px;
+      margin: auto;
+
+      button {
+        width: 100px;
         padding: 5px;
         margin: auto;
-  
-        button {
-          width: 100px;
-          padding: 5px;
-          margin: auto;
+      }
+    }
+
+    h5 {
+      display: block;
+      width: 100%;
+      font-size: 16.5px;
+      text-align: center;
+      padding: 2px;
+      margin: auto;
+      color: $text-green;
+    }
+
+    .content {
+      margin: auto;
+      display: flex;
+      min-width: 200px;
+      align-items: center;
+
+      img {
+        margin: auto;
+        padding: auto;
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+
+      .inner {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 5px;
+
+        span {
+          text-align: left;
+          display: block;
+          font-size: 14px;
+          color: $text-pink;
+          margin: 0px;
+        }
+
+        p {
+          text-align: left;
+          display: block;
+          font-size: 12px;
+          color: $text-light;
+          margin: 0px;
         }
       }
-  
+    }
+  }
+
+  .block {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $text-pink;
+    width: fit-content;
+    height: inherit;
+    padding: 10px;
+    margin: auto;
+    background-color: $dark-color4;
+    border-radius: 15px;
+    border: 1px solid $border-bg2;
+    @include box-shadow;
+
+    .text {
+      padding: 10px;
+
+      p {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+        text-align: left;
+        color: $text-light;
+      }
+
       h5 {
         display: block;
         width: 100%;
         font-size: 16.5px;
-        text-align: center;
-        padding: 2px;
-        margin: auto;
-        color: $text-green;
-      }
-  
-      .content {
-        margin: auto;
-        display: flex;
-        min-width: 200px;
-        align-items: center;
-  
-        img {
-          margin: auto;
-          padding: auto;
-          display: block;
-          width: 50px;
-          height: 50px;
-        }
-  
-        .inner {
-          display: flex;
-          flex-direction: column;
-          margin: auto;
-          padding: 5px;
-  
-          span {
-            text-align: left;
-            display: block;
-            font-size: 14px;
-            color: $text-pink;
-            margin: 0px;
-          }
-  
-          p {
-            text-align: left;
-            display: block;
-            font-size: 12px;
-            color: $text-light;
-            margin: 0px;
-          }
-        }
-      }
-    }
-  
-    .block {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: $text-pink;
-      width: fit-content;
-      height: inherit;
-      padding: 10px;
-      margin: auto;
-      background-color: $dark-color4;
-      border-radius: 15px;
-      border: 1px solid $border-bg2;
-      @include box-shadow;
-  
-      .text {
-        padding: 10px;
-  
-        p {
-          display: block;
-          width: 100%;
-          padding: 0;
-          margin: 0;
-          font-size: 15px;
-          text-align: left;
-          color: $text-light;
-        }
-  
-        h5 {
-          display: block;
-          width: 100%;
-          font-size: 16.5px;
-          text-align: left;
-        }
+        text-align: left;
       }
     }
   }
+}
