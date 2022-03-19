@@ -20,7 +20,8 @@ import useTVL from '../hooks/useTVL';
 import useGASTokenMarketCap from '../hooks/useGASTokenMarketCap';
 import useGASTokenRewardsInfo from '../hooks/useGASTokenRewardsInfo';
 import usePools from '../hooks/usePools';
-
+import Grid from '../assets/svg/menu.svg';
+import Row from '../assets/svg/burger.svg';
 import RewardsRow from '../components/RewardsHub/RowView';
 import RewardsCard from '../components/RewardsHub/CardView';
 import StakeModal from '../components/RewardsHub/stakeModal';
@@ -239,11 +240,15 @@ export const RewardsHubChainPage = ({ chainId }: { chainId: ChainId }) => {
                   <span
                     className={isCardGrid ? '' : 'active'}
                     onClick={() => setIsCardGrid(false)}
-                  ></span>
+                  >
+                    <img src={Row} />
+                  </span>
                   <span
                     className={isCardGrid ? 'active' : ''}
                     onClick={() => setIsCardGrid(true)}
-                  ></span>
+                  >
+                    <img src={Grid} />
+                  </span>
                 </div>
                 <div className="grid-switch-icon d-none d-md-block">
                   <MDBSwitch
