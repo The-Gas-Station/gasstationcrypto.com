@@ -7,10 +7,8 @@ import numeral from 'numeral';
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 import useNFP from '../hooks/useNFP';
-import useMyNFPs from '../hooks/useMyNFPs';
 import useEthers from '../library/hooks/useEthers';
 import useJSONResult from '../library/hooks/useJSONResult';
-
 import {
   CHAIN_NAMES,
   ChainId,
@@ -21,6 +19,8 @@ import {
 import { CHAIN_INFO } from '../configs';
 
 import { useLayoutContext } from '../layouts/MainLayout';
+//import FlipCard from '../components/Non-Fungible Patrons/FlipCard';
+import MyPatron from '../components/Non-Fungible Patrons/MyPatron';
 
 export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
   const { setIsWalletModalOpen } = useLayoutContext();
@@ -33,7 +33,6 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
   const { setCurrentChainId } = useWeb3ConnectionsContext();
 
   const { useApproveAction, useMintAction, rarities } = useNFP(chainId);
-  const myNFPs = useMyNFPs();
 
   let rareImage = '/images/nfp-buyme.png';
 
@@ -427,24 +426,7 @@ export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {
           <p>We’re showing all NFPs in your current wallet.</p>
         </div>
         <div className="row">
-          {myNFPs.map((metadata, i) => (
-            <div key={i} className="col-4 col-sm-4 col-md-4 col-lg-3">
-              <div className="card-items">
-                <img src={metadata.image} />
-                <div className="card-item-details">
-                  <h2>{metadata.name.replace(` #${metadata.tokenId}`, '')}</h2>
-                  <small> #{metadata.tokenId}</small>
-                  <img
-                    src={CHAIN_INFO[metadata.chainId].tokenImage.replace(
-                      '/public/',
-                      '/',
-                    )}
-                    style={{ maxHeight: 40 }}
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
+          <MyPatron />
         </div>
       </section>
     </>

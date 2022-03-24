@@ -14,6 +14,7 @@
   "etherCoingeckoId": "wavax",
   "buyAddress": "https://traderjoexyz.com/#/trade?outputCurrency=0x57Dc3DFB48252daA731e70f9166252F8cc1B116f",
   "launched": true,
+  "patronLaunced": false,
   "gasTokenAddress": "evm:0x57Dc3DFB48252daA731e70f9166252F8cc1B116f",
   "chartAddress": "https://dexscreener.com/avalanche/0x53fb54e657458d39f8c8a37b797fbaba7552c435",
   "pools": [
@@ -67,5 +68,8 @@
       "reward0Icon": "/public/images/tokens/usdc.png"
     }
   ],
-  "chainId": 43114
+  "chainId": 43114,
+  "teamLock": "evm:0x883db70e6e9685ab635Bf30CcE7960c899d32236",
+  "scanLink": "https://snowtrace.io/address/0x57dc3dfb48252daa731e70f9166252f8cc1b116f#writeContract",
+  "nfpScanLink": ""
 }

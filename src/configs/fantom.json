@@ -16,6 +16,7 @@
   "etherCoingeckoId": "fantom",
   "buyAddress": "https://spookyswap.finance/swap?outputCurrency=0x6741db012578615Ee07e029C1062B46730093912",
   "launched": true,
+  "patronLaunced": true,
   "gasTokenAddress": "evm:0x6741db012578615Ee07e029C1062B46730093912",
   "chartAddress": "https://www.dextools.io/app/fantom/pair-explorer/0x2ae4249f5a33a3ceadc10ddcbc5a9e8abe7680ef",
   "pools": [
@@ -84,5 +85,9 @@
     }
   ],
   "nfpAddress": "evm:0xC2fa4a36Cf90f54aE70C6e89CEE6C13E865552F2",
-  "chainId": 250
+  "chainId": 250,
+  "teamLock": "evm:0x667BF7ca897fC602558de0bE252B8825993C07C1",
+  "scanLink": "https://ftmscan.com/address/0x6741db012578615ee07e029c1062b46730093912#code",
+  "nfpScanLink": "https://ftmscan.com/address/0xc2fa4a36cf90f54ae70c6e89cee6c13e865552f2"
+
 }

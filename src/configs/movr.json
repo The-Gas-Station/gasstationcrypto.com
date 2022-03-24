@@ -19,6 +19,7 @@
   "etherCoingeckoId": "wmovr",
   "buyAddress": "https://app.solarbeam.io/exchange/swap?outputCurrency=0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
   "launched": true,
+  "patronLaunced": false,
   "gasTokenAddress": "evm:0xfA44e0Bf61c46221BFfAa60F59E82e2319491929",
   "chartAddress": "https://dexscreener.com/moonriver/0x88e5319621a16696728e8e4bb45a5dd407b85a54",
   "pools": [
@@ -72,5 +73,8 @@
       "reward0Icon": "/public/images/tokens/usdc.png"
     }
   ],
-  "chainId": 1285
+  "chainId": 1285,
+  "teamLock": "evm:0x0CA628Aed175333CcbF895A2B8784Bac4f6aa829",
+  "scanLink": "https://moonriver.moonscan.io/address/0xfa44e0bf61c46221bffaa60f59e82e2319491929#code",
+  "nfpScanLink": ""
 }

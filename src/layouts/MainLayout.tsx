@@ -26,7 +26,7 @@ import shortenString from '../library/helpers/shortenString';
 
 import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
-import WalletModal from '../components/walletModal';
+import WalletModal from '../components/Global/walletModal';
 
 import useGASTokenPrice from '../hooks/useGASTokenPrice';
 
@@ -136,14 +136,14 @@ export const MainLayout = () => {
       route: '/utility',
       icon: SvgUtility,
     },
+    {
+      label: 'Documents',
+      route: '/information',
+      icon: SvgGitbook,
+    },
   ];
 
   const socialLinks = [
-    {
-      label: 'Gitbook',
-      route: 'https://gasstationcrypto.gitbook.io/the-crypto-gas-station/',
-      icon: SvgGitbook,
-    },
     {
       label: 'Twitter',
       route: 'https://twitter.com/GasStation_cryp',

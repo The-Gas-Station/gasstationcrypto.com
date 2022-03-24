@@ -1,0 +1,100 @@
+$mobile: 300px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1440px;
+$wide: 1920px;
+$ultra: 4000px;
+
+$sm: 14px;
+$md: 16px;
+$lg: 18px;
+$xl: 20px;
+$xxl: 22px;
+@mixin responsive-img {
+    @media (min-width: $mobile) {
+      img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+    @media (min-width: $laptop) {
+      img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+    @media (min-width: $wide) {
+      img {
+        width: 100px !important;
+        height: 100px !important;
+      }
+    }
+  }
+  @mixin responsive-fonts {
+    @media (min-width: $mobile) {
+      title {
+        font-size: $md !important;
+        margin: none;
+      }
+      p {
+        font-size: $sm !important;
+        margin: 1px;
+      }
+      span {
+        margin: 1px;
+        font-size: $sm !important;
+      }
+    }
+    @media (min-width: $tablet) {
+      title {
+        font-size: $lg !important;
+      }
+      p {
+        font-size: $sm !important;
+      }
+      span {
+        font-size: $sm !important;
+      }
+    }
+    @media (min-width: $laptop) {
+      title {
+        font-size: $xl !important;
+      }
+      p {
+        font-size: $sm !important;
+      }
+      span {
+        font-size: $sm !important;
+      }
+      @media (min-width: $wide) {
+        title {
+          font-size: $xxl !important;
+        }
+        p {
+          font-size: $md !important;
+        }
+        span {
+          font-size: $md !important;
+        }
+      }
+    }
+  }
+  @mixin responsive-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (min-width: $mobile) {
+      width: 350px;
+      flex-grow: 2;
+      flex-shrink: 3;
+    }
+    @media (min-width: $tablet) {
+      width: 325px;
+    }
+    @media (min-width: $laptop) {
+      min-width: 285px !important;
+      width: 21.5%;
+      max-width: 21.5%;
+    }
+  }

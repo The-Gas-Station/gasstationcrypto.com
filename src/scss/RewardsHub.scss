@@ -1,0 +1,360 @@
+.RewardsCardView {
+  @include responsive-card;
+  @include responsive-fonts;
+  @include responsive-img;
+  @include box-shadow1;
+  background-color: $main;
+  border-radius: 15px;
+  margin: 15px 10px;
+  .cardHead {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: $secondary;
+    div {
+      display: block;
+      color: $text-light;
+      margin-right: auto;
+      title {
+        padding: 3px;
+        display: flex;
+        font-size: $xxl;
+        text-indent: 10px !important;
+      }
+      p {
+        text-indent: 12px;
+        font-size: $md;
+        display: flex;
+        span {
+          color: $text-green;
+          text-transform: uppercase;
+          cursor: unset;
+        }
+      }
+    }
+    img {
+      width: 60px;
+      border-radius: 100%;
+      height: 60px;
+      margin-left: auto;
+      margin-right: 10px;
+    }
+  }
+  .cardBody {
+    width: 80%;
+    title {
+      display: flex;
+      font-size: $lg;
+      p {
+        color: $text-light1;
+        margin-right: auto;
+      }
+      span {
+        color: $text-light;
+        margin-left: auto;
+        cursor: unset;
+        text-align: right;
+        a {
+          text-decoration: underline;
+          color: $text-light;
+          font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+    }
+    .rewardsBlock {
+      background-color: $inner;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      border-radius: 15px;
+      border: 3px solid $secondary;
+      margin: auto auto;
+      justify-content: center;
+      align-items: center;
+      margin: auto auto;
+      button {
+        width: 100%;
+        border: 3px solid $secondary;
+        text-align: center;
+        border-radius: 20px;
+      }
+      .buttons {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        button {
+          all: unset;
+          width: 15%;
+          padding: 5px;
+          margin: auto auto;
+          cursor: pointer;
+        }
+      }
+      .reward {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: $md;
+        margin: 10px 10px;
+        p {
+          color: $text-green;
+          margin-bottom: 1px;
+        }
+        span {
+          color: $text-light1;
+          cursor: unset;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+          margin: auto auto;
+        }
+      }
+
+      title {
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        font-size: $md;
+        width: 100%;
+        span {
+          color: $text-green;
+          cursor: unset !important;
+        }
+        p {
+          color: $text-light;
+        }
+      }
+    }
+    button {
+      width: 80%;
+      @include join-button;
+      margin-top: 20px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    div {
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: $text-green;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.RewardsRowViewNew {
+  display: flex;
+  background-color: $background-main-color;
+  @include box-shadow1;
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  margin: 8px auto;
+  align-items: center;
+  justify-content: center;
+  button {
+    margin: auto auto;
+    padding: 10px;
+    @include join-button;
+    border-radius: 15px;
+    @media (min-width: 300px) {
+      font-size: 12px;
+      width: fit-content;
+    }
+    @media (min-width: 768px) {
+      width: 10%;
+      font-size: 14px;
+    }
+  }
+  img {
+    width: 10%;
+    height: auto;
+    padding: 10px;
+    margin: auto auto;
+    border-radius: 100%;
+  }
+  .content {
+    width: 40%;
+    display: block;
+    text-align: left;
+    margin: auto auto;
+    padding: 10px;
+
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 14px;
+      font-size: 14px;
+      color: $text-light;
+      a {
+        margin: 0;
+        padding: 0;
+        color: $text-light !important;
+        font-size: 14px;
+        text-decoration: underline !important;
+        display: inline-block;
+        img {
+          display: inherit;
+          width: 40px;
+          height: 40px;
+          line-height: 14px;
+        }
+      }
+    }
+    span {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      line-height: 14px;
+      font-size: 14px;
+      color: $text-green;
+    }
+  }
+}
+
+.RewardsRowViewExpand {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $dark-color1;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 0px 0px 15px 15px;
+  transform: translateY(-10px);
+  .earned {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: center;
+    height: inherit;
+    width: auto;
+    margin: auto;
+    @include bg-color7;
+    border-radius: 15px;
+    border: 1px solid $border-bg2;
+    @include box-shadow1;
+
+    .buttons {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      button {
+        all: unset;
+        width: 40%;
+        padding: 5px;
+        margin: auto auto;
+        cursor: pointer;
+      }
+    }
+
+    .innerbtn {
+      display: flex;
+      justify-content: center;
+      width: 140px;
+      padding: 5px;
+      margin: auto;
+
+      button {
+        width: 100px;
+        padding: 5px;
+        margin: auto;
+      }
+    }
+
+    h5 {
+      display: block;
+      width: 100%;
+      font-size: 16.5px;
+      text-align: center;
+      padding: 2px;
+      margin: auto;
+      color: $text-green;
+    }
+
+    .content {
+      margin: auto;
+      display: flex;
+      min-width: 200px;
+      align-items: center;
+
+      img {
+        margin: auto;
+        padding: auto;
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+
+      .inner {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 5px;
+
+        span {
+          text-align: left;
+          display: block;
+          font-size: 14px;
+          color: $text-pink;
+          margin: 0px;
+        }
+
+        p {
+          text-align: left;
+          display: block;
+          font-size: 12px;
+          color: $text-light;
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  .block {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $text-pink;
+    width: fit-content;
+    height: inherit;
+    padding: 10px;
+    margin: auto;
+    background-color: $dark-color4;
+    border-radius: 15px;
+    border: 1px solid $border-bg2;
+    @include box-shadow;
+
+    .text {
+      padding: 10px;
+
+      p {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+        text-align: left;
+        color: $text-light;
+      }
+
+      h5 {
+        display: block;
+        width: 100%;
+        font-size: 16.5px;
+        text-align: left;
+      }
+    }
+  }
+}
