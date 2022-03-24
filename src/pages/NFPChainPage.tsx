@@ -19,7 +19,7 @@ import {
 import { CHAIN_INFO } from '../configs';
 
 import { useLayoutContext } from '../layouts/MainLayout';
-import FlipCard from '../components/Non-Fungible Patrons/FlipCard';
+//import FlipCard from '../components/Non-Fungible Patrons/FlipCard';
 import MyPatron from '../components/Non-Fungible Patrons/MyPatron';
 
 export const NFPChainPage = ({ chainId }: { chainId: ChainId }) => {

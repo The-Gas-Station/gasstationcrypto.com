@@ -1,11 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  MDBTable,
-  MDBTableBody,
-  MDBSwitch,
-  MDBCollapse,
-} from 'mdb-react-ui-kit';
+import { MDBSwitch, MDBCollapse } from 'mdb-react-ui-kit';
 import { ethers } from 'ethers';
 import numeral from 'numeral';
 

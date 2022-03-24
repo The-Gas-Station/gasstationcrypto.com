@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import { MDBCollapse } from 'mdb-react-ui-kit';
 
 import numeral from 'numeral';
 
@@ -9,7 +8,6 @@ import useEthers from '../../library/hooks/useEthers';
 import { getExplorerCountdownLink } from '../../library/helpers/chains';
 import Plus from '../../assets/svg/plus.svg';
 import Minus from '../../assets/svg/minus.svg';
-import StopwatchIcon from '../../assets/icon-stopwatch.svg';
 
 import { PoolResult } from '../../hooks/Pools';
 import {
