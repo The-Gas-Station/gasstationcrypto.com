@@ -304,23 +304,21 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                 </span>
               </title>
 
-              <title>
+              <h1>
                 <p>
-                  {pool.depositBurnFee > 0 && pool.depositFee > 0
-                    ? 'Burn/Deposit'
-                    : pool.depositBurnFee > 0
-                    ? 'Burn'
-                    : 'Deposit'}{' '}
-                  Fee
-                </p>
-                <span>
-                  {numeral(
-                    (pool.depositBurnFee + pool.depositFee) / 10000.0,
-                  ).format('0.00%')}
-                </span>
-              </title>
-              <title>
-                <span>
+                  {(
+                    pool.usesBlocks
+                      ? pool.end > currentBlock
+                      : pool.end * 1000 > Date.now()
+                  )
+                    ? (
+                        pool.usesBlocks
+                          ? currentBlock < pool.start
+                          : Date.now() < pool.start * 1000
+                      )
+                      ? 'Starts in'
+                      : 'Ends in'
+                    : ''}{' '}
                   {pool.usesBlocks && (
                     <a
                       href={getExplorerCountdownLink(
@@ -330,50 +328,39 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {(
-                        pool.usesBlocks
-                          ? pool.end > currentBlock
-                          : pool.end * 1000 > Date.now()
-                      )
-                        ? (
-                            pool.usesBlocks
-                              ? currentBlock < pool.start
-                              : Date.now() < pool.start * 1000
+                      <span>
+                        {(
+                          pool.usesBlocks
+                            ? pool.end > currentBlock
+                            : pool.end * 1000 > Date.now()
+                        ) ? (
+                          pool.usesBlocks ? (
+                            <>
+                              {numeral(
+                                currentBlock < pool.start
+                                  ? pool.start - currentBlock
+                                  : pool.end - currentBlock,
+                              ).format('0,0')}
+                              <small> blocks</small>
+                            </>
+                          ) : (
+                            <>
+                              {numeral(
+                                Date.now() < pool.start * 1000
+                                  ? (pool.start * 1000 - Date.now()) / 1000
+                                  : (pool.end * 1000 - Date.now()) / 1000,
+                              ).format('0,0')}
+                              <small> seconds</small>
+                            </>
                           )
-                          ? 'Starts in'
-                          : 'Ends in'
-                        : ''}{' '}
-                      {(
-                        pool.usesBlocks
-                          ? pool.end > currentBlock
-                          : pool.end * 1000 > Date.now()
-                      ) ? (
-                        pool.usesBlocks ? (
-                          <>
-                            {numeral(
-                              currentBlock < pool.start
-                                ? pool.start - currentBlock
-                                : pool.end - currentBlock,
-                            ).format('0,0')}
-                            <small> blocks</small>
-                          </>
                         ) : (
-                          <>
-                            {numeral(
-                              Date.now() < pool.start * 1000
-                                ? (pool.start * 1000 - Date.now()) / 1000
-                                : (pool.end * 1000 - Date.now()) / 1000,
-                            ).format('0,0')}
-                            <small> seconds</small>
-                          </>
-                        )
-                      ) : (
-                        'FINISHED'
-                      )}
+                          'FINISHED'
+                        )}{' '}
+                      </span>
                     </a>
                   )}
-                </span>
-              </title>
+                </p>
+              </h1>
             </>
           ) : null}
         </div>
