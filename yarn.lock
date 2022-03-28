@@ -2484,7 +2484,7 @@
     "@walletconnect/window-metadata" "1.0.0"
     detect-browser "5.2.0"
 
-"@deficonnect/client@^1.6.13", "@deficonnect/client@^1.6.7-alpha.25":
+"@deficonnect/client@^1.6.13", "@deficonnect/client@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/client/-/client-1.6.13.tgz#f70666eb4b7b544ef8b42c079e9b9907d914417c"
   integrity sha512-8MUEPzx/elQ5YAl9iKE1Cx/RvH89VAaawuN0k9Ashehe9ejzWqLHIF/HpQZ1c1o/iWkj0lrywHRBYwySQQyQxA==
@@ -2494,7 +2494,7 @@
     "@deficonnect/types" "^1.6.13"
     "@deficonnect/utils" "^1.6.13"
 
-"@deficonnect/core@^1.6.13", "@deficonnect/core@^1.6.7-alpha.25":
+"@deficonnect/core@^1.6.13", "@deficonnect/core@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/core/-/core-1.6.13.tgz#b1eb70ec485945bb785f3d522ef01b6ad85aefca"
   integrity sha512-qP/T/bt2LzHnmQs+UA7Gmsb38XhvDMjDu047fpkGSzQCJDxPSiB3mXHdgx2SbiY+nLdiAJPM/sjNJ7akTCWDWw==
@@ -2513,7 +2513,7 @@
     eventemitter3 "4.0.7"
     xhr2-cookies "1.1.0"
 
-"@deficonnect/iso-crypto@^1.6.13", "@deficonnect/iso-crypto@^1.6.7-alpha.25":
+"@deficonnect/iso-crypto@^1.6.13", "@deficonnect/iso-crypto@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/iso-crypto/-/iso-crypto-1.6.13.tgz#fa8fe9fad9880fc6474debbacf470953c41b501a"
   integrity sha512-1MT5E+yKABLtSp4w65OiJ/0U5OmbdBL3LqxVOE74lTOH6cdf1AZatZmCy4UUdVaciWlqEX6P/4s4wcsXXp521g==
@@ -2543,12 +2543,12 @@
     "@deficonnect/utils" "^1.6.13"
     ws "7.5.3"
 
-"@deficonnect/types@^1.6.13", "@deficonnect/types@^1.6.7-alpha.25":
+"@deficonnect/types@^1.6.13", "@deficonnect/types@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/types/-/types-1.6.13.tgz#106c1cad675d9db1a2dbc1c5245ff42c179d57ea"
   integrity sha512-5ls9LHgQpgaVSsppd/DzlNDO7ZmP9PH8SsbW0TZ1Rw8MG6T66ev7PxxxbkkyKdHqHeQoR7U9SjOtWRRUMVceDQ==
 
-"@deficonnect/utils@^1.6.13", "@deficonnect/utils@^1.6.7-alpha.25":
+"@deficonnect/utils@^1.6.13", "@deficonnect/utils@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/utils/-/utils-1.6.13.tgz#f927062f3930ace33166eeab8a4f3346cda96dd6"
   integrity sha512-tvnbP91IyHH6ALkNsshn39JWwNZE6xR9qGbOgGqM0X+q6l/B9d8tzUogcmIKY5Wi+gxxW6OAEXhPC4lAdeIwpg==
@@ -2561,7 +2561,7 @@
     js-sha3 "0.8.0"
     query-string "6.13.5"
 
-"@deficonnect/web3-provider@^1.6.7-alpha.25":
+"@deficonnect/web3-provider@^1.6.8":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@deficonnect/web3-provider/-/web3-provider-1.6.13.tgz#f0d89fe519814fb2b078d83c75b5af73f5a0394b"
   integrity sha512-1hPAvruGGMERFwPsA2Ot28GIGRfPWjtndw9FNfCIcjC4BAX5k/Sl1Hf0Spjt24Ub1MZjXE9He70jwT6zhiKqoA==
@@ -3999,13 +3999,6 @@
   integrity sha512-FIX2AVmPTGP30OUJ+0vadeIFJJ07Mh1m+U0rxfgyW34p3rTlXI+nlenvAxNn4BP36YyI9IJ/+UJ7Wu22N1pI7A==
   dependencies:
     "@types/react" "^16"
-
-"@types/react-modal@^3.12.0":
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.13.1.tgz#5b9845c205fccc85d9a77966b6e16dc70a60825a"
-  integrity sha512-iY/gPvTDIy6Z+37l+ibmrY+GTV4KQTHcCyR5FIytm182RQS69G5ps4PH2FxtC7bAQ2QRHXMevsBgck7IQruHNg==
-  dependencies:
-    "@types/react" "*"
 
 "@types/react-slick@^0.23.7":
   version "0.23.7"
@@ -6629,30 +6622,26 @@ deferred-leveldown@~1.2.1:
   dependencies:
     abstract-leveldown "~2.6.0"
 
-deficonnect@1.1.0-alpha.37:
-  version "1.1.0-alpha.37"
-  resolved "https://registry.yarnpkg.com/deficonnect/-/deficonnect-1.1.0-alpha.37.tgz#9eabe478323abced04f7f5ff726f104ad1c793a1"
-  integrity sha512-+SPS8K99GwRogEdpr/mT6Jnow8GiHRN4lJnXTsboHs4cH/TSvHlmjTMhHaBtK7l8/va9aOab27HOuwFPTyW8bg==
+deficonnect@1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/deficonnect/-/deficonnect-1.1.14.tgz#478dd279e4d9f3cab4fabe6c31cb08cb7ca96e6b"
+  integrity sha512-VbDpPSPLRaxmvcTXRQ88uvAsWfTWI8pkvXV2VyUV3cilIi4xEgt4wOXKgzqip7VUakVMkUVzYjEt7bBmNZt4DQ==
   dependencies:
     "@cosmjs/amino" "^0.26.0"
     "@cosmjs/encoding" "^0.26.0"
     "@cosmjs/proto-signing" "^0.26.0"
     "@cosmjs/stargate" "^0.26.1"
-    "@deficonnect/client" "^1.6.7-alpha.25"
-    "@deficonnect/core" "^1.6.7-alpha.25"
-    "@deficonnect/iso-crypto" "^1.6.7-alpha.25"
-    "@deficonnect/types" "^1.6.7-alpha.25"
-    "@deficonnect/utils" "^1.6.7-alpha.25"
-    "@deficonnect/web3-provider" "^1.6.7-alpha.25"
+    "@deficonnect/client" "^1.6.8"
+    "@deficonnect/core" "^1.6.8"
+    "@deficonnect/iso-crypto" "^1.6.8"
+    "@deficonnect/types" "^1.6.8"
+    "@deficonnect/utils" "^1.6.8"
+    "@deficonnect/web3-provider" "^1.6.8"
     "@types/qrcode" "^1.4.1"
-    "@types/react-modal" "^3.12.0"
+    "@web3-react/injected-connector" "^6.0.7"
     cosmjs-types "^0.2.0"
     qrcode "^1.4.4"
-    react "^16.13.1"
-    react-dom "^16.13.1"
-    react-modal "^3.14.3"
-    regenerator-runtime "^0.13.9"
-    ws "7.3.0"
+    ws "7.4.6"
 
 define-lazy-prop@^2.0.0:
   version "2.0.0"
@@ -7831,11 +7820,6 @@ execa@^5.0.0:
     onetime "^5.1.2"
     signal-exit "^3.0.3"
     strip-final-newline "^2.0.0"
-
-exenv@^1.2.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
-  integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
 
 exit@^0.1.2:
   version "0.1.2"
@@ -11726,15 +11710,6 @@ prop-types@^15.6.1, prop-types@^15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-prop-types@^15.6.2:
-  version "15.8.1"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
-  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
-  dependencies:
-    loose-envify "^1.4.0"
-    object-assign "^4.1.1"
-    react-is "^16.13.1"
-
 protobufjs@^6.8.8, protobufjs@~6.11.2:
   version "6.11.2"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.11.2.tgz#de39fabd4ed32beaa08e9bb1e30d08544c1edf8b"
@@ -11979,16 +11954,6 @@ react-dev-utils@^12.0.0:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-dom@^16.13.1:
-  version "16.14.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
-  integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.19.1"
-
 react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
@@ -12023,7 +11988,7 @@ react-icons@^3.0.0:
   dependencies:
     camelcase "^5.0.0"
 
-react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
+react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -12032,21 +11997,6 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
-
-react-lifecycles-compat@^3.0.0:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
-  integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
-react-modal@^3.14.3:
-  version "3.14.4"
-  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.14.4.tgz#2ca7e8e9a180955e5c9508c228b73167c1e6f6a3"
-  integrity sha512-8surmulejafYCH9wfUmFyj4UfbSJwjcgbS9gf3oOItu4Hwd6ivJyVBETI0yHRhpJKCLZMUtnhzk76wXTsNL6Qg==
-  dependencies:
-    exenv "^1.2.0"
-    prop-types "^15.7.2"
-    react-lifecycles-compat "^3.0.0"
-    warning "^4.0.3"
 
 react-perfect-scrollbar@1.5.8:
   version "1.5.8"
@@ -12174,15 +12124,6 @@ react-textfit@^1.1.1:
   dependencies:
     process "^0.11.10"
     prop-types "^15.7.2"
-
-react@^16.13.1:
-  version "16.14.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 react@^17.0.2:
   version "17.0.2"
@@ -12599,14 +12540,6 @@ saxes@^5.0.1:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
-
-scheduler@^0.19.1:
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
-  integrity sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 scheduler@^0.20.2:
   version "0.20.2"
@@ -13923,7 +13856,7 @@ walletlink@^2.2.6:
     stream-browserify "^3.0.0"
     util "^0.12.4"
 
-warning@^4.0.2, warning@^4.0.3:
+warning@^4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
@@ -14435,11 +14368,6 @@ write-file-atomic@^3.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
-ws@7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.0.tgz#4b2f7f219b3d3737bc1a2fbf145d825b94d38ffd"
-  integrity sha512-iFtXzngZVXPGgpTlP1rBqsUK82p9tKqsWRPg5L56egiljujJT3vGAYnHANvFxBieXrTFavhzhxW52jnaWV+w2w==
-
 ws@7.4.6:
   version "7.4.6"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
@@ -14457,15 +14385,10 @@ ws@^5.1.1:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7, ws@^7.4.6:
+ws@^7, ws@^7.4.0, ws@^7.4.6:
   version "7.5.6"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.6.tgz#e59fc509fb15ddfb65487ee9765c5a51dec5fe7b"
   integrity sha512-6GLgCqo2cy2A2rjCNFlxQS6ZljG/coZfZXclldI8FB/1G3CCI36Zd8xy2HrFVACi8tfk5XrgLQEk+P0Tnz9UcA==
-
-ws@^7.4.0:
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.5.tgz#8b4bc4af518cfabd0473ae4f99144287b33eb881"
-  integrity sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w==
 
 ws@^8.4.2:
   version "8.4.2"
