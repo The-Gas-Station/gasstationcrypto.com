@@ -101,6 +101,40 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
     setShowStakingExpand(!showStakingExpand);
   };
 
+  const counter = () => {
+    return (
+      <span>
+        {(
+          pool.usesBlocks
+            ? pool.end > currentBlock
+            : pool.end * 1000 > Date.now()
+        ) ? (
+          pool.usesBlocks ? (
+            <>
+              {numeral(
+                currentBlock < pool.start
+                  ? pool.start - currentBlock
+                  : pool.end - currentBlock,
+              ).format('0,0')}
+              <small> blocks</small>
+            </>
+          ) : (
+            <>
+              {numeral(
+                Date.now() < pool.start * 1000
+                  ? (pool.start * 1000 - Date.now()) / 1000
+                  : (pool.end * 1000 - Date.now()) / 1000,
+              ).format('0,0')}
+              <small> seconds</small>
+            </>
+          )
+        ) : (
+          'FINISHED'
+        )}{' '}
+      </span>
+    );
+  };
+
   return (
     <>
       <div className="RewardsCardView">
@@ -319,7 +353,7 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                       ? 'Starts in'
                       : 'Ends in'
                     : ''}{' '}
-                  {pool.usesBlocks && (
+                  {pool.usesBlocks ? (
                     <a
                       href={getExplorerCountdownLink(
                         chainId,
@@ -328,35 +362,18 @@ export const GridHubCard = ({ showStakeModal, chainId, pool }: toggleProps) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span>
-                        {(
-                          pool.usesBlocks
-                            ? pool.end > currentBlock
-                            : pool.end * 1000 > Date.now()
-                        ) ? (
-                          pool.usesBlocks ? (
-                            <>
-                              {numeral(
-                                currentBlock < pool.start
-                                  ? pool.start - currentBlock
-                                  : pool.end - currentBlock,
-                              ).format('0,0')}
-                              <small> blocks</small>
-                            </>
-                          ) : (
-                            <>
-                              {numeral(
-                                Date.now() < pool.start * 1000
-                                  ? (pool.start * 1000 - Date.now()) / 1000
-                                  : (pool.end * 1000 - Date.now()) / 1000,
-                              ).format('0,0')}
-                              <small> seconds</small>
-                            </>
-                          )
-                        ) : (
-                          'FINISHED'
-                        )}{' '}
-                      </span>
+                      {counter()}
+                    </a>
+                  ) : (
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        return false;
+                      }}
+                      style={{ cursor: 'text' }}
+                    >
+                      {counter()}
                     </a>
                   )}
                 </p>

@@ -101,6 +101,54 @@ export const RowView = ({
       }
     }
   };
+
+  const counter = () => {
+    return (
+      <>
+        {(
+          pool.usesBlocks
+            ? pool.end > currentBlock
+            : pool.end * 1000 > Date.now()
+        )
+          ? (
+              pool.usesBlocks
+                ? currentBlock < pool.start
+                : Date.now() < pool.start * 1000
+            )
+            ? 'Starts in'
+            : 'Ends in'
+          : ''}{' '}
+        {(
+          pool.usesBlocks
+            ? pool.end > currentBlock
+            : pool.end * 1000 > Date.now()
+        ) ? (
+          pool.usesBlocks ? (
+            <>
+              {numeral(
+                currentBlock < pool.start
+                  ? pool.start - currentBlock
+                  : pool.end - currentBlock,
+              ).format('0,0')}
+              <small> blocks</small>
+            </>
+          ) : (
+            <>
+              {numeral(
+                Date.now() < pool.start * 1000
+                  ? (pool.start * 1000 - Date.now()) / 1000
+                  : (pool.end * 1000 - Date.now()) / 1000,
+              ).format('0,0')}
+              <small> seconds</small>
+            </>
+          )
+        ) : (
+          'FINISHED'
+        )}
+      </>
+    );
+  };
+
   return (
     <>
       <div className="RewardsRowViewNew">
@@ -155,7 +203,7 @@ export const RowView = ({
           </p>
 
           <p>
-            {pool.usesBlocks && (
+            {pool.usesBlocks ? (
               <a
                 href={getExplorerCountdownLink(
                   chainId,
@@ -164,46 +212,18 @@ export const RowView = ({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {(
-                  pool.usesBlocks
-                    ? pool.end > currentBlock
-                    : pool.end * 1000 > Date.now()
-                )
-                  ? (
-                      pool.usesBlocks
-                        ? currentBlock < pool.start
-                        : Date.now() < pool.start * 1000
-                    )
-                    ? 'Starts in'
-                    : 'Ends in'
-                  : ''}{' '}
-                {(
-                  pool.usesBlocks
-                    ? pool.end > currentBlock
-                    : pool.end * 1000 > Date.now()
-                ) ? (
-                  pool.usesBlocks ? (
-                    <>
-                      {numeral(
-                        currentBlock < pool.start
-                          ? pool.start - currentBlock
-                          : pool.end - currentBlock,
-                      ).format('0,0')}
-                      <small> blocks</small>
-                    </>
-                  ) : (
-                    <>
-                      {numeral(
-                        Date.now() < pool.start * 1000
-                          ? (pool.start * 1000 - Date.now()) / 1000
-                          : (pool.end * 1000 - Date.now()) / 1000,
-                      ).format('0,0')}
-                      <small> seconds</small>
-                    </>
-                  )
-                ) : (
-                  'FINISHED'
-                )}
+                {counter()}
+              </a>
+            ) : (
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  return false;
+                }}
+                style={{ cursor: 'text' }}
+              >
+                {counter()}
               </a>
             )}
           </p>
