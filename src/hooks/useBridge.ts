@@ -33,11 +33,19 @@ export function useBridge(chainId: ChainId, depositInfo: BridgeDepositInfo) {
 
   const [bridgeDepositFeeError, setBridgeDepositFeeError] = useState('');
 
+  const chainGasBalance =
+    useTokenBalance(
+      chainId,
+      chainData.gasTokenAddress?.substring(4),
+      currentAccount,
+    ) ?? BigNumber.from(0);
+
   const chainGasPriceSig = useTokenPriceSigQuery({
     variables: {
       chainId,
       token: chainData.gasTokenAddress?.substring(4),
     },
+    pollInterval: 60 * 1000,
   });
 
   const tokenPriceSig = useTokenPriceSigQuery({
@@ -45,16 +53,29 @@ export function useBridge(chainId: ChainId, depositInfo: BridgeDepositInfo) {
       chainId,
       token: depositInfo.token?.substring(4),
     },
+    pollInterval: 60 * 1000,
   });
 
   const nfps = useMyNFPsForChain(chainId);
 
   const debouncedAmount = useDebounce(depositInfo.amount, 250);
 
-  const [_minimum, _depositFees, _tokensLastUsedAt, ..._nfpsLastUsedAt] =
+  const [
+    _paused,
+    _minimum,
+    _depositFees,
+    _tokensLastUsedAt,
+    ..._nfpsLastUsedAt
+  ] =
     useContractCalls(
       chainId,
       [
+        chainData.bridgeAddress && {
+          abi: BridgeInterface,
+          address: chainData.bridgeAddress.substring(4),
+          method: 'paused',
+          args: [],
+        },
         chainData.bridgeAddress && {
           abi: BridgeInterface,
           address: chainData.bridgeAddress.substring(4),
@@ -125,6 +146,7 @@ export function useBridge(chainId: ChainId, depositInfo: BridgeDepositInfo) {
     useTokenDecimals(chainId, depositInfo.token?.substring(4)) ?? 18;
 
   const [
+    paused,
     minimum,
     amountToRecieve,
     cost,
@@ -133,8 +155,8 @@ export function useBridge(chainId: ChainId, depositInfo: BridgeDepositInfo) {
     nfpUsed,
     tokensUsed,
     tokensLastUsedAt,
-    ...nfpsLastUsedAt
   ] = [
+    _paused ? _paused[0] : false,
     _minimum
       ? _minimum[0].mul(BigNumber.from(10).pow(18 - decimals))
       : BigNumber.from(0),
@@ -153,13 +175,18 @@ export function useBridge(chainId: ChainId, depositInfo: BridgeDepositInfo) {
     _depositFees ? _depositFees[4] : false,
     _depositFees ? _depositFees[5] : false,
     _tokensLastUsedAt ? _tokensLastUsedAt[0].toNumber() : 0,
-    _nfpsLastUsedAt
-      ? _nfpsLastUsedAt.map((nfpLastUsedAt) =>
-          nfpLastUsedAt ? nfpLastUsedAt[0].toNumber() : 0,
-        )
-      : [],
   ];
 
+  const nfpsLastUsedAt: { [tokenId: number]: number } = {};
+
+  if (_nfpsLastUsedAt) {
+    _nfpsLastUsedAt.map(
+      (nfpLastUsedAt, i) =>
+        (nfpsLastUsedAt[nfps[i].tokenId] = nfpLastUsedAt
+          ? nfpLastUsedAt[0].toNumber()
+          : 0),
+    );
+  }
   useEffect(() => {
     if (_depositFees) {
       setBridgeDepositFeeError('');
@@ -204,37 +231,52 @@ export function useBridge(chainId: ChainId, depositInfo: BridgeDepositInfo) {
 
       return () => Promise.reject();
     },
-    useDepositction: (): ((
-      depositInfo: BridgeDepositInfo,
-    ) => Promise<void>) => {
+    useDepositAction: () => {
       try {
-        const contract = chainData.nfpAddress
-          ? new Contract(chainData.nfpAddress.substring(4), BridgeInterface)
+        const contract = chainData.bridgeAddress
+          ? new Contract(chainData.bridgeAddress.substring(4), BridgeInterface)
           : undefined;
 
         const deposit = useContractFunction(contract as any, 'deposit');
 
-        return (depositInfo: BridgeDepositInfo) =>
-          deposit.send(
-            [
-              depositInfo.amount,
-              depositInfo.chainTo,
-              depositInfo.token?.substring(4),
-              false,
-              depositInfo.recipient,
-              depositInfo.nfpId ?? 0,
-            ],
-            [
-              chainGasPriceSig?.data?.tokenPriceSig?.tokenPrice ?? 0,
-              chainGasPriceSig?.data?.tokenPriceSig?.validUntil ?? 0,
-              chainGasPriceSig?.data?.tokenPriceSig?.sig ?? '-',
-            ],
-            [
-              tokenPriceSig?.data?.tokenPriceSig?.tokenPrice ?? 0,
-              tokenPriceSig?.data?.tokenPriceSig?.validUntil ?? 0,
-              tokenPriceSig?.data?.tokenPriceSig?.sig ?? '-',
-            ],
+        return async (depositInfo: BridgeDepositInfo) => {
+          await deposit.send(
+            {
+              amount: depositInfo.amount,
+              chainTo: depositInfo.chainTo,
+              token: depositInfo.token?.substring(4),
+              needsEther: false,
+              recipient: depositInfo.recipient,
+              nfpId: BigNumber.from(depositInfo.nfpId ?? 0),
+            },
+            {
+              price: BigNumber.from(
+                depositInfo.useTokens
+                  ? chainGasPriceSig?.data?.tokenPriceSig?.tokenPrice ?? 0
+                  : 0,
+              ),
+              validUntil: BigNumber.from(
+                depositInfo.useTokens
+                  ? chainGasPriceSig?.data?.tokenPriceSig?.validUntil ?? 0
+                  : 0,
+              ),
+              signature: depositInfo.useTokens
+                ? chainGasPriceSig?.data?.tokenPriceSig?.sig ?? []
+                : [],
+            },
+            {
+              price: BigNumber.from(
+                tokenPriceSig?.data?.tokenPriceSig?.tokenPrice ?? 0,
+              ),
+              validUntil: BigNumber.from(
+                tokenPriceSig?.data?.tokenPriceSig?.validUntil ?? 0,
+              ),
+              signature: tokenPriceSig?.data?.tokenPriceSig?.sig ?? [],
+            },
           );
+
+          return { state: deposit.state, events: deposit.events };
+        };
       } catch (_) {}
 
       return () => Promise.reject();
@@ -243,8 +285,10 @@ export function useBridge(chainId: ChainId, depositInfo: BridgeDepositInfo) {
 
   return {
     ...actions,
+    chainGasBalance,
     chainGasPriceUsed: chainGasPriceSig?.data?.tokenPriceSig?.tokenPrice,
     tokenPriceUsed: tokenPriceSig?.data?.tokenPriceSig?.tokenPrice,
+    paused,
     minimum,
     tokenBalance: balance,
     tokenApproved: approved,

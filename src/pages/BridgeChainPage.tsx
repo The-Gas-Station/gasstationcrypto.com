@@ -2,22 +2,66 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import numeral from 'numeral';
 
-import { ethers } from 'ethers';
+import { ethers, BigNumber } from 'ethers';
 
 import { useConfig } from '../library/providers/ConfigProvider';
 import { useWeb3ConnectionsContext } from '../library/providers/Web3ConnectionsProvider';
 import useBridge from '../hooks/useBridge';
 
-import { CHAIN_NAMES, ChainId } from '../library/constants/chains';
+import {
+  CHAIN_NAMES,
+  ChainId,
+  CHAIN_ETHER,
+  EXPLORER_URLS,
+  RPC_URLS,
+} from '../library/constants/chains';
 import { CHAIN_INFO } from '../configs';
+import useEthers from '../library/hooks/useEthers';
 
 import { BridgeTransactionModal } from '../components/bridgeComponents/BridgeTransactionModal';
 import BridgeTransactionHistory from '../components/bridgeComponents/BridgeTransactionHistory';
+import Countdown from '../components/Countdown';
+
+import { useLayoutContext } from '../layouts/MainLayout';
 
 export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
+  const { setIsWalletModalOpen } = useLayoutContext();
+
   const navigate = useNavigate();
-  const { currentAccount } = useWeb3ConnectionsContext();
+  const { account, chainId: connectedChainId } = useEthers();
   const chainData = CHAIN_INFO[chainId];
+
+  const connect = () => {
+    setIsWalletModalOpen(true);
+  };
+
+  const forceChain = async () => {
+    try {
+      await (window as any).ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: `0x${chainId.toString(16)}` }],
+      });
+    } catch (e: any) {
+      if (e.code == 4902) {
+        await (window as any).ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainId: `0x${chainId.toString(16)}`,
+              chainName: CHAIN_NAMES[chainId],
+              nativeCurrency: {
+                name: CHAIN_ETHER[chainId],
+                symbol: CHAIN_ETHER[chainId],
+                decimals: 18,
+              },
+              rpcUrls: RPC_URLS[chainId],
+              blockExplorerUrls: [EXPLORER_URLS[chainId]],
+            },
+          ],
+        });
+      }
+    }
+  };
 
   const availableChains = Object.keys(CHAIN_INFO)
     .map((cId) => parseInt(cId))
@@ -61,16 +105,23 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const [amount, setAmount] = useState(ethers.BigNumber.from(0));
   const [value, setValue] = useState(0);
 
-  const [recipient, setRecipient] = useState('');
+  const [recipient /* , setRecipient */] = useState('');
+
+  const [waiveFeesWithTokens, setWaiveFeesWithTokens] = useState(false);
+  const [waiveFeesWithNFP, setWaiveFeesWithNFP] = useState(false);
 
   const [selectedNFP, setSelectedNFP] = useState<
     { image: string; name: string; tokenId: number } | undefined
   >();
 
   const {
-    chainGasPriceUsed,
-    tokenPriceUsed,
+    useApproveAction,
+    useDepositAction,
+    chainGasBalance,
     tokenBalance: assetBalance,
+    tokenApproved: assetApproved,
+    // paused,
+    // minimum,
     amountToRecieve,
     cost,
     expectedFee,
@@ -79,6 +130,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
     nfps,
     nfpsLastUsedAt,
     tokensUsed,
+    tokensLastUsedAt,
     bridgeDepositFeeError,
   } = useBridge(chainId, {
     amount,
@@ -86,21 +138,55 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     token: chainData.bridgeTokens[asset.key].address,
-    recipient: recipient || currentAccount,
-    useTokens: false,
-    nfpId: selectedNFP?.tokenId,
+    recipient: (recipient || account) ?? undefined,
+    useTokens: waiveFeesWithTokens,
+    nfpId: waiveFeesWithNFP ? selectedNFP?.tokenId : undefined,
   });
 
   //   console.log(
-  //     ethers.utils.formatEther(chainGasPriceUsed ?? 0),
-  //     ethers.utils.formatEther(tokenPriceUsed ?? 0),
-  //     ethers.utils.formatEther(amountToRecieve),
-  //     ethers.utils.formatEther(cost),
-  //     ethers.utils.formatEther(fee),
-  //     nfpUsed,
+  //     paused,
   //     tokensUsed,
+  //     nfpUsed,
+  //     ethers.utils.formatEther(minimum),
   //     bridgeDepositFeeError,
+  //     tokensLastUsedAt,
+  //     nfpsLastUsedAt,
   //   );
+
+  const [approving, setApproving] = useState(false);
+  const _approve = useApproveAction();
+
+  const approve = (amount: BigNumber) => {
+    setApproving(true);
+    _approve(amount).finally(() => setApproving(false));
+  };
+
+  const [depositing, setDepositing] = useState(false);
+  const _deposit = useDepositAction();
+  const [depositError, setDepositError] = useState('');
+
+  const deposit = async () => {
+    setDepositing(true);
+    const { state, events } = await _deposit({
+      amount,
+      chainTo: chainTo?.bridgeChainId,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      token: chainData.bridgeTokens[asset.key].address,
+      recipient: (recipient || account) ?? undefined,
+      useTokens: waiveFeesWithTokens,
+      nfpId: waiveFeesWithNFP ? selectedNFP?.tokenId : undefined,
+    }).finally(() => setDepositing(false));
+
+    console.log(state, events);
+    if (state.status != 'None' && !state.errorMessage) {
+      setIsBridgeTxOpen(true);
+    } else {
+      setDepositError(
+        'Issue with starting transfer. Please try again or contract support for help.',
+      );
+    }
+  };
 
   const updateValue = (e: number) => {
     setValue(e);
@@ -124,8 +210,6 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
   const [showPatron, setShowPatron] = useState(false);
   const [waiveFee, setWaiveFee] = useState(false);
   const toggleWaiveFee = () => setWaiveFee(!waiveFee);
-  const [useGAS, setUseGAS] = useState(false);
-  const [usePatron, setUsePatron] = useState(false);
 
   const [isBridgeTxOpen, setIsBridgeTxOpen] = useState(false);
 
@@ -276,7 +360,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                             ethers.utils.formatEther(amount),
                           ).format('0.00')}
                         />
-                        <div className="row">
+                        <div className="row pt-2">
                           <div className="bridge-amount col-lg-6">
                             <span className="subtext-left">0%</span>
                           </div>
@@ -363,8 +447,6 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                                   className={showGAS ? 'active' : ''}
                                   onClick={() => {
                                     setShowGAS(true);
-                                    setUseGAS(true);
-                                    setUsePatron(false);
                                     setShowPatron(false);
                                   }}
                                 >
@@ -374,8 +456,6 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                                   className={showPatron ? 'active' : ''}
                                   onClick={() => {
                                     setShowPatron(true);
-                                    setUsePatron(true);
-                                    setUseGAS(false);
                                     setShowGAS(false);
                                   }}
                                 >
@@ -390,34 +470,90 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                               <div className="d-flex flex-row container">
                                 <div className="d-flex flex-column patron-balance">
                                   <p className="text-pink">Token Balance</p>
-                                  <p className="text-green">
-                                    $connectedNetwork$GAS
+                                  <p className="text-green text-center">
+                                    {numeral(
+                                      ethers.utils.formatEther(chainGasBalance),
+                                    ).format('0.00')}
                                   </p>
+                                  <p className="text-green text-center">
+                                    {chainData.gasTokenName}
+                                  </p>
+                                  {tokensLastUsedAt * 1000 >
+                                    Date.now() - 24 * 60 * 60 * 1000 && (
+                                    <span className="text-pink text-center">
+                                      Not available for
+                                      <br />
+                                      <br />
+                                      <Countdown
+                                        timeFrom={tokensLastUsedAt * 1000}
+                                        timeTell={
+                                          Date.now() - 24 * 60 * 60 * 1000
+                                        }
+                                      />
+                                    </span>
+                                  )}
                                 </div>
                                 <div className="d-flex flex-column savings">
                                   <span>Fees:</span>
                                   <span>
-                                    <span className="text-green">$0.00 </span>
-                                    <span className="strike">$2.22</span>
+                                    <span className="text-green">
+                                      {numeral(
+                                        ethers.utils.formatEther(fee),
+                                      ).format('0.00')}
+                                    </span>
+                                    {tokensUsed && (
+                                      <span className="strike">
+                                        {numeral(
+                                          tokensUsed
+                                            ? ethers.utils.formatEther(
+                                                expectedFee.sub(fee),
+                                              )
+                                            : ethers.utils.formatEther(fee),
+                                        ).format('0.00')}
+                                      </span>
+                                    )}
                                   </span>
                                   <span className="text-green">
-                                    You Saved $2.22
+                                    You will save{' '}
+                                    {tokensUsed
+                                      ? numeral(
+                                          ethers.utils.formatEther(expectedFee),
+                                        ).format('0.00')
+                                      : 0}{' '}
+                                    {asset?.name}
                                   </span>
                                 </div>
                               </div>
                               <div className="line-break" />
                               <div className="d-flex flex-row justify-content-center">
                                 <div className="col-6">
-                                  <button className="join-btn">
+                                  <button
+                                    className="join-btn"
+                                    onClick={() => {
+                                      setWaiveFeesWithTokens(
+                                        !waiveFeesWithTokens,
+                                      );
+                                      setWaiveFeesWithNFP(false);
+                                    }}
+                                    disabled={
+                                      tokensLastUsedAt * 1000 >
+                                      Date.now() - 24 * 60 * 60 * 1000
+                                    }
+                                  >
                                     <span className="text-white1">
-                                      Waive Fees
+                                      {tokensLastUsedAt * 1000 >
+                                      Date.now() - 24 * 60 * 60 * 1000
+                                        ? 'Not Available'
+                                        : waiveFeesWithTokens
+                                        ? 'Cancel'
+                                        : 'Waive Fees'}
                                     </span>
                                   </button>
                                 </div>
                               </div>
                             </div>
                             <div
-                              className={`collapse ${usePatron ? 'show' : ''}`}
+                              className={`collapse ${showPatron ? 'show' : ''}`}
                             >
                               <div className="d-flex flex-row container">
                                 <div className="d-flex flex-column patron-balance">
@@ -426,7 +562,7 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                                     {nfps &&
                                       nfps.map((nfp) => (
                                         <img
-                                          key={nfp.tokenId}
+                                          key={`nfp-${nfp.tokenId}`}
                                           src={nfp.image}
                                           onClick={() => setSelectedNFP(nfp)}
                                         />
@@ -439,24 +575,55 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                                       <img src={selectedNFP.image} />
                                       <br />
                                       <span>{selectedNFP.name}</span>
-                                      <span className="text-pink">
-                                        $COOLDOWN TIMER$
-                                      </span>
+                                      {nfpsLastUsedAt[selectedNFP.tokenId] *
+                                        1000 >
+                                        Date.now() - 24 * 60 * 60 * 1000 && (
+                                        <span className="text-pink text-center">
+                                          Not available for
+                                          <br />
+                                          <br />
+                                          <Countdown
+                                            timeFrom={
+                                              nfpsLastUsedAt[
+                                                selectedNFP.tokenId
+                                              ] * 1000
+                                            }
+                                            timeTell={
+                                              Date.now() - 24 * 60 * 60 * 1000
+                                            }
+                                          />
+                                        </span>
+                                      )}
                                       <br />
                                       <span>Fees:</span>
                                       <span>
                                         <span className="text-green">
-                                          $0.00{' '}
+                                          {numeral(
+                                            ethers.utils.formatEther(fee),
+                                          ).format('0.00')}
                                         </span>
-                                        <span className="strike">$2.22</span>
+                                        {nfpUsed && (
+                                          <span className="strike">
+                                            {numeral(
+                                              nfpUsed
+                                                ? ethers.utils.formatEther(
+                                                    expectedFee.sub(fee),
+                                                  )
+                                                : ethers.utils.formatEther(fee),
+                                            ).format('0.00')}
+                                          </span>
+                                        )}
                                       </span>
                                       <span className="big-right text-green">
-                                        You Saved{' '}
-                                        {nfpUsed
-                                          ? numeral(
-                                              ethers.utils.formatEther(fee),
-                                            ).format('0.00')
-                                          : 0}
+                                        You will save{' '}
+                                        {numeral(
+                                          nfpUsed
+                                            ? ethers.utils.formatEther(
+                                                expectedFee.sub(fee),
+                                              )
+                                            : '0',
+                                        ).format('0.00')}{' '}
+                                        {asset?.name}
                                       </span>
                                     </>
                                   ) : (
@@ -468,9 +635,28 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                               <div className="line-break" />
                               <div className="d-flex flex-row justify-content-center">
                                 <div className="col-6">
-                                  <button className="join-btn">
+                                  <button
+                                    className="join-btn"
+                                    onClick={() => {
+                                      setWaiveFeesWithNFP(!waiveFeesWithNFP);
+                                      setWaiveFeesWithTokens(false);
+                                    }}
+                                    disabled={
+                                      selectedNFP &&
+                                      nfpsLastUsedAt[selectedNFP.tokenId] *
+                                        1000 >
+                                        Date.now() - 24 * 60 * 60 * 1000
+                                    }
+                                  >
                                     <span className="text-white1">
-                                      Waive Fees
+                                      {!selectedNFP ||
+                                      nfpsLastUsedAt[selectedNFP.tokenId] *
+                                        1000 >
+                                        Date.now() - 24 * 60 * 60 * 1000
+                                        ? 'Not Available'
+                                        : waiveFeesWithNFP
+                                        ? 'Cancel'
+                                        : 'Waive Fees'}
                                     </span>
                                   </button>
                                 </div>
@@ -495,15 +681,91 @@ export const BridgeChainPage = ({ chainId }: { chainId: ChainId }) => {
                           {asset?.name}
                         </h5>
                       </div>
-                      <button className="join-btn">
-                        <div
-                          onClick={() => {
-                            setIsBridgeTxOpen(true);
-                          }}
-                        >
-                          <span className=" d-lg-block">Send</span>
+                      <br />
+
+                      {!account ? (
+                        <div className="action-item">
+                          <button className="join-btn" onClick={connect}>
+                            Connect
+                          </button>
                         </div>
-                      </button>
+                      ) : chainId != connectedChainId ? (
+                        <div className="action-item">
+                          <button className="join-btn" onClick={forceChain}>
+                            Switch Chain
+                          </button>
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+
+                      {amount.gt(0) &&
+                      !bridgeDepositFeeError &&
+                      account &&
+                      chainId == connectedChainId ? (
+                        amount.gt(assetBalance) ? (
+                          <button
+                            className="join-btn"
+                            disabled={amount.gt(assetBalance)}
+                          >
+                            <span className=" d-lg-block">
+                              You do not have enough {asset?.name}
+                            </span>
+                          </button>
+                        ) : assetApproved.gte(amount) ? (
+                          <>
+                            <button
+                              className="join-btn"
+                              disabled={amount.gt(assetBalance) || depositing}
+                              onClick={() => {
+                                deposit();
+                              }}
+                            >
+                              <span className=" d-lg-block">
+                                {depositing ? 'Sending...' : 'Send'}
+                              </span>
+                            </button>
+                            {depositError && (
+                              <div className="error text-center pt-2">
+                                {depositError}
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <div className="row">
+                            <div className="col-md-6 col-12">
+                              <button
+                                className="join-btn"
+                                disabled={amount.gt(assetBalance) || approving}
+                                onClick={() => {
+                                  approve(amount);
+                                }}
+                              >
+                                <span className=" d-lg-block">
+                                  {approving
+                                    ? 'Approving...'
+                                    : 'Approve Amount'}
+                                </span>
+                              </button>
+                            </div>
+                            <div className="col-md-6 col-12">
+                              <button
+                                className="join-btn col-md-6 col-12"
+                                disabled={amount.gt(assetBalance) || approving}
+                                onClick={() => {
+                                  approve(ethers.constants.MaxUint256);
+                                }}
+                              >
+                                <span className=" d-lg-block">
+                                  {approving ? 'Approving...' : 'Approve Max'}
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                        )
+                      ) : (
+                        <></>
+                      )}
                     </div>
                     <BridgeTransactionModal
                       isBridgeTxOpen={isBridgeTxOpen}

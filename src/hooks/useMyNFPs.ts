@@ -60,7 +60,13 @@ export function useMyNFPs() {
                 (nfp) =>
                   nfp.chainId != chainId || nfp.tokenId != tokenId.toNumber(),
               );
-              prev.push({ tokenId: tokenId.toNumber(), chainId, ...metadata });
+              const { tokenId: rarityTokenId, ...noTokenIdMetadata } = metadata;
+              prev.push({
+                tokenId: tokenId.toNumber(),
+                rarityTokenId,
+                chainId,
+                ...noTokenIdMetadata,
+              });
 
               return prev.sort((a, b) => {
                 if (a.image.includes('gif') && b.image.includes('gif')) {
